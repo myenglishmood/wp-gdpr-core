@@ -3,7 +3,7 @@ Contributors: Mieke Nijs, Sebastian Kurzynowski, AppSaloon
 Tags: Personal data, GDPR, European, regulation, data
 Requires at least: 4.6.10
 Tested up to: 4.9.2
-Stable tag: 1.1.6
+Stable tag: 1.2.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -41,6 +41,10 @@ In the third stage they can view, update and download their personal data or ask
 == Frequently Asked Questions ==
 
 == Changelog ==
+Version 1.2.1
+    - Update .pot file
+    - Quickfix dublicated GDPR checkbox
+
 Version 1.2
     - Fix compatibility with WP Discuz
     - Add functionality to upadate default privacy url
