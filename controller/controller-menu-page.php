@@ -50,12 +50,12 @@ class Controller_Menu_Page {
 				//get all selected comments
 				//unserialize
 				$single_request_id     = sanitize_text_field( $single_request_id );
-				$data_to_delete    = $this->find_delete_request_by_id( $single_request_id );
-				$unserialized_data = $this->unserialize( $data_to_delete['data'] );
+				$data_to_process    = $this->find_delete_request_by_id( $single_request_id );
+				$unserialized_data = $this->unserialize( $data_to_process['data'] );
 				//check post request
 				if ( isset( $_REQUEST['gdpr_delete_comments'] ) ) {
 					//check type of request
-					 if( 0 == $this->get_type_of_request($data_to_delete))
+					 if( 0 == $this->get_type_of_request($data_to_process))
 					 {
 						 //get all comments before process to show info in email
 						 $original_comments = $this->get_original_comments( $unserialized_data );
@@ -67,27 +67,46 @@ class Controller_Menu_Page {
 						 $processed_data = array_map( array( $this, 'map_comments_for_email' ), $original_comments );
 						 $message =  __( 'Comments deleted', 'wp_gdpr' ) ;
 					 }else{
-					 	 $type_number =  $data_to_delete['r_type'];
-						 $processed_data = apply_filters( 'gdpr_map_data_for_email_' . $type_number , $unserialized_data, $data_to_delete );
-						 $message = apply_filters( 'gdpr_get_del_message_' . $type_number , $unserialized_data, $data_to_delete );
-					 	 do_action( 'gdpr_execute_del_req_' . $type_number, $unserialized_data, $data_to_delete);
+					 	 $type_number =  $data_to_process['r_type'];
+						 $processed_data = apply_filters( 'gdpr_map_data_for_email_' . $type_number , $unserialized_data, $data_to_process );
+						 $message = apply_filters( 'gdpr_get_del_message_' . $type_number , $unserialized_data, $data_to_process );
+					 	 do_action( 'gdpr_execute_del_req_' . $type_number, $unserialized_data, $data_to_process);
 					 }
 					$this->set_notice( $message );
 				}
 
 				//check post request
 				if ( isset( $_REQUEST['gdpr_anonymous_comments'] ) ) {
-					//check type of request
-					//make anonymous
-					//change status into anonymous
-					$this->make_anonymous( $unserialized_data );
-					$this->update_status( $single_request_id, 2 );
-					$this->set_notice( __( 'Comments are anonymous', 'wp_gdpr' ) );
+					//if comments
+					if( 0 == $this->get_type_of_request($data_to_process))
+					{
+						//check type of request
+						//make anonymous
+						//change status into anonymous
+						$this->make_anonymous( $unserialized_data );
+						$this->update_status( $single_request_id, 2 );
+						$message = __( 'Comments are anonymous', 'wp_gdpr' );
+					}else{
+						/**
+						 * if addons
+						 */
+						//check type of request
+						//make anonymous
+						//change status into anonymous
+						$type_number =  $data_to_process['r_type'];
+						do_action('gdpr_execute_anonymous_req_' . $type_number, $unserialized_data, $data_to_process);
+						$message = apply_filters( 'gdpr_get_anonymous_message_' . $type_number , $unserialized_data, $data_to_process );
+					}
+
+					//happends always for anonymous request no matter where
+					$this->set_notice( $message );
+					//TODO create data about making anonymous entries or comments to send in email as content
+					$processed_data = array();
 				}
 
-				$to      = $data_to_delete['email'];
+				$to      = $data_to_process['email'];
 				$subject = __( 'We confirm Your data deletion request', 'wp_gdpr' );
-				$content        = $this->get_confirmation_email_content( $data_to_delete, $processed_data );
+				$content        = $this->get_confirmation_email_content( $data_to_process, $processed_data );
 				$headers        = array( 'Content-Type: text/html; charset=UTF-8' );
 				wp_mail( $to, $subject, $content, $headers );
 			}
