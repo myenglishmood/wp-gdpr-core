@@ -64,7 +64,7 @@ class Controller_Comments {
 
 			$privacy_policy = 'privacy policy';
 		}
-		
+
 		 $without_link =  '<p class="notice"><small>* '.__('Checkbox GDPR is required', 'wp_gdpr') . '</small></p>' . '<div class="js-gdpr-warning"></div><p class="comment-form-gdpr"><label for="gdpr">' . __( 'This form collects your name, email and content so that we can keep track of the comments placed on the website. For more info check our %s where you\'ll get more info on where, how and why we store your data.', 'wp_gdpr' ) . ' <span class="required">*</span></label> ' .
 		                          '<input  required="required" id="gdpr" name="gdpr" type="checkbox"  />' . __( 'Agree', 'wp_gdpr' ) . '</p>';
 
@@ -377,9 +377,10 @@ class Controller_Comments {
 					$table_name,
 					array(
 						'email'     => $email,
-						'comments'  => serialize( $comments_ids ),
+						'data'  => serialize( $comments_ids ),
 						'status'    => 0,
-						'timestamp' => current_time( 'mysql' )
+						'timestamp' => current_time( 'mysql' ),
+						'r_type' => 0
 					)
 				);
 				$this->message = '<h3>' . __( "The site administrator received your request. Thank You.", "wp_gdpr" ) . '</h3>';
