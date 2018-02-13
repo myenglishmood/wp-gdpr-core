@@ -1,3 +1,7 @@
+== Version 1.2.1
+* Update .pot file
+* Quickfix dublicated GDPR checkbox
+    
 == Version 1.2
 * Fix compatibility with WP Discuz
 * Add functionality to upadate default privacy url
