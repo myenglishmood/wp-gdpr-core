@@ -46,7 +46,7 @@ class Csv_Downloader {
 		fclose( $output );
 
 		//in this moment file should appear in browser
-		die;
+		exit;
 	}
 
 	public function add_headers( $array_headers ) {
@@ -63,7 +63,7 @@ class Csv_Downloader {
 	 * add comments to download
 	 */
 	public function map_comments_into_csv_data( $array_comments ) {
-		$this->data = array_map( function ( $data ) {
+		$this->set_data( array_map( function ( $data ) {
 			return
 				array(
 					$data->comment_author,
@@ -71,6 +71,13 @@ class Csv_Downloader {
 					$data->comment_content,
 					$data->comment_author_url,
 				);
-		}, $array_comments );
+		}, $array_comments ) );
+	}
+
+	/**
+	 * @param mixed $data
+	 */
+	public function set_data( $data ) {
+		$this->data = $data;
 	}
 }
