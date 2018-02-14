@@ -39,7 +39,7 @@ class Controller_Comments {
 		/**
 		 * add gdpr checkbox for wpdiscuz plugin
 		 */
-        if ( ! function_exists( 'is_plugin_active' ) ){
+		if ( ! function_exists( 'is_plugin_active' ) ){
             require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
         }
 		if(is_plugin_active('wpdiscuz/class.WpdiscuzCore.php')){
@@ -66,15 +66,14 @@ class Controller_Comments {
 		$privacy_policy_url = get_option( Controller_Menu_Page::PRIVACY_POLICY_URL, null );
 		if ( null !== $privacy_policy_url ) {
 			$privacy_policy = sprintf( '<a href="%s" target="_blank">privacy policy</a>', $privacy_policy_url );
-		} else {
+		}else{
 
 			$privacy_policy         = __('privacy policy', 'wp_gdpr');
 		}
-
 		 $without_link =  '<p class="notice"><small>* '.__('Checkbox GDPR is required', 'wp_gdpr') . '</small></p>' . '<div class="js-gdpr-warning"></div><p class="comment-form-gdpr"><label for="gdpr">' . __( 'This form collects your name, email and content so that we can keep track of the comments placed on the website. For more info check our %s where you\'ll get more info on where, how and why we store your data.', 'wp_gdpr' ) . ' <span class="required">*</span></label> ' .
 		                          '<input  required="required" id="gdpr" name="gdpr" type="checkbox"  />' . __( 'Agree', 'wp_gdpr' ) . '</p>';
 
-		return sprintf( $without_link, $privacy_policy );
+		return sprintf($without_link, $privacy_policy);
 
 
 	}
@@ -363,37 +362,29 @@ class Controller_Comments {
 
 	public function save_delete_request() {
 
-		if ( 'POST' == $_SERVER['REQUEST_METHOD'] ) {
+		if ( 'POST' == $_SERVER['REQUEST_METHOD'] && isset( $_REQUEST["send_gdp_del_request"] ) && isset( $_REQUEST['gdpr_delete_comments'] ) && is_array( $_REQUEST['gdpr_delete_comments'] ) ) {
+			//save in database
+			global $wpdb;
 
-			//validation in addons
-			do_action( 'gdpr_save_del_req' );
+			$comments_ids = array_filter( $_REQUEST['gdpr_delete_comments'], array(
+				$this,
+				'sanitize_comments_input'
+			) );
 
-			if ( isset( $_REQUEST["send_gdp_del_request"] ) && isset( $_REQUEST['gdpr_delete_comments'] ) && is_array( $_REQUEST['gdpr_delete_comments'] ) ) {
-				//save in database
-				global $wpdb;
-
-				$comments_ids = array_filter( $_REQUEST['gdpr_delete_comments'], array(
-					$this,
-					'sanitize_comments_input'
-				) );
-
-				$table_name = $wpdb->prefix . Gdpr_Customtables::DELETE_REQUESTS_TABLE_NAME;
-				$email      = sanitize_email( $_REQUEST["gdpr_email"] );
-				$wpdb->insert(
-					$table_name,
-					array(
-						'email'     => $email,
-						'data'  => serialize( $comments_ids ),
-						'status'    => 0,
-						'timestamp' => current_time( 'mysql' ),
-						'r_type' => 0
-					)
-				);
-				$this->message = '<h3>' . __( "The site administrator received your request. Thank You.", "wp_gdpr" ) . '</h3>';
-				$this->send_email_to_admin( $email );
-			}
+			$table_name = $wpdb->prefix . Gdpr_Customtables::DELETE_REQUESTS_TABLE_NAME;
+			$email      = sanitize_email( $_REQUEST["gdpr_email"] );
+			$wpdb->insert(
+				$table_name,
+				array(
+					'email'     => $email,
+					'comments'  => serialize( $comments_ids ),
+					'status'    => 0,
+					'timestamp' => current_time( 'mysql' )
+				)
+			);
+			$this->message = '<h3>' . __( "The site administrator received your request. Thank You.", "wp_gdpr" ) . '</h3>';
+			$this->send_email_to_admin( $email );
 		}
-
 	}
 
 	public function send_email_to_admin( $requested_email ) {
