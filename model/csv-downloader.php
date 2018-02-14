@@ -13,12 +13,10 @@ class Csv_Downloader {
 	 * headers of CSV
 	 */
 	public $headers;
-
 	/**
 	 * @var
 	 */
 	public $data;
-
 	/**
 	 * void function to download csv
 	 */
@@ -56,7 +54,6 @@ class Csv_Downloader {
 	public function set_filename( $name ) {
 		$this->filename = $name;
 	}
-
 
 	/**
 	 * @param $array_comments
