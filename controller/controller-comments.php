@@ -39,10 +39,13 @@ class Controller_Comments {
 		/**
 		 * add gdpr checkbox for wpdiscuz plugin
 		 */
-		if ( is_plugin_active( 'wpdiscuz/class.WpdiscuzCore.php' ) ) {
-			add_action( 'comment_form_after', array( $this, 'echo_checkox_gdpr' ) );
-			add_action( 'wp_enqueue_scripts', array( $this, 'load_comment_scripts' ) );
-		}
+        if ( ! function_exists( 'is_plugin_active' ) ){
+            require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+        }
+		if(is_plugin_active('wpdiscuz/class.WpdiscuzCore.php')){
+            add_action( 'comment_form_after', array( $this, 'echo_checkox_gdpr' ) );
+            add_action( 'wp_enqueue_scripts', array( $this, 'load_comment_scripts' ) );
+        }
 
 	}
 
