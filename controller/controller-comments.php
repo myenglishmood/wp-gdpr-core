@@ -39,10 +39,10 @@ class Controller_Comments {
 		/**
 		 * add gdpr checkbox for wpdiscuz plugin
 		 */
-		if(is_plugin_active('wpdiscuz/class.WpdiscuzCore.php')){
-            add_action( 'comment_form_after', array( $this, 'echo_checkox_gdpr' ) );
-            add_action( 'wp_enqueue_scripts', array( $this, 'load_comment_scripts' ) );
-        }
+		if ( is_plugin_active( 'wpdiscuz/class.WpdiscuzCore.php' ) ) {
+			add_action( 'comment_form_after', array( $this, 'echo_checkox_gdpr' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'load_comment_scripts' ) );
+		}
 
 	}
 
@@ -65,11 +65,11 @@ class Controller_Comments {
 			$privacy_policy = sprintf( '<a href="%s" target="_blank">privacy policy</a>', $privacy_policy_url );
 		} else {
 
-			$privacy_policy         = __('privacy policy', 'wp_gdpr');
+			$privacy_policy = __( 'privacy policy', 'wp_gdpr' );
 		}
 
-		 $without_link =  '<p class="notice"><small>* '.__('Checkbox GDPR is required', 'wp_gdpr') . '</small></p>' . '<div class="js-gdpr-warning"></div><p class="comment-form-gdpr"><label for="gdpr">' . __( 'This form collects your name, email and content so that we can keep track of the comments placed on the website. For more info check our %s where you\'ll get more info on where, how and why we store your data.', 'wp_gdpr' ) . ' <span class="required">*</span></label> ' .
-		                          '<input  required="required" id="gdpr" name="gdpr" type="checkbox"  />' . __( 'Agree', 'wp_gdpr' ) . '</p>';
+		$without_link = '<p class="notice"><small>* ' . __( 'Checkbox GDPR is required', 'wp_gdpr' ) . '</small></p>' . '<div class="js-gdpr-warning"></div><p class="comment-form-gdpr"><label for="gdpr">' . __( 'This form collects your name, email and content so that we can keep track of the comments placed on the website. For more info check our %s where you\'ll get more info on where, how and why we store your data.', 'wp_gdpr' ) . ' <span class="required">*</span></label> ' .
+		                '<input  required="required" id="gdpr" name="gdpr" type="checkbox"  />' . __( 'Agree', 'wp_gdpr' ) . '</p>';
 
 		return sprintf( $without_link, $privacy_policy );
 
@@ -233,33 +233,39 @@ class Controller_Comments {
 
 	public function download_csv() {
 		//DOWNLOAD CSV
-		if ( 'POST' == $_SERVER['REQUEST_METHOD'] && isset( $_REQUEST['gdpr_download_csv'] ) ) {
-			//save in database
-			if ( isset( $_REQUEST['gdpr_email'] ) ) {
+		if ( 'POST' == $_SERVER['REQUEST_METHOD'] && isset( $_REQUEST['gdpr_email'] ) ) {
+			if ( isset( $_REQUEST['gdpr_download_csv'] ) ) {
+				//save in database
 				$user_email = sanitize_email( $_REQUEST['gdpr_email'] );
-			}
 
-			global $wpdb;
+				global $wpdb;
 
-			//DOWNLOAD all
-			if ( ! empty( $user_email ) ) {
-				$all_comments = $this->get_all_comments_by_author( $user_email );
-			}
+				//DOWNLOAD all
+				if ( ! empty( $user_email ) ) {
+					$all_comments = $this->get_all_comments_by_author( $user_email );
+				}
 
-			if ( ! empty( $all_comments ) ) {
-				//create csv object and download comments
-				$csv = Gdpr_Container::make( 'wp_gdpr\model\Csv_Downloader' );
-				$csv->add_headers(
-					array(
+				if ( ! empty( $all_comments ) ) {
+					$file_name = self::CSV_NAME;
+					//create csv object and download comments
+					$csv     = Gdpr_Container::make( 'wp_gdpr\model\Csv_Downloader' );
+					$headers = array(
 						__( 'name', 'wp_gdpr' ),
 						__( 'email', 'wp_gdpr' ),
 						__( 'comment', 'wp_gdpr' ),
 						__( 'website', 'wp_gdpr' ),
-					)
-				);
-				$csv->set_filename( self::CSV_NAME );
-				$csv->map_comments_into_csv_data( $all_comments );
-				$csv->download_csv();
+					);
+
+					$csv->add_headers(
+						$headers
+					);
+
+					$csv->set_filename( $file_name );
+					$csv->map_comments_into_csv_data( $all_comments );
+					$csv->download_csv();
+				}
+			} else {
+				do_action( 'download_csv' );
 			}
 		}
 	}
@@ -380,10 +386,10 @@ class Controller_Comments {
 					$table_name,
 					array(
 						'email'     => $email,
-						'data'  => serialize( $comments_ids ),
+						'data'      => serialize( $comments_ids ),
 						'status'    => 0,
 						'timestamp' => current_time( 'mysql' ),
-						'r_type' => 0
+						'r_type'    => 0
 					)
 				);
 				$this->message = '<h3>' . __( "The site administrator received your request. Thank You.", "wp_gdpr" ) . '</h3>';
