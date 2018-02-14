@@ -1,3 +1,6 @@
+== Version 1.2.2
+* Update de and po language
+
 == Version 1.2.1
 * Update .pot file
 * Quickfix dublicated GDPR checkbox
