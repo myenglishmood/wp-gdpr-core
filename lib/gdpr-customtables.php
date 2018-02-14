@@ -42,8 +42,9 @@ class Gdpr_Customtables {
 		$query      = "CREATE TABLE " . $table_name . " (
 			ID INT(10) NOT NULL AUTO_INCREMENT,
 			email VARCHAR(60) DEFAULT NULL,
-			comments VARCHAR(200) DEFAULT NULL,
+			data VARCHAR(200) DEFAULT NULL,
 			status INT(2) DEFAULT NULL,
+			r_type INT(2) DEFAULT NULL,
 			timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 			PRIMARY KEY (ID)
 		)";
