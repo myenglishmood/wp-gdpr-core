@@ -54,7 +54,6 @@ class Gdpr_Container {
 	 * get object of class
 	 */
 	public static function get_object( $class_name, $arguments ) {
-
 		return new $class_name( $arguments );
 	}
 

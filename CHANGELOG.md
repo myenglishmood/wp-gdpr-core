@@ -1,3 +1,6 @@
+== Version 1.2.3
+* Check if is_plugin_active() exists
+
 == Version 1.2.2
 * Update de and po language
 
