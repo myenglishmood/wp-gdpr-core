@@ -49,53 +49,51 @@ class Controller_Menu_Page {
 			foreach ( $_REQUEST['gdpr_requests'] as $single_request_id ) {
 				//get all selected comments
 				//unserialize
-				$single_request_id     = sanitize_text_field( $single_request_id );
-				$data_to_process    = $this->find_delete_request_by_id( $single_request_id );
+				$single_request_id = sanitize_text_field( $single_request_id );
+				$data_to_process   = $this->find_delete_request_by_id( $single_request_id );
 				$unserialized_data = $this->unserialize( $data_to_process['data'] );
 				//check post request
 				if ( isset( $_REQUEST['gdpr_delete_comments'] ) ) {
 					//check type of request
-					 if( 0 == $this->get_type_of_request($data_to_process))
-					 {
-						 //get all comments before process to show info in email
-						 $original_comments = $this->get_original_comments( $unserialized_data );
-						 //delete
-						 //change status in delete
-						 $this->delete_comments( $unserialized_data );
-						 $this->update_status( $single_request_id, 1 );
-						 //change comment object into one row string for email table
-						 $processed_data = array_map( array( $this, 'map_comments_for_email' ), $original_comments );
-						 $message =  __( 'Comments deleted', 'wp_gdpr' ) ;
-					 }else{
-					 	 $type_number =  $data_to_process['r_type'];
-						 $processed_data = apply_filters( 'gdpr_map_data_for_email_' . $type_number , $unserialized_data, $data_to_process );
-						 $message = apply_filters( 'gdpr_get_del_message_' . $type_number , $unserialized_data, $data_to_process );
-					 	 do_action( 'gdpr_execute_del_req_' . $type_number, $unserialized_data, $data_to_process);
-					 }
+					if ( 0 == $this->get_type_of_request( $data_to_process ) ) {
+						//get all comments before process to show info in email
+						$original_comments = $this->get_original_comments( $unserialized_data );
+						//delete
+						//change status in delete
+						$this->delete_comments( $unserialized_data );
+						$this->update_status( $single_request_id, 1 );
+						//change comment object into one row string for email table
+						$processed_data = array_map( array( $this, 'map_comments_for_email' ), $original_comments );
+						$message        = __( 'Comments deleted', 'wp_gdpr' );
+					} else {
+						$type_number    = $data_to_process['r_type'];
+						$processed_data = apply_filters( 'gdpr_map_data_for_email_' . $type_number, $unserialized_data, $data_to_process );
+						$message        = apply_filters( 'gdpr_get_del_message_' . $type_number, $unserialized_data, $data_to_process );
+						do_action( 'gdpr_execute_del_req_' . $type_number, $unserialized_data, $data_to_process );
+					}
 					$this->set_notice( $message );
 				}
 
 				//check post request
 				if ( isset( $_REQUEST['gdpr_anonymous_comments'] ) ) {
 					//if comments
-					if( 0 == $this->get_type_of_request($data_to_process))
-					{
+					if ( 0 == $this->get_type_of_request( $data_to_process ) ) {
 						//check type of request
 						//make anonymous
 						//change status into anonymous
 						$this->make_anonymous( $unserialized_data );
 						$this->update_status( $single_request_id, 2 );
 						$message = __( 'Comments are anonymous', 'wp_gdpr' );
-					}else{
+					} else {
 						/**
 						 * if addons
 						 */
 						//check type of request
 						//make anonymous
 						//change status into anonymous
-						$type_number =  $data_to_process['r_type'];
-						do_action('gdpr_execute_anonymous_req_' . $type_number, $unserialized_data, $data_to_process);
-						$message = apply_filters( 'gdpr_get_anonymous_message_' . $type_number , $unserialized_data, $data_to_process );
+						$type_number = $data_to_process['r_type'];
+						do_action( 'gdpr_execute_anonymous_req_' . $type_number, $unserialized_data, $data_to_process );
+						$message = apply_filters( 'gdpr_get_anonymous_message_' . $type_number, $unserialized_data, $data_to_process );
 					}
 
 					//happends always for anonymous request no matter where
@@ -106,15 +104,11 @@ class Controller_Menu_Page {
 
 				$to      = $data_to_process['email'];
 				$subject = __( 'We confirm Your data deletion request', 'wp_gdpr' );
-				$content        = $this->get_confirmation_email_content( $data_to_process, $processed_data );
-				$headers        = array( 'Content-Type: text/html; charset=UTF-8' );
+				$content = $this->get_confirmation_email_content( $data_to_process, $processed_data );
+				$headers = array( 'Content-Type: text/html; charset=UTF-8' );
 				wp_mail( $to, $subject, $content, $headers );
 			}
 		}
-	}
-
-	public function get_type_of_request( $request_data ) {
-		return $request_data['r_type'];
 	}
 
 	/**
@@ -149,6 +143,10 @@ class Controller_Menu_Page {
 		$comments_to_delete = unserialize( $serialized_comments );
 
 		return $comments_to_delete;
+	}
+
+	public function get_type_of_request( $request_data ) {
+		return $request_data['r_type'];
 	}
 
 	/**
@@ -305,12 +303,11 @@ class Controller_Menu_Page {
 	 */
 	public function map_type_status( $data ) {
 
-		if ( ! isset( $data['r_type'] ) || empty( $data['r_type'] )  ) {
+		if ( ! isset( $data['r_type'] ) || empty( $data['r_type'] ) ) {
 			$data['r_type'] = 0;
 		}
 
-		switch ($data['r_type'])
-		{
+		switch ( $data['r_type'] ) {
 			case 0:
 				$data['r_type'] = __( 'comments', 'wp-gdpr' );
 				break;
@@ -559,7 +556,12 @@ class Controller_Menu_Page {
 	}
 
 	public function reduce_comments_to_string( $item ) {
-		$item['data'] = array_reduce( unserialize( $item['data'] ), function ( $carry, $item ) {
+		$unserialized_data =  unserialize( $item['data'] );
+		if ( empty( $unserialized_data )  ) {
+			$item['data'] = '';
+			return $item;
+		}
+		$item['data'] = array_reduce($unserialized_data, function ( $carry, $item ) {
 			return $carry . $item . ",";
 		} );
 		$item['data'] = substr( $item['data'], 0, - 1 );

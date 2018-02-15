@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP GDPR CORE\n"
 "POT-Creation-Date: 2018-02-07 13:21+0100\n"
-"PO-Revision-Date: 2018-02-07 13:23+0100\n"
+"PO-Revision-Date: 2018-02-14 10:14+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -141,7 +141,7 @@ msgstr "zapytano"
 #: controller/controller-menu-page.php:210
 #: controller/controller-menu-page.php:425
 msgid "status"
-msgstr "Status"
+msgstr "status"
 
 #: controller/controller-menu-page.php:211
 msgid "resend email"
@@ -311,10 +311,11 @@ msgid ""
 "            For more info check our privacy policy where you'll get more "
 "info on where, how and why we store your data."
 msgstr ""
-"Ten formularz gromadzi twoje imię i nazwisko, adres e-mail i treść na "
-"stronie internetowej. Aby uzyskać więcej informacji, zapoznaj się z naszą "
-"polityką prywatności, gdzie znajdziesz więcej informacji o tym, gdzie, jak i "
-"dlaczego przechowujemy Twoje dane."
+"Wyrażam zgodę na posiadanie przez %s mojego adresu e-mail, aby mógł przesłać "
+"mi żądane informacje.\n"
+"Aby uzyskać więcej informacji, zapoznaj się z naszą polityką prywatności, "
+"gdzie znajdziesz więcej informacji o tym, gdzie, jak i dlaczego "
+"przechowujemy Twoje dane."
 
 #: view/front/form.php:21
 msgid "Submit"
