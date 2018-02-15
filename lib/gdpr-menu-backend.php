@@ -19,17 +19,30 @@ class Gdpr_Menu_Backend {
 	/**
 	 * add menu page
 	 */
-	public function add_menu_callback() {
-		add_menu_page( self::MENU_PAGE_TITLE, self::MENU_TITLE, 'manage_options', self::PAGE_SLUG, array(
-			$this,
-			'menu_page_output'
-		) );
-	}
+	public function add_menu_callback()
+    {
+        add_menu_page(self::MENU_PAGE_TITLE, self::MENU_TITLE, 'manage_options', self::PAGE_SLUG);
+
+        add_submenu_page(static::PAGE_SLUG, __('List of data requests', 'wp_gdpr'), __('List of data requests', 'wp_gdpr'), 'manage_options', self::PAGE_SLUG, array($this, 'set_wp_gdpr_listOfDataRequests'));
+        add_submenu_page(static::PAGE_SLUG, __('List of delete requests', 'wp_gdpr'), __('List of delete requests', 'wp_gdpr'), 'manage_options', 'deletelist', array($this, 'set_wp_gdpr_listOfDeleteRequests'));
+        add_submenu_page(static::PAGE_SLUG, __('List of plugins', 'wp_gdpr'), __('List of plugins', 'wp_gdpr'), 'manage_options', 'pluginlist', array($this, 'set_wp_gdpr_listOfPlugins'));
+        add_submenu_page(static::PAGE_SLUG, __('Settings', 'wp_gdpr'), __('Settings', 'wp_gdpr'), 'manage_options', 'settings', array($this, 'set_wp_gdpr_settings'));
+
+    }
 
 	/**
 	 * generate output for menu page from template
 	 */
-	public function menu_page_output() {
-		require_once GDPR_DIR . 'view/admin/menu-page.php';
-	}
+	public function set_wp_gdpr_listOfDataRequests(){
+        require_once GDPR_DIR . 'view/admin/menu/data-page.php';
+    }
+    public function set_wp_gdpr_listOfDeleteRequests(){
+        require_once GDPR_DIR . 'view/admin/menu/delete-page.php';
+    }
+    public function set_wp_gdpr_listOfPlugins(){
+        require_once GDPR_DIR . 'view/admin/menu/plugin-page.php';
+    }
+    public function set_wp_gdpr_settings(){
+        require_once GDPR_DIR . 'view/admin/menu/settings-page.php';
+    }
 }
