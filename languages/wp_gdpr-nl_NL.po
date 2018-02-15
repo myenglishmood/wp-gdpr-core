@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP GDPR CORE\n"
-"POT-Creation-Date: 2018-02-12 08:44+0100\n"
-"PO-Revision-Date: 2018-02-12 08:49+0100\n"
+"POT-Creation-Date: 2018-02-15 09:47+0100\n"
+"PO-Revision-Date: 2018-02-15 09:52+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -25,15 +25,15 @@ msgstr ""
 msgid "GDPR - Request personal data"
 msgstr "GDPR - Verzoek voor inzage in persoonlijke data"
 
-#: controller/controller-comments.php:68 lib/gdpr-form-builder.php:39
+#: controller/controller-comments.php:71 lib/gdpr-form-builder.php:39
 msgid "privacy policy"
 msgstr "privacybeleid"
 
-#: controller/controller-comments.php:70
+#: controller/controller-comments.php:74
 msgid "Checkbox GDPR is required"
 msgstr "Checkbox GDPR is verplicht"
 
-#: controller/controller-comments.php:70
+#: controller/controller-comments.php:74
 #, php-format
 msgid ""
 "This form collects your name, email and content so that we can keep track of "
@@ -44,11 +44,11 @@ msgstr ""
 "geplaatst op de website kunnen opvolgen. Voor meer info check onze  %s, "
 "waarin je meer info krijgt over waar, hoe en waarom we uw gegevens bewaren."
 
-#: controller/controller-comments.php:71
+#: controller/controller-comments.php:75
 msgid "Agree"
 msgstr "Akkoord"
 
-#: controller/controller-comments.php:80
+#: controller/controller-comments.php:84
 msgid ""
 "This form collects your name, email and content so that we can keep track of "
 "the comments placed on the website. For more info check our privacy policy "
@@ -59,162 +59,174 @@ msgstr ""
 "policy, waarin je meer info krijgt over waar, hoe en waarom we uw gegevens "
 "bewaren."
 
-#: controller/controller-comments.php:153
+#: controller/controller-comments.php:157
 msgid ""
 "<strong>ERROR</strong>: please fill the required fields (GDPR checkbox)."
 msgstr ""
 "<strong>ERROR</strong>: vul de vereiste velden in (GDPR selectievakje)."
 
-#: controller/controller-comments.php:172
+#: controller/controller-comments.php:176
 msgid "Something went wrong."
 msgstr "Er is iets fout gegaan."
 
-#: controller/controller-comments.php:179
+#: controller/controller-comments.php:183
 msgid "Email is not valid"
 msgstr "E-mail is niet geldig"
 
-#: controller/controller-comments.php:195
+#: controller/controller-comments.php:199
 msgid "Comment is changed"
 msgstr "Reactie is aangepast"
 
-#: controller/controller-comments.php:253
+#: controller/controller-comments.php:258
 msgid "name"
 msgstr "naam"
 
-#: controller/controller-comments.php:254
-#: controller/controller-menu-page.php:227
-#: controller/controller-menu-page.php:443
+#: controller/controller-comments.php:259
+#: controller/controller-menu-page.php:259
+#: controller/controller-menu-page.php:502
 msgid "email"
 msgstr "e-mail"
 
-#: controller/controller-comments.php:255
+#: controller/controller-comments.php:260
 msgid "comment"
 msgstr "reactie"
 
-#: controller/controller-comments.php:256
+#: controller/controller-comments.php:261
 msgid "website"
 msgstr "website"
 
-#: controller/controller-comments.php:287
+#: controller/controller-comments.php:299
 msgid "comment date"
 msgstr "reactie datum"
 
-#: controller/controller-comments.php:288
+#: controller/controller-comments.php:300
 msgid "author email"
 msgstr "e-mailadres"
 
-#: controller/controller-comments.php:289
+#: controller/controller-comments.php:301
 msgid "author name"
 msgstr "naam"
 
-#: controller/controller-comments.php:290
+#: controller/controller-comments.php:302
 msgid "comment content"
 msgstr "reactie inhoud"
 
-#: controller/controller-comments.php:291
+#: controller/controller-comments.php:303
 msgid "post ID"
 msgstr "post ID"
 
-#: controller/controller-comments.php:292
+#: controller/controller-comments.php:304
 msgid "delete"
 msgstr "verwijderen"
 
-#: controller/controller-comments.php:382
+#: controller/controller-comments.php:396
 msgid "The site administrator received your request. Thank You."
 msgstr "De sitebeheerder heeft je aanvraag goed ontvangen."
 
-#: controller/controller-comments.php:388
+#: controller/controller-comments.php:403
 msgid "New delete request"
 msgstr "Nieuw verzoek tot verwijdering"
 
-#: controller/controller-menu-page.php:63
+#: controller/controller-menu-page.php:67
 msgid "Comments deleted"
 msgstr "Reactie verwijderd"
 
-#: controller/controller-menu-page.php:72
+#: controller/controller-menu-page.php:86
 msgid "Comments are anonymous"
 msgstr "Reacties zijn anoniem"
 
-#: controller/controller-menu-page.php:76
-msgid "We confirm Your comments deletion request"
-msgstr "We bevestigen dat uw reacties succesvol werken verwijderd"
+#: controller/controller-menu-page.php:106
+msgid "We confirm Your data deletion request"
+msgstr "We bevestigen dat uw reacties succesvol werden verwijderd"
 
-#: controller/controller-menu-page.php:185
+#: controller/controller-menu-page.php:217
 msgid "Comment author"
 msgstr "Reactie"
 
-#: controller/controller-menu-page.php:185
+#: controller/controller-menu-page.php:217
 msgid "content"
 msgstr "reactie inhoud"
 
-#: controller/controller-menu-page.php:197
+#: controller/controller-menu-page.php:229
 msgid "Request send"
 msgstr "Verzoek verzonden"
 
-#: controller/controller-menu-page.php:226
-#: controller/controller-menu-page.php:442
+#: controller/controller-menu-page.php:258
+#: controller/controller-menu-page.php:501
 msgid "id"
 msgstr "id"
 
-#: controller/controller-menu-page.php:228
-#: controller/controller-menu-page.php:445
+#: controller/controller-menu-page.php:260
+#: controller/controller-menu-page.php:504
 msgid "requested at"
 msgstr "verzoek gevraagd op"
 
-#: controller/controller-menu-page.php:229
-#: controller/controller-menu-page.php:446
+#: controller/controller-menu-page.php:261
+#: controller/controller-menu-page.php:505
 msgid "status"
 msgstr "status"
 
-#: controller/controller-menu-page.php:230
+#: controller/controller-menu-page.php:262
 msgid "resend email"
 msgstr "e-mail opnieuw versturen"
 
-#: controller/controller-menu-page.php:298
+#: controller/controller-menu-page.php:312
+msgid "comments"
+msgstr "reacties"
+
+#: controller/controller-menu-page.php:315
+msgid "gravity form entries"
+msgstr "gravity form inzendingen"
+
+#: controller/controller-menu-page.php:355
 msgid "waiting for email"
 msgstr "wachten op e-mail"
 
-#: controller/controller-menu-page.php:301
+#: controller/controller-menu-page.php:358
 msgid "email sent"
 msgstr "e-mail verzonden"
 
-#: controller/controller-menu-page.php:304
+#: controller/controller-menu-page.php:361
 msgid "url is visited"
 msgstr "url is bezocht"
 
-#: controller/controller-menu-page.php:345 model/request-form.php:63
+#: controller/controller-menu-page.php:402 model/request-form.php:63
 msgid "Data request"
 msgstr "Data aanvraag"
 
-#: controller/controller-menu-page.php:355
+#: controller/controller-menu-page.php:412
 msgid "Email sent"
 msgstr "E-mail verzonden"
 
-#: controller/controller-menu-page.php:444
-msgid "comments(ID)"
-msgstr "reactie(ID)"
+#: controller/controller-menu-page.php:503
+msgid "data(ID)"
+msgstr "data(ID)"
 
-#: controller/controller-menu-page.php:447
+#: controller/controller-menu-page.php:506
+msgid "type"
+msgstr "type"
+
+#: controller/controller-menu-page.php:507
 msgid "select"
 msgstr "selecteer"
 
-#: controller/controller-menu-page.php:471
+#: controller/controller-menu-page.php:531
 msgid "waiting to process"
 msgstr "wacht op verwerken"
 
-#: controller/controller-menu-page.php:474
+#: controller/controller-menu-page.php:534
 msgid "deleted"
 msgstr "verwijderd"
 
-#: controller/controller-menu-page.php:477
+#: controller/controller-menu-page.php:537
 msgid "anonymous"
 msgstr "anoniem"
 
-#: controller/controller-menu-page.php:488
+#: controller/controller-menu-page.php:548
 msgid "processed"
 msgstr "verwerkt"
 
-#: controller/controller-menu-page.php:516
+#: controller/controller-menu-page.php:581
 msgid "plugin name"
 msgstr "plugin naam"
 
@@ -243,11 +255,27 @@ msgstr "Ik stem ermee in dat WP-GDPR mijn e-mailadres bewaart."
 msgid "submit"
 msgstr "verzend"
 
-#: view/admin/delete-comments-form.php:9
+#: lib/gdpr-menu-backend.php:27
+msgid "List of data requests"
+msgstr "Lijst met data aanvragen"
+
+#: lib/gdpr-menu-backend.php:28 view/admin/menu/delete-page.php:12
+msgid "List of delete requests"
+msgstr "Lijst met verwijderverzoeken"
+
+#: lib/gdpr-menu-backend.php:29
+msgid "List of plugins"
+msgstr "Lijst met plugins"
+
+#: lib/gdpr-menu-backend.php:30
+msgid "Settings"
+msgstr "Instellingen"
+
+#: view/admin/delete-comments-form.php:8
 msgid "Delete comments"
 msgstr "Verwijder reactie"
 
-#: view/admin/delete-comments-form.php:10
+#: view/admin/delete-comments-form.php:9
 msgid "Make comments anonymous"
 msgstr "Maak reactie anoniem"
 
@@ -291,23 +319,15 @@ msgstr "heeft gevraagd om zijn/haar persoonlijke gegevens te verwijderen."
 msgid "Check all requests"
 msgstr "Bekijk alle verzoeken"
 
-#: view/admin/menu-page.php:7
+#: view/admin/menu/data-page.php:7
 msgid "List of users that requested for information"
 msgstr "Lijst met gebruikers die informatie hebben gevraagd"
 
-#: view/admin/menu-page.php:15
+#: view/admin/menu/plugin-page.php:12
 msgid "List of plugins that store data of users"
 msgstr "Lijst met plugins die persoonlijke data bewaren"
 
-#: view/admin/menu-page.php:17
-msgid "List of delete requests"
-msgstr "Lijst met verzoek tot verwijdering"
-
-#: view/admin/menu-page.php:20
-msgid "Request your own add-on"
-msgstr "Vraag uw eigen add-on aan"
-
-#: view/admin/menu-page.php:23
+#: view/admin/menu/settings-page.php:12
 msgid "Privacy policy link"
 msgstr "Privacybeleid link"
 
@@ -360,11 +380,11 @@ msgstr "Verstuur"
 msgid "Thank You! We will send you email in 48h."
 msgstr "Bedankt! We sturen u binnen 48 uur een e-mail."
 
-#: view/front/gdpr-template.php:74
+#: view/front/gdpr-template.php:7
 msgid "View Comments"
 msgstr "Bekijk reacties"
 
-#: view/front/gdpr-template.php:80
+#: view/front/gdpr-template.php:13
 msgid "All comments added by email address"
 msgstr "Bekijk reacties"
 
@@ -383,6 +403,12 @@ msgstr "AppSaloon"
 #. Author URI of the plugin/theme
 msgid "https://www.appsaloon.be"
 msgstr "https://www.appsaloon.be"
+
+#~ msgid "comments(ID)"
+#~ msgstr "reactie(ID)"
+
+#~ msgid "Request your own add-on"
+#~ msgstr "Vraag uw eigen add-on aan"
 
 #~ msgid "e-mail"
 #~ msgstr "e-mail"
