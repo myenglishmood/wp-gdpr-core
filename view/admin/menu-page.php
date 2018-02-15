@@ -23,6 +23,7 @@ $controller->build_table_with_requests();
     <h2><?php _e('Privacy policy link', 'wp_gdpr'); ?></h2>
 	<?php $controller->build_form_to_add_privacy_policy_setting(); ?>
 
+    <?php do_action('add_on_settings_menu_page'); ?>
 </div>
 
 

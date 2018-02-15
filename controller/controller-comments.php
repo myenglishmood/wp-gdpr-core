@@ -163,7 +163,7 @@ class Controller_Comments {
 	 * ajax endpoing
 	 */
 	public function wp_gdpr() {
-		switch ( $_REQUEST['action_switch'] ) {
+        switch ( $_REQUEST['action_switch'] ) {
 			case 'edit_comment':
 
 				$field      = sanitize_text_field( $_REQUEST['input_name'] );
@@ -197,6 +197,8 @@ class Controller_Comments {
 				//send feedback
 				wp_send_json( '<h3>' . __( 'Comment is changed', 'wp_gdpr' ) . '</h3>' );
 				break;
+
+
 		}
 	}
 
