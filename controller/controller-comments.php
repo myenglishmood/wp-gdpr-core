@@ -198,6 +198,16 @@ class Controller_Comments {
 				//send feedback
 				wp_send_json( '<h3>' . __( 'Comment is changed', 'wp_gdpr' ) . '</h3>' );
 				break;
+
+				//universal enpoint for addons
+			case 'edit_addon':
+				$action_name = sanitize_text_field($_REQUEST['addon_action']);
+				if( ! empty( $action_name ) )
+				{
+					do_action($action_name);
+				}
+
+				break;
 		}
 	}
 
@@ -231,6 +241,7 @@ class Controller_Comments {
 				'url'    => admin_url( 'admin-ajax.php' ),
 				'action' => 'wp_gdpr'
 			) );
+			do_action('gdpr_addons_req_scripts');
 		}
 	}
 
