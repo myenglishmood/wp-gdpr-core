@@ -17,3 +17,8 @@ form.postbox input[type="text"], form.postbox input[type="email"]{
 form.postbox input[type="submit"]{
     margin-top: 20px;
 }
+
+#toplevel_page_wp_gdpr .wp-menu-image img{
+    width: 24px;
+    padding-top: 5px;
+}

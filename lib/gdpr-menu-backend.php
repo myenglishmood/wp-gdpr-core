@@ -8,10 +8,11 @@ namespace wp_gdpr\lib;
 class Gdpr_Menu_Backend {
 	const MENU_PAGE_TITLE = 'WP GDPR';
 
-	const PAGE_SLUG = 'page_slug';
+	const PAGE_SLUG = 'wp_gdpr';
 
 	const MENU_TITLE = 'WP GDPR';
 
+	const ICON = GDPR_URL . 'assets/images/wp-gdpr.svg';
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'add_menu_callback' ) );
 	}
@@ -21,7 +22,7 @@ class Gdpr_Menu_Backend {
 	 */
 	public function add_menu_callback()
     {
-        add_menu_page(self::MENU_PAGE_TITLE, self::MENU_TITLE, 'manage_options', self::PAGE_SLUG);
+        add_menu_page(self::MENU_PAGE_TITLE, self::MENU_TITLE, 'manage_options', self::PAGE_SLUG, '', self::ICON);
 
         add_submenu_page(static::PAGE_SLUG, __('List of data requests', 'wp_gdpr'), __('List of data requests', 'wp_gdpr'), 'manage_options', self::PAGE_SLUG, array($this, 'set_wp_gdpr_listOfDataRequests'));
         add_submenu_page(static::PAGE_SLUG, __('List of delete requests', 'wp_gdpr'), __('List of delete requests', 'wp_gdpr'), 'manage_options', 'deletelist', array($this, 'set_wp_gdpr_listOfDeleteRequests'));
