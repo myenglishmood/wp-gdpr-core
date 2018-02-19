@@ -114,6 +114,8 @@ return [
     "exclude_analysis_directory_list" => [
 	    'vendor/',
             '/Users/sebastian/Documents/Sites/gdpr/gdpr/wp-content/plugins/wp-gdpr-core/view/',
+	    '/Users/sebastian/Documents/Sites/gdpr/gdpr/wp-content/plugins/wp-gdpr-core/vendor/',
+	    '/Users/sebastian/Documents/Sites/gdpr/gdpr/wp-content/plugins/wp-gdpr-core/tests/',
     ]
     
 ];
