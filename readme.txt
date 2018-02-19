@@ -3,7 +3,7 @@ Contributors: Mieke Nijs, Sebastian Kurzynowski, AppSaloon
 Tags: Personal data, GDPR, European, regulation, data
 Requires at least: 4.6.10
 Tested up to: 4.9.2
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -17,14 +17,15 @@ The plugin gives you advice on how to be compliant with GDPR and witch actions y
 The plugin will create a page where users can request access to their personal data, stored on your website.
 In the backend you'll get an overview of the requests users send and you can see which plugins collect personal data and need a 'ask for approval' checkbox.
 
-In a first stage users who ask to view their personal data will get an email with a unique url on which they can view their comments and ask for a removal per comment.
+Users who ask to view their personal data will get an email with a unique url on which they can view, update and download their comments and ask for a removal per comment.
 When they ask for a removal, the admin has the ability to delete the comment through the wp-gdpr backend.
 All emails will be sent automatically.
 
-In the second stage they can view, update and download their personal data or ask for a removal and this for WP Comments and Contact Form 7 CFDB7.
+With add-ons they can view, update and download their personal data or ask for a removal and this for Gravity Forms, Mailchimp, Woocommerce, The events calendar and Events manager.
 
-In the third stage they can view, update and download their personal data or ask for a removal and this for Gravity Forms, Mailchimp, Woocommerce, The events calendar and Events manager.
+More info about add-ons can be found on [https://wp-gdpr.eu/](https://wp-gdpr.eu/).
 
+We made our code available on [Github](https://github.com/WP-GDPR/wp-gdpr-core/). Collaborate on the code by creating Pull requests.
 
 == Installation ==
 1. Upload the plugin files to the /wp-content/plugins, or install the plugin through the WordPress plugins screen directly.
@@ -41,6 +42,12 @@ In the third stage they can view, update and download their personal data or ask
 == Frequently Asked Questions ==
 
 == Changelog ==
+Version 1.2.4
+    - Update readme with github repository
+    - Change pot-file and po/mo-files
+    - Update styling
+    - Add hooks
+
 Version 1.2.3
     - Check if is_plugin_active() exists
 

@@ -1,3 +1,9 @@
+== Version 1.2.4
+* Update readme with github repository
+* Change pot-file and po/mo-files
+* Update styling
+* Add hooks
+    
 == Version 1.2.3
 * Check if is_plugin_active() exists
 

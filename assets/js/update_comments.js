@@ -15,7 +15,6 @@ jQuery(function ($) {
     });
 
     function send_ajax_call(data) {
-        console.log(data);
         /**
          * ajax call to controller-search-form.php
          * ajax registered in php as: flight_endpoint
