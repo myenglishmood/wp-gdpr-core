@@ -9,7 +9,9 @@ use wp_gdpr\lib\Gdpr_Container;
 use wp_gdpr\lib\Gdpr_Form_Builder;
 
 class Controller_Menu_Page {
-	const PRIVACY_POLICY_URL = 'privacy_policy_url';
+    const PRIVACY_POLICY_LABEL = 'privacy_policy_label';
+    const PRIVACY_POLICY_TEXT = 'privacy_policy_text';
+    const PRIVACY_POLICY_CHECKBOX = 'privacy_policy_checkbox';
 
 	/**
 	 * Controller_Menu_Page constructor.
@@ -24,8 +26,8 @@ class Controller_Menu_Page {
 		if ( ! has_action( 'init', array( $this, 'request_add_on' ) ) ) {
 			add_action( 'init', array( $this, 'request_add_on' ) );
 		}
-		if ( ! has_action( 'init', array( $this, 'update_privacy_policy_url' ) ) ) {
-			add_action( 'init', array( $this, 'update_privacy_policy_url' ) );
+		if ( ! has_action( 'init', array( $this, 'update_privacy_policy_settings' ) ) ) {
+			add_action( 'init', array( $this, 'update_privacy_policy_settings' ) );
 		}
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_style' ) );
 	}
@@ -33,10 +35,12 @@ class Controller_Menu_Page {
 	/**
 	 * update privacxy policy url when form is submited
 	 */
-	public function update_privacy_policy_url() {
-		if ( 'POST' == $_SERVER['REQUEST_METHOD'] && isset( $_REQUEST['gdpr_save_priv_pol_link'] ) ) {
-			update_option( self::PRIVACY_POLICY_URL, esc_url_raw( $_REQUEST['gdpr_priv_pov_link'] ) );
-		}
+	public function update_privacy_policy_settings() {
+		if ( 'POST' == $_SERVER['REQUEST_METHOD'] && isset( $_REQUEST['gdpr_save_priv_pol_settings'] ) ) {
+            update_option( self::PRIVACY_POLICY_LABEL, $_REQUEST['gdpr_priv_pov_label'] );
+            update_option( self::PRIVACY_POLICY_TEXT, $_REQUEST['gdpr_priv_pov_text'] );
+            update_option( self::PRIVACY_POLICY_CHECKBOX, $_REQUEST['gdpr_priv_pov_checkbox'] );
+        }
 	}
 
 	/**
@@ -231,10 +235,37 @@ class Controller_Menu_Page {
 	}
 
 	public function build_form_to_add_privacy_policy_setting() {
+        $privcy_policy_strings = $this->get_privacy_policy_strings();
 
-		$privacy_policy_url = get_option( self::PRIVACY_POLICY_URL, null );
-		include GDPR_DIR . '/view/admin/privacy-policy-form.php';
+        include GDPR_DIR . '/view/admin/privacy-policy-form.php';
 	}
+
+    /**
+     * get privacy policy strings
+     */
+	public function get_privacy_policy_strings(){
+        $privacy_policy_label = get_option( self::PRIVACY_POLICY_LABEL, null );
+        $privacy_policy_text = get_option( self::PRIVACY_POLICY_TEXT, null );
+        $privacy_policy_checkbox = get_option( self::PRIVACY_POLICY_CHECKBOX, null );
+
+        var_dump(isset($privacy_policy_label));
+        if(!isset($privacy_policy_label)){
+            $privacy_policy_label = __('Checkbox GDPR is required', 'wp_gdpr');
+            update_option( self::PRIVACY_POLICY_LABEL, $privacy_policy_label );
+        }
+        if(!isset($privacy_policy_text)){
+            $privacy_policy_text = __( 'This form collects your name, email and content so that we can keep track of the comments placed on the website. For more info check our privacy policy where you\'ll get more info on where, how and why we store your data.', 'wp_gdpr' ) ;
+            update_option( self::PRIVACY_POLICY_TEXT, $privacy_policy_text );
+        }
+        if(!isset($privacy_policy_checkbox)){
+            $privacy_policy_checkbox = __( 'I agree', 'wp_gdpr' ) ;
+            update_option( self::PRIVACY_POLICY_CHECKBOX, $privacy_policy_checkbox );
+        }
+
+        $privcy_policy_strings = array($privacy_policy_label, $privacy_policy_text, $privacy_policy_checkbox);
+
+        return $privcy_policy_strings;
+    }
 
 	/**
 	 * build table in menu admin
