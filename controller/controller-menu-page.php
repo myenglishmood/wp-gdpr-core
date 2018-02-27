@@ -361,6 +361,9 @@ class Controller_Menu_Page {
 			case 1:
 				$data['r_type'] = __( 'gravity form entries', 'wp-gdpr' );
 				break;
+			case 2:
+				$data['r_type'] = __( 'cfdb7 db entries', 'wp-gdpr' );
+				break;
 
 		}
 

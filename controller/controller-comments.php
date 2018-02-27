@@ -207,6 +207,9 @@ class Controller_Comments {
 
 				//universal enpoint for addons
 			case 'edit_addon':
+				/**
+				 * addon hook
+				 */
 				$action_name = sanitize_text_field($_REQUEST['addon_action']);
 				if( ! empty( $action_name ) )
 				{
@@ -285,6 +288,9 @@ class Controller_Comments {
 					$csv->download_csv();
 				}
 			} else {
+				/**
+				 * addon hook
+				 */
 				do_action( 'download_csv' );
 			}
 		}
