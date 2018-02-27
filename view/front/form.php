@@ -8,16 +8,12 @@
         <?php _e('Email', 'wp_gdpr'); ?>:<br>
         <input type="email" name="email" value="" required>
         <br><br>
-        <?php
-        $string = __('I consent to having %s collect my email so that they can send me my requested info.
-            For more info check our privacy policy where you\'ll get more info on where, how and why we store your data.', 'wp_gdpr');
-        $blog_name = get_bloginfo('name');
-        ?>
             <input type="checkbox" name="checkbox_gdpr" required>
             <label for="checkbox_gdpr">
-                <?php echo sprintf($string, $blog_name); ?>
+                <?php echo wp_unslash($privcy_policy_strings[3]); ?>
             </label>
         <br><br>
+        <input type="hidden" name="gdpr_translation" value="<?php echo $pieces; ?>">
         <input type="submit" name="gdpr_req" value="<?php _e('Submit', 'wp_gdpr'); ?>">
     </form>
 <?php  else: ?>

@@ -4,6 +4,7 @@
 namespace wp_gdpr\controller;
 
 use wp_gdpr\lib\Gdpr_Customtables;
+use wp_gdpr\lib\Gdpr_Language;
 use wp_gdpr\lib\Gdpr_Table_Builder;
 use wp_gdpr\lib\Gdpr_Container;
 use wp_gdpr\lib\Gdpr_Form_Builder;
@@ -12,6 +13,7 @@ class Controller_Menu_Page {
     const PRIVACY_POLICY_LABEL = 'privacy_policy_label';
     const PRIVACY_POLICY_TEXT = 'privacy_policy_text';
     const PRIVACY_POLICY_CHECKBOX = 'privacy_policy_checkbox';
+    const PRIVACY_POLICY_TEXT_DATA_REQUEST = 'privacy_policy_text_data_request';
 
 	/**
 	 * Controller_Menu_Page constructor.
@@ -36,10 +38,13 @@ class Controller_Menu_Page {
 	 * update privacxy policy url when form is submited
 	 */
 	public function update_privacy_policy_settings() {
+        $lang = new Gdpr_Language();
+        $lang = $lang->get_language();
 		if ( 'POST' == $_SERVER['REQUEST_METHOD'] && isset( $_REQUEST['gdpr_save_priv_pol_settings'] ) ) {
-            update_option( self::PRIVACY_POLICY_LABEL, $_REQUEST['gdpr_priv_pov_label'] );
-            update_option( self::PRIVACY_POLICY_TEXT, $_REQUEST['gdpr_priv_pov_text'] );
-            update_option( self::PRIVACY_POLICY_CHECKBOX, $_REQUEST['gdpr_priv_pov_checkbox'] );
+            update_option( self::PRIVACY_POLICY_LABEL . $lang, $_REQUEST['gdpr_priv_pov_label'] );
+            update_option( self::PRIVACY_POLICY_TEXT . $lang, $_REQUEST['gdpr_priv_pov_text'] );
+            update_option( self::PRIVACY_POLICY_CHECKBOX . $lang, $_REQUEST['gdpr_priv_pov_checkbox'] );
+            update_option( self::PRIVACY_POLICY_TEXT_DATA_REQUEST . $lang, $_REQUEST['gdpr_priv_pov_text_data_request'] );
         }
 	}
 
@@ -244,25 +249,36 @@ class Controller_Menu_Page {
      * get privacy policy strings
      */
 	public function get_privacy_policy_strings(){
-        $privacy_policy_label = get_option( self::PRIVACY_POLICY_LABEL, null );
-        $privacy_policy_text = get_option( self::PRIVACY_POLICY_TEXT, null );
-        $privacy_policy_checkbox = get_option( self::PRIVACY_POLICY_CHECKBOX, null );
+	    $lang = new Gdpr_Language();
+	    $lang = $lang->get_language();
 
-        var_dump(isset($privacy_policy_label));
+        $privacy_policy_label = get_option( self::PRIVACY_POLICY_LABEL . $lang, null );
+        $privacy_policy_text = get_option( self::PRIVACY_POLICY_TEXT . $lang, null );
+        $privacy_policy_checkbox = get_option( self::PRIVACY_POLICY_CHECKBOX . $lang, null );
+        $privacy_policy_text_data_request = get_option( self::PRIVACY_POLICY_TEXT_DATA_REQUEST . $lang, null );
+
         if(!isset($privacy_policy_label)){
             $privacy_policy_label = __('Checkbox GDPR is required', 'wp_gdpr');
-            update_option( self::PRIVACY_POLICY_LABEL, $privacy_policy_label );
+            update_option( self::PRIVACY_POLICY_LABEL . $lang, $privacy_policy_label );
         }
         if(!isset($privacy_policy_text)){
             $privacy_policy_text = __( 'This form collects your name, email and content so that we can keep track of the comments placed on the website. For more info check our privacy policy where you\'ll get more info on where, how and why we store your data.', 'wp_gdpr' ) ;
-            update_option( self::PRIVACY_POLICY_TEXT, $privacy_policy_text );
+            update_option( self::PRIVACY_POLICY_TEXT . $lang, $privacy_policy_text );
         }
         if(!isset($privacy_policy_checkbox)){
             $privacy_policy_checkbox = __( 'I agree', 'wp_gdpr' ) ;
-            update_option( self::PRIVACY_POLICY_CHECKBOX, $privacy_policy_checkbox );
+            update_option( self::PRIVACY_POLICY_CHECKBOX . $lang, $privacy_policy_checkbox );
         }
 
-        $privcy_policy_strings = array($privacy_policy_label, $privacy_policy_text, $privacy_policy_checkbox);
+        if(!isset($privacy_policy_text_data_request)){
+            $string = __('I consent to having %s collect my email so that they can send me my requested info.
+            For more info check our privacy policy where you\'ll get more info on where, how and why we store your data.', 'wp_gdpr');
+            $blog_name = get_bloginfo('name');
+            $privacy_policy_text_data_request = sprintf($string, $blog_name);
+            update_option( self::PRIVACY_POLICY_TEXT_DATA_REQUEST . $lang, $privacy_policy_text_data_request );
+        }
+
+        $privcy_policy_strings = array($privacy_policy_label, $privacy_policy_text, $privacy_policy_checkbox, $privacy_policy_text_data_request);
 
         return $privcy_policy_strings;
     }
@@ -482,7 +498,7 @@ class Controller_Menu_Page {
 	 * @return string content of email
 	 *
 	 */
-	public function get_email_content( $email, $timestamp ) {
+	public function get_email_content( $email, $timestamp, $language = 'en' ) {
 		ob_start();
 		$url = $this->create_unique_url( $email, $timestamp );
 		include GDPR_DIR . 'view/front/email-template.php';
