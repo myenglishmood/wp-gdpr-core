@@ -33,6 +33,7 @@ require_once GDPR_DIR . 'lib/gdpr-autoloader.php';
 include_once GDPR_DIR . 'lib/gdpr-customtables.php';
 
 use wp_gdpr\lib\Gdpr_Container;
+use wp_gdpr\lib\Gdpr_Customtables;
 
 
 class Wp_Gdpr_Core {
@@ -43,13 +44,13 @@ class Wp_Gdpr_Core {
 
 	public function __construct() {
 		//list of inputs in request form
+		add_action('admin_init', array(new Gdpr_Customtables(), 'create_custom_tables'));
 		$this->request_form_inputs = array(
 			'email'    => 'required',
 			'gdpr_req' => 'required',
 			'checkbox_gdpr' => 'required'
 		);
 		$this->run();
-		$this->execute_on_plugin_activation();
 	}
 
 	public function run() {
@@ -59,11 +60,6 @@ class Wp_Gdpr_Core {
 		Gdpr_Container::make( 'wp_gdpr\controller\Controller_Form_Submit', $this->request_form_inputs );
 		Gdpr_Container::make( 'wp_gdpr\controller\Controller_Menu_Page' );
 	}
-
-	public function execute_on_plugin_activation() {
-		register_activation_hook( __FILE__, array( 'wp_gdpr\lib\Gdpr_Customtables', 'create_custom_tables' ) );
-	}
-
 }
 
 
