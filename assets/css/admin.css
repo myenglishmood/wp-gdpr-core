@@ -1,4 +1,4 @@
-form.postbox{
+form.postbox, div.postbox{
     padding: 10px;"
 }
 form.postbox label{
@@ -10,12 +10,21 @@ form.postbox label#gdpr{
     width: 90%;
     max-width: unset;
 }
-form.postbox input[type="text"], form.postbox input[type="email"]{
+form.postbox input[type="text"], form.postbox input[type="email"], form.postbox textarea, .postbox-group .wp-editor-wrap{
     width: 59%;
     max-width: 400px;
+    vertical-align: top;
+    display: inline-block;
 }
 form.postbox input[type="submit"]{
     margin-top: 20px;
+}
+
+.postbox-group{
+    margin-top: 15px;
+}
+.postbox-group:first-child{
+    margin-top: 0;
 }
 
 #toplevel_page_wp_gdpr .wp-menu-image img{

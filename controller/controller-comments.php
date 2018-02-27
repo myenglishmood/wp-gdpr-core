@@ -63,23 +63,29 @@ class Controller_Comments {
 	}
 
 	public function get_gdpr_checkbox_for_new_comments() {
-		$privacy_policy_url = get_option( Controller_Menu_Page::PRIVACY_POLICY_URL, null );
-		if ( null !== $privacy_policy_url ) {
-			$privacy_policy = sprintf( '<a href="%s" target="_blank">privacy policy</a>', $privacy_policy_url );
-		}else{
+	    $privcy_policy_strings = Controller_Menu_Page::get_privacy_policy_strings();
 
-			$privacy_policy = __( 'privacy policy', 'wp_gdpr' );
-		}
+        $privacy_policy_string = '';
 
-		$without_link =  '<p class="notice"><small>* '.__('Checkbox GDPR is required', 'wp_gdpr') . '</small></p>' . '<div class="js-gdpr-warning"></div><p class="comment-form-gdpr"><label for="gdpr">' . __( 'This form collects your name, email and content so that we can keep track of the comments placed on the website. For more info check our %s where you\'ll get more info on where, how and why we store your data.', 'wp_gdpr' ) . ' <span class="required">*</span></label> ' .
-		                          '<input  required="required" id="gdpr" name="gdpr" type="checkbox"  />' . __( 'Agree', 'wp_gdpr' ) . '</p>';
+	    if(!empty($privcy_policy_strings[0])){
+            $privacy_policy_string .=  '<p class="notice"><small>* '. wp_unslash($privcy_policy_strings[0]) . '</small></p>';
+        }
+        if(!empty($privcy_policy_strings[1])){
+            $privacy_policy_string .=  '<div class="js-gdpr-warning"></div><span class="required">*</span> <label for="gdpr">' . wp_unslash($privcy_policy_strings[1]) . '</label>';
+        }
+        $privacy_policy_string .=  '<p class="comment-form-gdpr"><input  required="required" id="gdpr" name="gdpr" type="checkbox"  />';
+        if(!empty($privcy_policy_strings[2])){
+            $privacy_policy_string .=  wp_unslash($privcy_policy_strings[2]);
+        }
+        $privacy_policy_string .= '</p>';
 
-		return sprintf($without_link, $privacy_policy);
+		return $privacy_policy_string;
 
 
 	}
 
 	public function add_metabox_in_editor( $content ) {
+
 		if ( false !== strpos( $content, 'replycontent' ) ) {
 			$content = str_replace( '</textarea></div>', '</textarea><p class="comment-form-gdpr">' . __( 'This form collects your name, email and content so that we can keep track of the comments placed on the website. For more info check our privacy policy where you\'ll get more info on where, how and why we store your data.', 'wp_gdpr' ) . ' </p></div>', $content );
 		}

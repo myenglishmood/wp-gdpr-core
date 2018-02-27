@@ -40,29 +40,31 @@ class Request_Form extends Form_Validation_Model {
 		$table_name        = $wpdb->prefix . Gdpr_Customtables::REQUESTS_TABLE_NAME;
 		$single_address    = sanitize_email( $_REQUEST['email'] );
 		$time_of_insertion = current_time( 'mysql' );
+        $language        =  $_REQUEST["gdpr_translation"];
 
 		$wpdb->insert(
 			$table_name,
 			array(
 				'email'     => $single_address,
 				'status'    => 1,
-				'timestamp' => $time_of_insertion
+				'timestamp' => $time_of_insertion,
+                'language'  => $language
 			)
 		);
 
-		$this->send_email( $single_address, $time_of_insertion );
+		$this->send_email( $single_address, $time_of_insertion, $language );
 	}
 
 	/**
 	 * @param $single_address
 	 * @param $time_of_insertion
 	 */
-	public function send_email( $single_address, $time_of_insertion ) {
+	public function send_email( $single_address, $time_of_insertion, $language ) {
 		$to         = $single_address;
 		$to         = $this->add_administrator_to_receivers( $to );
 		$subject    = __( 'Data request', 'wp_gdpr' );
 		$controller = Gdpr_Container::make( 'wp_gdpr\controller\Controller_Menu_Page' );
-		$content    = $controller->get_email_content( $single_address, $time_of_insertion );
+		$content    = $controller->get_email_content( $single_address, $time_of_insertion, $language );
 		$headers    = array( 'Content-Type: text/html; charset=UTF-8' );
 
 		wp_mail( $to, $subject, $content, $headers );
