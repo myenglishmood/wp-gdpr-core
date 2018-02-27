@@ -15,10 +15,8 @@ class Gdpr_Language {
 
 
     public function get_language(){
-        $incl_lang = ICL_LANGUAGE_CODE;
-
-        if($incl_lang !== "ICL_LANGUAGE_CODE"){
-            $lang = ICL_LANGUAGE_CODE;
+        if(defined('ICL_LANGUAGE_CODE')){
+           $lang = ICL_LANGUAGE_CODE;
         }elseif(isset($_GET['lang'])){
             $lang = $_GET['lang'];
         }else{
