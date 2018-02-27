@@ -119,7 +119,6 @@ class Controller_Comments {
 			$email               = explode( '#', $decoded )[1];
 			$this->email_request = $email;
 			global $wpdb;
-
 			$table_name = $wpdb->prefix . 'gdpr_requests';
 			if ( isset( explode( '#', $decoded )[2] ) ) {
 				$time_stamp = base64_decode( explode( '#', $decoded )[2] );

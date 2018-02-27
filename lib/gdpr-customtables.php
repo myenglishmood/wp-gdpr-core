@@ -28,6 +28,7 @@ class Gdpr_Customtables {
 			email VARCHAR(60) DEFAULT NULL,
 			status INT(2) DEFAULT NULL,
 			timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+			language VARCHAR(10) DEFAULT NULL,
 			PRIMARY KEY (ID)
 		)";
 
