@@ -7,6 +7,7 @@ class Gdpr_Autoloader {
 
 	const NAMESPACE_NAME = 'wp_gdpr\\';
 	const GF_NAMESPACE_NAME = 'wp_gdpr_gf\\';
+	const CFDB7_NAMESPACE_NAME = 'wp_gdpr_cfdb7\\';
 
 	/**
 	 * Register autoloader
@@ -34,12 +35,22 @@ class Gdpr_Autoloader {
 			/**
 			 * add on gf
 			 */
-		}elseif ( strpos( $class, self::GF_NAMESPACE_NAME ) === 0 ) {
+		} elseif ( strpos( $class, self::GF_NAMESPACE_NAME ) === 0 ) {
 			$path = substr( $class, strlen( self::GF_NAMESPACE_NAME ) );
 			$path = strtolower( $path );
 			$path = str_replace( '_', '-', $path );
 			$path = str_replace( '\\', DIRECTORY_SEPARATOR, $path ) . '.php';
 			$path = GDPR_GF_DIR . DIRECTORY_SEPARATOR . $path;
+
+			if ( file_exists( $path ) ) {
+				include $path;
+			}
+		} elseif ( strpos( $class, self::CFDB7_NAMESPACE_NAME ) === 0 ) {
+			$path = substr( $class, strlen( self::CFDB7_NAMESPACE_NAME ) );
+			$path = strtolower( $path );
+			$path = str_replace( '_', '-', $path );
+			$path = str_replace( '\\', DIRECTORY_SEPARATOR, $path ) . '.php';
+			$path = GDPR_CFDB7_DIR . DIRECTORY_SEPARATOR . $path;
 
 			if ( file_exists( $path ) ) {
 				include $path;
