@@ -116,12 +116,14 @@ class Controller_Comments {
 		if ( strpos( $decoded, 'gdpr#' ) !== false ) {
 			//explode into array( 'gdpr', 'example@email.com' )
 			//get second element from array
-			$email               = explode( '#', $decoded )[1];
+			$email               = explode( '#', $decoded );
+			$email               = $email[1];
 			$this->email_request = $email;
 			global $wpdb;
 			$table_name = $wpdb->prefix . 'gdpr_requests';
-			if ( isset( explode( '#', $decoded )[2] ) ) {
-				$time_stamp = base64_decode( explode( '#', $decoded )[2] );
+			$time_stamp = explode( '#', $decoded );
+			if ( isset( $time_stamp[2])){
+				$time_stamp = base64_decode( $time_stamp[2] );
 			} else {
 				return false;
 			}
@@ -336,11 +338,12 @@ class Controller_Comments {
 	 * @return array
 	 */
 	public function map_comments( $comments ) {
-		$comments = array_map( function ( $data ) {
+		$this_object = $this;
+		$comments = array_map( function ( $data ) use($this_object){
 			return array(
 				'comment_date'    => $data->comment_date,
-				'email'           => $this->change_into_input( $data->comment_author_email, 'comment_author_email', $data->comment_ID ),
-				'name'            => $this->change_into_input( $data->comment_author, 'comment_author', $data->comment_ID ),
+				'email'           => $this_object->change_into_input( $data->comment_author_email, 'comment_author_email', $data->comment_ID ),
+				'name'            => $this_object->change_into_input( $data->comment_author, 'comment_author', $data->comment_ID ),
 				'comment_content' => $data->comment_content,
 				'comment_post_ID' => $data->comment_post_ID,
 				'comment_ID'      => $data->comment_ID
