@@ -3,7 +3,7 @@ Contributors: Mieke Nijs, Sebastian Kurzynowski, AppSaloon
 Tags: Personal data, GDPR, European, regulation, data
 Requires at least: 4.6.10
 Tested up to: 4.9.2
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -42,8 +42,12 @@ We made our code available on [Github](https://github.com/WP-GDPR/wp-gdpr-core/)
 == Frequently Asked Questions ==
 
 == Changelog ==
+Version 1.3.3
+    - Check version to create column
+
 Version 1.3.2
     - Create colomn languages in table
+    - Update autoloader
 
 Version 1.3.1
     - Bugfix check if ICL_LANGUAGE_CODE is defined
