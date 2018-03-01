@@ -39,13 +39,13 @@ class Controller_Comments {
 		/**
 		 * add gdpr checkbox for wpdiscuz plugin
 		 */
-		if ( ! function_exists( 'is_plugin_active' ) ){
-            require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
-        }
-		if(is_plugin_active('wpdiscuz/class.WpdiscuzCore.php')){
-            add_action( 'comment_form_after', array( $this, 'echo_checkox_gdpr' ) );
-            add_action( 'wp_enqueue_scripts', array( $this, 'load_comment_scripts' ) );
-        }
+		if ( ! function_exists( 'is_plugin_active' ) ) {
+			require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+		}
+		if ( is_plugin_active( 'wpdiscuz/class.WpdiscuzCore.php' ) ) {
+			add_action( 'comment_form_after', array( $this, 'echo_checkox_gdpr' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'load_comment_scripts' ) );
+		}
 
 	}
 
@@ -116,19 +116,23 @@ class Controller_Comments {
 		if ( strpos( $decoded, 'gdpr#' ) !== false ) {
 			//explode into array( 'gdpr', 'example@email.com' )
 			//get second element from array
-			$email               = explode( '#', $decoded )[1];
+			$email               = explode( '#', $decoded );
+			$email               = $email[1];
 			$this->email_request = $email;
 			global $wpdb;
 			$table_name = $wpdb->prefix . 'gdpr_requests';
-			if ( isset( explode( '#', $decoded )[2] ) ) {
-				$time_stamp = base64_decode( explode( '#', $decoded )[2] );
+			$time_stamp = explode( '#', $decoded );
+			if ( isset( $time_stamp[2])){
+				$time_stamp = base64_decode( $time_stamp[2] );
 			} else {
 				return false;
 			}
 
 			$query = "SELECT * FROM $table_name WHERE email='$email' AND timestamp='$time_stamp'";
 
-			return ! empty( $wpdb->get_results( $query ) );
+			$result = $wpdb->get_results( $query );
+
+			return ! empty( $result );
 		}
 
 		return false;
@@ -169,7 +173,7 @@ class Controller_Comments {
 	 * ajax endpoing
 	 */
 	public function wp_gdpr() {
-        switch ( $_REQUEST['action_switch'] ) {
+		switch ( $_REQUEST['action_switch'] ) {
 			case 'edit_comment':
 
 				$field      = sanitize_text_field( $_REQUEST['input_name'] );
@@ -204,15 +208,14 @@ class Controller_Comments {
 				wp_send_json( '<h3>' . __( 'Comment is changed', 'wp_gdpr' ) . '</h3>' );
 				break;
 
-				//universal enpoint for addons
+			//universal enpoint for addons
 			case 'edit_addon':
 				/**
 				 * addon hook
 				 */
-				$action_name = sanitize_text_field($_REQUEST['addon_action']);
-				if( ! empty( $action_name ) )
-				{
-					do_action($action_name);
+				$action_name = sanitize_text_field( $_REQUEST['addon_action'] );
+				if ( ! empty( $action_name ) ) {
+					do_action( $action_name );
 				}
 
 				break;
@@ -249,7 +252,7 @@ class Controller_Comments {
 				'url'    => admin_url( 'admin-ajax.php' ),
 				'action' => 'wp_gdpr'
 			) );
-			do_action('gdpr_addons_req_scripts');
+			do_action( 'gdpr_addons_req_scripts' );
 		}
 	}
 
@@ -335,11 +338,12 @@ class Controller_Comments {
 	 * @return array
 	 */
 	public function map_comments( $comments ) {
-		$comments = array_map( function ( $data ) {
+		$this_object = $this;
+		$comments = array_map( function ( $data ) use($this_object){
 			return array(
 				'comment_date'    => $data->comment_date,
-				'email'           => $this->change_into_input( $data->comment_author_email, 'comment_author_email', $data->comment_ID ),
-				'name'            => $this->change_into_input( $data->comment_author, 'comment_author', $data->comment_ID ),
+				'email'           => $this_object->change_into_input( $data->comment_author_email, 'comment_author_email', $data->comment_ID ),
+				'name'            => $this_object->change_into_input( $data->comment_author, 'comment_author', $data->comment_ID ),
 				'comment_content' => $data->comment_content,
 				'comment_post_ID' => $data->comment_post_ID,
 				'comment_ID'      => $data->comment_ID
@@ -391,32 +395,32 @@ class Controller_Comments {
 
 	public function save_delete_request() {
 
-        if ( 'POST' == $_SERVER['REQUEST_METHOD'] ) {
-            //validation in addons
-            do_action( 'gdpr_save_del_req' );
-            if ( isset( $_REQUEST["send_gdp_del_request"] ) && isset( $_REQUEST['gdpr_delete_comments'] ) && is_array( $_REQUEST['gdpr_delete_comments'] ) ) {
-                //save in database
-                global $wpdb;
-                $comments_ids = array_filter( $_REQUEST['gdpr_delete_comments'], array(
-                    $this,
-                    'sanitize_comments_input'
-                ) );
-                $table_name = $wpdb->prefix . Gdpr_Customtables::DELETE_REQUESTS_TABLE_NAME;
-                $email      = sanitize_email( $_REQUEST["gdpr_email"] );
-                $wpdb->insert(
-                    $table_name,
-                    array(
-                        'email'     => $email,
-                        'data'      => serialize( $comments_ids ),
-                        'status'    => 0,
-                        'timestamp' => current_time( 'mysql' ),
-                        'r_type'    => 0
-                    )
-                );
-                $this->message = '<h3>' . __( "The site administrator received your request. Thank You.", "wp_gdpr" ) . '</h3>';
-                $this->send_email_to_admin( $email );
-            }
-        }
+		if ( 'POST' == $_SERVER['REQUEST_METHOD'] ) {
+			//validation in addons
+			do_action( 'gdpr_save_del_req' );
+			if ( isset( $_REQUEST["send_gdp_del_request"] ) && isset( $_REQUEST['gdpr_delete_comments'] ) && is_array( $_REQUEST['gdpr_delete_comments'] ) ) {
+				//save in database
+				global $wpdb;
+				$comments_ids = array_filter( $_REQUEST['gdpr_delete_comments'], array(
+					$this,
+					'sanitize_comments_input'
+				) );
+				$table_name   = $wpdb->prefix . Gdpr_Customtables::DELETE_REQUESTS_TABLE_NAME;
+				$email        = sanitize_email( $_REQUEST["gdpr_email"] );
+				$wpdb->insert(
+					$table_name,
+					array(
+						'email'     => $email,
+						'data'      => serialize( $comments_ids ),
+						'status'    => 0,
+						'timestamp' => current_time( 'mysql' ),
+						'r_type'    => 0
+					)
+				);
+				$this->message = '<h3>' . __( "The site administrator received your request. Thank You.", "wp_gdpr" ) . '</h3>';
+				$this->send_email_to_admin( $email );
+			}
+		}
 	}
 
 	public function send_email_to_admin( $requested_email ) {
