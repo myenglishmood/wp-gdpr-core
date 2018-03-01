@@ -75,7 +75,7 @@ class CommentsController extends WP_UnitTestCase {
 		}
 
 		//check request
-		$form = $crawler->selectButton('Delete comments')->form();
+		$form = $crawler->selectButton('Delete personal data')->form();
 		//select checkbox
 		$form['gdpr_requests'][0]->tick();
 
