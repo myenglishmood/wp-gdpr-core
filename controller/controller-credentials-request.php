@@ -30,7 +30,7 @@ class Controller_Credentials_Request {
 	public function get_form_html() {
 	    // get gdpr string
         $controller_menu_page = new \wp_gdpr\controller\Controller_Menu_Page();
-        $privcy_policy_strings = $controller_menu_page->get_privacy_policy_strings();
+        $privacy_policy_strings = $controller_menu_page->get_privacy_policy_strings();
 
         // get language
         $pieces = new Gdpr_Language();

@@ -240,7 +240,7 @@ class Controller_Menu_Page {
 	}
 
 	public function build_form_to_add_privacy_policy_setting() {
-        $privcy_policy_strings = $this->get_privacy_policy_strings();
+        $privacy_policy_strings = $this->get_privacy_policy_strings();
 
         include GDPR_DIR . '/view/admin/privacy-policy-form.php';
 	}
@@ -278,9 +278,9 @@ class Controller_Menu_Page {
             update_option( self::PRIVACY_POLICY_TEXT_DATA_REQUEST . $lang, $privacy_policy_text_data_request );
         }
 
-        $privcy_policy_strings = array($privacy_policy_label, $privacy_policy_text, $privacy_policy_checkbox, $privacy_policy_text_data_request);
+        $privacy_policy_strings = array($privacy_policy_label, $privacy_policy_text, $privacy_policy_checkbox, $privacy_policy_text_data_request);
 
-        return $privcy_policy_strings;
+        return $privacy_policy_strings;
     }
 
 	/**

@@ -10,7 +10,7 @@
         <br><br>
             <input type="checkbox" name="checkbox_gdpr" required>
             <label for="checkbox_gdpr">
-                <?php echo wp_unslash($privcy_policy_strings[3]); ?>
+                <?php echo wp_unslash($privacy_policy_strings[3]); ?>
             </label>
         <br><br>
         <input type="hidden" name="gdpr_translation" value="<?php echo $pieces; ?>">
