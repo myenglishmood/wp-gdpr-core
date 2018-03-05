@@ -17,5 +17,6 @@
         <input type="submit" name="gdpr_req" value="<?php _e('Submit', 'wp_gdpr'); ?>">
     </form>
 <?php  else: ?>
-    <h3><?php _e('Thank You! We will send you email in 48h.', 'wp_gdpr'); ?></h3>
+    <h3><?php _e('Thank You! We will send you an email with a link to access your personal data.', 'wp_gdpr'); ?></h3>
+    <p><b><?php _e('Warning:', 'wp_gdpr'); ?></b> <?php _e('This link will become deprecated after 48 hours.', 'wp_gdpr'); ?></p>
 <?php endif; ?>
