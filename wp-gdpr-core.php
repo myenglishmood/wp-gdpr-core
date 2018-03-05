@@ -17,7 +17,7 @@
  * Text Domain:       wp_gdpr
  * Domain Path:       /languages
  * Author:            AppSaloon
- * Author URI:        https://www.appsaloon.beddockerdokckkdjfiwjefdfwfwefwf
+ * Author URI:        https://www.appsaloon.be
  */
 
 namespace wp_gdpr;
