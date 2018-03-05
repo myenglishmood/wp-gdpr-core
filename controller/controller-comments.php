@@ -170,7 +170,7 @@ class Controller_Comments {
 	}
 
 	/**
-	 * ajax endpoing
+	 * ajax endpoint
 	 */
 	public function wp_gdpr() {
 		switch ( $_REQUEST['action_switch'] ) {
