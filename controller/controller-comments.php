@@ -424,7 +424,8 @@ class Controller_Comments {
 	}
 
 	public function send_email_to_admin( $requested_email ) {
-		$subject     = __( 'New delete request', 'wp_gdpr' );
+		$site_name   = get_bloginfo( 'name', true);
+		$subject     = '[' . $site_name . '] ' . __( 'New delete request', 'wp_gdpr' );
 		$admin_email = get_option( 'admin_email', true );
 		$content     = $this->get_email_content( $requested_email );
 		wp_mail( $admin_email, $subject, $content );

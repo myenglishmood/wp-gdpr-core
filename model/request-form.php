@@ -13,6 +13,8 @@ class Request_Form extends Form_Validation_Model {
 	public function __construct( $list_of_inputs ) {
 		//here add functions to sanitize every input
 		add_filter( 'gdpr_sanitize_email', array( $this, 'sanitize_email' ), 10 );
+		add_filter( 'wp_mail_from', array( $this, 'set_mail_from' ), 10 );
+		add_filter( 'wp_mail_from_name', array( $this, 'set_mail_from_name' ), 10 );
 
 		parent::__construct( $list_of_inputs );
 	}
@@ -26,6 +28,14 @@ class Request_Form extends Form_Validation_Model {
 	 */
 	public function sanitize_email( $input_value ) {
 		return sanitize_email( $input_value );
+	}
+
+	public function set_mail_from($original_email_address) {
+		return get_option( 'admin_email', true );
+	}
+
+	public function set_mail_from_name($original_email_from) {
+		return get_bloginfo( 'name', true);
 	}
 
 	/**
@@ -62,7 +72,8 @@ class Request_Form extends Form_Validation_Model {
 	public function send_email( $single_address, $time_of_insertion, $language ) {
 		$to         = $single_address;
 		$to         = $this->add_administrator_to_receivers( $to );
-		$subject    = __( 'Data request', 'wp_gdpr' );
+		$site_name  = get_bloginfo( 'name', true);
+		$subject    = '[' . $site_name . '] ' . __( 'Your data request', 'wp_gdpr' );
 		$controller = Gdpr_Container::make( 'wp_gdpr\controller\Controller_Menu_Page' );
 		$content    = $controller->get_email_content( $single_address, $time_of_insertion, $language );
 		$headers    = array( 'Content-Type: text/html; charset=UTF-8' );
