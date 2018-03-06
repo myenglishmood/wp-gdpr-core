@@ -47,6 +47,7 @@ class Controller_Comments {
 			add_action( 'wp_enqueue_scripts', array( $this, 'load_comment_scripts' ) );
 		}
 
+        add_filter('wpgdpr_add_custom_filters_for_comments', array($this, 'comment_form_default_fields_callback'), 1);
 	}
 
 	public function load_comment_scripts() {
