@@ -1,6 +1,8 @@
 <?php
 
 use \Phan\Config;
+
+// @codingStandardsIgnoreFile
 /**
  * This configuration will be read and overlayed on top of the
  * default configuration. Command line arguments will be applied
