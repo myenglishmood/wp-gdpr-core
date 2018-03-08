@@ -56,6 +56,7 @@ class Request_Form extends Form_Validation_Model {
 
 		$key = 'gdpr_sended_request';
 		if ( $this->check_token( $key, $single_address ) ) {
+			//TODO security prevention
 		} else {
 			$this->set_token( $key, $single_address );
 		}
