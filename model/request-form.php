@@ -123,7 +123,7 @@ class Request_Form extends Form_Validation_Model {
 		//do nothing
 	}
 
-	public function redirect_to_page_gdpr_personal_data(): void {
+	public function redirect_to_page_gdpr_personal_data() {
 		$url = site_url( 'gdpr-request-personal-data?thank_you' );
 		wp_redirect( $url );
 		exit;

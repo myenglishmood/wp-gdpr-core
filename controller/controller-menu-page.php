@@ -294,7 +294,7 @@ class Controller_Menu_Page {
 	/**
 	 *
 	 */
-	public function build_checkboxes_list() {
+	public function build_settings_table() {
 		$options = $this->get_settings();
 		include GDPR_DIR . '/view/admin/menu/settings-list.php';
 	}
@@ -305,11 +305,26 @@ class Controller_Menu_Page {
 				'label' => __( 'Don\'t show comments', 'wp-gdpr' ),
 				'type'  => 'checkbox',
 				'value' => 'checked',
-			)
+			),
+			'dpo_email'          => array(
+				'label' => __( 'Set Your DPO e-mail address', 'wp-gdpr' ),
+				'type'  => 'email',
+				'value' => '',
+			),
 		);
 
 		foreach ( $settings as $option_name => $option ) {
-			$value                            = get_option( $option_name, 0 ) == 1 ? 'checked' : null;
+			switch ( $option['type'] ) {
+				case 'checkbox':
+					$value = get_option( $option_name, 0 ) == 1 ? 'checked' : null;
+					break;
+				case 'text':
+					$value = get_option( $option_name, '' );
+					break;
+				case 'email':
+					$value = get_option( $option_name, '' );
+					break;
+			}
 			$updated_settings[ $option_name ] = array(
 				'label' => $option['label'],
 				'type'  => $option['type'],
@@ -720,7 +735,17 @@ class Controller_Menu_Page {
 		if ( 'POST' == $_SERVER['REQUEST_METHOD'] && isset( $_REQUEST['gdpr_save_global_settings'] ) ) {
 			$settings = $this->get_settings();
 			foreach ( $settings as $option_name => $setting ) {
-				$value = isset( $_REQUEST[ $option_name ] ) && sanitize_text_field( $_REQUEST[ $option_name ] ) === 'on' ? 1 : 0;
+				switch ( $setting['type'] ) {
+					case 'checkbox':
+						$value = isset( $_REQUEST[ $option_name ] ) && sanitize_text_field( $_REQUEST[ $option_name ] ) === 'on' ? 1 : 0;
+						break;
+					case 'text':
+						$value = isset( $_REQUEST[ $option_name ] ) && sanitize_text_field( $_REQUEST[ $option_name ] ) ? $_REQUEST[ $option_name ] : '';
+						break;
+					case 'email':
+						$value = isset( $_REQUEST[ $option_name ] ) && sanitize_email( $_REQUEST[ $option_name ] ) ? $_REQUEST[ $option_name ] : '';
+						break;
+				}
 				update_option( $option_name, $value );
 			}
 			$this->set_notice( __( 'Settings saved', 'wp_gdpr' ) );

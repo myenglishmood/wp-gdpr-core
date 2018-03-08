@@ -14,7 +14,7 @@
     </h2><?php $controller->build_form_to_add_privacy_policy_setting(); ?>
 
     <h2><?php _e( 'Settings:', 'wp_gdpr' ); ?></h2>
-	<?php $controller->build_checkboxes_list(); ?>
+	<?php $controller->build_settings_table(); ?>
 
 	<?php do_action( 'add_on_settings_menu_page' ); ?>
 </div>

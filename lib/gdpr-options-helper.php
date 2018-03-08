@@ -9,7 +9,7 @@ final class Gdpr_Options_Helper {
 
 	public static function switch_option( $name ) {
 		$value = get_option( $name, null );
-		if ( empty( get_option( $value ) || 0 === $value ) ) {
+		if ( empty(  $value  ) || 0 === $value ) {
 			update_option( $name, 1 );
 		} else {
 			update_option( $name, 0 );
