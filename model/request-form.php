@@ -2,8 +2,10 @@
 
 namespace wp_gdpr\model;
 
+use SessionHandler;
 use wp_gdpr\lib\Gdpr_Customtables;
 use wp_gdpr\lib\Gdpr_Container;
+use wp_gdpr\lib\Session_Handler;
 
 class Request_Form extends Form_Validation_Model {
 
@@ -52,6 +54,12 @@ class Request_Form extends Form_Validation_Model {
 		$time_of_insertion = current_time( 'mysql' );
 		$language          = $_REQUEST['gdpr_translation'];
 
+		$key = 'gdpr_sended_request';
+		if ( $this->check_token( $key, $single_address ) ) {
+		} else {
+			$this->set_token( $key, $single_address );
+		}
+
 		$wpdb->insert(
 			$table_name,
 			array(
@@ -65,6 +73,22 @@ class Request_Form extends Form_Validation_Model {
 		$admin_email = get_option( 'admin_email', true );
 		$this->send_email( $admin_email, $time_of_insertion, $language );
 		$this->send_email( $single_address, $time_of_insertion, $language );
+		$this->redirect_to_page_gdpr_personal_data();
+	}
+
+	/**
+	 * @param $key
+	 * @param $value
+	 *
+	 * @return bool
+	 * Check if token exist already in session.
+	 */
+	public function check_token( $key, $value ) {
+		return Session_Handler::compare_with_saved_in_session( $key, $value );
+	}
+
+	public function set_token( $key, $value ) {
+		Session_Handler::save_in_session( $key, $value );
 	}
 
 	/**
@@ -96,5 +120,11 @@ class Request_Form extends Form_Validation_Model {
 	 */
 	public function after_failure_validation( $list_of_inputs ) {
 		//do nothing
+	}
+
+	public function redirect_to_page_gdpr_personal_data(): void {
+		$url = site_url( 'gdpr-request-personal-data?thank_you' );
+		wp_redirect( $url );
+		exit;
 	}
 }
