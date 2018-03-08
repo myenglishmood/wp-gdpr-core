@@ -30,12 +30,12 @@ class Request_Form extends Form_Validation_Model {
 		return sanitize_email( $input_value );
 	}
 
-	public function set_mail_from($original_email_address) {
+	public function set_mail_from( $original_email_address ) {
 		return get_option( 'admin_email', true );
 	}
 
-	public function set_mail_from_name($original_email_from) {
-		return get_bloginfo( 'name', true);
+	public function set_mail_from_name( $original_email_from ) {
+		return get_bloginfo( 'name', true );
 	}
 
 	/**
@@ -50,7 +50,7 @@ class Request_Form extends Form_Validation_Model {
 		$table_name        = $wpdb->prefix . Gdpr_Customtables::REQUESTS_TABLE_NAME;
 		$single_address    = sanitize_email( $_REQUEST['email'] );
 		$time_of_insertion = current_time( 'mysql' );
-        $language        =  $_REQUEST["gdpr_translation"];
+		$language          = $_REQUEST['gdpr_translation'];
 
 		$wpdb->insert(
 			$table_name,
@@ -58,10 +58,12 @@ class Request_Form extends Form_Validation_Model {
 				'email'     => $single_address,
 				'status'    => 1,
 				'timestamp' => $time_of_insertion,
-                'language'  => $language
+				'language'  => $language,
 			)
 		);
 
+		$admin_email = get_option( 'admin_email', true );
+		$this->send_email( $admin_email, $time_of_insertion, $language );
 		$this->send_email( $single_address, $time_of_insertion, $language );
 	}
 
@@ -71,8 +73,7 @@ class Request_Form extends Form_Validation_Model {
 	 */
 	public function send_email( $single_address, $time_of_insertion, $language ) {
 		$to         = $single_address;
-		$to         = $this->add_administrator_to_receivers( $to );
-		$site_name  = get_bloginfo( 'name', true);
+		$site_name  = get_bloginfo( 'name', true );
 		$subject    = '[' . $site_name . '] ' . __( 'Your data request', 'wp_gdpr' );
 		$controller = Gdpr_Container::make( 'wp_gdpr\controller\Controller_Menu_Page' );
 		$content    = $controller->get_email_content( $single_address, $time_of_insertion, $language );

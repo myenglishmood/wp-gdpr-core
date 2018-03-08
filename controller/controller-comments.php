@@ -47,7 +47,10 @@ class Controller_Comments {
 			add_action( 'wp_enqueue_scripts', array( $this, 'load_comment_scripts' ) );
 		}
 
-        add_filter('wpgdpr_add_custom_filters_for_comments', array($this, 'comment_form_default_fields_callback'), 1);
+		add_filter( 'wpgdpr_add_custom_filters_for_comments', array(
+			$this,
+			'comment_form_default_fields_callback'
+		), 1 );
 	}
 
 	public function load_comment_scripts() {
@@ -64,21 +67,21 @@ class Controller_Comments {
 	}
 
 	public function get_gdpr_checkbox_for_new_comments() {
-	    $privacy_policy_strings = Controller_Menu_Page::get_privacy_policy_strings();
+		$privacy_policy_strings = Controller_Menu_Page::get_privacy_policy_strings();
 
-        $privacy_policy_string = '';
+		$privacy_policy_string = '';
 
-	    if(!empty($privacy_policy_strings[0])){
-            $privacy_policy_string .=  '<p class="notice"><small>* '. wp_unslash($privacy_policy_strings[0]) . '</small></p>';
-        }
-        if(!empty($privacy_policy_strings[1])){
-            $privacy_policy_string .=  '<div class="js-gdpr-warning"></div><span class="required">*</span> <label for="gdpr">' . wp_unslash($privacy_policy_strings[1]) . '</label>';
-        }
-        $privacy_policy_string .=  '<p class="comment-form-gdpr"><input  required="required" id="gdpr" name="gdpr" type="checkbox"  />';
-        if(!empty($privacy_policy_strings[2])){
-            $privacy_policy_string .=  wp_unslash($privacy_policy_strings[2]);
-        }
-        $privacy_policy_string .= '</p>';
+		if ( ! empty( $privacy_policy_strings[0] ) ) {
+			$privacy_policy_string .= '<p class="notice"><small>* ' . wp_unslash( $privacy_policy_strings[0] ) . '</small></p>';
+		}
+		if ( ! empty( $privacy_policy_strings[1] ) ) {
+			$privacy_policy_string .= '<div class="js-gdpr-warning"></div><span class="required">*</span> <label for="gdpr">' . wp_unslash( $privacy_policy_strings[1] ) . '</label>';
+		}
+		$privacy_policy_string .= '<p class="comment-form-gdpr"><input  required="required" id="gdpr" name="gdpr" type="checkbox"  />';
+		if ( ! empty( $privacy_policy_strings[2] ) ) {
+			$privacy_policy_string .= wp_unslash( $privacy_policy_strings[2] );
+		}
+		$privacy_policy_string .= '</p>';
 
 		return $privacy_policy_string;
 
@@ -123,7 +126,7 @@ class Controller_Comments {
 			global $wpdb;
 			$table_name = $wpdb->prefix . 'gdpr_requests';
 			$time_stamp = explode( '#', $decoded );
-			if ( isset( $time_stamp[2])){
+			if ( isset( $time_stamp[2] ) ) {
 				$time_stamp = base64_decode( $time_stamp[2] );
 			} else {
 				return false;
@@ -176,7 +179,6 @@ class Controller_Comments {
 	public function wp_gdpr() {
 		switch ( $_REQUEST['action_switch'] ) {
 			case 'edit_comment':
-
 				$field      = sanitize_text_field( $_REQUEST['input_name'] );
 				$new_value  = $_REQUEST['new_value'];
 				$comment_id = sanitize_text_field( $_REQUEST['comment_id'] );
@@ -340,7 +342,7 @@ class Controller_Comments {
 	 */
 	public function map_comments( $comments ) {
 		$this_object = $this;
-		$comments = array_map( function ( $data ) use($this_object){
+		$comments    = array_map( function ( $data ) use ( $this_object ) {
 			return array(
 				'comment_date'    => $data->comment_date,
 				'email'           => $this_object->change_into_input( $data->comment_author_email, 'comment_author_email', $data->comment_ID ),
@@ -387,7 +389,7 @@ class Controller_Comments {
 
 	public function load_style() {
 		global $wp;
-		$page_slug = trim( $_SERVER["REQUEST_URI"], '/' );
+		$page_slug = trim( $_SERVER['REQUEST_URI'], '/' );
 
 		if ( isset( $wp->query_vars['pagename'] ) && $wp->query_vars['pagename'] == 'gdpr-request-personal-data' || strpos( $page_slug, 'gdpr' ) !== false ) {
 			wp_enqueue_style( 'gdpr-main-css', GDPR_URL . 'assets/css/main.css' );
@@ -425,11 +427,11 @@ class Controller_Comments {
 	}
 
 	public function send_email_to_admin( $requested_email ) {
-		$site_name   = get_bloginfo( 'name', true);
+		$site_name   = get_bloginfo( 'name', true );
 		$subject     = '[' . $site_name . '] ' . __( 'New delete request', 'wp_gdpr' );
 		$admin_email = get_option( 'admin_email', true );
 		$content     = $this->get_email_content( $requested_email );
-		$headers    = array( 'Content-Type: text/html; charset=UTF-8' );
+		$headers     = array( 'Content-Type: text/html; charset=UTF-8' );
 
 		wp_mail( $admin_email, $subject, $content, $headers );
 	}

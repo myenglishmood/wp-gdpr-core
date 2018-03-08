@@ -34,6 +34,7 @@ include_once GDPR_DIR . 'lib/gdpr-customtables.php';
 
 use wp_gdpr\lib\Gdpr_Container;
 use wp_gdpr\lib\Gdpr_Customtables;
+use wp_gdpr\lib\Session_Handler;
 
 
 class Wp_Gdpr_Core {
@@ -50,6 +51,8 @@ class Wp_Gdpr_Core {
 			'gdpr_req' => 'required',
 			'checkbox_gdpr' => 'required'
 		);
+
+		Session_Handler::start_session();
 		$this->run();
 	}
 
