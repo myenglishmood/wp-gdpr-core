@@ -302,7 +302,7 @@ class Controller_Menu_Page {
 	public function get_settings() {
 		$settings = array(
 			'switch_on_comments' => array(
-				'label' => __( 'Don\'t support comments', 'wp-gdpr' ),
+				'label' => __( 'Don\'t show comments', 'wp-gdpr' ),
 				'type'  => 'checkbox',
 				'value' => 'checked',
 			)
@@ -521,10 +521,10 @@ class Controller_Menu_Page {
 	public function get_request_gdpr_by_email( $email ) {
 		global $wpdb;
 
-		if ( ! $email = sanitize_email( $email ) ) {
+		$email = sanitize_email( $email );
+		if ( empty( $email ) ) {
 			return;
 		}
-
 
 		$query = "SELECT * FROM {$wpdb->prefix}gdpr_requests WHERE email='$email'";
 
@@ -723,6 +723,7 @@ class Controller_Menu_Page {
 				$value = isset( $_REQUEST[ $option_name ] ) && sanitize_text_field( $_REQUEST[ $option_name ] ) === 'on' ? 1 : 0;
 				update_option( $option_name, $value );
 			}
+			$this->set_notice( __( 'Settings saved', 'wp_gdpr' ) );
 		}
 	}
 }

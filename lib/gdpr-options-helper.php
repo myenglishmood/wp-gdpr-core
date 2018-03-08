@@ -24,7 +24,7 @@ final class Gdpr_Options_Helper {
 	 */
 	public static function is_option_on( $name ) {
 		$value = get_option( $name, null );
-		if ( empty( get_option( $value ) || 0 === $value ) ) {
+		if ( empty( $value ) || 0 == $value ) {
 			return false;
 		} else {
 			return true;
@@ -39,7 +39,7 @@ final class Gdpr_Options_Helper {
 	 */
 	public static function is_option_off( $name ) {
 		$value = get_option( $name, null );
-		if ( empty( get_option( $value ) || 0 === $value ) ) {
+		if ( empty( $value ) || 0 == $value ) {
 			return true;
 		} else {
 			return false;
