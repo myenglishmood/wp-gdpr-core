@@ -5,6 +5,7 @@ namespace wp_gdpr\model;
 use SessionHandler;
 use wp_gdpr\lib\Gdpr_Customtables;
 use wp_gdpr\lib\Gdpr_Container;
+use wp_gdpr\lib\Gdpr_Options_Helper;
 use wp_gdpr\lib\Session_Handler;
 
 class Request_Form extends Form_Validation_Model {
@@ -71,8 +72,8 @@ class Request_Form extends Form_Validation_Model {
 			)
 		);
 
-		$admin_email = get_option( 'admin_email', true );
-		$this->send_email( $admin_email, $time_of_insertion, $language );
+		$dpo_email = Gdpr_Options_Helper::get_dpo_email();
+		$this->send_email( $dpo_email, $time_of_insertion, $language );
 		$this->send_email( $single_address, $time_of_insertion, $language );
 		$this->redirect_to_page_gdpr_personal_data();
 	}

@@ -9,7 +9,7 @@ final class Gdpr_Options_Helper {
 
 	public static function switch_option( $name ) {
 		$value = get_option( $name, null );
-		if ( empty(  $value  ) || 0 === $value ) {
+		if ( empty( $value ) || 0 === $value ) {
 			update_option( $name, 1 );
 		} else {
 			update_option( $name, 0 );
@@ -43,6 +43,20 @@ final class Gdpr_Options_Helper {
 			return true;
 		} else {
 			return false;
+		}
+	}
+
+	/**
+	 *
+	 * @return bool
+	 * Get PDO email address if is not set than use website administrator email.
+	 */
+	public static function get_dpo_email() {
+		$value       = get_option( 'dpo_email', null );
+		if ( empty( $value ) ) {
+			return  get_option( 'admin_email', true );
+		} else {
+			return $value;
 		}
 	}
 }

@@ -4,6 +4,7 @@ namespace wp_gdpr\controller;
 
 use wp_gdpr\lib\Gdpr_Customtables;
 use wp_gdpr\lib\Gdpr_Container;
+use wp_gdpr\lib\Gdpr_Options_Helper;
 use wp_gdpr\lib\Gdpr_Table_Builder;
 
 class Controller_Comments {
@@ -429,11 +430,12 @@ class Controller_Comments {
 	public function send_email_to_admin( $requested_email ) {
 		$site_name   = get_bloginfo( 'name', true );
 		$subject     = '[' . $site_name . '] ' . __( 'New delete request', 'wp_gdpr' );
-		$admin_email = get_option( 'admin_email', true );
+		$to = Gdpr_Options_Helper::get_dpo_email();
+		// $admin_email = get_option( 'admin_email', true );
 		$content     = $this->get_email_content( $requested_email );
 		$headers     = array( 'Content-Type: text/html; charset=UTF-8' );
 
-		wp_mail( $admin_email, $subject, $content, $headers );
+		wp_mail( $to, $subject, $content, $headers );
 	}
 
 	public function get_email_content( $requested_email ) {
