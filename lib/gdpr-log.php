@@ -7,11 +7,11 @@ if ( ! class_exists( 'Log' ) ) {
 		/**
 		 * Session KEY for log
 		 */
-		CONST SESSION_LOG = 'appsaloon_log';
+		const SESSION_LOG = 'appsaloon_log';
 		/**
 		 * table name without prefix
 		 */
-		CONST TABLE_NAME = 'appsaloon_log';
+		const TABLE_NAME = 'appsaloon_log';
 		/**
 		 * Creating of logging table
 		 */
@@ -20,7 +20,7 @@ if ( ! class_exists( 'Log' ) ) {
 
 			$table_name = $wpdb->prefix . self::TABLE_NAME;
 
-			$query = "CREATE TABLE " . $table_name . " (
+			$query = 'CREATE TABLE ' . $table_name . ' (
 				  id INT(11) NOT NULL AUTO_INCREMENT,
 				  message_type VARCHAR(20) DEFAULT NULL,
 				  message TEXT NOT NULL,
@@ -29,7 +29,7 @@ if ( ! class_exists( 'Log' ) ) {
 				  line VARCHAR(40) DEFAULT NULL,
 				  timestamp DATETIME DEFAULT NULL,
 				  PRIMARY KEY (id)
-				)";
+				)';
 
 			require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 			dbDelta( $query );
