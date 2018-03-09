@@ -428,12 +428,11 @@ class Controller_Comments {
 	}
 
 	public function send_email_to_admin( $requested_email ) {
-		$site_name   = get_bloginfo( 'name', true );
-		$subject     = '[' . $site_name . '] ' . __( 'New delete request', 'wp_gdpr' );
-		$to = Gdpr_Options_Helper::get_dpo_email();
-		// $admin_email = get_option( 'admin_email', true );
-		$content     = $this->get_email_content( $requested_email );
-		$headers     = array( 'Content-Type: text/html; charset=UTF-8' );
+		$site_name = get_bloginfo( 'name', true );
+		$subject   = '[' . $site_name . '] ' . __( 'New delete request', 'wp_gdpr' );
+		$to        = Gdpr_Options_Helper::get_dpo_email();
+		$content = $this->get_email_content( $requested_email );
+		$headers = array( 'Content-Type: text/html; charset=UTF-8' );
 
 		wp_mail( $to, $subject, $content, $headers );
 	}

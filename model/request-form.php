@@ -34,7 +34,7 @@ class Request_Form extends Form_Validation_Model {
 	}
 
 	public function set_mail_from( $original_email_address ) {
-		return get_option( 'admin_email', true );
+		return Gdpr_Options_Helper::get_dpo_email();
 	}
 
 	public function set_mail_from_name( $original_email_from ) {
