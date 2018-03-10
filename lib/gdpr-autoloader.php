@@ -55,6 +55,13 @@ class Gdpr_Autoloader {
 			if ( file_exists( $path ) ) {
 				include $path;
 			}
+		}elseif ( 0 ===  strpos( $class, 'wp_gdpr_' )){
+			$chunks = explode('\\', $class);
+			$path = apply_filters( 'autoloader_' . $chunks[0], $class  );
+
+			if ( file_exists( $path ) ) {
+				include $path;
+			}
 		}
 	}
 }
