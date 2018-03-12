@@ -1,3 +1,12 @@
+== Version 1.4.0
+* Add DPO email address
+* Add pdo setting
+* Option to not show the comments section
+* Add settings feature
+* Stop form submition after refreshing
+* Add filter to implement checkbox in other commentforms
+* Update DE language
+
 == Version 1.2.4
 * Update readme with github repository
 * Change pot-file and po/mo-files
