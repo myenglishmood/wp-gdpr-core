@@ -35,6 +35,7 @@ class Gdpr_Autoloader {
 			/**
 			 * add on gf
 			 */
+			//TODO update this functions in all addons and solve this code here as examlpe on line 59
 		} elseif ( strpos( $class, self::GF_NAMESPACE_NAME ) === 0 ) {
 			$path = substr( $class, strlen( self::GF_NAMESPACE_NAME ) );
 			$path = strtolower( $path );
