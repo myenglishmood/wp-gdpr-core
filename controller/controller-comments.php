@@ -6,6 +6,7 @@ use wp_gdpr\lib\Gdpr_Customtables;
 use wp_gdpr\lib\Gdpr_Container;
 use wp_gdpr\lib\Gdpr_Options_Helper;
 use wp_gdpr\lib\Gdpr_Table_Builder;
+use wp_gdpr\lib\Session_Handler;
 
 class Controller_Comments {
 	const CSV_NAME = 'comments_csv';
@@ -43,7 +44,10 @@ class Controller_Comments {
 		if ( ! function_exists( 'is_plugin_active' ) ) {
 			require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
 		}
-		if ( is_plugin_active( 'wpdiscuz/class.WpdiscuzCore.php' ) ) {
+		if ( is_plugin_active( 'jetpack/jetpack.php' ) ) {
+			add_action( 'comment_form_after', array( $this, 'echo_comment_form_default_fields_callback' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'load_jetpack_comment_scripts' ) );
+		} elseif ( is_plugin_active( 'wpdiscuz/class.WpdiscuzCore.php' ) ) {
 			add_action( 'comment_form_after', array( $this, 'echo_checkox_gdpr' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'load_comment_scripts' ) );
 		}
@@ -52,6 +56,16 @@ class Controller_Comments {
 			$this,
 			'comment_form_default_fields_callback'
 		), 1 );
+
+	}
+
+	public function load_jetpack_comment_scripts() {
+		wp_enqueue_style( 'gdpr-comment-css', GDPR_URL . 'assets/css/new_comment.css' );
+		wp_enqueue_script( 'gdpr-comment-js', GDPR_URL . 'assets/js/jetpack_comments.js', array( 'jquery' ), '', false );
+		wp_localize_script( 'gdpr-comment-js', 'localized_object', array(
+			'url'    => admin_url( 'admin-ajax.php' ),
+			'action' => 'wp_gdpr'
+		) );
 	}
 
 	public function load_comment_scripts() {
@@ -160,6 +174,10 @@ class Controller_Comments {
 		return $content . $this->get_gdpr_checkbox_for_new_comments();
 	}
 
+	function echo_comment_form_default_fields_callback( $content ) {
+		echo $this->get_gdpr_checkbox_for_new_comments();
+	}
+
 	public function preprocess_comment_callback( $data ) {
 
 		//skip admin new comment validation
@@ -167,8 +185,15 @@ class Controller_Comments {
 			return $data;
 		}
 
-		if ( ! isset( $_POST['gdpr'] ) || $_POST['gdpr'] !== 'on' ) {
+		$gdpr_token = Session_Handler::get_from_session_by_key( 'gdpr_checkbox_token', array() );
+		if ( empty( $gdpr_token ) && ( ! isset( $_POST['gdpr'] ) || $_POST['gdpr'] !== 'on' ) ) {
 			return new \WP_Error( 'comment_gdpr_required', __( '<strong>ERROR</strong>: please fill the required fields (GDPR checkbox).' ), 409 );
+		} elseif ( ! empty( $gdpr_token ) ) {
+			if ( $gdpr_token['status'] === 'true' ) {
+				return $data;
+			} else {
+				return new \WP_Error( 'comment_gdpr_required', __( '<strong>ERROR</strong>: please fill the required fields (GDPR checkbox).' ), 409 );
+			}
 		}
 
 		return $data;
@@ -221,7 +246,15 @@ class Controller_Comments {
 				if ( ! empty( $action_name ) ) {
 					do_action( $action_name );
 				}
+				break;
 
+			case 'toggle_gdpr_checbox':
+				$args = array(
+					'status' => sanitize_text_field( $_REQUEST['gdpr_checked'] ),
+					'site'   => sanitize_text_field( $_REQUEST['gdpr_location'] )
+				);
+				Session_Handler::save_in_session( 'gdpr_checkbox_token', $args );
+				wp_send_json( array( 'status' => 'updated' ) );
 				break;
 		}
 	}
@@ -431,8 +464,8 @@ class Controller_Comments {
 		$site_name = get_bloginfo( 'name', true );
 		$subject   = '[' . $site_name . '] ' . __( 'New delete request', 'wp_gdpr' );
 		$to        = Gdpr_Options_Helper::get_dpo_email();
-		$content = $this->get_email_content( $requested_email );
-		$headers = array( 'Content-Type: text/html; charset=UTF-8' );
+		$content   = $this->get_email_content( $requested_email );
+		$headers   = array( 'Content-Type: text/html; charset=UTF-8' );
 
 		wp_mail( $to, $subject, $content, $headers );
 	}

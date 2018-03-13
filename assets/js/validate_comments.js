@@ -13,6 +13,7 @@ jQuery(function ($) {
         if (gdpr_checkbox.prop('checked') === true) {
             comments_submit_button.prop('disabled', false);
             comments_submit_button.removeClass('gdpr-disabled');
+
         }else{
             comments_submit_button.prop('disabled', true);
             comments_submit_button.addClass('gdpr-disabled');
