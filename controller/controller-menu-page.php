@@ -416,6 +416,9 @@ class Controller_Menu_Page {
 			case 2:
 				$data['r_type'] = __( 'cfdb7 db entries', 'wp-gdpr' );
 				break;
+			case 3:
+				$data['r_type'] = __( 'woocommerce', 'wp-gdpr' );
+				break;
 
 		}
 
