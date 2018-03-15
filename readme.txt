@@ -3,7 +3,7 @@ Contributors: Mieke Nijs, Sebastian Kurzynowski, AppSaloon
 Tags: Personal data, GDPR, European, regulation, data
 Requires at least: 4.6.10
 Tested up to: 4.9.2
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 Requires PHP: 5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -42,9 +42,12 @@ We made our code available on [Github](https://github.com/WP-GDPR/wp-gdpr-core/)
 == Frequently Asked Questions ==
 
 == Changelog ==
+Version 1.4.1
+    - Make checkbox compatible with jetpack
+
 Version 1.4.0
     - Add DPO email address
-    - Add pdo setting
+    - Add dpo setting
     - Option to not show the comments section
     - Add settings feature
     - Stop form submition after refreshing
