@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP GDPR\n"
 "POT-Creation-Date: 2018-03-20 10:55+0100\n"
-"PO-Revision-Date: 2018-03-20 11:08+0100\n"
+"PO-Revision-Date: 2018-03-20 11:59+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_BE\n"
@@ -452,11 +452,11 @@ msgstr ""
 
 #: view/front/form.php:22
 msgid "Warning:"
-msgstr ""
+msgstr "Waarschuwing:"
 
 #: view/front/form.php:22
 msgid "This link will become deprecated after 48 hours."
-msgstr ""
+msgstr "Deze link is niet meer geldig na 48uur."
 
 #: view/front/gdpr-template.php:7
 msgid "View Comments"
