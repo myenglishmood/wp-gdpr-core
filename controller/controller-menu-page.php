@@ -604,9 +604,9 @@ class Controller_Menu_Page {
 				__( 'id', 'wp_gdpr' ),
 				__( 'email', 'wp_gdpr' ),
 				__( 'data(ID)', 'wp_gdpr' ),
+                __( 'status', 'wp_gdpr' ),
+                __( 'type', 'wp_gdpr' ),
 				__( 'requested at', 'wp_gdpr' ),
-				__( 'status', 'wp_gdpr' ),
-				__( 'type', 'wp_gdpr' ),
 				__( 'select', 'wp_gdpr' )
 			),
 			$requests
