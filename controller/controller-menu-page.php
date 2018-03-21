@@ -358,6 +358,7 @@ class Controller_Menu_Page {
 				__( 'email', 'wp_gdpr' ),
 				__( 'requested at', 'wp_gdpr' ),
 				__( 'status', 'wp_gdpr' ),
+                __( 'language', 'wp_gdpr' ),
 				__( 'resend email', 'wp_gdpr' ),
 			),
 			$requesting_users
