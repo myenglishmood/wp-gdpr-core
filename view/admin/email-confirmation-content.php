@@ -125,7 +125,9 @@
                                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
                                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"><?php _e( 'Dear Sir / Madam', 'wp_gdpr' ); ?>
                                             ,</p>
-                                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"><?php _e( 'You asked to delete your personal data at ' . $date_of_request, 'wp_gdpr' ); ?><?php echo get_bloginfo( 'name' ); ?></p>
+                                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"><?php _e( 'You asked to delete your personal data at ' , 'wp_gdpr' ); ?></p>
+                                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"><?php _e( 'Website:' , 'wp_gdpr' ); ?>&nbsp;<?php echo  get_bloginfo( 'name' ); ?></p>
+                                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"><?php _e( 'Date of request:' , 'wp_gdpr' ); ?>&nbsp;<?php echo  $date_of_request  ?></p>
                                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"><?php _e( 'Your requests is approved and data was successfully deleted today.', 'wp_gdpr' ); ?></p>
                                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"><?php _e( 'Thanks for contacting us.', 'wp_gdpr' ); ?></p>
                                     </td>
