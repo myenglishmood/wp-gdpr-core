@@ -36,7 +36,6 @@ use wp_gdpr\lib\Gdpr_Container;
 use wp_gdpr\lib\Gdpr_Customtables;
 use wp_gdpr\lib\Session_Handler;
 
-
 class Wp_Gdpr_Core {
 
 	const FORM_SHORTCODE_NAME = 'REQ_CRED_FORM';
