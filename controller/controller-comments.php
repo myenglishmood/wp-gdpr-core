@@ -124,6 +124,7 @@ class Controller_Comments
     {
         global $wp;
 
+
         //retrieve the query vars and store as variable $template
         $template = $wp->query_vars;
         if (!empty($_GET['req']) && $this->decode_url_request(sanitize_text_field($_GET['req']))) {

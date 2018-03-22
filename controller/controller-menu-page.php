@@ -576,7 +576,7 @@ class Controller_Menu_Page {
 	 */
 	public function create_unique_url( $email, $timestamp ) {
 
-		return Request_Form::get_personal_data_page_url( 'req=' . base64_encode( 'gdpr#' . $email . '#' . base64_encode( $timestamp ) ) );
+		return Request_Form::get_personal_data_page_url( '?req=' . base64_encode( 'gdpr#' . $email . '#' . base64_encode( $timestamp ) ) );
 	}
 
 	public function update_gdpr_request_status( $email ) {
