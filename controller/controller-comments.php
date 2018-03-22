@@ -84,9 +84,8 @@ class Controller_Comments {
 	}
 
 	public function get_gdpr_checkbox_for_new_comments() {
-		$privacy_policy_strings = Controller_Menu_Page::get_privacy_policy_strings();
-
-		$privacy_policy_string = '';
+		$menu_page_object = new Controller_Menu_Page();
+		$privacy_policy_string = $menu_page_object->get_privacy_policy_strings();
 
 		if ( ! empty( $privacy_policy_strings[0] ) ) {
 			$privacy_policy_string .= '<p class="notice"><small>* ' . wp_unslash( $privacy_policy_strings[0] ) . '</small></p>';
