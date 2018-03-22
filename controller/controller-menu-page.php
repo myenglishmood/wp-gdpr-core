@@ -8,6 +8,7 @@ use wp_gdpr\lib\Gdpr_Language;
 use wp_gdpr\lib\Gdpr_Table_Builder;
 use wp_gdpr\lib\Gdpr_Container;
 use wp_gdpr\lib\Gdpr_Form_Builder;
+use wp_gdpr\model\Request_Form;
 
 class Controller_Menu_Page {
 	const PRIVACY_POLICY_LABEL = 'privacy_policy_label';
@@ -358,7 +359,7 @@ class Controller_Menu_Page {
 				__( 'email', 'wp_gdpr' ),
 				__( 'requested at', 'wp_gdpr' ),
 				__( 'status', 'wp_gdpr' ),
-                __( 'language', 'wp_gdpr' ),
+				__( 'language', 'wp_gdpr' ),
 				__( 'resend email', 'wp_gdpr' ),
 			),
 			$requesting_users
@@ -574,7 +575,8 @@ class Controller_Menu_Page {
 	 * encode gdpr#example@email.com into base64
 	 */
 	public function create_unique_url( $email, $timestamp ) {
-		return site_url() . '/gdpr-request-personal-data?req=' . base64_encode( 'gdpr#' . $email . '#' . base64_encode( $timestamp ) );
+
+		return Request_Form::get_personal_data_page_url( 'req=' . base64_encode( 'gdpr#' . $email . '#' . base64_encode( $timestamp ) ) );
 	}
 
 	public function update_gdpr_request_status( $email ) {
@@ -607,8 +609,8 @@ class Controller_Menu_Page {
 				__( 'id', 'wp_gdpr' ),
 				__( 'email', 'wp_gdpr' ),
 				__( 'data(ID)', 'wp_gdpr' ),
-                __( 'status', 'wp_gdpr' ),
-                __( 'type', 'wp_gdpr' ),
+				__( 'status', 'wp_gdpr' ),
+				__( 'type', 'wp_gdpr' ),
 				__( 'requested at', 'wp_gdpr' ),
 				__( 'select', 'wp_gdpr' )
 			),

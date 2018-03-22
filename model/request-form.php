@@ -109,16 +109,43 @@ class Request_Form extends Form_Validation_Model {
 	}
 
 	public function redirect_to_page_gdpr_personal_data() {
-		$id = $this->get_page_id();
-
-		if( false !== $id ){
-			$url = get_permalink($id) . '?thank_you';
-		}else{
-			$url = get_home_url();
-		}
+		$url = self::get_personal_data_page_url( '?thank_you' );
 
 		wp_redirect( $url );
 		exit;
+	}
+
+	/**
+	 * @return string
+	 */
+	public static function get_personal_data_page_url( $extra_parameter ) {
+		$id = self::get_page_id();
+
+		if ( false !== $id ) {
+			$url = get_permalink( $id ) . $extra_parameter;
+		} else {
+			$url = get_home_url();
+		}
+
+		return $url;
+	}
+
+	public static function get_page_id() {
+		global $wpdb;
+
+		$query = "Select ID
+					From {$wpdb->posts}
+					Where 
+					post_content like '%[REQ_CRED_FORM]%'
+                  	and post_type = 'page'";
+
+		$page_id = $wpdb->get_results( $query, ARRAY_N );
+
+		if ( is_array( $page_id ) && isset( $page_id[0][0] ) ) {
+			return $page_id[0][0];
+		} else {
+			return false;
+		}
 	}
 
 	public function add_administrator_to_receivers( $to ) {
@@ -135,24 +162,6 @@ class Request_Form extends Form_Validation_Model {
 	 */
 	public function after_failure_validation( $list_of_inputs ) {
 		//do nothing
-	}
-
-	public function get_page_id() {
-		global $wpdb;
-
-		$query = "Select ID
-					From {$wpdb->posts}
-					Where 
-					post_content like '%[REQ_CRED_FORM]%'
-                  	and post_type = 'page'";
-
-		$page_id = $wpdb->get_results( $query, ARRAY_N );
-
-		if ( is_array( $page_id ) && isset( $page_id[0][0] ) ) {
-			return $page_id[0][0];
-		} else {
-			return false;
-		}
 	}
 
 }
