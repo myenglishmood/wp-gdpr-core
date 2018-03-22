@@ -27,6 +27,7 @@ class Gdpr_Menu_Backend {
         add_submenu_page(static::PAGE_SLUG, __('List of delete requests', 'wp_gdpr'), __('List of delete requests', 'wp_gdpr'), 'manage_options', 'deletelist', array($this, 'set_wp_gdpr_listOfDeleteRequests'));
         add_submenu_page(static::PAGE_SLUG, __('List of plugins', 'wp_gdpr'), __('List of plugins', 'wp_gdpr'), 'manage_options', 'pluginlist', array($this, 'set_wp_gdpr_listOfPlugins'));
         add_submenu_page(static::PAGE_SLUG, __('Settings', 'wp_gdpr'), __('Settings', 'wp_gdpr'), 'manage_options', 'settings', array($this, 'set_wp_gdpr_settings'));
+        add_submenu_page(static::PAGE_SLUG, __('Help', 'wp_gdpr'), __('Help', 'wp_gdpr'), 'manage_options', 'help', array($this, 'set_wp_gdpr_help'));
 
     }
 
@@ -44,5 +45,9 @@ class Gdpr_Menu_Backend {
     }
     public function set_wp_gdpr_settings(){
         require_once GDPR_DIR . 'view/admin/menu/settings-page.php';
+    }
+
+    public function set_wp_gdpr_help(){
+        require_once GDPR_DIR . 'view/admin/menu/help_page.php';
     }
 }
