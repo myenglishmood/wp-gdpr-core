@@ -123,7 +123,7 @@ class Controller_Comments {
 			$controller = $this;
 			$this->update_gdpr_status( $this->email_request );
 			include_once GDPR_DIR . 'view/front/gdpr-template.php';
-			wp_die();
+			exit;
 		}
 	}
 
