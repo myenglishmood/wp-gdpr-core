@@ -85,17 +85,18 @@ class Controller_Comments {
 
 	public function get_gdpr_checkbox_for_new_comments() {
 		$menu_page_object = new Controller_Menu_Page();
-		$privacy_policy_string = $menu_page_object->get_privacy_policy_strings();
+		$privacy_policy_array = $menu_page_object->get_privacy_policy_strings();
+		$privacy_policy_string = '';
 
-		if ( ! empty( $privacy_policy_strings[0] ) ) {
-			$privacy_policy_string .= '<p class="notice"><small>* ' . wp_unslash( $privacy_policy_strings[0] ) . '</small></p>';
+		if ( ! empty( $privacy_policy_array[0] ) ) {
+			$privacy_policy_string .= '<p class="notice"><small>* ' . wp_unslash( $privacy_policy_array[0] ) . '</small></p>';
 		}
-		if ( ! empty( $privacy_policy_strings[1] ) ) {
-			$privacy_policy_string .= '<div class="js-gdpr-warning"></div><span class="required">*</span> <label for="gdpr">' . wp_unslash( $privacy_policy_strings[1] ) . '</label>';
+		if ( ! empty( $privacy_policy_array[1] ) ) {
+			$privacy_policy_string .= '<div class="js-gdpr-warning"></div><span class="required">*</span> <label for="gdpr">' . wp_unslash( $privacy_policy_array[1] ) . '</label>';
 		}
 		$privacy_policy_string .= '<p class="comment-form-gdpr"><input  required="required" id="gdpr" name="gdpr" type="checkbox"  />';
-		if ( ! empty( $privacy_policy_strings[2] ) ) {
-			$privacy_policy_string .= wp_unslash( $privacy_policy_strings[2] );
+		if ( ! empty( $privacy_policy_array[2] ) ) {
+			$privacy_policy_string .= wp_unslash( $privacy_policy_array[2] );
 		}
 		$privacy_policy_string .= '</p>';
 
