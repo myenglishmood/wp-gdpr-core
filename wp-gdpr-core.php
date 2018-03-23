@@ -6,7 +6,7 @@
  *
  * @package   WP GDPR CORE
  * @author    AppSaloon
- * @license   proprietary
+ * @license   GPLv2
  * @link      https://wp-gdpr.eu
  * @copyright 2017 wp-gdpr
  *
