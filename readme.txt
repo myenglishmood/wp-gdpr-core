@@ -3,7 +3,7 @@ Contributors: Mieke Nijs, Sebastian Kurzynowski, AppSaloon
 Tags: Personal data, GDPR, European, regulation, data
 Requires at least: 4.6.10
 Tested up to: 4.9.4
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 Requires PHP: 5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
