@@ -42,6 +42,10 @@ We made our code available on [Github](https://github.com/WP-GDPR/wp-gdpr-core/)
 == Frequently Asked Questions ==
 
 == Changelog ==
+
+Version 1.4.2
+    - Fix minor bugs
+    
 Version 1.4.2
     - Fix deprecated warning
     - Fix when request form is embedded on a non-standard page. Until now, you got a 404-error when redirecting to the    	"Thank you"-page
