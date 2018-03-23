@@ -43,7 +43,7 @@ We made our code available on [Github](https://github.com/WP-GDPR/wp-gdpr-core/)
 
 == Changelog ==
 
-Version 1.4.2
+Version 1.4.3
     - Fix minor bugs
     
 Version 1.4.2
