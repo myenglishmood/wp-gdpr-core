@@ -3,7 +3,7 @@ Contributors: Mieke Nijs, Sebastian Kurzynowski, AppSaloon
 Tags: Personal data, GDPR, European, regulation, data
 Requires at least: 4.6.10
 Tested up to: 4.9.4
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 Requires PHP: 5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -42,6 +42,10 @@ We made our code available on [Github](https://github.com/WP-GDPR/wp-gdpr-core/)
 == Frequently Asked Questions ==
 
 == Changelog ==
+
+Version 1.4.3
+    - Fix minor bugs
+    
 Version 1.4.2
     - Fix deprecated warning
     - Fix when request form is embedded on a non-standard page. Until now, you got a 404-error when redirecting to the    	"Thank you"-page
