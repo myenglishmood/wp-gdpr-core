@@ -33,7 +33,7 @@ class Controller_Comments {
 		// comment form validation
 		add_filter( 'pre_comment_approved', array( $this, 'preprocess_comment_callback' ), 1 );
 		//add extra field for comments template
-		add_filter( 'comment_form_field_comment', array( $this, 'comment_form_default_fields_callback' ), 1 );
+		add_filter( 'comment_form_field_comment', array( $this, 'comment_form_default_fields_callback' ), 11 );
 		//comment_form_field_comment
 		//rewrite and redirect to page that doesn't exist
 		add_action( 'template_redirect', array( $this, 'fake_page_redirect' ) );
