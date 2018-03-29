@@ -30,9 +30,23 @@ jQuery(function ($) {
             success: function (data) {
             }
         });
-        //TODO add event listenter for disabled button
+
+
+    });
+
+    //on checkbox add or remove disable on submit button
+    $(gdpr_checkbox).on('click', function(){
         //when is clicked and has class disabled
-        //show info that user has to check checkbox to submit comment
+        if(gdpr_checkbox.prop('checked')===true && comments_submit_button.hasClass('gdpr-disabled')) {
+            // if checkbox is checked..
+            comments_submit_button.removeProp('disabled');
+            comments_submit_button.removeClass('gdpr-disabled');
+        } else {
+            // if checkbox is not checked..
+            comments_submit_button.prop('disabled', true);
+            comments_submit_button.addClass('gdpr-disabled');
+
+        }
     });
 
     data.gdpr_checked = false;
