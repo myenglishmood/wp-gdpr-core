@@ -32,8 +32,6 @@ class Controller_Comments {
 		add_action( 'wp_ajax_nopriv_wp_gdpr', array( $this, 'wp_gdpr' ) );
 		// comment form validation
 		add_filter( 'pre_comment_approved', array( $this, 'preprocess_comment_callback' ), 1 );
-		//add extra field for comments template
-		add_filter( 'comment_form_field_comment', array( $this, 'comment_form_default_fields_callback' ), 11 );
 		//comment_form_field_comment
 		//rewrite and redirect to page that doesn't exist
 		add_action( 'template_redirect', array( $this, 'fake_page_redirect' ) );
@@ -46,11 +44,15 @@ class Controller_Comments {
 			require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
 		}
 		if ( is_plugin_active( 'jetpack/jetpack.php' ) ) {
+
 			add_action( 'comment_form_after', array( $this, 'echo_comment_form_default_fields_callback' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'load_jetpack_comment_scripts' ) );
 		} elseif ( is_plugin_active( 'wpdiscuz/class.WpdiscuzCore.php' ) ) {
 			add_action( 'comment_form_after', array( $this, 'echo_checkox_gdpr' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'load_comment_scripts' ) );
+		} else {
+			//add extra field for comments template
+			add_filter( 'comment_form_field_comment', array( $this, 'comment_form_default_fields_callback' ), 11 );
 		}
 
 		add_filter( 'wpgdpr_add_custom_filters_for_comments', array(
