@@ -1,33 +1,85 @@
-form.postbox, div.postbox{
-    padding: 10px;"
+form.postbox, div.postbox {
+    padding: 10px;
+"
 }
-form.postbox label{
+
+form.postbox label {
     width: 40%;
     display: inline-block;
     max-width: 200px;
 }
-form.postbox label#gdpr{
+
+form.postbox label#gdpr {
     width: 90%;
     max-width: unset;
 }
-form.postbox input[type="text"], form.postbox input[type="email"], form.postbox textarea, .postbox-group .wp-editor-wrap{
+
+form.postbox input[type="text"], form.postbox input[type="email"], form.postbox textarea, .postbox-group .wp-editor-wrap {
     width: 59%;
     max-width: 400px;
     vertical-align: top;
     display: inline-block;
 }
-form.postbox input[type="submit"]{
+
+form.postbox input[type="submit"] {
     margin-top: 20px;
 }
 
-.postbox-group{
+.postbox-group {
     margin-top: 15px;
 }
-.postbox-group:first-child{
+
+.postbox-group:first-child {
     margin-top: 0;
 }
 
-#toplevel_page_wp_gdpr .wp-menu-image img{
+#toplevel_page_wp_gdpr .wp-menu-image img {
     width: 24px;
     padding-top: 5px;
 }
+
+#nav_menu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-items: start;
+}
+
+div#nav_menu{
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #ddd !important;
+    z-index: -1;
+}
+
+#nav_menu > a {
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 0px;
+
+    border: 1px solid #ddd !important;
+    border: solid;
+    padding: 5px;
+    position: relative;
+    top: 1px;
+}
+
+a#a_settings {
+    margin-left: auto;
+}
+
+#hr_line {
+    position: relative;
+    margin-top: 5px;
+    z-index: -1;
+    margin-top: -1px;
+}
+
+#nav_menu > a.active_tab {
+    border-bottom-color: #f1f1f1 !important;
+    z-index: 1 !important;
+    border-bottom-width: 2px !important;
+}
+
+
+
