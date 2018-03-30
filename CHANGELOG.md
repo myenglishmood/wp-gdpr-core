@@ -1,3 +1,21 @@
+
+== Version 1.4.4
+* Fix compatible Jetpack
+* Added translation SV
+* Minor bug fix
+
+== Version 1.4.3
+* Fix minor bugs
+    
+== Version 1.4.2
+* Fix deprecated warning
+* Fix when request form is embedded on a non-standard page. Until now, you got a 404-error when redirecting to the    	        "Thank you"-page
+* Fix confirmation of processing the delete request shows a short reference to what happened to the data
+* Enhancement add table header "request language"
+
+== Version 1.4.1
+* Make checkbox compatible with jetpack
+
 == Version 1.4.0
 * Add DPO email address
 * Add pdo setting
