@@ -45,7 +45,7 @@ class Controller_Comments {
 		}
 		if ( is_plugin_active( 'jetpack/jetpack.php' ) ) {
 
-			add_action( 'comment_form_after', array( $this, 'echo_comment_form_default_fields_callback' ) );
+			add_action( 'comment_form', array( $this, 'echo_comment_form_default_fields_callback' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'load_jetpack_comment_scripts' ) );
 		} elseif ( is_plugin_active( 'wpdiscuz/class.WpdiscuzCore.php' ) ) {
 			add_action( 'comment_form_after', array( $this, 'echo_checkox_gdpr' ) );
