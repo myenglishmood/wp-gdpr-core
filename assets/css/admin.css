@@ -121,17 +121,70 @@ div.user_info_content {
     background-color: white;
     border: none;
     margin-right: 15px;
-    font-size: 1,3em;
-    color:  #0073aa;
+    font-size: 1, 3em;
+    color: #0073aa;
 }
-h2{
+
+h2 {
     margin-bottom: 15px !important;
 }
-#nav_menu_extra{
-    margin-top:15px;
+
+#nav_menu_extra {
+    margin-top: 15px;
     display: flex;
     justify-content: flex-end;
 }
+
 #nav_menu_extra > a {
-    margin-left:15px;
+    margin-left: 15px;
+    text-decoration: none;
+}
+
+/* This is section for addons submenu */
+#addons_box {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#addons_box > div {
+    border: 1px solid #ddd;
+    background-color: white;
+    padding: 10px;
+}
+
+#addons_box > div > img {
+    max-width: 200px;
+    max-height: 300px;
+}
+
+#addons_box > div > h4 {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+#addons_box > div > p {
+    max-width: 150px;
+    margin-left: 15px;
+}
+
+.addon_footer {
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+}
+
+.more_inf{
+    margin-left: auto;
+}
+
+#dataregister_table{
+    background-color: white;
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+
+#dataregister_table > thead{
+    text-align: left;
 }
