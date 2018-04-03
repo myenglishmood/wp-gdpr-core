@@ -28,6 +28,7 @@ class Gdpr_Menu_Backend {
         add_submenu_page(static::PAGE_SLUG, __('List of plugins', 'wp_gdpr'), __('List of plugins', 'wp_gdpr'), 'manage_options', 'pluginlist', array($this, 'set_wp_gdpr_listOfPlugins'));
         add_submenu_page(static::PAGE_SLUG, __('Settings', 'wp_gdpr'), __('Settings', 'wp_gdpr'), 'manage_options', 'settings', array($this, 'set_wp_gdpr_settings'));
         add_submenu_page(static::PAGE_SLUG, __('Help', 'wp_gdpr'), __('Help', 'wp_gdpr'), 'manage_options', 'help', array($this, 'set_wp_gdpr_help'));
+	    add_submenu_page(static::PAGE_SLUG, __('Add-ons', 'wp_gdpr'), __('Add-ons', 'wp_gdpr'), 'manage_options', 'addon', array($this, 'set_wp_addon'));
 
     }
 
@@ -50,4 +51,7 @@ class Gdpr_Menu_Backend {
     public function set_wp_gdpr_help(){
         require_once GDPR_DIR . 'view/admin/menu/help_page.php';
     }
+	public function set_wp_addon(){
+		require_once GDPR_DIR . 'view/admin/menu/addon_page.php';
+	}
 }
