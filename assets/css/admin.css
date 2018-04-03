@@ -162,6 +162,10 @@ h2 {
     border-bottom: 1px solid #ddd;
     padding-bottom: 5px;
 }
+#addons_box > div > p {
+    max-width: 150px;
+    margin-left: 15px;
+}
 
 .addon_footer {
     padding-top: 10px;

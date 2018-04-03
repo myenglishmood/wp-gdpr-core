@@ -31,7 +31,7 @@
         <div class="gf_addon">
             <h4>Gravity Forms</h4>
             <img src="<?php echo GDPR_URL . 'assets/images/example_addon.png'; ?>">
-            <p></p>
+            <p>ex novum eleifend sed. Te sea modo elaboraret, labore singulis te sit.</p>
             <div class="gf_footer addon_footer">
                 <button>Activate</button>
                 <button class="more_inf">More info</button>
@@ -40,7 +40,7 @@
         <div class="cf_addon">
             <h4>Contact Form DB 7</h4>
             <img src="<?php echo GDPR_URL . 'assets/images/example_addon.png'; ?>">
-            <p></p>
+            <p>ex novum eleifend sed. Te sea modo elaboraret, labore singulis te sit.</p>
             <div class="cf_footer addon_footer">
                 <button>Activate</button>
                 <button class="more_inf">More info</button>
@@ -49,7 +49,7 @@
         <div class="wc_addon">
             <h4>Woocommerce</h4>
             <img src="<?php echo GDPR_URL . 'assets/images/example_addon.png'; ?>">
-            <p></p>
+            <p>ex novum eleifend sed. Te sea modo elaboraret, labore singulis te sit.</p>
             <div class="wc_footer addon_footer">
                 <button>Activate</button>
                 <button class="more_inf">More info</button>
@@ -58,7 +58,7 @@
         <div class="request_addon">
             <h4>Gravity Forms</h4>
             <img src="<?php echo GDPR_URL . 'assets/images/example_addon.png'; ?>">
-            <p></p>
+            <p>ex novum eleifend sed. Te sea modo elaboraret, labore singulis te sit.</p>
             <div class="request_footer addon_footer">
                 <button>Activate</button>
                 <button class="more_inf">More info</button>
