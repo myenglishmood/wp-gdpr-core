@@ -13,7 +13,7 @@
  * @wordpress-plugin
  * Plugin Name:       WP GDPR
  * Description:       Help to handle gdpr regulations.
- * Version:           1.4.3
+ * Version:           1.4.4
  * Text Domain:       wp_gdpr
  * Domain Path:       /languages
  * Author:            AppSaloon
@@ -46,8 +46,8 @@ class Wp_Gdpr_Core {
 		//list of inputs in request form
 		add_action('admin_init', array(new Gdpr_Customtables(), 'create_custom_tables'));
 		$this->request_form_inputs = array(
-			'email'    => 'required',
-			'gdpr_req' => 'required',
+			'email'         => 'required',
+			'gdpr_req'      => 'required',
 			'checkbox_gdpr' => 'required'
 		);
 
