@@ -56,6 +56,7 @@ div#nav_menu {
     margin-left: 5px;
     margin-right: 5px;
     border-radius: 0px;
+    text-decoration: none;
 
     border: 1px solid #ddd !important;
     border: solid;
