@@ -45,7 +45,7 @@ form.postbox input[type="submit"] {
     justify-items: start;
 }
 
-div#nav_menu{
+div#nav_menu {
     border-bottom-style: solid;
     border-bottom-width: 1px;
     border-bottom-color: #ddd !important;
@@ -81,5 +81,56 @@ a#a_settings {
     border-bottom-width: 2px !important;
 }
 
+#user_info {
+    background-color: white;
+    padding: 10px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
 
+#user_info > img {
+    height: 10em;
+}
 
+#user_info > div {
+    display: flex;
+    flex-direction: row;
+}
+
+div.user_info_header {
+    justify-content: space-between;
+}
+
+div.user_info_content > p {
+    align-self: center;
+    margin-left: 10px;
+}
+
+div.user_info_content {
+    padding-top: 5px;
+    margin-top: 10px;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: #f1f1f1 !important;
+}
+
+#usr_info_header_btn {
+    background-color: white;
+    border: none;
+    margin-right: 15px;
+    font-size: 1,3em;
+    color:  #0073aa;
+}
+h2{
+    margin-bottom: 15px !important;
+}
+#nav_menu_extra{
+    margin-top:15px;
+    display: flex;
+    justify-content: flex-end;
+}
+#nav_menu_extra > a {
+    margin-left:15px;
+}
