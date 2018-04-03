@@ -177,3 +177,14 @@ h2 {
 .more_inf{
     margin-left: auto;
 }
+
+#dataregister_table{
+    background-color: white;
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+
+#dataregister_table > thead{
+    text-align: left;
+}
