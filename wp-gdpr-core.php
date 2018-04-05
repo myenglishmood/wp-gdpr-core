@@ -34,6 +34,7 @@ include_once GDPR_DIR . 'lib/gdpr-customtables.php';
 
 use wp_gdpr\lib\Gdpr_Container;
 use wp_gdpr\lib\Gdpr_Customtables;
+use wp_gdpr\lib\Gdpr_Log;
 use wp_gdpr\lib\Session_Handler;
 
 class Wp_Gdpr_Core {

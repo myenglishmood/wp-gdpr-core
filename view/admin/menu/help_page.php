@@ -33,7 +33,20 @@
         <br>
         <div class="user_guides_content">
             <img class="a_info" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
-            // carousel
+            <div class="multiple-items">
+                <div><img class="carousel_img" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
+                    <p>auris mauris ante, blandit et, ultrices a,1</p></div>
+                <div><img class="carousel_img" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
+                    <p>auris mauris ante, blandit et, ultrices a,2</p></div>
+                <div><img class="carousel_img" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
+                    <p>auris mauris ante, blandit et, ultrices a,3</p></div>
+                <div><img class="carousel_img" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
+                    <p>auris mauris ante, blandit et, ultrices a,4</p></div>
+                <div><img class="carousel_img" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
+                    <p>auris mauris ante, blandit et, ultrices a,5</p></div>
+                <div><img class="carousel_img" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
+                    <p>auris mauris ante, blandit et, ultrices a,6</p></div>
+            </div>
         </div>
     </div>
     <div id="user_freq_questions">
@@ -95,7 +108,8 @@
         <div class="user_support_header">
             <h4>Support</h4>
         </div>
-<!--        <img class="a_info" src="--><?php //echo GDPR_URL . 'assets/images/icon-support.png'; ?><!--">-->
+        <!--        <img class="a_info" src="--><?php //echo GDPR_URL . 'assets/images/icon-support.png';
+		?><!--">-->
         <div class="user_support_content">
             <p>Before you contact support, be sure to read our <a href="#user_freq_questions">FAQ</a> and
                 check our
@@ -120,3 +134,4 @@
 </div>
 <p class="appsaloon_footer">WP-GDPR 1.5 developed by <a href="https://appsaloon.be/"><b>Appsaloon</b></a></p>
 
+<?php var_dump(get_plugin_data(GDPR_DIR .'wp-gdpr-core.php'))  ?>
