@@ -44,7 +44,7 @@ class Controller_Menu_Page {
 			case 'toplevel_page_wp_gdpr':
 				break;
 			case 'wp-gdpr_page_help':
-				wp_enqueue_script('help_js', GDPR_URL . 'assets/js/help.js',array('jquery', 'jquery-ui-accordion'), null, false );
+				wp_enqueue_script('help_js', GDPR_URL . 'assets/js/help.js',array('jquery', 'jquery-ui-accordion', 'jquery-ui-core'), null, false );
 				break;
 		}
 	}
