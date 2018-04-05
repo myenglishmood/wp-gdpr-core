@@ -3,20 +3,25 @@
     "name" : "Gravity Forms",
     "slug" : "gravityforms",
     "data_stored_in": "entries",
+    "plugin_name": "gravityforms/gravityforms.php",
+    "plugin_link": "https://wp-gdpr.eu/add-ons/gravity-forms/",
+    "plugin_wp_gdpr": "wp-gdpr-gf-addon/wp-gdpr-gf-addon.php"
   },
   "woocommerce":{
     "name" : "Woocommerce",
     "slug" : "woocommerce",
-    "data_stored_in": "orders"
+    "data_stored_in": "orders",
+    "plugin_name": "woocommerce/woocommerce.php",
+    "plugin_link": "https://wp-gdpr.eu/add-ons/woocommerce-add-on/",
+    "plugin_wp_gdpr": "wp-gdpr-wc-addon/wp-gdpr-wc-addon.php"
   },
   "contactform7":{
     "name" : "Contact Form 7 CFDB7",
     "slug" : "cfdb7",
-    "data_stored_in": "entries, csv"
-  },
-  "eventsmanager":{
-    "name" : "Events manager",
-    "slug" : "wp_events",
-    "data_stored_in": "em_event_form"
+    "data_stored_in": "entries, csv",
+    "plugin_name": "contact-form-7/wp-contact-form-7.php",
+    "plugin_link": "https://wp-gdpr.eu/add-ons/contact-form-db-7-addon/",
+    "plugin_wp_gdpr": "wp-gdpr-cfdb7-addon/wp-gdpr-cfdb7-addon.php"
   }
+
 }
