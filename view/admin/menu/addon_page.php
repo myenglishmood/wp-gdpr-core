@@ -66,4 +66,4 @@
         </div>
     </div>
 </div>
-<p style="text-align: right; margin-right: 20px;">WP-GDPR 1.5 developed by <a href="https://appsaloon.be/"><b>Appsaloon</b></a></p>
+<p class="appsaloon_footer">WP-GDPR 1.5 developed by <a href="https://appsaloon.be/"><b>Appsaloon</b></a></p>
