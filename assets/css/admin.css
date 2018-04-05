@@ -211,6 +211,10 @@ img.a_background_img{
 #nav_menu a:hover, #nav_menu_extra a:hover, .user_info_content a:hover {
     color: #999;
 }
+p.appsaloon_footer {
+    text-align: right;
+    margin-right: 20px;
+}
 
         /*Plugin list page*/
 

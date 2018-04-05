@@ -39,14 +39,22 @@
             <h4>Support</h4>
         </div>
         <div class="user_support_content">
-            <img class="a_info" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
-            <p>Before you contact support, be sure to read our <a href="#user_freq_questions">FAQ</a> and check our <a
-                        href="">Guides & Tutorials.</a></p>
-            <p>Still need help? <b>Make sure to click on <a href=""><span class="dashicons dashicons-admin-page"></span></a></b></p>
+
+            <p align="center">Before you contact support, be sure to read our <a href="#user_freq_questions">FAQ</a> and check our
+                <a href="">Guides & Tutorials.</a> Still need help? <b>Make sure to click on <a href="#"><span class="dashicons dashicons-admin-page"></span>System info</a> at the top to copy your information. ( Support will ask for it )</b></p>
+            <img class="a_info" src="<?php echo GDPR_URL . 'assets/images/icon-support.png'; ?>">
+            <div class="user_support_wp">
+                <p>I need help for WP-GDPR core plugin.</p>
+                <a class="button button-primary" href="https://wordpress.org/support/plugin/wp-gdpr-core">Support on wp.org</a>
+            </div>
+            <div class="user_support_premium">
+                <p>I bought an add-on and need help..</p>
+                <a class="button button-s" href="https://wp-gdpr.eu/support/">Premium Support form</a>
+            </div>
         </div>
 
 
     </div>
 </div>
-<p style="text-align: right; margin-right: 20px;">WP-GDPR 1.5 developed by <a href="https://appsaloon.be/"><b>Appsaloon</b></a></p>
+<p class="appsaloon_footer">WP-GDPR 1.5 developed by <a href="https://appsaloon.be/"><b>Appsaloon</b></a></p>
 
