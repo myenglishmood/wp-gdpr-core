@@ -271,7 +271,25 @@ div.user_guides_content, div.user_support_content, .user_freq_questions_content 
     border-top-color: #f1f1f1 !important;
 }
 
+div.user_support_premium .button-succes {
+    background-color: #5E9D55;
+    color: #fff;
+}
+.user_support_content > img {
 
+}
+div.users_support_btn_group{
+    display: flex;
+    flex-direction: row;
+}
+.user_support_wp, .user_support_premium {
+ width: 150px;
+}
+
+div.user_support_content {
+    margin: auto;
+    width: 50%;
+}
 
 
 
