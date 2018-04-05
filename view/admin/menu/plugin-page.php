@@ -5,8 +5,9 @@
 ?>
 <div class="wrap">
     <h2><?php _e('List of plugins that store data of users', 'wp_gdpr'); ?></h2>
+    <p align="center"><img class="a_background_img" src="<?php echo GDPR_URL . 'assets/images/logo-trans-bg.png'; ?>"></p>
     <div id="nav_menu">
-        <a id="a_addons" href="<?php echo admin_url( 'admin.php?page=addon' ) ?>" >Available addons</a>
+        <a id="a_addons" href="<?php echo admin_url( 'admin.php?page=addon' ) ?>"><span><img class="a_icon" src="<?php echo GDPR_URL . 'assets/images/bliksem.svg'; ?>" style="width:15px; height=:auto;"></span>Available addons</a>
         <a id="a_plugins" class="active_tab" href=""><span class="dashicons dashicons-admin-plugins"></span>&nbsp;Your plugins</a>
         <a id="a_settings" href="<?php echo admin_url( 'admin.php?page=settings' ) ?>"><span class="dashicons dashicons-admin-generic"></span>&nbsp;Settings</a>
         <a id="a_help" href="<?php echo admin_url( 'admin.php?page=help' ) ?>"><span class="dashicons dashicons-editor-help"></span>&nbsp;Help</a>
@@ -23,8 +24,8 @@
         </div>
         <hr>
         <div class="user_info_content">
-            <img src="<?php echo GDPR_URL . 'assets/images/info.svg'; ?>" style="width: 100px; height: auto;">
-            <p style="width: 80%;">On this page you can find a list of plugins installed on your website that store personal data.
+            <img class="a_info" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
+            <p>On this page you can find a list of plugins installed on your website that store personal data.
             Make sure all personal data stored is handled by our plugin by installing the add-on you need.
             If you still are not sure what this is check out our <a href="<?php echo admin_url( 'admin.php?page=help' ) ?>"><b>Help page</b></a>
             or our <a href="https://wp-gdpr.eu/tutorials/" target="_blank"><b>Online tutorials</b></a>.</p>
@@ -37,6 +38,7 @@
 
     <?php $controller->build_table_with_plugins(); ?>
 </div>
+<p style="text-align: right; margin-right: 20px;">WP-GDPR 1.5 developed by <a href="https://appsaloon.be/"><b>Appsaloon</b></a></p>
 
 
 

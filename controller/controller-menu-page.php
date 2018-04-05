@@ -688,7 +688,7 @@ class Controller_Menu_Page {
 
 		$table = new Gdpr_Table_Builder(
 			array( __( 'Plugin name', 'wp_gdpr' ), __('Plugin status', 'wp_gdpr'),
-				__('Personal data', 'wp_gdpr'), __('Add-on status', 'wp_gdpr') ),
+				__('Personal data', 'wp_gdpr'), __('WP-GDPR add-on status', 'wp_gdpr') ),
 			$plugins
 			, array() );
 
@@ -707,7 +707,6 @@ class Controller_Menu_Page {
 		}
 
 		$plugins = $this->filter_plugins( $plugins );
-
 		return $plugins;
 	}
 
@@ -717,17 +716,40 @@ class Controller_Menu_Page {
 	 * @return array
 	 */
 	public function filter_plugins( $plugins ) {
+
 		return array_map( function ( $data ) {
-			if ( isset( $data['name'], $data['data_stored_in'] ) ) {
-				return array( $data['name'], '',
-				$data['data_stored_in'], '' );
+			$status_active = " ";
+			$status_wp_gdpr = "";
+			$all_plugins = get_plugins();
+			if ( isset( $data['name'], $data['data_stored_in']) ) {
+				if ( is_plugin_active( $data['plugin_name'] ) === true ) {
+					$status_active = 'Active';
+				}  else {
+					$status_active = 'Inactive';
+				}
+				if ( isset( $all_plugins[$data['plugin_wp_gdpr']] ) ) {
+					if ( is_plugin_active( $data['plugin_wp_gdpr'] ) === true )  {
+						$status_wp_gdpr =  '<p class="active"><b>Active</b></p>';
+					} else {
+						$status_wp_gdpr = '<p class="inactive"><b>Inactive</b></p>';
+					}
+				} else {
+					$status_wp_gdpr = "<a class='get_add_on' target='_blank' href='" . $data['plugin_link'] . " '><b>Get add-on</b></a>";
+				}
+				return array( $data['name'], $status_active,
+				$data['data_stored_in'], $status_wp_gdpr );
 			} else {
 				return array( 'empty' );
 			}
 //
 		}, $plugins );
 
+
+
+
 	}
+//TODO add status update plugin avalible
+
 
 	/**
 	 * build form to request add-on

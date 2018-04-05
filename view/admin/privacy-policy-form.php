@@ -2,9 +2,13 @@
 /**
  * form to update privacy policy link in admin page settings
  */
+
+use wp_gdpr\model\Request_Form;
+
 ?>
 <form method="post" action="" class="postbox" id="gdpr_admin_privacy_policy">
-    <h3><?php _e('Settings for comment forms', 'wp_gdpr'); ?></h3>
+    <h3><?php _e('Settings for', 'wp_gdpr'); ?>&nbsp;<b><?php _e('WordPress comments'); ?></b>&nbsp;<span class="dashicons dashicons-info"></span></h3>
+    <hr>
     <div class="postbox-group">
         <label for="gdpr_priv_pov_label"><?php _e('Privacy policy label', 'wp_gdpr'); ?>:</label>
         <textarea name="gdpr_priv_pov_label"><?php echo $privacy_policy_strings[0]; ?></textarea>
@@ -31,7 +35,9 @@
         <textarea name="gdpr_priv_pov_checkbox"><?php echo $privacy_policy_strings[2]; ?></textarea>
     </div>
 
-    <h3><?php _e('Settings for personal data request page', 'wp_gdpr'); ?></h3>
+    <h3><?php _e('Settings for', 'wp_gdpr'); ?> <b><?php _e( 'Personal Data Request Page', 'wp_gdpr'); ?></b>&nbsp;<small><a href="<?php echo Request_Form::get_personal_data_page_url('') ?>" style="color: #1F87B6;">view page</a></small>&nbsp;<span class="dashicons dashicons-info"></span></h3>
+
+    <hr>
     <div class="postbox-group">
         <label for="gdpr_priv_pov_text_data_request"><?php _e('Privacy policy text', 'wp_gdpr'); ?>:</label>
         <?php $args = array(
