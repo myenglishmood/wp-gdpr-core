@@ -2,7 +2,7 @@
   "gravityforms":{
     "name" : "Gravity Forms",
     "slug" : "gravityforms",
-    "data_stored_in": "entries"
+    "data_stored_in": "entries",
   },
   "woocommerce":{
     "name" : "Woocommerce",

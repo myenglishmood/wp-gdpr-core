@@ -687,7 +687,8 @@ class Controller_Menu_Page {
 		$plugins = $this->get_plugins_array();
 
 		$table = new Gdpr_Table_Builder(
-			array( __( 'plugin name', 'wp_gdpr' ) ),
+			array( __( 'Plugin name', 'wp_gdpr' ), __('Plugin status', 'wp_gdpr'),
+				__('Personal data', 'wp_gdpr'), __('Add-on status', 'wp_gdpr') ),
 			$plugins
 			, array() );
 
@@ -717,12 +718,15 @@ class Controller_Menu_Page {
 	 */
 	public function filter_plugins( $plugins ) {
 		return array_map( function ( $data ) {
-			if ( isset( $data['name'] ) ) {
-				return array( $data['name'] );
+			if ( isset( $data['name'], $data['data_stored_in'] ) ) {
+				return array( $data['name'], '',
+				$data['data_stored_in'], '' );
 			} else {
 				return array( 'empty' );
 			}
+//
 		}, $plugins );
+
 	}
 
 	/**
