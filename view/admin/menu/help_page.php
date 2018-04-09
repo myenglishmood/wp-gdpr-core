@@ -1,10 +1,11 @@
 <?php namespace wp_gdpr\view\admin;
+use wp_gdpr\lib\Gdpr_Helper;
 /**
  * this template is to show manu page in admin-menu
  */
 ?>
 <div class="wrap">
-    <h3><?php _e( 'On this page will come info and help for the plugin', 'wp_gdpr' ); ?></h3>
+    <h3><b><?php _e( 'Information', 'wp_gdpr' ); ?></b> <?php _e( 'on how to get you GDPR ready!', 'wp_gdpr' ); ?></h3>
     <p align="center"><img class="a_background_img" src="<?php echo GDPR_URL . 'assets/images/logo-trans-bg.png'; ?>">
     </p>
     <div id="nav_menu">
@@ -14,9 +15,7 @@
                     class="dashicons dashicons-admin-page"></span>System info</a>
         <a id="a_settings" href="<?php echo admin_url( 'admin.php?page=settings' ) ?>"><span
                     class="dashicons dashicons-admin-generic"></span>&nbsp;Settings</a>
-        <a target="_blank" id="a_addon" href="https://wp-gdpr.eu/add-ons/"><span><img class="a_icon"
-                                                                                      src="<?php echo GDPR_URL . 'assets/images/bliksem.svg'; ?>"
-                                                                                      style="width:20px; height=:auto;"></span>Add-ons</a>
+        <a id="a_addon" href="<?php echo admin_url( 'admin.php?page=addon' ) ?>"><span class="dashicons dashicons-screenoptions"></span> Add-ons</a>
     </div>
     <div id="nav_menu_extra">
         <a id="a_review" target="_blank"
@@ -26,6 +25,21 @@
         <a id="a_homepage" target="_blank" href="https://wp-gdpr.eu/"><span
                     class="dashicons dashicons-admin-home"></span>&nbsp;Visit our homepage</a>
     </div>
+    <div id="user_info" class="postbox user_info">
+        <div class="user_info_header">
+            <h3>Why do I need add-ons?</h3>
+            <button id="usr_info_header_btn">dismiss</button>
+        </div>
+        <br>
+        <div class="user_info_content">
+            <img class="a_info" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
+            <p>Alot of plugins collect personal data. Because there is a big variety of plugins we created add-ons to
+                make those plugins GDPR ready
+                with our WP-GDPR plugin. If you still are not sure what this is check out our <a
+                        href="<?php echo admin_url( 'admin.php?page=help' ) ?>"><b>Help page</b></a>
+                or our <a href="https://wp-gdpr.eu/tutorials/" target="_blank"><b>Online tutorials</b></a>.</p>
+        </div>
+    </div>
     <div id="user_guides">
         <div class="user_guides_header">
             <h4>Guide, Tutorials & Informative blogposts</h4>
@@ -33,8 +47,9 @@
         <br>
         <div class="user_guides_content">
             <img class="a_info" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
+            <img src="https://wp-gdpr.eu/wp-content/uploads/2018/03/installcore-1-300x201.jpg" alt="">
             <div class="multiple-items">
-                <div><img class="carousel_img" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
+                <div><img class="carousel_img" src="//wp-gdpr.eu/wp-content/uploads/2018/03/installcore-1-300x201.jpg" alt="Tutorial - Install WP GDPR Core - Step 1, Add new plugin">
                     <p>auris mauris ante, blandit et, ultrices a,1</p></div>
                 <div><img class="carousel_img" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
                     <p>auris mauris ante, blandit et, ultrices a,2</p></div>
@@ -53,7 +68,8 @@
         <div class="user_freq_questions_header">
             <h4>Frequently Asked Questions</h4>
             <div id="accordion">
-                <h4>Section 1</h4>
+                <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>What
+                    information does the plugin track?</h4>
                 <div>
                     <p>
                         Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
@@ -62,7 +78,8 @@
                         odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
                     </p>
                 </div>
-                <h4>Section 2</h4>
+                <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>How
+                    can my users get access to their personal data?</h4>
                 <div>
                     <p>
                         Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
@@ -71,7 +88,8 @@
                         suscipit faucibus urna.
                     </p>
                 </div>
-                <h4>Section 3</h4>
+                <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>Where
+                    do I need to display the link to my Privacy Policy?</h4>
                 <div>
                     <p>
                         Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
@@ -85,7 +103,8 @@
                         <li>List item three</li>
                     </ul>
                 </div>
-                <h4>Section 4</h4>
+                <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>If
+                    I have a form where I dont ask for personal data, do I need enable the GDPR checkbox?</h4>
                 <div>
                     <p>
                         Cras dictum. Pellentesque habitant morbi tristique senectus et netus
@@ -108,10 +127,8 @@
         <div class="user_support_header">
             <h4>Support</h4>
         </div>
-        <!--        <img class="a_info" src="--><?php //echo GDPR_URL . 'assets/images/icon-support.png';
-		?><!--">-->
         <div class="user_support_content">
-            <p>Before you contact support, be sure to read our <a href="#user_freq_questions">FAQ</a> and
+            <p align="center">Before you contact support, be sure to read our <a href="#user_freq_questions">FAQ</a> and
                 check our
                 <a href="">Guides & Tutorials.</a> Still need help? <b>Make sure to click on <a href="#"><span
                                 class="dashicons dashicons-admin-page"></span>System info</a> at the top to copy your
@@ -128,10 +145,8 @@
                 </div>
             </div>
         </div>
-
-
+        <img class="a_support" src="<?php echo GDPR_URL . 'assets/images/icon-support.png'; ?>">
     </div>
 </div>
-<p class="appsaloon_footer">WP-GDPR 1.5 developed by <a href="https://appsaloon.be/"><b>Appsaloon</b></a></p>
-
-<?php var_dump(get_plugin_data(GDPR_DIR .'wp-gdpr-core.php'))  ?>
+<p class="appsaloon_footer">WP-GDPR <?php echo Gdpr_Helper::get_core_version() ?> developed by <a
+            href="https://appsaloon.be/"><b>Appsaloon</b></a></p>

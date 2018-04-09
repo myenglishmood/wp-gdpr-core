@@ -1,5 +1,13 @@
 jQuery(function ($) {
-    $( "#accordion" ).accordion({collapsible: true, active: false });
+
+    $( "#accordion" ).accordion({
+        collapsible: true,
+        active: false
+    });
+    $('.user_info_header').click (function() {
+        $('.user_info').hide()
+
+    });
     //slick carousel
     $('.multiple-items').slick({
         infinite: true,

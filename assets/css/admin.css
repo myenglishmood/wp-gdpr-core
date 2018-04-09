@@ -69,6 +69,10 @@ a#a_settings {
     margin-left: auto;
 }
 
+a#a_settings > a.active {
+    margin-left: 0;
+}
+
 #hr_line {
     position: relative;
     margin-top: 5px;
@@ -162,6 +166,7 @@ h2 {
     border-bottom: 1px solid #ddd;
     padding-bottom: 5px;
 }
+
 #addons_box > div > p {
     max-width: 150px;
     margin-left: 15px;
@@ -174,57 +179,70 @@ h2 {
     justify-content: space-between;
 }
 
-.more_inf{
+.more_inf {
     margin-left: auto;
 }
 
-#dataregister_table{
+#dataregister_table {
     background-color: white;
     width: 100%;
     border: 1px solid #ddd;
     padding: 15px;
 }
 
-#dataregister_table > thead{
+#dataregister_table > thead {
     text-align: left;
 }
 
-
-        /*General*/
+/*General*/
 
 .user_info_content img.a_info, .user_guides_content img.a_info {
     margin: 10px 10px -10px -10px;
 }
+
 .user_info_content > p {
     width: 80%;
 }
+
 .user_info_header, .user_guides_header {
     margin-bottom: -25px;
 }
-img.a_background_img{
-    margin: 0 0 -50px 250px;
+
+img.a_background_img {
+    margin: 0 0 -50px 380px;
+
 }
+
 #nav_menu a, #nav_menu_extra a, .user_info_content a {
     text-decoration: none;
     color: #555;
 }
+
 #nav_menu a:hover, #nav_menu_extra a:hover, .user_info_content a:hover {
     color: #999;
 }
+
 p.appsaloon_footer {
     text-align: right;
     margin-right: 20px;
 }
 
-        /*Plugin list page*/
+/*Plugin list page*/
 
 /*Status add-ons colors*/
-p.active{ color: #32cd32 }
-p.inactive{ color: #c28814 }
-a.get_add_on{ color: #4169e1 }
+p.active {
+    color: #32cd32
+}
 
+p.inactive {
+    color: #c28814
+}
 
-        /*Settings page*/
+a.get_add_on {
+    color: #4169e1
+}
+
+/*Settings page*/
 
 span.dashicons-info {
     color: #999;
@@ -232,8 +250,7 @@ span.dashicons-info {
     margin-top: -10px;
 }
 
-
-        /*Help page */
+/*Help page */
 #user_guides, #user_freq_questions, #user_support {
     background-color: white;
     padding: 10px;
@@ -242,23 +259,28 @@ span.dashicons-info {
     flex-direction: column;
     margin-bottom: 15px;
 }
+
 #user_guides > img, #user_support > img {
     height: 10em;
 }
 
-#user_guides > div, #user_support > div,
-#user_freq_questions{
+#user_guides > div,
+#user_freq_questions {
     display: flex;
     flex-direction: row;
 }
 
+#user_support {
+    padding: 0 auto 40px auto;
+}
+
 div.user_guides_header, div.user_support_header,
-div.user_freq_questions_header{
+div.user_freq_questions_header {
     justify-content: space-between;
 }
 
 div.user_guides_content > p, div.user_support_content > p,
-div.user_freq_questions_content > p{
+div.user_freq_questions_content > p {
     align-self: center;
     margin-left: 10px;
 }
@@ -275,28 +297,104 @@ div.user_support_premium .button-succes {
     background-color: #5E9D55;
     color: #fff;
 }
-.user_support_content > img {
+
+div.user_support_premium .button-succes:hover {
+    background-color: #6BAA62;
+    color: #fff;
+}
+#user_support{
+    position: relative;
+}
+
+.a_support {
+    position: absolute;
+    width: 150px;
+    height: 100px;
+    bottom: 10px;
+    /*z-index: -1;*/
+}
+
+.user_support_content > p {
+    padding: 0 50px;
 
 }
-div.users_support_btn_group{
+
+.user_support_content > p > a,
+.user_support_content > p > b > a {
+    text-decoration: none;
+    color: #555;
+}
+
+div.users_support_btn_group {
+    padding: 0;
+    margin: 0;
+    list-style: none;
     display: flex;
-    flex-direction: row;
-}
-.user_support_wp, .user_support_premium {
- width: 150px;
+    -webkit-flex-flow: row wrap;
+    justify-content: space-around;
 }
 
-div.user_support_content {
+.user_support_wp, .user_support_premium {
+    /*width: 160px;*/
+    /*text-align: center;*/
+    /*padding: 10px;*/
+    /*float:left;*/
+    /*width:50%;*/
+    padding: 5px;
+    width: 200px;
+    height: 150px;
+    margin-top: 10px;
+    text-align: center;
+    z-index: 1;
+}
+
+.user_support_wp {
+    padding-right: 0;
+}
+
+div.users_support_btn_group {
     margin: auto;
     width: 50%;
 }
 
+.icon_arrow {
+    margin-right: 10px;
+    margin-bottom: -4px;
 
-.slick-prev{
-    color:black;
-    background-color: black;
+}
+.icon_arrow_spin{
+    transform:rotate(90deg);
+}
+@media only screen and (max-width: 600px) {
+    .a_support {
+        position: relative;
+
+    }
 }
 
+
+/*Addons page */
+.addon_box{
+    width: 220px;
+    height: 340px;
+}
+.addon_box > img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.addon_footer > a {
+    margin-right: auto;
+    text-decoration: none;
+
+}
+
+
+/*////////////*/
+.slick-prev {
+    color: black;
+    background-color: black;
+}
 
 .multiple-items > div {
     max-width: 300px;

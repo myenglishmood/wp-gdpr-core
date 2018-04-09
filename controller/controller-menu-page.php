@@ -42,15 +42,19 @@ class Controller_Menu_Page {
 	public function admin_script( $hook ) {
 		switch ( $hook ) {
 			case 'toplevel_page_wp_gdpr':
-				break;
 			case 'wp-gdpr_page_help':
+			case 'wp-gdpr_page_addon':
+			case 'wp-gdpr_page_deletelist':
+			case 'wp-gdpr_page_datareg':
+			case 'wp-gdpr_page_pluginlist':
 				wp_enqueue_script( 'help_js', GDPR_URL . 'assets/js/help.js', array(
 					'jquery',
 					'jquery-ui-accordion',
 					'jquery-ui-core'
 				), null, false );
+				if( $hook == 'wp-gdpr_page_help'){
 				wp_enqueue_script( 'carousel_gdpr', GDPR_URL . 'assets/js/slick.min.js', array( 'jquery' ), null, true );
-				break;
+				break; }
 		}
 	}
 

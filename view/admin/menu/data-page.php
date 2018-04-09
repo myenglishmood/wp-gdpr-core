@@ -1,4 +1,5 @@
 <?php namespace wp_gdpr\view\admin;
+use wp_gdpr\lib\Gdpr_Helper;
 /**
  * this template is to show manu page in admin-menu
  */
@@ -11,7 +12,7 @@
         <a id="a_datarequest" href="<?php echo admin_url('admin.php?page=wp_gdpr')?>" class="active_tab"><span class="dashicons dashicons-search"></span>&nbsp;Data Requests</a>
         <a id="a_settings" href="<?php echo admin_url('admin.php?page=settings')?>"><span class="dashicons dashicons-admin-generic"></span>&nbsp;Settings</a>
         <a id="a_help" href="<?php echo admin_url('admin.php?page=help')?>"><span class="dashicons dashicons-editor-help"></span>&nbsp;Help</a>
-        <a target="_blank" id="a_addon" href="https://wp-gdpr.eu/add-ons/"><span><img class="a_icon" src="<?php echo GDPR_URL . 'assets/images/bliksem.svg'; ?>" style="width:20px; height=:auto;"></span>&nbsp;Add-ons</a>
+        <a target="_blank" id="a_addon" href="<?php echo admin_url( 'admin.php?page=addon' ) ?>"><span  class="dashicons dashicons-screenoptions"></span>&nbsp;Add-ons</a>
     </div>
     <div id="nav_menu_extra">
         <a id="a_review" target="_blank" href="https://wordpress.org/support/plugin/wp-gdpr-core/reviews/#new-post"><span class="dashicons dashicons-admin-comments"></span>&nbsp;Review
@@ -26,6 +27,6 @@
     $controller->build_table_with_requests();
     ?>
 </div>
-<p class="appsaloon_footer">WP-GDPR 1.5 developed by <a href="https://appsaloon.be/"><b>Appsaloon</b></a></p>
+<p class="appsaloon_footer">WP-GDPR <?php echo Gdpr_Helper::get_core_version() ?> developed by <a href="https://appsaloon.be/"><b>Appsaloon</b></a></p>
 
 

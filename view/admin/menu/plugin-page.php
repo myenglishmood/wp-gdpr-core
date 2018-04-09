@@ -1,4 +1,5 @@
 <?php namespace wp_gdpr\view\admin;
+use wp_gdpr\lib\Gdpr_Helper;
 /**
  * this template is to show manu page in admin-menu
  */
@@ -7,7 +8,8 @@
     <h2><?php _e('List of plugins that store data of users', 'wp_gdpr'); ?></h2>
     <p align="center"><img class="a_background_img" src="<?php echo GDPR_URL . 'assets/images/logo-trans-bg.png'; ?>"></p>
     <div id="nav_menu">
-        <a id="a_addons" href="<?php echo admin_url( 'admin.php?page=addon' ) ?>"><span><img class="a_icon" src="<?php echo GDPR_URL . 'assets/images/bliksem.svg'; ?>" style="width:15px; height=:auto;"></span>Available addons</a>
+        <a id="a_addons" href="<?php echo admin_url( 'admin.php?page=addon' ) ?>"><span class="dashicons dashicons-screenoptions
+"></span> Available addons</a>
         <a id="a_plugins" class="active_tab" href=""><span class="dashicons dashicons-admin-plugins"></span>&nbsp;Your plugins</a>
         <a id="a_settings" href="<?php echo admin_url( 'admin.php?page=settings' ) ?>"><span class="dashicons dashicons-admin-generic"></span>&nbsp;Settings</a>
         <a id="a_help" href="<?php echo admin_url( 'admin.php?page=help' ) ?>"><span class="dashicons dashicons-editor-help"></span>&nbsp;Help</a>
@@ -17,7 +19,8 @@
             our plugin</a>
         <a id="a_homepage" target="_blank" href="https://wp-gdpr.eu/"><span class="dashicons dashicons-admin-home"></span>&nbsp;Visit our homepage</a>
     </div>
-    <div id="user_info" class="postbox">
+    <br>
+    <div id="user_info" class="postbox user_info">
         <div class="user_info_header">
             <h3>What are plugins that store personal data?</h3>
             <button id="usr_info_header_btn">dismiss</button>
@@ -38,7 +41,5 @@
 
     <?php $controller->build_table_with_plugins(); ?>
 </div>
-<p class="appsaloon_footer">WP-GDPR 1.5 developed by <a href="https://appsaloon.be/"><b>Appsaloon</b></a></p>
-
-
+<p class="appsaloon_footer">WP_GDPR <?php echo Gdpr_Helper::get_core_version() ?> developed by <a href="https://appsaloon.be/"><b>Appsaloon</b></a></p>
 

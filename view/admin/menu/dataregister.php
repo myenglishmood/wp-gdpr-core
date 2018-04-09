@@ -4,14 +4,14 @@
         <a id="a_addons" href="" class="active_tab"><span class="dashicons dashicons-trash"></span>&nbsp;Complete log file</a>
         <a id="a_settings" href="<?php echo admin_url( 'admin.php?page=settings' ) ?>"><span class="dashicons dashicons-admin-generic"></span>&nbsp;Settings</a>
         <a id="a_help" href="<?php echo admin_url( 'admin.php?page=help' ) ?>"><span class="dashicons dashicons-editor-help"></span> Help</a>
-        <a id="a_addons" href="<?php echo admin_url( 'admin.php?page=addon' ) ?>"><span><img class="a_icon" src="<?php echo GDPR_URL . 'assets/images/bliksem.svg'; ?>" style="width:15px; height=:auto; color: #555;"></span>Available addons</a>
+        <a id="a_addons" href="<?php echo admin_url( 'admin.php?page=addon' ) ?>"><span class="dashicons dashicons-screenoptions"></span>Available addons</a>
     </div>
     <div id="nav_menu_extra">
         <a id="a_review" target="_blank" href="https://wordpress.org/support/plugin/wp-gdpr-core/reviews/#new-post"><span class="dashicons dashicons-admin-comments"></span>&nbsp;Review
             our plugin</a>
         <a id="a_homepage" target="_blank" href="https://wp-gdpr.eu/"><span class="dashicons dashicons-admin-home"></span>&nbsp;Visit our homepage</a>
     </div>
-    <div id="user_info">
+    <div id="user_info" class="user_info">
         <div class="user_info_header">
             <h3>What is dataregister?</h3>
             <button id="usr_info_header_btn">dismiss</button>
@@ -48,4 +48,5 @@
         </table>
     </div>
 </div>
-<p class="appsaloon_footer">WP-GDPR 1.5 developed by <a href="https://appsaloon.be/"><b>Appsaloon</b></a></p>
+<?php $plugin_data = get_plugin_data(GDPR_DIR .'wp-gdpr-core.php' );$plugin_version = $plugin_data['Version']; ?>
+<p class="appsaloon_footer">WP-GDPR <?php echo $plugin_version; ?> developed by <a href="https://appsaloon.be/"><b>Appsaloon</b></a></p>

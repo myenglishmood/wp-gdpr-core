@@ -5,7 +5,10 @@
     "data_stored_in": "entries",
     "plugin_name": "gravityforms/gravityforms.php",
     "plugin_link": "https://wp-gdpr.eu/add-ons/gravity-forms/",
-    "plugin_wp_gdpr": "wp-gdpr-gf-addon/wp-gdpr-gf-addon.php"
+    "plugin_wp_gdpr": "wp-gdpr-gf-addon/wp-gdpr-gf-addon.php",
+    "plugin_tutorial_link": "https://wp-gdpr.eu/portfolio/make-your-gravity-form-gdpr-ready/",
+    "plugin_tutorial_img": "https://wp-gdpr.eu/wp-content/uploads/2018/03/gravity-1-300x201.jpg",
+    "plugin_icon": ""
   },
   "woocommerce":{
     "name" : "Woocommerce",
@@ -13,7 +16,10 @@
     "data_stored_in": "orders",
     "plugin_name": "woocommerce/woocommerce.php",
     "plugin_link": "https://wp-gdpr.eu/add-ons/woocommerce-add-on/",
-    "plugin_wp_gdpr": "wp-gdpr-wc-addon/wp-gdpr-wc-addon.php"
+    "plugin_wp_gdpr": "wp-gdpr-wc-addon/wp-gdpr-wc-addon.php",
+    "plugin_tutorial_link": " ",
+    "plugin_tutorial_img": " ",
+    "plugin_icon": ""
   },
   "contactform7":{
     "name" : "Contact Form 7 CFDB7",
@@ -21,7 +27,10 @@
     "data_stored_in": "entries, csv",
     "plugin_name": "contact-form-7/wp-contact-form-7.php",
     "plugin_link": "https://wp-gdpr.eu/add-ons/contact-form-db-7-addon/",
-    "plugin_wp_gdpr": "wp-gdpr-cfdb7-addon/wp-gdpr-cfdb7-addon.php"
+    "plugin_wp_gdpr": "wp-gdpr-cfdb7-addon/wp-gdpr-cfdb7-addon.php",
+    "plugin_tutorial_link": "https://wp-gdpr.eu/portfolio/make-your-contact-form-7-gdpr-ready/",
+    "plugin_tutorial_img": "https://wp-gdpr.eu/wp-content/uploads/2018/03/Screen-Shot-2018-03-16-at-10.27.07-300x267.png",
+    "plugin_icon": ""
   }
 
 }
