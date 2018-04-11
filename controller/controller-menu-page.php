@@ -768,9 +768,11 @@ class Controller_Menu_Page {
 					$data['data_stored_in'],
 					$status_wp_gdpr
 				);
-			} else {
+			} else { if ( empty( $plugin_data['name'] ) ){
+				return array();
+			}else{
 				return array( 'empty' );
-			}
+			}}
 //
 		}, $plugins );
 

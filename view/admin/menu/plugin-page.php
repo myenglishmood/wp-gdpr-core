@@ -10,8 +10,8 @@ use wp_gdpr\lib\Gdpr_Helper;
     <div id="nav_menu">
         <a id="a_addons" href="<?php echo admin_url( 'admin.php?page=addon' ) ?>"><span class="dashicons dashicons-screenoptions
 "></span> Available addons</a>
-        <a id="a_plugins" class="active_tab" href=""><span class="dashicons dashicons-admin-plugins"></span>&nbsp;Your plugins</a>
-        <a id="a_settings" href="<?php echo admin_url( 'admin.php?page=settings' ) ?>"><span class="dashicons dashicons-admin-generic"></span>&nbsp;Settings</a>
+        <a id="a_plugins" class="active_tab" href="<?php echo admin_url( 'admin.php?page=addon&page_type=addonlist' ) ?>"><span class="dashicons dashicons-admin-plugins"></span>&nbsp;Your plugins</a>
+        <a id="a_settings" href="<?php echo admin_url( 'admin.php?page=settings_wp-gdpr' ) ?>"><span class="dashicons dashicons-admin-generic"></span>&nbsp;Settings</a>
         <a id="a_help" href="<?php echo admin_url( 'admin.php?page=help' ) ?>"><span class="dashicons dashicons-editor-help"></span>&nbsp;Help</a>
     </div>
     <div id="nav_menu_extra">
@@ -41,5 +41,5 @@ use wp_gdpr\lib\Gdpr_Helper;
 
     <?php $controller->build_table_with_plugins(); ?>
 </div>
-<p class="appsaloon_footer">WP_GDPR <?php echo Gdpr_Helper::get_core_version() ?> developed by <a href="https://appsaloon.be/"><b>Appsaloon</b></a></p>
+<p class="appsaloon_footer">WP-GDPR <?php echo Gdpr_Helper::get_core_version() ?> developed by <a href="https://appsaloon.be/"><b>Appsaloon</b></a></p>
 

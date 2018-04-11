@@ -3,30 +3,76 @@
 namespace wp_gdpr\lib;
 
 Class Gdpr_Helper {
+
+	/**
+	 * This gets the version of the core plugin
+	 *
+	 * @return mixed
+	 *
+	 * @since   1.5
+	 */
 	public static function get_core_version() {
 		$plugin_data = get_plugin_data( GDPR_DIR . 'wp-gdpr-core.php' );
 
 		return $plugin_data['Version'];
 	}
 
-	public function get_plugin_addon_status() {
+
+	/**
+	 * Gets plugins.json data and validate
+	 *
+	 * @return array    array  validate list of the plugins
+	 *
+	 * @since    1.5
+	 */
+	public static function get_plugin_addon_status() {
 		if ( is_file( GDPR_DIR . 'assets/json/plugins.json' ) ) {
-			$plugin_addons  = file_get_contents( GDPR_DIR . 'assets/json/plugins.json' );
-			$plugin_addons  = json_decode( $plugins, true );
+			$plugin_json  = file_get_contents( GDPR_DIR . 'assets/json/plugins.json' );
+			$plugin_json  = json_decode( $plugin_json, true );
 		} else {
-			$plugin_addons  = array();
+			$plugin_json  = array();
 		}
 
+		$plugins = static::check_plugin_active($plugin_json);
 
-
-		return $plugin_addons ;
-
+		return $plugins;
 	}
 
+	/**
+	 * Validate if the plugin and the add-on exist
+	 *
+	 * @param $plugin   array   list of the add-ons
+	 *
+	 * @return array    array   validated list of the add-ons
+	 * @since   1.5
+	 */
+	private static function check_plugin_active($plugin){
+		return array_map( function ( $data ) {
+			$all_plugins    = get_plugins();
+			if ( isset( $data['name'], $data['data_stored_in'] ) ) {
+				if ( is_plugin_active( $data['plugin_name'] ) === true ) {
+					$data['status_related_plugin'] = 'active';
+				} else {
+					$data['status_related_plugin'] = 'inactive';
+				}
 
+				if ( isset( $all_plugins[ $data['plugin_wp_gdpr'] ] ) ) {
+					if ( is_plugin_active( $data['plugin_wp_gdpr'] ) === true ) {
+						$data['status'] = 'active';
+					} else {
+						$data['status'] = 'inactive';
+					}
+				} else {
+					$data['status'] = 'not-installed';
+				}
 
+				return $data;
+			} else {
+				$data['status_related_plugin'] = 'name-not-given';
+				$data['status'] = 'related-plugin-not-installed';
+				return $data;
+			}
 
+		}, $plugin );
+	}
 }
-
-
-

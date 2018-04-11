@@ -11,9 +11,9 @@ use wp_gdpr\lib\Gdpr_Helper;
     <div id="nav_menu">
         <a id="a_help" class="active_tab" href="<?php echo admin_url( 'admin.php?page=help' ) ?>"><span
                     class="dashicons dashicons-editor-help"></span>&nbsp;Help</a>
-        <a id="a_datarequest" href="<?php echo admin_url( 'admin.php?page=wp_gdpr' ) ?>"><span
-                    class="dashicons dashicons-admin-page"></span>System info</a>
-        <a id="a_settings" href="<?php echo admin_url( 'admin.php?page=settings' ) ?>"><span
+<!--    Not for v1.5!!!     <a id="a_datarequest" href="--><?php //echo admin_url( 'admin.php?page=wp_gdpr' ) ?><!--"><span-->
+<!--                    class="dashicons dashicons-admin-page"></span>System info</a>-->
+        <a id="a_settings" href="<?php echo admin_url( 'admin.php?page=settings_wp-gdpr' ) ?>"><span
                     class="dashicons dashicons-admin-generic"></span>&nbsp;Settings</a>
         <a id="a_addon" href="<?php echo admin_url( 'admin.php?page=addon' ) ?>"><span class="dashicons dashicons-screenoptions"></span> Add-ons</a>
     </div>
@@ -25,21 +25,7 @@ use wp_gdpr\lib\Gdpr_Helper;
         <a id="a_homepage" target="_blank" href="https://wp-gdpr.eu/"><span
                     class="dashicons dashicons-admin-home"></span>&nbsp;Visit our homepage</a>
     </div>
-    <div id="user_info" class="postbox user_info">
-        <div class="user_info_header">
-            <h3>Why do I need add-ons?</h3>
-            <button id="usr_info_header_btn">dismiss</button>
-        </div>
-        <br>
-        <div class="user_info_content">
-            <img class="a_info" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
-            <p>Alot of plugins collect personal data. Because there is a big variety of plugins we created add-ons to
-                make those plugins GDPR ready
-                with our WP-GDPR plugin. If you still are not sure what this is check out our <a
-                        href="<?php echo admin_url( 'admin.php?page=help' ) ?>"><b>Help page</b></a>
-                or our <a href="https://wp-gdpr.eu/tutorials/" target="_blank"><b>Online tutorials</b></a>.</p>
-        </div>
-    </div>
+    <br>
     <div id="user_guides">
         <div class="user_guides_header">
             <h4>Guide, Tutorials & Informative blogposts</h4>
@@ -47,75 +33,165 @@ use wp_gdpr\lib\Gdpr_Helper;
         <br>
         <div class="user_guides_content">
             <img class="a_info" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
-            <img src="https://wp-gdpr.eu/wp-content/uploads/2018/03/installcore-1-300x201.jpg" alt="">
-            <div class="multiple-items">
-                <div><img class="carousel_img" src="//wp-gdpr.eu/wp-content/uploads/2018/03/installcore-1-300x201.jpg" alt="Tutorial - Install WP GDPR Core - Step 1, Add new plugin">
-                    <p>auris mauris ante, blandit et, ultrices a,1</p></div>
-                <div><img class="carousel_img" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
-                    <p>auris mauris ante, blandit et, ultrices a,2</p></div>
-                <div><img class="carousel_img" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
-                    <p>auris mauris ante, blandit et, ultrices a,3</p></div>
-                <div><img class="carousel_img" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
-                    <p>auris mauris ante, blandit et, ultrices a,4</p></div>
-                <div><img class="carousel_img" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
-                    <p>auris mauris ante, blandit et, ultrices a,5</p></div>
-                <div><img class="carousel_img" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
-                    <p>auris mauris ante, blandit et, ultrices a,6</p></div>
-            </div>
+            <section class="variable slider">
+	            <?php $plugins = Gdpr_Helper::get_plugin_addon_status($plugin_addons);
+	            if (is_array($plugins) && count( $plugins ) != 0) :
+		            foreach ($plugins as $plugin_data ): ?>
+                        <div><a href="<?php echo $plugin_data['plugin_tutorial_link'] ?>" target="_blank"><img class="carousel_img" src="<?php echo $plugin_data['plugin_tutorial_img'] ?>" alt="Tutorial - Install WP GDPR for <?php echo $plugin_data['name'] ?>">
+                                <p align="center"><?php echo $plugin_data['plugin_tutorial_intro'] ?></p></a>
+                        </div>
+		            <?php endforeach;
+	            endif; ?>
+
+            </section>
         </div>
     </div>
     <div id="user_freq_questions">
         <div class="user_freq_questions_header">
             <h4>Frequently Asked Questions</h4>
             <div id="accordion">
-                <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>What
-                    information does the plugin track?</h4>
-                <div>
-                    <p>
-                        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
-                        ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
-                        amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-                        odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
-                    </p>
+                <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>How do I install the WP-GDPR Core plugin?</h4>
+                <div class="accordion-content">
+                    <ol>
+                        <li>Upload the plugin files to the /wp-content/plugins, or install the plugin trough th WordPress plugins screen directly.</li>
+                        <li>Activate the plugin through the 'Plugins' screen in WordPress.</li>
+                        <li>'WP GDPR' will be created in the admin menu where you can view requests & settings.</li>
+                        <li>The page 'GDPR - Request personal data' will be created automatically. This page displays the form where visitors can submit their request.</li>
+                    </ol>
                 </div>
-                <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>How
-                    can my users get access to their personal data?</h4>
-                <div>
-                    <p>
-                        Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
-                        purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
-                        velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
-                        suscipit faucibus urna.
-                    </p>
-                </div>
-                <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>Where
-                    do I need to display the link to my Privacy Policy?</h4>
-                <div>
-                    <p>
-                        Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
-                        Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
-                        ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
-                        lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
-                    </p>
+                <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>What does the WP-GDPR Core plugin do exactly?</h4>
+                <div class="accordion-content">
+                    <p>Our core plugin makes your WordPress GDPR compliant by providing a platform where all personal data can be collected and an automatic system for users to access that data securely. Features (as of v 1.4.4) are :</p>
                     <ul>
-                        <li>List item one</li>
-                        <li>List item two</li>
-                        <li>List item three</li>
+                        <li>
+                            Automatically create a request page with the shortcode [ REQ_CRED_FORM ]
+                        <ul>
+                            <li>
+                                Users can enter their emailaddress in this form to request access to their personal data
+                            </li>
+                        </ul>
+                        </li>
+                        <li>
+                            Secure access link emailed to the user to access their personal data
+                        </li>
+                        <li>
+                            Apply the consent box to all WordPress comments
+                        </li>
+                        <li>
+                            Gather all data from WordPress comments to be included in the personal data register
+                        </li>
+                        <li>
+                            User tools while accessing their personal data :
+                            <ul>
+                                <li>
+                                    View their personal data
+                                </li>
+                                <li>
+                                    Download their personal data
+                                </li>
+                                <li>
+                                    Update their personal data
+                                </li>
+                                <li>
+                                    Request to delete their personal data
+
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Admin views for :
+                            <ul>
+                                <li>
+                                    List all requested access and resend mails
+                                </li>
+                                <li>
+                                    List of all request for deletion and perform the action ( delete or anonymize )
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Settings page for the consent box content
+
+                        </li>
+                        <li>
+                            Email address for DPO
+                        </li>
+                        <li>
+                            List of all plugins that use personal data
+                        </li>
                     </ul>
                 </div>
-                <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>If
-                    I have a form where I dont ask for personal data, do I need enable the GDPR checkbox?</h4>
+                <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>What is the DPO Email address for?</h4>
+                <div class="accordion-content">
+                    <p>
+                        The DPO or Data Protection Officer is the person handling all GDPR issues for the organisation.
+                        Entering an email address on the settings page will make sure all access & delete requests are mailed to the DPO.
+                    </p>
+
+                </div>
+                <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>When do i need to ask for consent?</h4>
                 <div>
                     <p>
-                        Cras dictum. Pellentesque habitant morbi tristique senectus et netus
-                        et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
-                        faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
-                        mauris vel est.
+                        Every form on your website that asks for <a href="https://ec.europa.eu/info/law/law-topic/data-protection/reform/what-personal-data_en" target="_blank"><b>personal data</b></a> needs to have a clear consent of the user.
+                        More info on the subject van be found <a href="https://www.itgovernance.eu/blog/en/gdpr-when-do-you-need-to-seek-consent/" target="_blank"><b>here</b></a>.
                     </p>
+                </div>
+                <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>Which articles in the GDPR law dous the plugin cover?</h4>
+                <div class="accordion-content">
+                    <ul>
+                        <li>
+                            Users can view their data ( Art 15 GDPR )
+                        </li>
+                        <li>
+                            Users can adapt their personal data ( Art 16 GDPR )
+                        </li>
+                        <li>
+                            Users can download their personal data ( Art 20 GDPR )
+                        </li>
+                        <li>
+                            Users can request to delete their data ( Art 17 GDPR )
+                        </li>
+                    </ul>
+                </div>
+                <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>Does WP-GDPR make my hole company GDPR Compliant?</h4>
+                <div class="accordion-content">
                     <p>
-                        Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
-                        Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-                        inceptos himenaeos.
+                        As stated on our website we are not lawyers, we are WordPress developers that followed courses on GDPR. Our company is GDPR Compliant and through our plugin we try to make life easier for website owners.
+                        The features we implement in our plugin and add-ons are created to be compliant with several articles of the GDPR law, but we always advise to consult a lawyer to make sure your whole business is compliant with the GDPR law.
+                    </p>
+                </div>
+                <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>Where do I need to display the link to my Privacy Policy?</h4>
+                <div class="accordion-content">
+                    <p>
+                        Generally the link to your Privacy Policy is displayed in your websites footer.
+                    </p>
+                </div>
+                <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>What information should be displayed in my Privacy Policy?</h4>
+                <div class="accordion-content">
+                    <p>
+                        As per the GDPR , the information you provide to people about how you process their personal data has to be :
+                    </p>
+                    <ul>
+                        <li>
+                            Free of charge
+                        </li>
+                        <li>
+                            Transparant, intelligible, easily accessible & concise
+
+                        </li>
+                        <li>
+                            The writing should be clear & in plain language, particularly if addressing a child
+                        </li>
+                    </ul>
+                    <p>
+                        It's necessary to provide the link to the access request page in your Privacy Policy.
+                        For a good example of a Privacy Statement click <a href="https://ec.europa.eu/taxation_customs/about/privacy-statement-internet-website-commissions-taxation-customs-union-directorategeneral_en" target="_blank"><b>here</b></a>.
+                    </p>
+                </div>
+                <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>I have a support question, where do i go?</h4>
+                <div class="accordion-content">
+                    <p>
+                        We encourage all users of the WP-GDPR core and all its support questions related to this plugin make a support thread at our wordpress.org support page.
                     </p>
                 </div>
             </div>
@@ -130,18 +206,19 @@ use wp_gdpr\lib\Gdpr_Helper;
         <div class="user_support_content">
             <p align="center">Before you contact support, be sure to read our <a href="#user_freq_questions">FAQ</a> and
                 check our
-                <a href="">Guides & Tutorials.</a> Still need help? <b>Make sure to click on <a href="#"><span
-                                class="dashicons dashicons-admin-page"></span>System info</a> at the top to copy your
-                    information. ( Support will ask for it )</b></p>
+                <a href="">Guides & Tutorials.</a></p>
+<!--    Not for v1.5!!!         <p align="center">Still need help? <b>Make sure to click on <a href="#"><span-->
+<!--                                class="dashicons dashicons-admin-page"></span>System info</a> at the top to copy your-->
+<!--                    information. ( Support will ask for it )</b></p>-->
             <div class="users_support_btn_group">
                 <div class="user_support_wp">
                     <p>I need help for WP-GDPR core plugin.</p>
-                    <a class="button button-primary" href="https://wordpress.org/support/plugin/wp-gdpr-core">Support on
-                        wp.org</a>
+                    <a class="button button-primary" target="_blank" href="https://wordpress.org/support/plugin/wp-gdpr-core">Support on
+                        wordpress.org</a>
                 </div>
                 <div class="user_support_premium">
                     <p>I bought an add-on and need help..</p>
-                    <a class="button button-succes" href="https://wp-gdpr.eu/support/">Premium Support form</a>
+                    <a class="button button-succes" target="_blank" href="https://wp-gdpr.eu/support/">Premium Support Tickets</a>
                 </div>
             </div>
         </div>

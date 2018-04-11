@@ -1,19 +1,26 @@
 jQuery(function ($) {
-
+    //accordion
     $( "#accordion" ).accordion({
         collapsible: true,
-        active: false
+        active: false,
+        heightStyle: "content",
+        autoHeight: false
     });
+    //tabs faq
+
+    // Hide user info
     $('.user_info_header').click (function() {
         $('.user_info').hide()
-
     });
     //slick carousel
-    $('.multiple-items').slick({
+
+    $(".variable").slick({
+        dots: false,
+        slidesToShow: 2,
+        slidesToScroll: 2,
         infinite: true,
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        variableWidth: 300
+        variableWidth: true,
+        centerMode: true,
     });
 });
 
