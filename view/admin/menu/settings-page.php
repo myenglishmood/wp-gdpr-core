@@ -22,6 +22,9 @@ use wp_gdpr\lib\Gdpr_Helper;
 
 	use wp_gdpr\lib\Gdpr_Container;
 
+	/**
+	 * @var $controller \wp_gdpr\controller\Controller_Menu_Page
+	 */
 	$controller = Gdpr_Container::make( 'wp_gdpr\controller\Controller_Menu_Page' );
 	?>
     <?php $controller->build_form_to_add_privacy_policy_setting(); ?>
