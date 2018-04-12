@@ -43,4 +43,4 @@ use wp_gdpr\lib\Gdpr_Helper;
 
 	<?php $controller->build_table_with_delete_requests(); ?>
 </div>
-<p class="appsaloon_footer">WP-GDPR <?php echo Gdpr_Helper::get_core_version() ?> developed by <a href="https://appsaloon.be/"><b>Appsaloon</b></a></p>
+<p class="appsaloon_footer">WP-GDPR <?php echo Gdpr_Helper::get_core_version() ?> developed by <a href="https://appsaloon.be/" target="_blank"><b>Appsaloon</b></a></p>

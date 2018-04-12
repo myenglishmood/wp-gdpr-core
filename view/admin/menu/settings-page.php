@@ -32,4 +32,4 @@ use wp_gdpr\lib\Gdpr_Helper;
 	<?php do_action( 'add_on_settings_menu_page' ); ?>
 </div>
 <p class="appsaloon_footer">WP-GDPR <?php echo Gdpr_Helper::get_core_version() ?> developed by <a
-            href="https://appsaloon.be/"><b>Appsaloon</b></a></p>
+            href="https://appsaloon.be/" target="_blank"><b>Appsaloon</b></a></p>

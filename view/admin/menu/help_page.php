@@ -297,14 +297,14 @@ use wp_gdpr\lib\Gdpr_Helper;
                             <p>
                                 If you bought a single license or multiple single licenses and you would like to upgrade to a professional/agency license we will give you a discount worth the total amount of single licenses you bought before. This offer is valid until the 25th of May 2018.
 
-                                To upgrade, drop us an <a href="https://wp-gdpr.eu/contact/" target="_blank">e-mail</a> or talk to us in live chat.
+                                To upgrade, drop us an <a href="https://wp-gdpr.eu/contact/" target="_blank"><b>e-mail</b></a> or talk to us in live chat.
                             </p>
                         </div>
                         <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>Where do I access my downloads & invoices?</h4>
                         <div class="accordion-content">
                             <p>
                                 In the top right of our page you can login with the account you created during your checkout. Once logged in you will see My Account appear where you will find all needed information.
-                                <a href="https://wp-gdpr.eu/my-account/" target="_blank">Direct link</a>.
+                                <a href="https://wp-gdpr.eu/my-account/" target="_blank"><b>Direct link</b></a>.
                             </p>
                         </div>
                         <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>Is there premium support?</h4>
@@ -350,4 +350,4 @@ use wp_gdpr\lib\Gdpr_Helper;
     </div>
 </div>
 <p class="appsaloon_footer">WP-GDPR <?php echo Gdpr_Helper::get_core_version() ?> developed by <a
-            href="https://appsaloon.be/"><b>Appsaloon</b></a></p>
+            href="https://appsaloon.be/" target="_blank"><b>Appsaloon</b></a></p>

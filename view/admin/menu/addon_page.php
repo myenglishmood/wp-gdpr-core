@@ -61,7 +61,7 @@ use wp_gdpr\lib\Gdpr_Helper;
 						<?php elseif ( $plugin_data['status'] == 'active' ): ?>
                             <a class="button active"><span class="dashicons dashicons-controls-repeat"></span>&nbsp;Active</a>
 						<?php elseif ( $plugin_data['status'] == 'inactive' ): ?>
-                            <a class="button in-active"><span class="dashicons dashicons-controls-repeat"></span>&nbsp;Activate</a>
+                            <a class="button in-active" href="<?php echo Gdpr_Helper::generatePluginActivationLinkUrl($plugin_data['plugin_wp_gdpr']) ?>"><span class="dashicons dashicons-controls-repeat"></span>&nbsp;Activate</a>
 						<?php endif; ?>
                         <a class="more_inf" target="_blank" href="<?php echo $plugin_data['plugin_link'] ?>">More
                             info</a>
@@ -86,4 +86,4 @@ use wp_gdpr\lib\Gdpr_Helper;
 
 
 <p class="appsaloon_footer">WP-GDPR <?php echo Gdpr_Helper::get_core_version() ?> developed by <a
-            href="https://appsaloon.be/"><b>Appsaloon</b></a></p>
+            href="https://appsaloon.be/" target="_blank"><b>Appsaloon</b></a></p>

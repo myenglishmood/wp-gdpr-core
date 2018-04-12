@@ -75,4 +75,18 @@ Class Gdpr_Helper {
 
 		}, $plugin );
 	}
+
+	/**
+	 * Generate an activation URL for a plugin like the ones found in WordPress plugin administration screen.
+	 *
+	 * @param  string $plugin = myplugin/myplugin.php
+	 *
+	 * @return string         The plugin activation url
+	 */
+	public static function generatePluginActivationLinkUrl($plugin) {
+
+		$activateUrl = wp_nonce_url(admin_url('plugins.php?action=activate&plugin='.$plugin), 'activate-plugin_'.$plugin);
+
+		return $activateUrl;
+	}
 }

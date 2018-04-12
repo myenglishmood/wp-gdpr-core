@@ -49,4 +49,4 @@
     </div>
 </div>
 <?php $plugin_data = get_plugin_data(GDPR_DIR .'wp-gdpr-core.php' );$plugin_version = $plugin_data['Version']; ?>
-<p class="appsaloon_footer">WP-GDPR <?php echo $plugin_version; ?> developed by <a href="https://appsaloon.be/"><b>Appsaloon</b></a></p>
+<p class="appsaloon_footer">WP-GDPR <?php echo $plugin_version; ?> developed by <a href="https://appsaloon.be/" target="_blank"><b>Appsaloon</b></a></p>
