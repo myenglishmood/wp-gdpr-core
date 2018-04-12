@@ -1,3 +1,8 @@
+== Version 1.5.2
+* Hotfix svn conflicts
+
+== Version 1.5.1
+* Minor bug fix
 
 == Version 1.5.0
 * Improve interface in wp-admin

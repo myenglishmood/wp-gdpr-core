@@ -3,7 +3,7 @@ Contributors: Mieke Nijs, Sebastian Kurzynowski, AppSaloon
 Tags: Personal data, GDPR, European, regulation, privacy
 Requires at least: 4.6.10
 Tested up to: 4.9.5
-Stable tag: 1.5.0
+Stable tag: 1.5.2
 Requires PHP: 5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -47,6 +47,12 @@ We made our code available on [Github](https://github.com/WP-GDPR/wp-gdpr-core/)
 == Frequently Asked Questions ==
 
 == Changelog ==
+
+Version 1.5.2 (2018-04-12)
+    - Hotfix svn conflicts
+
+Version 1.5.1 (2018-04-12)
+    - Minor bug fix
 
 Version 1.5.0 (2018-04-12)
     - Improve interface in wp-admin
