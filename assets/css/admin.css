@@ -438,38 +438,38 @@ div.users_support_btn_group {
     transform:rotate(90deg);
 }
 
-ol, ul {
+#user_freq_questions ol, #user_freq_questions ul {
     padding-left: 50px;
 }
-ul {
+#user_freq_questions ul {
     list-style-type: inherit;
 
 }
-li > ul{
+#user_freq_questions li > ul{
     list-style-type: circle;
 }
-ol {
+#user_freq_questions ol {
     margin-left: 0;
 }
 
-p > a {
+#user_freq_questions p > a {
     text-decoration: none;
     color: #555;
 }
-p > a:hover {
+#user_freq_questions p > a:hover {
     color: #999;
 }
 .accordion-content > h4 > p {
     margin-left: 25px;
 }
 
-ul.tabs{
+#user_freq_questions ul.tabs{
     margin: 0px;
     margin-top: 30px;
     padding: 0px;
     list-style: none;
 }
-ul.tabs li{
+#user_freq_questions ul.tabs li{
     background: none;
     color: #555;
     display: inline-block;
@@ -477,7 +477,7 @@ ul.tabs li{
     cursor: pointer;
 }
 
-ul.tabs li.current{
+#user_freq_questions ul.tabs li.current{
     background: #ededed;
     color: #555;
 }
