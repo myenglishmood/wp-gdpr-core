@@ -1,7 +1,7 @@
 <?php
 namespace wp_gdpr\lib;
 
-if ( ! class_exists( 'Log' ) ) {
+if ( ! class_exists( 'wp_gdpr\Log' ) ) {
 	class Gdpr_Log {
 
 		/**
@@ -12,6 +12,23 @@ if ( ! class_exists( 'Log' ) ) {
 		 * table name without prefix
 		 */
 		const TABLE_NAME = 'appsaloon_log';
+
+		//data variable
+		private $data = array();
+
+		private static $instance = null;
+
+		public static function instance() {
+
+			// Check if instance is already exists
+			if(self::$instance == null) {
+				self::$instance = new Gdpr_Log();
+			}
+
+			return self::$instance;
+
+		}
+
 		/**
 		 * Creating of logging table
 		 */
@@ -45,8 +62,8 @@ if ( ! class_exists( 'Log' ) ) {
 		 * @param bool $function string  In which function
 		 * @param bool $line string  In which line
 		 */
-		public static function debug( $msg, $file = false, $function = false, $line = false ) {
-			static::add( 'debug', $msg, $file, $function, $line );
+		public function debug( $msg, $file = false, $function = false, $line = false ) {
+			$this->add( 'debug', $msg, $file, $function, $line );
 		}
 
 		/**
@@ -57,8 +74,8 @@ if ( ! class_exists( 'Log' ) ) {
 		 * @param bool $function string  In which function
 		 * @param bool $line string  In which line
 		 */
-		public static function info( $msg, $file = false, $function = false, $line = false ) {
-			static::add( 'info', $msg, $file, $function, $line );
+		public function info( $msg, $file = false, $function = false, $line = false ) {
+			$this->add( 'info', $msg, $file, $function, $line );
 		}
 
 		/**
@@ -69,8 +86,8 @@ if ( ! class_exists( 'Log' ) ) {
 		 * @param bool $function string  In which function
 		 * @param bool $line string  In which line
 		 */
-		public static function warn( $msg, $file = false, $function = false, $line = false ) {
-			static::add( 'warn', $msg, $file, $function, $line );
+		public function warn( $msg, $file = false, $function = false, $line = false ) {
+			$this->add( 'warn', $msg, $file, $function, $line );
 		}
 
 		/**
@@ -81,8 +98,8 @@ if ( ! class_exists( 'Log' ) ) {
 		 * @param bool $function string  In which function
 		 * @param bool $line string  In which line
 		 */
-		public static function error( $msg, $file = false, $function = false, $line = false ) {
-			static::add( 'error', $msg, $file, $function, $line );
+		public function error( $msg, $file = false, $function = false, $line = false ) {
+			$this->add( 'error', $msg, $file, $function, $line );
 		}
 
 		/**
@@ -93,8 +110,8 @@ if ( ! class_exists( 'Log' ) ) {
 		 * @param bool $function string  In which function
 		 * @param bool $line string  In which line
 		 */
-		public static function fatal( $msg, $file = false, $function = false, $line = false ) {
-			static::add( 'fatal', $msg, $file, $function, $line );
+		public function fatal( $msg, $file = false, $function = false, $line = false ) {
+			$this->add( 'fatal', $msg, $file, $function, $line );
 		}
 
 		/**
@@ -106,7 +123,7 @@ if ( ! class_exists( 'Log' ) ) {
 		 * @param bool $function string  In which function
 		 * @param       $line     string  In which line
 		 */
-		public static function add( $msg_type, $msg, $file, $function, $line ) {
+		public function add( $msg_type, $msg, $file, $function, $line ) {
 			$backtrace = debug_backtrace();
 
 			$file      = ( $file === false ) ? $backtrace[1]['file'] : $file;
@@ -114,7 +131,7 @@ if ( ! class_exists( 'Log' ) ) {
 			$function  = ( $function === false ) ? $backtrace[2]['function'] : $function;
 			$timestamp = current_time( 'mysql' );
 
-			static::log_to_session( $msg_type, $msg, $file, $function, $line, $timestamp );
+			$this->log_to_data( $msg_type, $msg, $file, $function, $line, $timestamp );
 		}
 
 		/**
@@ -127,12 +144,8 @@ if ( ! class_exists( 'Log' ) ) {
 		 * @param       $line       string  In which line
 		 * @param       $timestamp  string  Timestamp of the log
 		 */
-		public static function log_to_session( $msg_type, $msg, $file, $function, $line, $timestamp ) {
-			if ( ! isset( $_SESSION[ static::SESSION_LOG ] ) ) {
-				$_SESSION[ static::SESSION_LOG ] = array();
-			}
-
-			$_SESSION[ static::SESSION_LOG ][] = array(
+		public function log_to_data( $msg_type, $msg, $file, $function, $line, $timestamp ) {
+			$this->data[] = array(
 				'message_type' => $msg_type,
 				'message'      => $msg,
 				'file'         => $file,
@@ -146,14 +159,14 @@ if ( ! class_exists( 'Log' ) ) {
 		 * Saving log records to database
 		 * This function will be executed as the last PHP function.
 		 */
-		public static function log_to_database() {
-			if ( isset( $_SESSION[ static::SESSION_LOG ] ) && is_array( $_SESSION[ static::SESSION_LOG ] ) ) {
+		public function log_to_database() {
+			if ( isset( $this->data ) && is_array( $this->data  ) ) {
 				static::create_log_table();
 
 				global $wpdb;
 				$values = array();
 
-				foreach ( $_SESSION[ static::SESSION_LOG ] as $log ) {
+				foreach ( $this->data as $log ) {
 					$values[] = $wpdb->prepare( "(%s, %s, %s, %s, %s, %s)",
 						$log['message_type'],
 						( is_array( $log['message'] ) ) ? serialize( $log['message'] ) : $log['message'],
@@ -171,10 +184,8 @@ if ( ! class_exists( 'Log' ) ) {
 				$wpdb->query( $query );
 			}
 
-			// clear logs
-			if ( isset( $_SESSION[ static::SESSION_LOG ] ) ) {
-				unset( $_SESSION[ static::SESSION_LOG ] );
-			}
+//			clear data
+			$this->data = array();
 
 		}
 	}

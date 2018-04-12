@@ -25,7 +25,6 @@ use wp_gdpr\lib\Gdpr_Helper;
             <h3>What are plugins that store personal data?</h3>
             <button id="usr_info_header_btn">dismiss</button>
         </div>
-        <hr>
         <div class="user_info_content">
             <img class="a_info" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
             <p>On this page you can find a list of plugins installed on your website that store personal data.

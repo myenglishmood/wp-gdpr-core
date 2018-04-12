@@ -5,7 +5,7 @@ use wp_gdpr\lib\Gdpr_Helper;
  */
 ?>
 <div class="wrap">
-    <h3><b><?php _e( 'Information', 'wp_gdpr' ); ?></b> <?php _e( 'on how to get you GDPR ready!', 'wp_gdpr' ); ?></h3>
+    <h2><b><?php _e( 'Help', 'wp_gdpr' ); ?></b> <?php _e( 'Center', 'wp_gdpr' ); ?></h2>
     <p align="center"><img class="a_background_img" src="<?php echo GDPR_URL . 'assets/images/logo-trans-bg.png'; ?>">
     </p>
     <div id="nav_menu">
@@ -30,7 +30,6 @@ use wp_gdpr\lib\Gdpr_Helper;
         <div class="user_guides_header">
             <h4>Guide, Tutorials & Informative blogposts</h4>
         </div>
-        <br>
         <div class="user_guides_content">
             <img class="a_info" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
             <section class="variable slider">
@@ -135,7 +134,7 @@ use wp_gdpr\lib\Gdpr_Helper;
                             </p>
 
                         </div>
-                        <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>When do i need to ask for consent?</h4>
+                        <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>When do I need to ask for consent?</h4>
                         <div>
                             <p>
                                 Every form on your website that asks for <a href="https://ec.europa.eu/info/law/law-topic/data-protection/reform/what-personal-data_en" target="_blank"><b>personal data</b></a> needs to have a clear consent of the user.
@@ -221,7 +220,7 @@ use wp_gdpr\lib\Gdpr_Helper;
                                 <a href="https://easydigitaldownloads.com/" target="_blank"><b>Easy Digital Downloads</b></a> for example ).
                             </p>
                         </div>
-                        <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>How can i request add-on X?</h4>
+                        <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>How can I request add-on X?</h4>
                         <div class="accordion-content">
                             <p>
                                 The decision process to start working on a particular add-on is through sheer popularity on our

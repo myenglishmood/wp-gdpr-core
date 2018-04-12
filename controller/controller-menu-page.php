@@ -778,7 +778,6 @@ class Controller_Menu_Page {
 
 
 	}
-//TODO add status update plugin avalible
 
 
 	/**

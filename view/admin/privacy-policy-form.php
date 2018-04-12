@@ -7,7 +7,10 @@ use wp_gdpr\model\Request_Form;
 
 ?>
 <form method="post" action="" class="postbox" id="gdpr_admin_privacy_policy">
-    <h3><?php _e('Settings for', 'wp_gdpr'); ?>&nbsp;<b><?php _e('WordPress comments'); ?></b>&nbsp;<span class="dashicons dashicons-info"></span></h3>
+    <div class="tooltip">
+    <h3><?php _e('Settings for', 'wp_gdpr'); ?>&nbsp;<b><?php _e('WordPress comments'); ?></b>&nbsp;<span class="dashicons dashicons-info"></span>
+    </h3><span class="tooltiptext">These settings apply to the consent checkbox that is automatically created under your WordPress comment fields.</span>
+    </div>
     <hr>
     <div class="postbox-group">
         <label for="gdpr_priv_pov_label"><?php _e('Privacy policy label', 'wp_gdpr'); ?>:</label>
@@ -34,8 +37,12 @@ use wp_gdpr\model\Request_Form;
         <label for="gdpr_priv_pov_checkbox"><?php _e('Privacy policy checkbox', 'wp_gdpr'); ?>:</label>
         <textarea name="gdpr_priv_pov_checkbox"><?php echo $privacy_policy_strings[2]; ?></textarea>
     </div>
-
-    <h3><?php _e('Settings for', 'wp_gdpr'); ?> <b><?php _e( 'Personal Data Request Page', 'wp_gdpr'); ?></b>&nbsp;<small><a href="<?php echo Request_Form::get_personal_data_page_url('') ?>" style="color: #1F87B6;">view page</a></small>&nbsp;<span class="dashicons dashicons-info"></span></h3>
+    <div class="postbox-spacing"></div>
+<div class="tooltip">
+    <h3><?php _e('Settings for', 'wp_gdpr'); ?> <b><?php _e( 'Personal Data Request Page', 'wp_gdpr'); ?></b>&nbsp;<small><a href="<?php echo Request_Form::get_personal_data_page_url('') ?>" style="color: #1F87B6;">view page</a></small>&nbsp;<span class="dashicons dashicons-info"></span>
+    </h3>
+    <span class="tooltiptext">These settings apply to the consent checkbox that is automatically created on your Personal Data Request Page or every page where you use the shortcode for the Request Form.</span>
+</div>
 
     <hr>
     <div class="postbox-group">

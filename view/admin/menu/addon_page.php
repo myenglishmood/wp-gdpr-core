@@ -34,7 +34,6 @@ use wp_gdpr\lib\Gdpr_Helper;
             <h3>Why do I need add-ons?</h3>
             <button id="usr_info_header_btn">dismiss</button>
         </div>
-        <br>
         <div class="user_info_content">
             <img class="a_info" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
             <p>Alot of plugins collect personal data. Because there is a big variety of plugins we created add-ons to

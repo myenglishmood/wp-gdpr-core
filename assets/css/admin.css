@@ -1,5 +1,5 @@
 form.postbox, div.postbox {
-    padding: 10px;
+    padding: 30px;
 "
 }
 
@@ -106,6 +106,7 @@ a#a_settings > a.active {
 
 div.user_info_header {
     justify-content: space-between;
+    margin-left: 20px;
 }
 
 div.user_info_content > p {
@@ -115,7 +116,6 @@ div.user_info_content > p {
 
 div.user_info_content {
     padding-top: 5px;
-    margin-top: 10px;
     border-top-style: solid;
     border-top-width: 1px;
     border-top-color: #f1f1f1 !important;
@@ -143,6 +143,44 @@ h2 {
     margin-left: 15px;
     text-decoration: none;
 }
+.dpo_info{
+      text-decoration: none;
+    color: #555;
+  }
+.dpo_info:hover{
+    color: #999;
+}
+
+
+
+/*tooltip*/
+.tooltip {
+    position: relative;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 350px;
+    background-color: #999;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 15px;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 10%;
+    bottom: 35px;
+    margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+
 
 /* This is section for addons submenu */
 #addons_box {
@@ -203,6 +241,9 @@ h2 {
 .user_info_content img.a_info, .user_guides_content img.a_info {
     margin: 10px 10px -10px -10px;
 }
+.user_guides_content img.a_info{
+    margin: 10px 10px -10px -30px;
+}
 .a_info {
     width: 124px;
     height: auto;
@@ -212,9 +253,9 @@ h2 {
     width: 80%;
 }
 
-.user_info_header, .user_guides_header {
-    margin-bottom: -25px;
-}
+/*.user_info_header, .user_guides_header {*/
+    /*margin-bottom: -25px;*/
+/*}*/
 
 img.a_background_img {
     margin: 0 0 -50px 35%;
@@ -259,22 +300,29 @@ a.get_add_on {
 
 span.dashicons-info {
     color: #999;
-    font-size: 35px;
-    margin-top: -10px;
+    font-size: 25px;
+    margin-top: -5px;
+}
+.postbox-spacing{
+    height: 70px;
 }
 a#a_settings.active_tab{
     margin-left: 5px;
     margin-right: auto;
 }
 
+
 /*Help page */
 #user_guides, #user_freq_questions, #user_support {
     background-color: white;
-    padding: 10px;
+    padding: 10px 30px;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
+}
+#user_guides > img.a_info{
+    margin: 10px 10px -10px -30px
 }
 
 #user_guides > img, #user_support > img {
@@ -317,6 +365,10 @@ div.user_guides_content, div.user_support_content, .user_freq_questions_content 
     border-top-style: solid;
     border-top-width: 1px;
     border-top-color: #f1f1f1 !important;
+}
+div.user_support_content,
+div.user_guides_content{
+    margin-top: 0;
 }
 
 div.user_support_premium .button-succes {

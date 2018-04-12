@@ -53,10 +53,10 @@ class Gdpr_Menu_Backend {
 	 * @since v1.5      some menu's are merged
 	 */
 	public function set_wp_gdpr_listOfDataRequests() {
-		if ( isset( $_GET['page_type'] ) && $_GET['page_type'] == 'deleterequest' ) {
-			require_once GDPR_DIR . 'view/admin/menu/delete-page.php';
-		} else {
+		if ( isset( $_GET['page_type'] ) && $_GET['page_type'] == 'datarequest' ) {
 			require_once GDPR_DIR . 'view/admin/menu/data-page.php';
+		} else {
+			require_once GDPR_DIR . 'view/admin/menu/delete-page.php';
 		}
 	}
 
