@@ -1,31 +1,36 @@
 === WP GDPR ===
 Contributors: Mieke Nijs, Sebastian Kurzynowski, AppSaloon
-Tags: Personal data, GDPR, European, regulation, data
+Tags: Personal data, GDPR, European, regulation, privacy
 Requires at least: 4.6.10
-Tested up to: 4.9.4
-Stable tag: 1.4.4
+Tested up to: 4.9.5
+Stable tag: 1.5.0
 Requires PHP: 5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin wil create a page where users can request access to their personal data, stored on your website. They can update their data, download their data or ask for a removal.
-
-The plugin gives you advice on how to be compliant with GDPR and witch actions you need to take in order to be compliant.
-
+Make your website GDPR compliant and automate the process of handling personal data while integrating with plugins.
 
 == Description ==
-The plugin will create a page where users can request access to their personal data, stored on your website.
+This open source plugin will assist you making your website GDPR compliant by making personal data accessible to the owner of the data. Visitors (owners) don't need user accounts to access their data. Everything works through a unique link and e-mails.
+
+
+WP-GDPR integrates with some of the most well-known plugins through add-ons. This will make the data stored by the plugins available for the visitor to manage it.
+List of all add-ons:  [https://wp-gdpr.eu/add-ons/](https://wp-gdpr.eu/add-ons/).
+Integration with:
+  - [Gravity Forms](https://wp-gdpr.eu/add-ons/gravity-forms/)
+  - [Contact Form DB 7](https://wp-gdpr.eu/add-ons/contact-form-db-7-addon/)
+  - [WooCommerce](https://wp-gdpr.eu/add-ons/woocommerce-add-on/)
+
+= How WP-GDPR Core works =
+
+The plugin creates a page where users can request access to their personal data, stored on your website. You can find this page in the list of WordPress pages.
 In the backend you'll get an overview of the requests users send and you can see which plugins collect personal data and need a 'ask for approval' checkbox.
 
 Users who ask to view their personal data will get an email with a unique url on which they can view, update and download their comments and ask for a removal per comment.
 When they ask for a removal, the admin has the ability to delete the comment through the wp-gdpr backend.
 All emails will be sent automatically.
 
-With add-ons they can view, update and download their personal data or ask for a removal and this for Gravity Forms, Mailchimp, Woocommerce, The events calendar and Events manager.
-
-More info about add-ons can be found on [https://wp-gdpr.eu/](https://wp-gdpr.eu/).
-
-We made our code available on [Github](https://github.com/WP-GDPR/wp-gdpr-core/). Collaborate on the code by creating Pull requests.
+We made our code available on [Github](https://github.com/WP-GDPR/wp-gdpr-core/) and are welcoming Pull Request!
 
 == Installation ==
 1. Upload the plugin files to the /wp-content/plugins, or install the plugin through the WordPress plugins screen directly.
@@ -43,25 +48,33 @@ We made our code available on [Github](https://github.com/WP-GDPR/wp-gdpr-core/)
 
 == Changelog ==
 
-Version 1.4.4
+Version 1.5.0 (2018-04-12)
+    - Improve interface in wp-admin
+    - Improve labels and texts
+    - Add data to plugin.json
+    - Add Call To Action buttons to add-on overview
+    - Add Norwegian translation
+    - Add Italian translation
+
+Version 1.4.4 (2018-03-30)
     - Fix compatible Jetpack
     - Added translation SV
     - Minor bug fix
 
-Version 1.4.3
+Version 1.4.3 (2018-03-23)
     - Fix minor bugs
     
-Version 1.4.2
+Version 1.4.2 (2018-03-16)
     - Fix deprecated warning
-    - Fix when request form is embedded on a non-standard page. Until now, you got a 404-error when redirecting to the    	"Thank you"-page
+    - Fix when request form is embedded on a non-standard page. Until now, you got a 404-error when redirecting to the      "Thank you"-page
     - Fix confirmation of processing the delete request shows a short reference to what happened to the data
     - Enhancement add table header "request language"
 
-Version 1.4.1
+Version 1.4.1 (2018-03-15)
     - Make checkbox compatible with jetpack
 
-Version 1.4.0
-    - Add DPO email address
+Version 1.4.0 (2018-03-09)
+    - Add DPO e-mail address
     - Add dpo setting
     - Option to not show the comments section
     - Add settings feature
@@ -133,7 +146,7 @@ Version 1.1.1
     - Add update_comments.js
 
 Version 1.1.0
-	- Add name and email field to comments list
-	- Let users update their name and email
-	- Add download button to comments list
-	- Make it possible for the admin to choose between delete comment or make comment anonymous
+    - Add name and email field to comments list
+    - Let users update their name and email
+    - Add download button to comments list
+    - Make it possible for the admin to choose between delete comment or make comment anonymous
