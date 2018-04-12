@@ -1,4 +1,12 @@
 
+== Version 1.5.0
+* Improve interface in wp-admin
+* Improve labels and texts
+* Add data to plugin.json
+* Add Call To Action buttons to add-on overview
+* Add Norwegian translation
+* Add Italian translation
+
 == Version 1.4.4
 * Fix compatible Jetpack
 * Added translation SV
