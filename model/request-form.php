@@ -75,6 +75,7 @@ class Request_Form extends Form_Validation_Model {
 		$dpo_email = Gdpr_Options_Helper::get_dpo_email();
 		$this->send_email( $dpo_email, $time_of_insertion, $language );
 		$this->send_email( $single_address, $time_of_insertion, $language );
+
 		$this->redirect_to_page_gdpr_personal_data();
 	}
 
@@ -112,7 +113,7 @@ class Request_Form extends Form_Validation_Model {
 		$url = self::get_personal_data_page_url( '?thank_you' );
 
 		wp_redirect( $url );
-		exit;
+
 	}
 
 	/**

@@ -4,13 +4,13 @@ namespace wp_gdpr\controller;
 
 use wp_gdpr\lib\Gdpr_Customtables;
 use wp_gdpr\lib\Gdpr_Container;
-use wp_gdpr\lib\Gdpr_Log;
+use wp_gdpr\lib\Gdpr_Log_Interface;
 use wp_gdpr\lib\Gdpr_Options_Helper;
 use wp_gdpr\lib\Gdpr_Table_Builder;
 use wp_gdpr\lib\Session_Handler;
 use wp_gdpr\model\Request_Form;
 
-class Controller_Comments {
+class Controller_Comments extends Gdpr_Log_Interface {
 	const CSV_NAME = 'comments_csv';
 
 	/**
@@ -20,19 +20,13 @@ class Controller_Comments {
 	public $email_request;
 	public $message;
 
-	/**
-	 * @var \wp_gdpr\lib\Gdpr_Log
-	 */
-	protected $log;
 
 	/**
 	 * Controller_Comments constructor.
 	 *
-	 * @param \wp_gdpr\lib\Gdpr_Log $log
 	 */
-	public function __construct(Gdpr_Log $log) {
-		$this->log = $log;
-
+	public function __construct() {
+		parent::__construct();
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_style' ), 10 );
 		//save delete request
 		add_action( 'init', array( $this, 'save_delete_request' ) );
@@ -98,6 +92,7 @@ class Controller_Comments {
 			'url'    => admin_url( 'admin-ajax.php' ),
 			'action' => 'wp_gdpr'
 		) );
+		$this->log->info( 'comments scripts are loaded');
 	}
 
 	public function echo_checkox_gdpr() {

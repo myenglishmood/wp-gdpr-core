@@ -32,6 +32,7 @@ require_once GDPR_DIR . 'lib/gdpr-autoloader.php';
 //include to register custom table on plugin activation
 include_once GDPR_DIR . 'lib/gdpr-customtables.php';
 
+use wp_gdpr\config\Activation_Config;
 use wp_gdpr\lib\Gdpr_Container;
 use wp_gdpr\lib\Gdpr_Customtables;
 use wp_gdpr\lib\Session_Handler;
@@ -54,12 +55,14 @@ class Wp_Gdpr_Core {
 
 		Session_Handler::start_session();
 		$this->run();
+
+		register_activation_hook( __FILE__, array( new Activation_Config(), 'install' ) );
 	}
 
 	public function run() {
 		Gdpr_Container::make( 'wp_gdpr\config\Startup_Config' );
 		Gdpr_Container::make( 'wp_gdpr\controller\Controller_Credentials_Request', self::FORM_SHORTCODE_NAME );
-		Gdpr_Container::make( 'wp_gdpr\controller\Controller_Comments', Gdpr_Log::instance() );
+		Gdpr_Container::make( 'wp_gdpr\controller\Controller_Comments' );
 		Gdpr_Container::make( 'wp_gdpr\controller\Controller_Form_Submit', $this->request_form_inputs );
 		Gdpr_Container::make( 'wp_gdpr\controller\Controller_Menu_Page' );
 	}

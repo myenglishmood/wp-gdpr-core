@@ -53,7 +53,7 @@ class Gdpr_Log {
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		dbDelta( $query );
 
-		$this->info( 'Log table updated' );
+		$this->info( 'Log table created' );
 	}
 
 	/**
@@ -163,7 +163,7 @@ class Gdpr_Log {
 	 */
 	public function log_to_database() {
 		if ( isset( $this->data ) && is_array( $this->data ) ) {
-			$this->create_log_table();
+//			$this->create_log_table();
 
 			global $wpdb;
 			$values = array();
