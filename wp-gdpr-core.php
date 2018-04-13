@@ -34,8 +34,8 @@ include_once GDPR_DIR . 'lib/gdpr-customtables.php';
 
 use wp_gdpr\lib\Gdpr_Container;
 use wp_gdpr\lib\Gdpr_Customtables;
-use wp_gdpr\lib\Gdpr_Log;
 use wp_gdpr\lib\Session_Handler;
+use wp_gdpr\lib\Gdpr_Log;
 
 class Wp_Gdpr_Core {
 
@@ -62,6 +62,8 @@ class Wp_Gdpr_Core {
 		Gdpr_Container::make( 'wp_gdpr\controller\Controller_Comments' );
 		Gdpr_Container::make( 'wp_gdpr\controller\Controller_Form_Submit', $this->request_form_inputs );
 		Gdpr_Container::make( 'wp_gdpr\controller\Controller_Menu_Page' );
+		$log = Gdpr_Log::instance();
+		$log->info('test');
 	}
 }
 

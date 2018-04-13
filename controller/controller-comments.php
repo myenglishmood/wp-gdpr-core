@@ -4,7 +4,6 @@ namespace wp_gdpr\controller;
 
 use wp_gdpr\lib\Gdpr_Customtables;
 use wp_gdpr\lib\Gdpr_Container;
-use wp_gdpr\lib\Gdpr_Log;
 use wp_gdpr\lib\Gdpr_Options_Helper;
 use wp_gdpr\lib\Gdpr_Table_Builder;
 use wp_gdpr\lib\Session_Handler;
@@ -127,7 +126,6 @@ class Controller_Comments {
 			$controller = $this;
 			$this->update_gdpr_status( $this->email_request );
 			include_once GDPR_DIR . 'view/front/gdpr-template.php';
-			exit;
 		}
 	}
 
@@ -473,8 +471,6 @@ class Controller_Comments {
 					)
 				);
 				$this->message = '<h3>' . __( "The site administrator received your request. Thank You.", "wp_gdpr" ) . '</h3>';
-
-				Gdpr_Log::info('New delete request is added');
 
 				$this->send_email_to_admin( $email );
 			}

@@ -4,6 +4,7 @@ namespace wp_gdpr\config;
 
 
 use wp_gdpr\lib\Gdpr_Container;
+use wp_gdpr\lib\Gdpr_Log;
 use wp_gdpr\lib\Gdpr_Translation;
 
 class Startup_Config {
@@ -26,10 +27,7 @@ class Startup_Config {
 	 * add Logging when shutdown script
 	 */
 	public function execute_on_script_shutdown() {
-		if ( ! has_action( 'shutdown', array( 'wp_gdpr\lib\Gdpr_Log', 'log_to_database' ) ) ) {
-
-			add_action( 'shutdown', array( 'wp_gdpr\lib\Gdpr_Log', 'log_to_database' ) );
-		}
+		add_action( 'shutdown', array( Gdpr_Log::instance(), 'log_to_database' ) );
 	}
 
 	public function basic_config() {
