@@ -59,13 +59,10 @@ class Wp_Gdpr_Core {
 	public function run() {
 		Gdpr_Container::make( 'wp_gdpr\config\Startup_Config' );
 		Gdpr_Container::make( 'wp_gdpr\controller\Controller_Credentials_Request', self::FORM_SHORTCODE_NAME );
-		Gdpr_Container::make( 'wp_gdpr\controller\Controller_Comments' );
+		Gdpr_Container::make( 'wp_gdpr\controller\Controller_Comments', Gdpr_Log::instance() );
 		Gdpr_Container::make( 'wp_gdpr\controller\Controller_Form_Submit', $this->request_form_inputs );
 		Gdpr_Container::make( 'wp_gdpr\controller\Controller_Menu_Page' );
-		$log = Gdpr_Log::instance();
-		$log->info('test');
 	}
 }
-
 
 new Wp_Gdpr_Core();

@@ -4,17 +4,22 @@ namespace wp_gdpr\lib;
 class Gdpr_Log {
 
 	/**
-	 * Session KEY for log
-	 */
-	const SESSION_LOG = 'appsaloon_log';
-	/**
 	 * table name without prefix
 	 */
-	const TABLE_NAME = 'appsaloon_log';
+	const TABLE_NAME = 'gdpr_log';
 
-	//data variable
+	/**
+	 * Array where the log data gets saved
+	 *
+	 * @var array
+	 */
 	private $data = array();
 
+	/**
+	 * Instance where the log object gets saved
+	 *
+	 * @var null|Gdpr_Log
+	 */
 	private static $instance = null;
 
 	public static function instance() {
@@ -29,7 +34,7 @@ class Gdpr_Log {
 	/**
 	 * Creating of logging table
 	 */
-	public static function create_log_table() {
+	public function create_log_table() {
 		global $wpdb;
 
 		$table_name = $wpdb->prefix . self::TABLE_NAME;
@@ -48,7 +53,7 @@ class Gdpr_Log {
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		dbDelta( $query );
 
-		static::info( 'Log table updated' );
+		$this->info( 'Log table updated' );
 	}
 
 	/**
@@ -158,7 +163,7 @@ class Gdpr_Log {
 	 */
 	public function log_to_database() {
 		if ( isset( $this->data ) && is_array( $this->data ) ) {
-			static::create_log_table();
+			$this->create_log_table();
 
 			global $wpdb;
 			$values = array();
@@ -181,7 +186,7 @@ class Gdpr_Log {
 			$wpdb->query( $query );
 		}
 
-//			clear data
+		//clear data
 		$this->data = array();
 
 	}
