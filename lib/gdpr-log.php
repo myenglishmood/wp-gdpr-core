@@ -162,9 +162,7 @@ class Gdpr_Log {
 	 * This function will be executed as the last PHP function.
 	 */
 	public function log_to_database() {
-		if ( isset( $this->data ) && is_array( $this->data ) ) {
-//			$this->create_log_table();
-
+		if ( isset( $this->data ) && is_array( $this->data ) && defined('WP_DEBUG') ) {
 			global $wpdb;
 			$values = array();
 
@@ -190,4 +188,28 @@ class Gdpr_Log {
 		$this->data = array();
 
 	}
+
+	/**
+	 * Remove logs older than a week
+	 *
+	 * TODO add WP_DEUG_DAYS to user end documentation
+	 */
+	public function remove_old_rows() {
+		global $wpdb;
+
+		$days = ( defined('WP_DEBUG_DAYS' ) ) ? WP_DEBUG_DAYS : 30;
+
+		$timestamp = date( 'Y-m-d H:i:s', strtotime( '-'.$days.' days' ) );
+
+		$query = "DELETE FROM " . $wpdb->prefix . static::TABLE_NAME . " WHERE timestamp < '" . $timestamp . "'";
+
+		$deleted = $wpdb->query( $query );
+
+		if ( $deleted > 1 ) {
+			$this->info( $deleted . ' logs older than ' . $timestamp . ' are deleted' );
+		} elseif ( $deleted == 1 ) {
+			$this->info( $deleted . ' log older than ' . $timestamp . ' is deleted' );
+		}
+	}
+
 }

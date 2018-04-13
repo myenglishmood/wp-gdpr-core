@@ -9,14 +9,22 @@ use wp_gdpr\lib\Gdpr_Translation;
 
 class Startup_Config {
 
+	/**
+	 * Base configuration for this plugin
+	 *
+	 * @since 1.0.0
+	 */
 	public function __construct() {
 	    $this->include_translation();
 		$this->execute_on_script_shutdown();
+		$this->action_to_remove_old_rows_in_logtable();
 		$this->basic_config();
 	}
 
     /**
-     * include translation
+     * Includes translations
+     *
+     * @since 1.5.0
      */
 	public function include_translation()
     {
@@ -24,12 +32,19 @@ class Startup_Config {
     }
 
 	/**
-	 * add Logging when shutdown script
+	 * Writes logging messages to the database
+	 *
+	 * @since 1.5.3
 	 */
 	public function execute_on_script_shutdown() {
 		add_action( 'shutdown', array( Gdpr_Log::instance(), 'log_to_database' ) );
 	}
 
+	/**
+	 * Creates settings page in the backend
+	 *
+	 * @since 1.0.0
+	 */
 	public function basic_config() {
 		Gdpr_Container::make( 'wp_gdpr\lib\Gdpr_Menu_Backend' );
 
@@ -37,7 +52,18 @@ class Startup_Config {
 	}
 
 	/**
+	 * Connects gdpr_clear_log cron hook with the correct function
+	 *
+	 * @since 1.5.3
+	 */
+	public function action_to_remove_old_rows_in_logtable() {
+		add_action( 'gdpr_clear_log', array( Gdpr_Log::instance(), 'remove_old_rows' ) );
+	}
+
+	/**
 	 * create page with shortcode
+	 *
+	 * @since 1.0.0
 	 */
 	public function create_page() {
 		if ( false === get_option( 'gdpr_page' ) ) {
