@@ -2,7 +2,7 @@
 /**
  * WP GDPR
  *
- * Help to handle gdpr regulations
+ * Make your website GDPR compliant and automate the process of handling personal data while integrating with plugins.
  *
  * @package   WP GDPR CORE
  * @author    AppSaloon
@@ -12,7 +12,7 @@
  *
  * @wordpress-plugin
  * Plugin Name:       WP GDPR
- * Description:       Help to handle gdpr regulations.
+ * Description:       Make your website GDPR compliant and automate the process of handling personal data while integrating with plugins.
  * Version:           1.5.2
  * Text Domain:       wp_gdpr
  * Domain Path:       /languages
