@@ -1,5 +1,6 @@
 {
   "wp-gdpr-core":{
+    "name": "WP-GDPR-Core",
   "plugin_tutorial_link": "https://wp-gdpr.eu/portfolio/how-to-install-wp-gdpr-core/",
   "plugin_tutorial_img": "https://wp-gdpr.eu/wp-content/uploads/2018/03/installcore-1-300x201.jpg",
   "plugin_tutorial_intro": "How to install WP-GDPR CORE."

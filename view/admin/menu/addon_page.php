@@ -44,32 +44,35 @@ use wp_gdpr\lib\Gdpr_Helper;
         </div>
     </div>
     <div id="addons_box">
-		<?php $plugins = Gdpr_Helper::get_plugin_addon_status( $plugin_addons );
+		<?php
+		$plugins = Gdpr_Helper::get_plugin_addon_status();
 		if ( is_array( $plugins ) && count( $plugins ) != 0 ) :
-		foreach ( $plugins as $plugin_data ):
-            if ( ! empty( $plugin_data['name'] ) ): ?>
-                <div class="addon_box">
-                    <div class="led <?php echo $plugin_data['status'] ?>"></div>
-                    <h4><?php echo $plugin_data['name'] ?></h4>
-                    <img src="<?php echo GDPR_URL . $plugin_data['plugin_icon']; ?>">
-                    <p><?php echo $plugin_data['plugin_tutorial_intro']; ?></p>
-                    <div class="gf_footer addon_footer">
-						<?php if ( $plugin_data['status'] == 'not-installed' ): ?>
-                            <a href="<?php echo $plugin_data['plugin_link'] ?>" target="_blank"
-                               class="button not-installed"><span class="dashicons dashicons-cart"></span>&nbsp;Buy now</a>
-						<?php elseif ( $plugin_data['status'] == 'active' ): ?>
-                            <a class="button active"><span class="dashicons dashicons-controls-repeat"></span>&nbsp;Active</a>
-						<?php elseif ( $plugin_data['status'] == 'inactive' ): ?>
-                            <a class="button in-active" href="<?php echo Gdpr_Helper::generatePluginActivationLinkUrl($plugin_data['plugin_wp_gdpr']) ?>"><span class="dashicons dashicons-controls-repeat"></span>&nbsp;Activate</a>
-						<?php endif; ?>
-                        <a class="more_inf" target="_blank" href="<?php echo $plugin_data['plugin_link'] ?>">More
-                            info</a>
+			foreach ( $plugins as $plugin_data ):
+				if ( ! empty( $plugin_data['name'] ) ): ?>
+                    <div class="addon_box">
+                        <div class="led <?php echo $plugin_data['status'] ?>"></div>
+                        <h4><?php echo $plugin_data['name'] ?></h4>
+                        <img src="<?php echo GDPR_URL . $plugin_data['plugin_icon']; ?>">
+                        <p><?php echo $plugin_data['plugin_tutorial_intro']; ?></p>
+                        <div class="gf_footer addon_footer">
+							<?php if ( $plugin_data['status'] == 'not-installed' ): ?>
+                                <a href="<?php echo $plugin_data['plugin_link'] ?>" target="_blank"
+                                   class="button not-installed"><span class="dashicons dashicons-cart"></span>&nbsp;Buy
+                                    now</a>
+							<?php elseif ( $plugin_data['status'] == 'active' ): ?>
+                                <a class="button active"><span class="dashicons dashicons-controls-repeat"></span>&nbsp;Active</a>
+							<?php elseif ( $plugin_data['status'] == 'inactive' ): ?>
+                                <a class="button in-active"
+                                   href="<?php echo Gdpr_Helper::generatePluginActivationLinkUrl( $plugin_data['plugin_wp_gdpr'] ) ?>"><span
+                                            class="dashicons dashicons-controls-repeat"></span>&nbsp;Activate</a>
+							<?php endif; ?>
+                            <a class="more_inf" target="_blank" href="<?php echo $plugin_data['plugin_link'] ?>">More
+                                info</a>
+                        </div>
                     </div>
-                </div>
-
-			<?php
-            endif;
-		endforeach;
+				<?php
+				endif;
+			endforeach;
 		endif;
 		?>
         <div class="request_addon addon_box">

@@ -33,7 +33,7 @@ use wp_gdpr\lib\Gdpr_Helper;
         <div class="user_guides_content">
             <img class="a_info" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
             <section class="variable slider">
-	            <?php $plugins = Gdpr_Helper::get_plugin_addon_status($plugin_addons);
+	            <?php $plugins = Gdpr_Helper::get_plugin_addon_status();
 	            if (is_array($plugins) && count( $plugins ) != 0) :
 		            foreach ($plugins as $plugin_data ): ?>
                         <div><a href="<?php echo $plugin_data['plugin_tutorial_link'] ?>" target="_blank"><img class="carousel_img" src="<?php echo $plugin_data['plugin_tutorial_img'] ?>" alt="Tutorial - Install WP GDPR for <?php echo $plugin_data['name'] ?>">

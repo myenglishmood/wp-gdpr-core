@@ -43,6 +43,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 	}
 
 	public function admin_script( $hook ) {
+		$this->log->info( 'Admin help.js loaded');
 		switch ( $hook ) {
 			case 'toplevel_page_wp_gdpr':
 			case 'wp-gdpr_page_help':
@@ -56,6 +57,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 					'jquery-ui-core'
 				), null, false );
 				if( $hook == 'wp-gdpr_page_help'){
+					$this->log->info( 'Admin slick.min.js loaded');
 				wp_enqueue_script( 'carousel_gdpr', GDPR_URL . 'assets/js/slick.min.js', array( 'jquery' ), null, true );
 				break; }
 		}
@@ -68,6 +70,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 		$lang = new Gdpr_Language();
 		$lang = $lang->get_language();
 		if ( 'POST' == $_SERVER['REQUEST_METHOD'] && isset( $_REQUEST['gdpr_save_priv_pol_settings'] ) ) {
+			$this->log->info( 'Privacy policy update when url is submited');
 			update_option( self::PRIVACY_POLICY_LABEL . $lang, $_REQUEST['gdpr_priv_pov_label'] );
 			update_option( self::PRIVACY_POLICY_TEXT . $lang, $_REQUEST['gdpr_priv_pov_text'] );
 			update_option( self::PRIVACY_POLICY_CHECKBOX . $lang, $_REQUEST['gdpr_priv_pov_checkbox'] );
@@ -75,13 +78,13 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 		}
 	}
 
+
 	/**
 	 * delete all comments selected in admin menu in form
 	 */
 	public function post_delete_comments() {
 		if ( 'POST' == $_SERVER['REQUEST_METHOD'] && isset( $_REQUEST['gdpr_requests'] ) && is_array( $_REQUEST['gdpr_requests'] ) ) {
-
-
+			$this->log->info( 'Deleted all comments selected in admin menu');
 			foreach ( $_REQUEST['gdpr_requests'] as $single_request_id ) {
 				//get all selected comments
 				//unserialize
@@ -155,6 +158,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 	 * search for request by id in del_request table in db
 	 */
 	public function find_delete_request_by_id( $id ) {
+		$this->log->info( 'Search for request by id in table del_request in the database');
 		global $wpdb;
 
 		$table_name = $wpdb->prefix . Gdpr_Customtables::DELETE_REQUESTS_TABLE_NAME;
@@ -198,6 +202,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 	 * unserialize serialized array with comments_ids
 	 */
 	public function delete_comments( $comments ) {
+		$this->log->info( 'Comment delete');
 		foreach ( $comments as $comment_id ) {
 			wp_delete_comment( $comment_id, true );
 		}
@@ -207,6 +212,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 	 * delete row by id from table with delete_requests
 	 */
 	public function update_status( $request_id, $status ) {
+		$this->log->info( 'Delete row by id table with delete_requests');
 		global $wpdb;
 		$table_name = $wpdb->prefix . Gdpr_Customtables::DELETE_REQUESTS_TABLE_NAME;
 		$where      = array( 'ID' => $request_id );
@@ -228,7 +234,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 	 * make comments anonymous
 	 */
 	public function make_anonymous( $comments ) {
-//		$this->log->info( 'Comment made anonymous');
+		$this->log->info( 'Make comments anonymous');
 		foreach ( $comments as $comment_id ) {
 			$args = array(
 				'comment_ID'           => $comment_id,
@@ -242,6 +248,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 	}
 
 	public function get_confirmation_email_content( $comment_to_delete, $processed_data ) {
+		$this->log->info( 'Get email confermation content');
 		ob_start();
 		$date_of_request = $comment_to_delete['timestamp'];
 		include_once GDPR_DIR . 'view/admin/email-confirmation-content.php';
@@ -256,6 +263,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 
 	public function request_add_on() {
 		if ( 'POST' == $_SERVER['REQUEST_METHOD'] && isset( $_REQUEST['request_add_on'] ) ) {
+			$this->log->info( 'Request add-on email send to info@wp-gdpr.eu');
 			$to      = 'info@wp-gdpr.eu';
 			$subject = 'request wp-gdpr add-on';
 			$content = '<p>Request develop add-on for plugin: ' . $_POST["request_add_on"] . '</p><p>Email: ' . $_POST["email"] . '</p><p>' . $_POST["gdpr"] . '</p>';
@@ -268,6 +276,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 	}
 
 	public function build_form_to_add_privacy_policy_setting() {
+		$this->log->info( 'Form build for privacy policy');
 		$privacy_policy_strings = $this->get_privacy_policy_strings();
 
 		include GDPR_DIR . '/view/admin/privacy-policy-form.php';
@@ -320,11 +329,20 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 	 *
 	 */
 	public function build_settings_table() {
+		$this->log->info( 'Build settings table');
 		$options = $this->get_settings();
 		include GDPR_DIR . '/view/admin/menu/settings-list.php';
 	}
 
+	/**
+	 * Get settings for admin menu
+	 *
+	 * @return mixed
+	 *
+	 * @since 1.0 ?
+	 */
 	public function get_settings() {
+		$this->log->info( 'Get settings for admin menu');
 		$settings = array(
 			'switch_on_comments' => array(
 				'label' => __( 'Don\'t show comments', 'wp-gdpr' ),
@@ -362,8 +380,11 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 
 	/**
 	 * build table in menu admin
+	 *
+	 * @since   1.0 ?
 	 */
 	public function build_table_with_requests() {
+		$this->log->info( 'Build table in admin menu');
 		$requesting_users = $this->get_requests_from_gdpr_table();
 
 		if ( ! is_array( $requesting_users ) ) {
@@ -396,9 +417,13 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 
 	/**
 	 * @return array|null|object
+	 *
 	 * get all records from gdpr_requests table
+	 *
+	 * @since   1.0 ?
 	 */
 	public function get_requests_from_gdpr_table() {
+		$this->log->info( 'Get all records from gdpr_request table');
 		global $wpdb;
 
 		$table_name = $wpdb->prefix . Gdpr_Customtables::REQUESTS_TABLE_NAME;
@@ -412,6 +437,8 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 	 * @param $requesting_users
 	 *
 	 * @return string
+	 *
+	 * @since   1.0 ?
 	 */
 	public function get_form_content( $requesting_users ) {
 		ob_start();
@@ -425,6 +452,8 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 	 * @param $data array
 	 *
 	 * @return mixed array
+	 *
+	 * @since   1.0 ?
 	 */
 	public function map_type_status( $data ) {
 
@@ -526,6 +555,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 	 */
 	public function send_email() {
 		if ( 'POST' == $_SERVER['REQUEST_METHOD'] && isset( $_REQUEST['gdpr_emails'] ) && is_array( $_REQUEST['gdpr_emails'] ) ) {
+			$this->log->info( 'Email sends when POST request');
 			foreach ( $_REQUEST['gdpr_emails'] as $single_address ) {
 				$single_address = sanitize_email( $single_address );
 				$to             = $single_address;
@@ -583,6 +613,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 	 *
 	 */
 	public function get_email_content( $email, $timestamp, $language = 'en' ) {
+		$this->log->info( 'Get email template.php');
 		ob_start();
 		$url = $this->create_unique_url( $email, $timestamp );
 		include GDPR_DIR . 'view/front/email-template.php';
@@ -599,7 +630,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 	 * encode gdpr#example@email.com into base64
 	 */
 	public function create_unique_url( $email, $timestamp ) {
-
+		$this->log->info( 'Unique url created for get personal data');
 		return Request_Form::get_personal_data_page_url( '?req=' . base64_encode( 'gdpr#' . $email . '#' . base64_encode( $timestamp ) ) );
 	}
 
@@ -615,7 +646,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 	 * search for plugins
 	 */
 	public function build_table_with_delete_requests() {
-
+		$this->log->info( 'Build table with delete requests');
 		global $wpdb;
 		$table_name = $wpdb->prefix . Gdpr_Customtables::DELETE_REQUESTS_TABLE_NAME;
 
@@ -650,6 +681,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 	 * @return string
 	 */
 	public function get_delete_form_content() {
+		$this->log->info( 'Get delete form content');
 		ob_start();
 		$controller = $this;
 		include_once GDPR_DIR . 'view/admin/delete-comments-form.php';
@@ -707,7 +739,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 	 * search for plugins
 	 */
 	public function build_table_with_plugins() {
-
+		$this->log->info( 'Table build with plugins');
 		$plugins = $this->get_plugins_array();
 
 		$table = new Gdpr_Table_Builder(
@@ -788,11 +820,20 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 	 * build form to request add-on
 	 */
 	public function build_form_to_request_add_on() {
+		$this->log->info( 'Form build for request add-on');
 		$form = new Gdpr_Form_Builder();
 		$form->print_form();
 	}
 
+	/**
+	 * Load all admin styles
+	 *
+	 * @param $hook
+	 *
+	 * @since   1.5.0
+	 */
 	public function admin_style( $hook ) {
+		$this->log->info( 'Admin styles are loaded');
 		switch ( $hook ) {
 			case 'wp-gdpr_page_help':
 				wp_enqueue_style( 'gdpr-slider', GDPR_URL . 'assets/css/slick.css' );
@@ -806,6 +847,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 
 	public function save_settings() {
 		if ( 'POST' == $_SERVER['REQUEST_METHOD'] && isset( $_REQUEST['gdpr_save_global_settings'] ) ) {
+			$this->log->info( 'Saved DPO settings');
 			$settings = $this->get_settings();
 			foreach ( $settings as $option_name => $setting ) {
 				switch ( $setting['type'] ) {

@@ -162,7 +162,7 @@ class Gdpr_Log {
 	 * This function will be executed as the last PHP function.
 	 */
 	public function log_to_database() {
-		if ( isset( $this->data ) && is_array( $this->data ) && defined('WP_DEBUG') ) {
+		if ( isset( $this->data ) && is_array( $this->data ) && defined('WP_DEBUG') && count($this->data) != 0 ) {
 			global $wpdb;
 			$values = array();
 
@@ -182,11 +182,9 @@ class Gdpr_Log {
 			$query .= implode( ", ", $values );
 
 			$wpdb->query( $query );
+			//clear data
+			$this->data = array();
 		}
-
-		//clear data
-		$this->data = array();
-
 	}
 
 	/**
