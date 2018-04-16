@@ -141,7 +141,7 @@ use wp_gdpr\lib\Gdpr_Helper;
                                 More info on the subject van be found <a href="https://www.itgovernance.eu/blog/en/gdpr-when-do-you-need-to-seek-consent/" target="_blank"><b>here</b></a>.
                             </p>
                         </div>
-                        <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>Which articles in the GDPR law dous the plugin cover?</h4>
+                        <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>Which articles in the GDPR law does this plugin cover?</h4>
                         <div class="accordion-content">
                             <ul>
                                 <li>
