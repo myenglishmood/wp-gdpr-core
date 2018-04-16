@@ -83,7 +83,7 @@ class Controller_Comments extends Gdpr_Log_Interface {
 			'action' => 'wp_gdpr'
 		) );
 
-		$this->log->info('script is loaded');
+		$this->log->info('Jetpack comments scripts are loaded');
 	}
 
 	public function load_comment_scripts() {
@@ -93,7 +93,7 @@ class Controller_Comments extends Gdpr_Log_Interface {
 			'url'    => admin_url( 'admin-ajax.php' ),
 			'action' => 'wp_gdpr'
 		) );
-		$this->log->info( 'comments scripts are loaded');
+		$this->log->info( 'Comments scripts are loaded');
 	}
 
 	public function echo_checkox_gdpr() {

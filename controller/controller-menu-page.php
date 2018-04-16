@@ -9,17 +9,20 @@ use wp_gdpr\lib\Gdpr_Table_Builder;
 use wp_gdpr\lib\Gdpr_Container;
 use wp_gdpr\lib\Gdpr_Form_Builder;
 use wp_gdpr\model\Request_Form;
+use wp_gdpr\lib\Gdpr_Log_Interface;
 
-class Controller_Menu_Page {
+class Controller_Menu_Page extends Gdpr_Log_Interface {
 	const PRIVACY_POLICY_LABEL = 'privacy_policy_label';
 	const PRIVACY_POLICY_TEXT = 'privacy_policy_text';
 	const PRIVACY_POLICY_CHECKBOX = 'privacy_policy_checkbox';
 	const PRIVACY_POLICY_TEXT_DATA_REQUEST = 'privacy_policy_text_data_request';
 
+
 	/**
 	 * Controller_Menu_Page constructor.
 	 */
 	public function __construct() {
+		parent::__construct();
 		if ( ! has_action( 'init', array( $this, 'send_email' ) ) ) {
 			add_action( 'init', array( $this, 'send_email' ) );
 		}
@@ -225,6 +228,7 @@ class Controller_Menu_Page {
 	 * make comments anonymous
 	 */
 	public function make_anonymous( $comments ) {
+//		$this->log->info( 'Comment made anonymous');
 		foreach ( $comments as $comment_id ) {
 			$args = array(
 				'comment_ID'           => $comment_id,
