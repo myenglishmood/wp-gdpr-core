@@ -1,6 +1,7 @@
 <?php
 
 namespace wp_gdpr\lib;
+
 /**
  * Class Session_Handler
  * Helps to handle session.

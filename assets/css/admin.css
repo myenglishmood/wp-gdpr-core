@@ -1,35 +1,35 @@
-form.postbox, div.postbox {
+form.wp-gdpr_postbox, div.wp-gdpr_postbox {
     padding: 30px;
 "
 }
 
-form.postbox label {
+form.wp-gdpr_postbox label {
     width: 40%;
     display: inline-block;
     max-width: 200px;
 }
 
-form.postbox label#gdpr {
+form.wp-gdpr_postbox label#gdpr {
     width: 90%;
     max-width: unset;
 }
 
-form.postbox input[type="text"], form.postbox input[type="email"], form.postbox textarea, .postbox-group .wp-editor-wrap {
+form.wp-gdpr_postbox input[type="text"], form.wp-gdpr_postbox input[type="email"], form.wp-gdpr_postbox textarea, .wp-gdpr_postbox-group .wp-editor-wrap {
     width: 59%;
     max-width: 400px;
     vertical-align: top;
     display: inline-block;
 }
 
-form.postbox input[type="submit"] {
+form.wp-gdpr_postbox input[type="submit"] {
     margin-top: 20px;
 }
 
-.postbox-group {
+.wp-gdpr_postbox-group {
     margin-top: 15px;
 }
 
-.postbox-group:first-child {
+.wp-gdpr_postbox-group:first-child {
     margin-top: 0;
 }
 
@@ -38,21 +38,21 @@ form.postbox input[type="submit"] {
     padding-top: 5px;
 }
 
-#nav_menu {
+#wp-gdpr_nav_menu {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-items: start;
 }
 
-div#nav_menu {
+div#wp-gdpr_nav_menu {
     border-bottom-style: solid;
     border-bottom-width: 1px;
     border-bottom-color: #ddd !important;
     z-index: -1;
 }
 
-#nav_menu > a {
+#wp-gdpr_nav_menu > a {
     margin-left: 5px;
     margin-right: 5px;
     border-radius: 0px;
@@ -80,7 +80,7 @@ a#a_settings > a.active {
     margin-top: -1px;
 }
 
-#nav_menu > a.active_tab {
+#wp-gdpr_nav_menu > a.wp-gdpr_active_tab {
     border-bottom-color: #f1f1f1 !important;
     z-index: 1 !important;
     border-bottom-width: 2px !important;
@@ -129,36 +129,36 @@ div.user_info_content {
     color: #0073aa;
 }
 
-h2 {
-    margin-bottom: 15px !important;
+.wp-gdpr_wrap > h2 {
+    margin-bottom: 15px;
 }
 
-#nav_menu_extra {
+#wp-gdpr_nav_menu_extra {
     margin-top: 15px;
     display: flex;
     justify-content: flex-end;
 }
 
-#nav_menu_extra > a {
+#wp-gdpr_nav_menu_extra > a {
     margin-left: 15px;
     text-decoration: none;
 }
-.dpo_info{
+.wp-gdpr_dpo_info{
       text-decoration: none;
     color: #555;
   }
-.dpo_info:hover{
+.wp-gdpr_dpo_info:hover{
     color: #999;
 }
 
 
 
 /*tooltip*/
-.tooltip {
+.wp-gdpr_tooltip {
     position: relative;
 }
 
-.tooltip .tooltiptext {
+.wp-gdpr_tooltip .wp-gdpr_tooltiptext {
     visibility: hidden;
     width: 350px;
     background-color: #999;
@@ -176,7 +176,7 @@ h2 {
     margin-left: -60px;
 }
 
-.tooltip:hover .tooltiptext {
+.wp-gdpr_tooltip:hover .wp-gdpr_tooltiptext {
     visibility: visible;
 }
 
@@ -211,14 +211,14 @@ h2 {
     margin-left: 15px;
 }
 
-.addon_footer {
+.wp-gdpr_addon_footer {
     padding-top: 10px;
     border-top: 1px solid #ddd;
     display: flex;
     justify-content: space-between;
 }
 
-.more_inf {
+.wp-gdpr_more_inf {
     margin-left: auto;
     margin-top: 5px;
     color: #555;
@@ -238,13 +238,13 @@ h2 {
 
 /*General*/
 
-.user_info_content img.a_info, .user_guides_content img.a_info {
+.user_info_content img.wp-gdpr_a_info, .user_guides_content img.wp-gdpr_a_info {
     margin: 10px 10px -10px -10px;
 }
-.user_guides_content img.a_info{
+.user_guides_content img.wp-gdpr_a_info{
     margin: 10px 10px -10px -30px;
 }
-.a_info {
+.wp-gdpr_a_info {
     width: 124px;
     height: auto;
 }
@@ -257,21 +257,21 @@ h2 {
     /*margin-bottom: -25px;*/
 /*}*/
 
-img.a_background_img {
+img.wp-gdpr_a_background_img {
     margin: 0 0 -50px 35%;
 }
 @media only screen and (max-width: 1250px) {
-    img.a_background_img {
+    img.wp-gdpr_a_background_img {
         margin: 0 0 -20px 80%;
     }
 }
 
-#nav_menu a, #nav_menu_extra a, .user_info_content a {
+#wp-gdpr_nav_menu a, #wp-gdpr_nav_menu_extra a, .user_info_content a {
     text-decoration: none;
     color: #555;
 }
 
-#nav_menu a:hover, #nav_menu_extra a:hover, .user_info_content a:hover {
+#wp-gdpr_nav_menu a:hover, #wp-gdpr_nav_menu_extra a:hover, .user_info_content a:hover {
     color: #999;
 }
 
@@ -283,16 +283,16 @@ p.appsaloon_footer {
 /*Plugin list page*/
 
 /*Status add-ons colors*/
-p.active {
+p.wp-gdpr_active {
     color: #32cd32;
     paddin-bottom: 0;
 }
 
-p.inactive {
+p.wp-gdpr_inactive {
     color: #c28814;
 }
 
-a.get_add_on {
+a.wp-gdpr_get_add_on {
     color: #4169e1;
 }
 
@@ -303,10 +303,10 @@ span.dashicons-info {
     font-size: 25px;
     margin-top: -5px;
 }
-.postbox-spacing{
+.wp-gdpr_postbox-spacing{
     height: 70px;
 }
-a#a_settings.active_tab{
+a#a_settings.wp-gdpr_active_tab{
     margin-left: 5px;
     margin-right: auto;
 }
@@ -321,7 +321,7 @@ a#a_settings.active_tab{
     flex-direction: column;
     margin-bottom: 15px;
 }
-#user_guides > img.a_info{
+#user_guides > img.wp-gdpr_a_info{
     margin: 10px 10px -10px -30px
 }
 
@@ -337,7 +337,7 @@ a#a_settings.active_tab{
     display: flex;
     flex-direction: row;
 }
-.user_guides_content img.a_info{
+.user_guides_content img.wp-gdpr_a_info{
     position: absolute;
     bottom: 10px;
 }
@@ -463,13 +463,13 @@ div.users_support_btn_group {
     margin-left: 25px;
 }
 
-#user_freq_questions ul.tabs{
+#user_freq_questions ul.wp-gdpr_tabs{
     margin: 0px;
     margin-top: 30px;
     padding: 0px;
     list-style: none;
 }
-#user_freq_questions ul.tabs li{
+#user_freq_questions ul.wp-gdpr_tabs li{
     background: none;
     color: #555;
     display: inline-block;
@@ -477,39 +477,39 @@ div.users_support_btn_group {
     cursor: pointer;
 }
 
-#user_freq_questions ul.tabs li.current{
+#user_freq_questions ul.wp-gdpr_tabs li.wp-gdpr_current{
     background: #ededed;
     color: #555;
 }
 
-.tab-content{
+.wp-gdpr_tab-content{
     display: none;
     background: #ededed;
     padding: 15px;
 }
 
-.tab-content.current{
+.wp-gdpr_tab-content.wp-gdpr_current{
     display: inherit;
 }
-.tabs li {
+.wp-gdpr_tabs li {
     padding-bottom: 16px;
     margin-bottom: 0px;
 }
-div.tab-content{
+div.wp-gdpr_tab-content{
     padding: 30px;
 }
-.container{
+.wp-gdpr_container{
     display: block;
     margin: 0 auto;
 }
-#tab-1, #tab-2, .tabs>li {
+#wp-gdpr_tab-1, #wp-gdpr_tab-2, .wp-gdpr_tabs>li {
     margin: 0 5% 5% 5%;
 }
-.tabs > li {
+.wp-gdpr_tabs > li {
     margin-bottom: 0;
     margin-right: 0;
 }
-.tabs > li:last-child {
+.wp-gdpr_tabs > li:last-child {
     margin-left: 0;
 
 }
@@ -517,44 +517,42 @@ div.tab-content{
 
 
 /*Addons page */
-.addon_box{
+.wp-gdpr_addon_box{
     width: 220px;
     height: 340px;
     margin-bottom: 20px;
 }
-.addon_box > img{
+.wp-gdpr_addon_box > img{
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
-.addon_footer > a {
+.wp-gdpr_addon_footer > a {
     margin-right: auto;
     text-decoration: none;
 }
-a.button{
 
-}
-a.button.not-installed {
+a.button.wp-gdpr_not-installed {
     background-color: #2290BE;
     color: #fff;
 }
-a.button.not-installed:hover {
+a.button.wp-gdpr_not-installed:hover {
     background-color: #389bc4;
     color: #fff;
 }
-a.button.active {
+a.button.wp-gdpr_active {
     background-color: #5E9D55 !important;
     color: #fff;
 }
-a.button.active:hover {
+a.button.wp-gdpr_active:hover {
     background-color: #6ea666 !important;
     color: #fff;
 }
-a.button.in-active {
+a.button.wp-gdpr_in-active {
     background-color: #B34044;
     color: #fff;
 }
-a.button.in-active:hover {
+a.button.wp-gdpr_in-active:hover {
     background-color: #ba5356;
     color: #fff;
 }
@@ -595,10 +593,10 @@ span.dashicons.dashicons-controls-repeat {
     background-color: #B34044;
     box-shadow: 0 1px 0 #ccc;
 }
-.addon_box{
+.wp-gdpr_addon_box{
     padding-top: 20px;
 }
-.addon_footer{
+.wp-gdpr_addon_footer{
     padding-top: 18px;
 }
 .request_addon > h4{

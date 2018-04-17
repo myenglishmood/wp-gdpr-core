@@ -29,7 +29,7 @@ class Gdpr_Form_Builder {
      */
     public function build_form() {
         ?>
-        <form method="post" action="" class="postbox">
+        <form method="post" action="" class="wp-gdpr_postbox postbox">
             <label for="request_add_on"><?php _e('Request add-on for your plugin', 'wp_gdpr'); ?>:</label>
             <input type="text" name="request_add_on" required></br>
             <label for="email"><?php _e('Email', 'wp_gdpr'); ?>:</label>
