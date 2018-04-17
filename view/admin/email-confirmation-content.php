@@ -35,7 +35,7 @@
                 padding: 0 !important;
             }
 
-            table[class=body] .wp-gdpr_container {
+            table[class=body] .container {
                 padding: 0 !important;
                 width: 100% !important;
             }
