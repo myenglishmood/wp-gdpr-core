@@ -82,6 +82,8 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 			update_option( self::PRIVACY_POLICY_TEXT . $lang, $_REQUEST['gdpr_priv_pov_text'] );
 			update_option( self::PRIVACY_POLICY_CHECKBOX . $lang, $_REQUEST['gdpr_priv_pov_checkbox'] );
 			update_option( self::PRIVACY_POLICY_TEXT_DATA_REQUEST . $lang, $_REQUEST['gdpr_priv_pov_text_data_request'] );
+
+			do_action('gdpr_save_custom_privacy_policy', $lang);
 		}
 	}
 
