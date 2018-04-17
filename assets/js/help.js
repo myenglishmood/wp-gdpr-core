@@ -13,14 +13,14 @@ jQuery(function ($) {
         autoHeight: false
     });
     //tabs faq
-    $('ul.tabs li').click(function () {
+    $('ul.wp-gdpr_tabs li').click(function () {
         var tab_id = $(this).attr('data-tab');
 
-        $('ul.tabs li').removeClass('current');
-        $('.tab-content').removeClass('current');
+        $('ul.wp-gdpr_tabs li').removeClass('wp-gdpr_current');
+        $('.wp-gdpr_tab-content').removeClass('wp-gdpr_current');
 
-        $(this).addClass('current');
-        $("#" + tab_id).addClass('current');
+        $(this).addClass('wp-gdpr_current');
+        $("#" + tab_id).addClass('wp-gdpr_current');
     });
 
     // Hide user info

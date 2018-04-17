@@ -35,7 +35,7 @@
                 padding: 0 !important;
             }
 
-            table[class=body] .container {
+            table[class=body] .wp-gdpr_container {
                 padding: 0 !important;
                 width: 100% !important;
             }
@@ -104,7 +104,7 @@
        style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; background-color: #f6f6f6;">
     <tr>
         <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">&nbsp;</td>
-        <td class="container"
+        <td class="wp-gdpr_container"
             style="font-family: sans-serif; font-size: 14px; vertical-align: top; display: block; Margin: 0 auto; max-width: 580px; padding: 10px; width: 580px;">
             <div class="content"
                  style="box-sizing: border-box; display: block; Margin: 0 auto; max-width: 580px; padding: 10px;">

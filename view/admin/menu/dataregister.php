@@ -1,12 +1,12 @@
 <div class="wrap">
     <h2><b><?php _e( 'Dataregister', 'wp_gdpr' ); ?></b> <?php _e( 'records of processing activities', 'wp_gdpr' ); ?></h2>
-    <div id="nav_menu">
-        <a id="a_addons" href="" class="active_tab"><span class="dashicons dashicons-trash"></span>&nbsp;Complete log file</a>
+    <div id="wp-gdpr_nav_menu">
+        <a id="a_addons" href="" class="wp-gdpr_active_tab"><span class="dashicons dashicons-trash"></span>&nbsp;Complete log file</a>
         <a id="a_settings" href="<?php echo admin_url( 'admin.php?page=settings_wp-gdpr' ) ?>"><span class="dashicons dashicons-admin-generic"></span>&nbsp;Settings</a>
         <a id="a_help" href="<?php echo admin_url( 'admin.php?page=help' ) ?>"><span class="dashicons dashicons-editor-help"></span> Help</a>
         <a id="a_addons" href="<?php echo admin_url( 'admin.php?page=addon' ) ?>"><span class="dashicons dashicons-screenoptions"></span>Available addons</a>
     </div>
-    <div id="nav_menu_extra">
+    <div id="wp-gdpr_nav_menu_extra">
         <a id="a_review" target="_blank" href="https://wordpress.org/support/plugin/wp-gdpr-core/reviews/#new-post"><span class="dashicons dashicons-admin-comments"></span>&nbsp;Review
             our plugin</a>
         <a id="a_homepage" target="_blank" href="https://wp-gdpr.eu/"><span class="dashicons dashicons-admin-home"></span>&nbsp;Visit our homepage</a>
@@ -18,7 +18,7 @@
         </div>
         <br>
         <div class="user_info_content">
-            <img class="a_info" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
+            <img class="wp-gdpr_a_info" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
             <p style="width: 80%;">Article 30 of the GDPR law staates it is manadatory to keep records of processing activity.
                 The plugin logs all actions taken regarding personal data on the website and administrators can download a complete logfile here.
                 If you still are not sure what this is, check out our <a href="<?php echo admin_url( 'admin.php?page=help' ) ?>"><b>Help page</b></a> or our <a href="https://wp-gdpr.eu/tutorials/" target="_blank"><b>online tutorials</b></a>.</p>

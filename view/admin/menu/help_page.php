@@ -4,12 +4,12 @@ use wp_gdpr\lib\Gdpr_Helper;
  * this template is to show manu page in admin-menu
  */
 ?>
-<div class="wrap">
+<div class="wp-gdpr_wrap">
     <h2><b><?php _e( 'Help', 'wp_gdpr' ); ?></b> <?php _e( 'Center', 'wp_gdpr' ); ?></h2>
-    <p align="center"><img class="a_background_img" src="<?php echo GDPR_URL . 'assets/images/logo-trans-bg.png'; ?>">
+    <p align="center"><img class="wp-gdpr_a_background_img" src="<?php echo GDPR_URL . 'assets/images/logo-trans-bg.png'; ?>">
     </p>
-    <div id="nav_menu">
-        <a id="a_help" class="active_tab" href="<?php echo admin_url( 'admin.php?page=help' ) ?>"><span
+    <div id="wp-gdpr_nav_menu">
+        <a id="a_help" class="wp-gdpr_active_tab" href="<?php echo admin_url( 'admin.php?page=help' ) ?>"><span
                     class="dashicons dashicons-editor-help"></span>&nbsp;Help</a>
 <!--    Not for v1.5!!!     <a id="a_datarequest" href="--><?php //echo admin_url( 'admin.php?page=wp_gdpr' ) ?><!--"><span-->
 <!--                    class="dashicons dashicons-admin-page"></span>System info</a>-->
@@ -17,7 +17,7 @@ use wp_gdpr\lib\Gdpr_Helper;
                     class="dashicons dashicons-admin-generic"></span>&nbsp;Settings</a>
         <a id="a_addon" href="<?php echo admin_url( 'admin.php?page=addon' ) ?>"><span class="dashicons dashicons-screenoptions"></span> Add-ons</a>
     </div>
-    <div id="nav_menu_extra">
+    <div id="wp-gdpr_nav_menu_extra">
         <a id="a_review" target="_blank"
            href="https://wordpress.org/support/plugin/wp-gdpr-core/reviews/#new-post"><span
                     class="dashicons dashicons-admin-comments"></span>&nbsp;Review
@@ -31,12 +31,12 @@ use wp_gdpr\lib\Gdpr_Helper;
             <h4>Guide, Tutorials & Informative blogposts</h4>
         </div>
         <div class="user_guides_content">
-            <img class="a_info" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
+            <img class="wp-gdpr_a_info" src="<?php echo GDPR_URL . 'assets/images/icon-info-bg.png'; ?>">
             <section class="variable slider">
 	            <?php $plugins = Gdpr_Helper::get_plugin_addon_status();
 	            if (is_array($plugins) && count( $plugins ) != 0) :
 		            foreach ($plugins as $plugin_data ): ?>
-                        <div><a href="<?php echo $plugin_data['plugin_tutorial_link'] ?>" target="_blank"><img class="carousel_img" src="<?php echo $plugin_data['plugin_tutorial_img'] ?>" alt="Tutorial - Install WP GDPR for <?php echo $plugin_data['name'] ?>">
+                        <div><a href="<?php echo $plugin_data['plugin_tutorial_link'] ?>" target="_blank"><img class="carousel_img" src="<?php echo $plugin_data['plugin_tutorial_img'] ?>" alt="Tutorial - Install WP GDPR for add-ons/core">
                                 <p align="center"><?php echo $plugin_data['plugin_tutorial_intro'] ?></p></a>
                         </div>
 		            <?php endforeach;
@@ -48,12 +48,12 @@ use wp_gdpr\lib\Gdpr_Helper;
     <div id="user_freq_questions">
         <div class="user_freq_questions_header">
             <h4>Frequently Asked Questions</h4>
-            <div class="container user_freq_questions_content">
-                <ul class="tabs">
-                    <li class="tab-link current" data-tab="tab-1"><b>WP-GDPR Core</b></li>
-                    <li class="tab-link" data-tab="tab-2"><b>Add-ons</b></li>
+            <div class="wp-gdpr_container user_freq_questions_content">
+                <ul class="wp-gdpr_tabs">
+                    <li class="wp-gdpr_tab-link wp-gdpr_current" data-tab="wp-gdpr_tab-1"><b>WP-GDPR Core</b></li>
+                    <li class="wp-gdpr_tab-link" data-tab="wp-gdpr_tab-2"><b>Add-ons</b></li>
                 </ul>
-                <div id="tab-1" class="tab-content current">
+                <div id="wp-gdpr_tab-1" class="wp-gdpr_tab-content wp-gdpr_current">
                     <div id="accordion_core">
                         <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>How do I install the WP-GDPR Core plugin?</h4>
                         <div class="accordion-content">
@@ -201,7 +201,7 @@ use wp_gdpr\lib\Gdpr_Helper;
                         </div>
                     </div>
                 </div>
-                <div id="tab-2" class="tab-content">
+                <div id="wp-gdpr_tab-2" class="wp-gdpr_tab-content">
                     <div id="accordion_addons">
                         <h4><span><img src="<?php echo GDPR_URL . 'assets/images/icon_arrow.png'; ?>" alt="" class="icon_arrow"></span>What are add-ons and why do they cost money?</h4>
                         <div class="accordion-content">

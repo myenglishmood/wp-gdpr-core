@@ -76,9 +76,10 @@ class Controller_Comments extends Gdpr_Log_Interface {
 	 * @since 1.0
 	 */
 	public function load_jetpack_comment_scripts() {
-		$this->log->info('Jetpack comments scripts are loaded');
 		wp_enqueue_style( 'gdpr-comment-css', GDPR_URL . 'assets/css/new_comment.css' );
+		$this->log->info('Jetpack comments scripts are loaded | new_comment.css');
 		wp_enqueue_script( 'gdpr-comment-js', GDPR_URL . 'assets/js/jetpack_comments.js', array( 'jquery' ), '', false );
+		$this->log->info('Jetpack comments scripts are loaded | jetpack_comments.js');
 		wp_localize_script( 'gdpr-comment-js', 'localized_object', array(
 			'url'    => admin_url( 'admin-ajax.php' ),
 			'action' => 'wp_gdpr'
@@ -86,9 +87,10 @@ class Controller_Comments extends Gdpr_Log_Interface {
 	}
 
 	public function load_comment_scripts() {
-		$this->log->info( 'Comments scripts are loaded');
 		wp_enqueue_style( 'gdpr-comment-css', GDPR_URL . 'assets/css/new_comment.css' );
+		$this->log->info( 'Comments scripts are loaded | new_comments.css');
 		wp_enqueue_script( 'gdpr-comment-js', GDPR_URL . 'assets/js/validate_comments.js', array( 'jquery' ), '', false );
+		$this->log->info( 'Comments scripts are loaded | validate_comments.js');
 		wp_localize_script( 'gdpr-comment-js', 'localized_object', array(
 			'url'    => admin_url( 'admin-ajax.php' ),
 			'action' => 'wp_gdpr'
