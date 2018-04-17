@@ -52,9 +52,10 @@ class Controller_Menu_Page {
 					'jquery-ui-accordion',
 					'jquery-ui-core'
 				), null, false );
-				if( $hook == 'wp-gdpr_page_help'){
-				wp_enqueue_script( 'carousel_gdpr', GDPR_URL . 'assets/js/slick.min.js', array( 'jquery' ), null, true );
-				break; }
+				if ( $hook == 'wp-gdpr_page_help' ) {
+					wp_enqueue_script( 'carousel_gdpr', GDPR_URL . 'assets/js/slick.min.js', array( 'jquery' ), null, true );
+					break;
+				}
 		}
 	}
 
@@ -768,11 +769,13 @@ class Controller_Menu_Page {
 					$data['data_stored_in'],
 					$status_wp_gdpr
 				);
-			} else { if ( empty( $plugin_data['name'] ) ){
-				return array();
-			}else{
-				return array( 'empty' );
-			}}
+			} else {
+				if ( empty( $plugin_data['name'] ) ) {
+					return array();
+				} else {
+					return array( 'empty' );
+				}
+			}
 //
 		}, $plugins );
 
@@ -795,8 +798,13 @@ class Controller_Menu_Page {
 				wp_enqueue_style( 'gdpr-admin-css', GDPR_URL . 'assets/css/admin.css' );
 				wp_enqueue_style( 'gdpr-theme-slick', GDPR_URL . 'assets/css/slick-theme.css' );
 				break;
-			default:
+			case 'toplevel_page_wp_gdpr':
+			case 'wp-gdpr_page_addon':
+			case 'wp-gdpr_page_deletelist':
+			case 'wp-gdpr_page_datareg':
+			case 'wp-gdpr_page_pluginlist':
 				wp_enqueue_style( 'gdpr-admin-css', GDPR_URL . 'assets/css/admin.css' );
+				break;
 		}
 	}
 

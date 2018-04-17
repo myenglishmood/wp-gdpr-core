@@ -64,7 +64,7 @@ use wp_gdpr\model\Request_Form;
 
     </div>
 
-	<?php do_action( 'gdpr_display_custom_privacy_policy', $privacy_policy_strings ); ?>
+	<?php do_action( 'gdpr_display_custom_privacy_policy' ); ?>
 
     <input type="submit" class="button button-primary" name="gdpr_save_priv_pol_settings"
            value="<?php _e( 'Update privacy policy settings', 'wp_gdpr' ); ?>">
