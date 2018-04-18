@@ -113,6 +113,7 @@ class Request_Form extends Form_Validation_Model {
 		$url = self::get_personal_data_page_url( '?thank_you' );
 
 		wp_redirect( $url );
+		exit;
 
 	}
 

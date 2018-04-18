@@ -141,6 +141,7 @@ class Controller_Comments extends Gdpr_Log_Interface {
 			$controller = $this;
 			$this->update_gdpr_status( $this->email_request );
 			include_once GDPR_DIR . 'view/front/gdpr-template.php';
+			exit;
 		}
 	}
 
