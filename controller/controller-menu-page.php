@@ -851,6 +851,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 			case 'wp-gdpr_page_deletelist':
 			case 'wp-gdpr_page_datareg':
 			case 'wp-gdpr_page_pluginlist':
+			case 'wp-gdpr_page_settings_wp-gdpr':
 				wp_enqueue_style( 'gdpr-admin-css', GDPR_URL . 'assets/css/admin.css' );
 				$this->log->info( 'Admin styles are loaded gdpr-admin-css default case for hook -> ' . $hook );
 				break;
