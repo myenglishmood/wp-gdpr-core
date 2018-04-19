@@ -42,6 +42,7 @@ class Gdpr_Form_Builder {
             <input name="gdpr" type="checkbox" value="I consent to having WP-GDPR collect my email when provided." required>
             <label for="gdpr" id="gdpr"><?php _e('I consent to having WP-GDPR collect my email when provided.', 'wp_gdpr'); ?></label></br>
             <input type="submit" class="button button-primary" value="<?php _e('submit', 'wp_gdpr'); ?>">
+            <input type="hidden" name="mail_action" value="gdpr">
         </form>
         <?php
     }

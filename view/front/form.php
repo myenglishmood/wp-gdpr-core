@@ -14,6 +14,7 @@
         </label>
         <br><br>
         <input type="hidden" name="gdpr_translation" value="<?php echo $pieces; ?>">
+        <input type="hidden" name="mail_action" value="gdpr">
         <input type="submit" name="gdpr_req" value="<?php _e( 'Submit', 'wp_gdpr' ); ?>">
     </form>
 <?php else: ?>

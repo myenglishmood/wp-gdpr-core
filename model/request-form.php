@@ -33,12 +33,38 @@ class Request_Form extends Form_Validation_Model {
 		return sanitize_email( $input_value );
 	}
 
+	/**
+	 * Sets email from to dpo email if gdpr action field exists in POST data
+	 *
+	 * @param $original_email_address
+	 *
+	 * @return string
+	 *
+	 * @since 1.5.3
+	 */
 	public function set_mail_from( $original_email_address ) {
-		return Gdpr_Options_Helper::get_dpo_email();
+		if( isset( $_POST['mail_action'] ) && $_POST['mail_action'] == 'gdpr' ) {
+			$original_email_address = Gdpr_Options_Helper::get_dpo_email();
+		}
+
+		return $original_email_address;
 	}
 
+	/**
+	 * Sets email from name to bloginfo if gdpr action field exists in POST data
+	 *
+	 * @param $original_email_from
+	 *
+	 * @return string
+	 *
+	 * @since 1.5.3
+	 */
 	public function set_mail_from_name( $original_email_from ) {
-		return get_bloginfo( 'name', true );
+		if( isset( $_POST['mail_action'] ) && $_POST['mail_action'] == 'gdpr' ) {
+			$original_email_from = get_bloginfo( 'name', true );
+		}
+
+		return $original_email_from;
 	}
 
 	/**
