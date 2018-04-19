@@ -32,7 +32,7 @@ form.postbox input[type="submit"] {
 .postbox-group:first-child {
     margin-top: 0;
 }
-
+/*For svg in menu*/
 #toplevel_page_wp_gdpr .wp-menu-image img {
     width: 24px;
     padding-top: 5px;
