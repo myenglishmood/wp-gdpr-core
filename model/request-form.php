@@ -131,7 +131,7 @@ class Request_Form extends Form_Validation_Model {
 	public function send_email_to_dpo( $single_address, $time_of_insertion, $language ) {
 		$to         = $single_address;
 		$site_name  = get_bloginfo( 'name', true );
-		$subject    = '[' . $site_name . '] ' . __( 'Your data request', 'wp_gdpr' );
+		$subject    = '[' . $site_name . '] ' . __( 'New data request', 'wp_gdpr' );
 		$controller = Gdpr_Container::make( 'wp_gdpr\controller\Controller_Menu_Page' );
 		$content    = $controller->get_dpo_request_content( $single_address, $time_of_insertion, $language );
 		$headers    = array( 'Content-Type: text/html; charset=UTF-8' );

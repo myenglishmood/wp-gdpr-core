@@ -5,6 +5,7 @@ namespace wp_gdpr\controller;
 
 use wp_gdpr\lib\Gdpr_Customtables;
 use wp_gdpr\lib\Gdpr_Language;
+use wp_gdpr\lib\Gdpr_Options_Helper;
 use wp_gdpr\lib\Gdpr_Table_Builder;
 use wp_gdpr\lib\Gdpr_Container;
 use wp_gdpr\lib\Gdpr_Form_Builder;
@@ -153,11 +154,8 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 					$processed_data = array();
 				}
 
-				$to      = $data_to_process['email'];
-				$subject = __( 'We confirm Your data deletion request', 'wp_gdpr' );
-				$content = $this->get_confirmation_email_content( $data_to_process, $processed_data );
-				$headers = array( 'Content-Type: text/html; charset=UTF-8' );
-				wp_mail( $to, $subject, $content, $headers );
+				$this->send_confirmation_email_to_requester( $data_to_process, $processed_data );
+				$this->send_confirmation_email_to_dpo( $data_to_process, $processed_data );
 			}
 		}
 	}
@@ -259,6 +257,26 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 		}
 	}
 
+	/**
+	 * @param $data_to_process
+	 * @param $processed_data
+	 */
+	public function send_confirmation_email_to_requester( $data_to_process, $processed_data ) {
+		$to      = $data_to_process['email'];
+		$subject = __( 'We confirm Your data deletion request', 'wp_gdpr' );
+		$content = $this->get_confirmation_email_content( $data_to_process, $processed_data );
+		$headers = array( 'Content-Type: text/html; charset=UTF-8' );
+		wp_mail( $to, $subject, $content, $headers );
+	}
+
+	public function get_confirmation_email_content_for_dpo( $comment_to_delete, $processed_data ) {
+		$this->log->info( 'Get email confirmation content for dpo' );
+		ob_start();
+		$date_of_request = $comment_to_delete['timestamp'];
+		include_once GDPR_DIR . 'view/email/delete-confirmation-email-dpo.php';
+
+		return ob_get_clean();
+	}
 	public function get_confirmation_email_content( $comment_to_delete, $processed_data ) {
 		$this->log->info( 'Get email confermation content' );
 		ob_start();
@@ -266,6 +284,18 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 		include_once GDPR_DIR . 'view/email/delete-confirmation-email.php';
 
 		return ob_get_clean();
+	}
+
+	/**
+	 * @param $data_to_process
+	 * @param $processed_data
+	 */
+	public function send_confirmation_email_to_dpo( $data_to_process, $processed_data ) {
+		$to      = Gdpr_Options_Helper::get_dpo_email();
+		$subject = __( 'Confirmation data deletion', 'wp_gdpr' );
+		$content = $this->get_confirmation_email_content_for_dpo( $data_to_process, $processed_data );
+		$headers = array( 'Content-Type: text/html; charset=UTF-8' );
+		wp_mail( $to, $subject, $content, $headers );
 	}
 
 	public function map_comments_for_email( $data ) {
@@ -425,7 +455,6 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 		//execute
 		$table->print_table();
 	}
-
 
 	/**
 	 * @return array|null|object
@@ -638,22 +667,6 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 	/**
 	 * @param $email
 	 * @param $timestamp
-	 * @param string $language
-	 *
-	 * @return string content of request email for dpo
-	 */
-	public function get_dpo_request_content( $email, $timestamp, $language = 'en' ) {
-		$this->log->info( 'Get dpo request email' );
-		ob_start();
-		$url = $this->create_unique_url( $email, $timestamp );
-		include GDPR_DIR . 'view/email/request-email-dpo.php';
-
-		return ob_get_clean();
-	}
-
-	/**
-	 * @param $email
-	 * @param $timestamp
 	 *
 	 * @return string
 	 * create url
@@ -671,6 +684,22 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 		$table_name = $wpdb->prefix . 'gdpr_requests';
 
 		$wpdb->update( $table_name, array( 'status' => 1 ), array( 'email' => $email ) );
+	}
+
+	/**
+	 * @param $email
+	 * @param $timestamp
+	 * @param string $language
+	 *
+	 * @return string content of request email for dpo
+	 */
+	public function get_dpo_request_content( $email, $timestamp, $language = 'en' ) {
+		$this->log->info( 'Get dpo request email' );
+		ob_start();
+		$url = admin_url() . '?page=wp_gdpr&page_type=datarequest';
+		include GDPR_DIR . 'view/email/request-email-dpo.php';
+
+		return ob_get_clean();
 	}
 
 	/**
