@@ -83,7 +83,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 			update_option( self::PRIVACY_POLICY_CHECKBOX . $lang, $_REQUEST['gdpr_priv_pov_checkbox'] );
 			update_option( self::PRIVACY_POLICY_TEXT_DATA_REQUEST . $lang, $_REQUEST['gdpr_priv_pov_text_data_request'] );
 
-			do_action('gdpr_save_custom_privacy_policy', $lang);
+			do_action( 'gdpr_save_custom_privacy_policy', $lang );
 		}
 	}
 
@@ -263,7 +263,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 		$this->log->info( 'Get email confermation content' );
 		ob_start();
 		$date_of_request = $comment_to_delete['timestamp'];
-		include_once GDPR_DIR . 'view/admin/email-confirmation-content.php';
+		include_once GDPR_DIR . 'view/email/delete-confirmation-email.php';
 
 		return ob_get_clean();
 	}
@@ -618,17 +618,35 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 	}
 
 	/**
+	 * Gets request email content
+	 *
 	 * @param $email
 	 * @param $timestamp
 	 *
-	 * @return string content of email
+	 * @return string content of email for requester
 	 *
 	 */
 	public function get_email_content( $email, $timestamp, $language = 'en' ) {
-		$this->log->info( 'Get email template.php' );
+		$this->log->info( 'Get request email' );
 		ob_start();
 		$url = $this->create_unique_url( $email, $timestamp );
-		include GDPR_DIR . 'view/front/email-template.php';
+		include GDPR_DIR . 'view/email/request-email.php';
+
+		return ob_get_clean();
+	}
+
+	/**
+	 * @param $email
+	 * @param $timestamp
+	 * @param string $language
+	 *
+	 * @return string content of request email for dpo
+	 */
+	public function get_dpo_request_content( $email, $timestamp, $language = 'en' ) {
+		$this->log->info( 'Get dpo request email' );
+		ob_start();
+		$url = $this->create_unique_url( $email, $timestamp );
+		include GDPR_DIR . 'view/email/request-email-dpo.php';
 
 		return ob_get_clean();
 	}

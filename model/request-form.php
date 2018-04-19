@@ -99,8 +99,8 @@ class Request_Form extends Form_Validation_Model {
 		);
 
 		$dpo_email = Gdpr_Options_Helper::get_dpo_email();
-		$this->send_email( $dpo_email, $time_of_insertion, $language );
-		$this->send_email( $single_address, $time_of_insertion, $language );
+		$this->send_email_to_dpo( $dpo_email, $time_of_insertion, $language );
+		$this->send_email_to_requester( $single_address, $time_of_insertion, $language );
 
 		$this->redirect_to_page_gdpr_personal_data();
 	}
@@ -121,10 +121,33 @@ class Request_Form extends Form_Validation_Model {
 	}
 
 	/**
+	 * Sends email to DPO
+	 *
 	 * @param $single_address
 	 * @param $time_of_insertion
+	 *
+	 * @since 1.5.3
 	 */
-	public function send_email( $single_address, $time_of_insertion, $language ) {
+	public function send_email_to_dpo( $single_address, $time_of_insertion, $language ) {
+		$to         = $single_address;
+		$site_name  = get_bloginfo( 'name', true );
+		$subject    = '[' . $site_name . '] ' . __( 'Your data request', 'wp_gdpr' );
+		$controller = Gdpr_Container::make( 'wp_gdpr\controller\Controller_Menu_Page' );
+		$content    = $controller->get_dpo_request_content( $single_address, $time_of_insertion, $language );
+		$headers    = array( 'Content-Type: text/html; charset=UTF-8' );
+
+		wp_mail( $to, $subject, $content, $headers );
+	}
+
+	/**
+	 * Sends email to requester
+	 *
+	 * @param $single_address
+	 * @param $time_of_insertion
+	 *
+	 * @since 1.5.3
+	 */
+	public function send_email_to_requester( $single_address, $time_of_insertion, $language ) {
 		$to         = $single_address;
 		$site_name  = get_bloginfo( 'name', true );
 		$subject    = '[' . $site_name . '] ' . __( 'Your data request', 'wp_gdpr' );

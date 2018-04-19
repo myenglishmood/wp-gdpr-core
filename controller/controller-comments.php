@@ -517,7 +517,7 @@ class Controller_Comments extends Gdpr_Log_Interface {
 	public function get_email_content( $requested_email ) {
 		ob_start();
 
-		include GDPR_DIR . 'view/admin/email-delete-request.php';
+		include GDPR_DIR . 'view/email/admin-new-delete-request.php';
 
 		return ob_get_clean();
 	}
