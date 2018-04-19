@@ -6,7 +6,7 @@ parameters:
             keywords:
                 - "die;"
                 - "var_dump("
-                - "exit;"
+#                - "exit;"
             triggered_by: ['php']
             regexp_type: G
         
