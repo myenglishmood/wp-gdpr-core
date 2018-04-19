@@ -1,3 +1,12 @@
+== Version 1.5.3 
+* Add bulgarion translation
+* Css admin fixes
+* Log debug function
+* Hook privacy policy in settings
+* Minor bugfix for mail headers
+* Dpo / admin now get different mails for requests
+* Minor text adjustments
+
 == Version 1.5.2
 * Hotfix svn conflicts
 
