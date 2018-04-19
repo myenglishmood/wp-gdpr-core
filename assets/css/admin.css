@@ -283,16 +283,16 @@ p.appsaloon_footer {
 /*Plugin list page*/
 
 /*Status add-ons colors*/
-p.active {
+p.wp-gdpr_active {
     color: #32cd32;
     paddin-bottom: 0;
 }
 
-p.inactive {
+p.wp-gdpr_inactive {
     color: #c28814;
 }
 
-a.get_add_on {
+a.wp-gdpr_get_add_on {
     color: #4169e1;
 }
 
