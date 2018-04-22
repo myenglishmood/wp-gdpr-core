@@ -5,7 +5,7 @@ use wp_gdpr\lib\Gdpr_Helper;
  */
 ?>
 <div class="wrap">
-    <h2><?php _e('List of users that requested for information', 'wp_gdpr'); ?></h2>
+    <h2><b><?php _e( 'List of data requests', 'wp_gdpr' ); ?></b> <?php _e( 'from website users', 'wp_gdpr' ); ?></h2>
     <p align="center"><img class="a_background_img" src="<?php echo GDPR_URL . 'assets/images/logo-trans-bg.png'; ?>"></p>
     <div id="nav_menu">
         <a id="a_delete" href="<?php echo admin_url('admin.php?page=wp_gdpr')?>"><span class="dashicons dashicons-trash"></span>&nbsp;Delete requests</a>

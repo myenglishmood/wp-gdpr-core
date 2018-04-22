@@ -3,7 +3,7 @@ Contributors: Mieke Nijs, Sebastian Kurzynowski, AppSaloon
 Tags: Personal data, GDPR, European, regulation, privacy
 Requires at least: 4.6.10
 Tested up to: 4.9.5
-Stable tag: 1.5.2
+Stable tag: 1.5.3
 Requires PHP: 5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -40,13 +40,26 @@ We made our code available on [Github](https://github.com/WP-GDPR/wp-gdpr-core/)
 
 
 == Screenshots ==
-1. WP-GDPR backend - overview of requests
-2. WP-GDPR frontend - form where visitors can enter their email and ask to view there personal data
-3. WP-GDPR frontend - form succes message
+1. WP-GDPR Requests - Overview of all requests from users regarding their personal data
+2. WP-GDPR Settings - Change the text for consent boxes and add a DPO emailaddress
+3. WP-GDPR Request page - A front-end view for users to request their personal data
+4. WP-GDPR Email links - Users can access their personal data through a unique and secure email link
+5. WP-GDPR Help Center - Get help with WP-GDPR: watch tutorials, read the FAQ or get support
+6. WP-GDPR Your Plugins - Overview of plugins installed on your website who use personal data
+7. WP-GDPR Add-ons - Overview of add-ons available
 
 == Frequently Asked Questions ==
 
 == Changelog ==
+
+Version 1.5.3 (2018-04-19)
+    - Add bulgarion translation
+    - Css admin fixes
+    - Log debug function
+    - Hook privacy policy in settings
+    - Minor bugfix for mail headers
+    - Dpo / admin now get different mails for requests
+    - Minor text adjustments
 
 Version 1.5.2 (2018-04-12)
     - Hotfix svn conflicts

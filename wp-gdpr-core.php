@@ -8,12 +8,12 @@
  * @author    AppSaloon
  * @license   GPLv2
  * @link      https://wp-gdpr.eu
- * @copyright 2017 wp-gdpr
+ * @copyright 2018 wp-gdpr
  *
  * @wordpress-plugin
  * Plugin Name:       WP GDPR
  * Description:       Make your website GDPR compliant and automate the process of handling personal data while integrating with plugins.
- * Version:           1.5.2
+ * Version:           1.5.3
  * Text Domain:       wp_gdpr
  * Domain Path:       /languages
  * Author:            AppSaloon
