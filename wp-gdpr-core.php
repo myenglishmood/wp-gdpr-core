@@ -24,13 +24,16 @@ namespace wp_gdpr;
 
 define( 'GDPR_DIR', plugin_dir_path( __FILE__ ) );
 define( 'GDPR_URL', plugin_dir_url( __FILE__ ) );
-define( 'GDPR_BASE_NAME', dirname( plugin_basename( __FILE__) ) );
+define( 'GDPR_BASE_NAME', dirname( plugin_basename( __FILE__ ) ) );
 
 
 require_once GDPR_DIR . 'lib/gdpr-autoloader.php';
 
 //include to register custom table on plugin activation
 include_once GDPR_DIR . 'lib/gdpr-customtables.php';
+
+include_once GDPR_DIR . 'lib/wpcli-custom-commands.php';
+
 
 use wp_gdpr\config\Activation_Config;
 use wp_gdpr\lib\Gdpr_Container;
@@ -46,7 +49,7 @@ class Wp_Gdpr_Core {
 
 	public function __construct() {
 		//list of inputs in request form
-		add_action('admin_init', array(new Gdpr_Customtables(), 'create_custom_tables'));
+		add_action( 'admin_init', array( new Gdpr_Customtables(), 'create_custom_tables' ) );
 		$this->request_form_inputs = array(
 			'email'         => 'required',
 			'gdpr_req'      => 'required',
