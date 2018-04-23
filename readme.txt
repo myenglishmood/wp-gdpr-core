@@ -54,7 +54,7 @@ We made our code available on [Github](https://github.com/WP-GDPR/wp-gdpr-core/)
 == Changelog ==
 
 Version 1.5.3 (2018-04-19)
-    - Add bulgarion translation
+    - Add Bulgarian translation
     - Css admin fixes
     - Log debug function
     - Hook privacy policy in settings
