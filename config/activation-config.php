@@ -3,6 +3,7 @@ namespace wp_gdpr\config;
 
 
 use wp_gdpr\lib\Gdpr_Log;
+use wp_gdpr\model\Data_Register_Model;
 
 class Activation_Config {
 
@@ -14,6 +15,7 @@ class Activation_Config {
 	public function install() {
 		$this->create_logtable();
 		$this->delete_old_rows_in_logtable();
+		$this->create_data_register_table();
 	}
 
 	/**
@@ -25,6 +27,17 @@ class Activation_Config {
 		$log = Gdpr_Log::instance();
 
 		$log->create_log_table();
+	}
+
+	/**
+	 * Creates data register table
+	 *
+	 * @since 1.5.3
+	 */
+	private function create_data_register_table() {
+		$data_register = new Data_Register_Model();
+
+		$data_register->create_table();
 	}
 
 	/**
