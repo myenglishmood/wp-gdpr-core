@@ -1,6 +1,6 @@
 === WP GDPR ===
 Contributors: Mieke Nijs, Sebastian Kurzynowski, AppSaloon
-Tags: Personal data, GDPR, European, regulation, privacy
+Tags: Personal data, GDPR, compliance, regulations, protection, data protection, consent, European, regulation, privacy, RGDP, AVG, EU, Woocommerce, wc, Contact Form 7, cf7, cfdb7, gravity forms, gf, flamingo
 Requires at least: 4.6.10
 Tested up to: 4.9.5
 Stable tag: 1.5.3
@@ -17,9 +17,10 @@ This open source plugin will assist you making your website GDPR compliant by ma
 WP-GDPR integrates with some of the most well-known plugins through add-ons. This will make the data stored by the plugins available for the visitor to manage it.
 List of all add-ons:  [https://wp-gdpr.eu/add-ons/](https://wp-gdpr.eu/add-ons/).
 Integration with:
-  - [Gravity Forms](https://wp-gdpr.eu/add-ons/gravity-forms/)
-  - [Contact Form DB 7](https://wp-gdpr.eu/add-ons/contact-form-db-7-addon/)
-  - [WooCommerce](https://wp-gdpr.eu/add-ons/woocommerce-add-on/)
+ - [Gravity Forms](https://wp-gdpr.eu/add-ons/gravity-forms/)
+ - [Contact Form DB 7](https://wp-gdpr.eu/add-ons/contact-form-db-7-addon/)
+ - [WooCommerce](https://wp-gdpr.eu/add-ons/woocommerce-add-on/)
+ - [Flamingo](https://wp-gdpr.eu/add-on/flamingo-add-on)
 
 = How WP-GDPR Core works =
 

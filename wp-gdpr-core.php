@@ -25,6 +25,7 @@ namespace wp_gdpr;
 define( 'GDPR_DIR', plugin_dir_path( __FILE__ ) );
 define( 'GDPR_URL', plugin_dir_url( __FILE__ ) );
 define( 'GDPR_BASE_NAME', dirname( plugin_basename( __FILE__ ) ) );
+define( 'GDPR_VERSION', '1.5.3' );
 
 
 require_once GDPR_DIR . 'lib/gdpr-autoloader.php';
@@ -36,6 +37,7 @@ include_once GDPR_DIR . 'lib/wpcli-custom-commands.php';
 
 
 use wp_gdpr\config\Activation_Config;
+use wp_gdpr\config\Deactivation_Config;
 use wp_gdpr\lib\Gdpr_Container;
 use wp_gdpr\lib\Gdpr_Customtables;
 use wp_gdpr\lib\Session_Handler;
@@ -59,10 +61,12 @@ class Wp_Gdpr_Core {
 		Session_Handler::start_session();
 		$this->run();
 
-		register_activation_hook( __FILE__, array( new Activation_Config(), 'install' ) );
+		// clear flags when the plugin is deactivated
+		register_deactivation_hook( __FILE__, array( new Deactivation_Config(), 'deactivate' ) );
 	}
 
 	public function run() {
+		Gdpr_Container::make( 'wp_gdpr\config\Activation_Config' );
 		Gdpr_Container::make( 'wp_gdpr\config\Startup_Config' );
 		Gdpr_Container::make( 'wp_gdpr\controller\Controller_Credentials_Request', self::FORM_SHORTCODE_NAME );
 		Gdpr_Container::make( 'wp_gdpr\controller\Controller_Comments' );
