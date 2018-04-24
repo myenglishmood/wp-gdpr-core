@@ -396,6 +396,11 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 				'type'  => 'email',
 				'value' => '',
 			),
+			'gdpr_mc_api_key'          => array(
+				'label' => __( 'Mailchimp API Key', 'wp-gdpr' ),
+				'type'  => 'text',
+				'value' => '',
+			),
 		);
 
 		foreach ( $settings as $option_name => $option ) {
