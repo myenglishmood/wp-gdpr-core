@@ -21,6 +21,7 @@ class Activation_Config {
 		$did_the_script_already_run = get_option( 'gdpr_activation_script', true );
 
 		if ( $did_the_script_already_run !== '1' ) {
+			$this->create_data_register_table();
 			$this->create_logtable();
 			$this->delete_old_rows_in_logtable();
 
@@ -45,7 +46,7 @@ class Activation_Config {
 	 * @since 1.5.3
 	 */
 	private function create_data_register_table() {
-		$data_register = new Data_Register_Model();
+		$data_register = Data_Register_Model::instance();
 
 		$data_register->create_table();
 	}
