@@ -396,6 +396,11 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 				'type'  => 'email',
 				'value' => '',
 			),
+			'gdpr_mc_api_key'          => array(
+				'label' => __( 'Mailchimp API Key', 'wp-gdpr' ),
+				'type'  => 'text',
+				'value' => '',
+			),
 		);
 
 		foreach ( $settings as $option_name => $option ) {
@@ -517,6 +522,9 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 				break;
 			case 4:
 				$data['r_type'] = __( 'flammingo', 'wp-gdpr' );
+				break;
+			case 5:
+				$data['r_type'] = __( 'mailchimp', 'wp-gdpr' );
 				break;
 
 		}
