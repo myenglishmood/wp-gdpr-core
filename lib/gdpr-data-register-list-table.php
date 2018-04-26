@@ -109,13 +109,12 @@ class Gdpr_Data_Register_List_Table extends \WP_List_Table {
 	public function get_columns() {
 		$columns = array();
 
-		$columns['id']           = __( 'ID', 'wp_gdpr' );
-		$columns['email']        = __( 'Email', 'wp_gdpr' );
-		$columns['hashed_email'] = __( 'Hashed email', 'wp_gdpr' );
-		$columns['ref_id']       = __( 'Reference ID', 'wp_gdpr' );
-		$columns['ref']          = __( 'Reference', 'wp_gdpr' );
-		$columns['message']      = __( 'Message', 'wp_gdpr' );
-		$columns['timestamp']    = __( 'Submitted On', 'wp_gdpr' );
+		$columns['id']        = __( 'ID', 'wp_gdpr' );
+		$columns['email']     = __( 'Email', 'wp_gdpr' );
+		$columns['message']   = __( 'Message', 'wp_gdpr' );
+		$columns['ref_id']    = __( 'Reference ID', 'wp_gdpr' );
+		$columns['ref']       = __( 'Reference', 'wp_gdpr' );
+		$columns['timestamp'] = __( 'Submitted On', 'wp_gdpr' );
 
 		return $columns;
 	}
@@ -180,10 +179,10 @@ class Gdpr_Data_Register_List_Table extends \WP_List_Table {
                 <form id="form_list_form" method="post">
                     <div class="alignleft actions bulkactions">
 						<?php $this->bulk_actions( $which ); ?>
+						<?php $this->extra_tablenav( $which ); ?>
                     </div>
                 </form>
 			<?php endif;
-			$this->extra_tablenav( $which );
 			$this->pagination( $which );
 			?>
 
@@ -200,7 +199,7 @@ class Gdpr_Data_Register_List_Table extends \WP_List_Table {
 	 * @param string $which
 	 */
 	protected function extra_tablenav( $which ) {
-		if ( $which == 'top' ) {
+		if ( $which == 'top' && ( isset( $_REQUEST['email'] ) || isset( $_REQUEST['paged'] ) ) ) {
 			echo '<a class="button-primary" href="' . admin_url( 'admin.php?page=datareg' ) . '">Reset filter & pagination</a>';
 		}
 	}
@@ -373,14 +372,14 @@ class Gdpr_Data_Register_List_Table extends \WP_List_Table {
 			return;
 		}
 
-        switch ( $bulk_action ) {
-            case 'export_csv':
-	            ob_clean();
-                $headers = array( 'id', 'email', 'hashed_email', 'message', 'ref', 'ref_id', 'timestamp' );
-                $data    = $this->get_item_data();
-                export_data_to_csv( $headers, $data, 'data-register-' . date( 'Y-m-d-H-i-s' ) );
-                break;
-        }
+		switch ( $bulk_action ) {
+			case 'export_csv':
+				ob_clean();
+				$headers = array( 'id', 'email', 'hashed_email', 'message', 'ref', 'ref_id', 'timestamp' );
+				$data    = $this->get_item_data();
+				export_data_to_csv( $headers, $data, 'data-register-' . date( 'Y-m-d-H-i-s' ) );
+				break;
+		}
 	}
 
 	/**

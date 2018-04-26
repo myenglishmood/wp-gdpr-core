@@ -3,7 +3,6 @@
 namespace wp_gdpr\lib;
 
 
-
 /**
  * lib element to add menu page
  */
@@ -34,7 +33,12 @@ class Gdpr_Menu_Backend {
 			'set_wp_gdpr_listOfDataRequests'
 		) );
 
-		add_submenu_page(static::PAGE_SLUG, __('Dataregister', 'wp_gdpr'), __('Dataregister', 'wp_gdpr'), 'manage_options', 'datareg', array($this, 'set_wp_dataregister'));
+		$hook = add_submenu_page( static::PAGE_SLUG, __( 'Dataregister', 'wp_gdpr' ), __( 'Dataregister', 'wp_gdpr' ), 'manage_options', 'datareg', array(
+			$this,
+			'set_wp_dataregister'
+		) );
+
+		add_action( 'load-' . $hook, array( $this, 'load_dataregister_css' ) );
 
 		add_submenu_page( static::PAGE_SLUG, __( 'Add-ons', 'wp_gdpr' ), __( 'Add-ons', 'wp_gdpr' ), 'manage_options', 'addon', array(
 			$this,
@@ -85,5 +89,9 @@ class Gdpr_Menu_Backend {
 
 	public function set_wp_dataregister() {
 		require_once GDPR_DIR . 'view/admin/menu/dataregister.php';
+	}
+
+	public function load_dataregister_css() {
+		wp_enqueue_style( 'data-register-style', GDPR_URL . 'assets/css/data-register.css' );
 	}
 }
