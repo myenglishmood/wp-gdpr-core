@@ -152,6 +152,10 @@ div.user_info_content {
 }
 
 
+/*notice message*/
+.notice-error{
+    padding: 10px;
+}
 
 /*tooltip*/
 .tooltip {

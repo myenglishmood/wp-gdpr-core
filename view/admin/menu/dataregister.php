@@ -1,3 +1,8 @@
+<?php
+namespace wp_gdpr\view\admin\menu;
+
+use wp_gdpr\controller\Controller_Data_Register;
+?>
 <div class="wrap">
     <h2><b><?php _e( 'Dataregister', 'wp_gdpr' ); ?></b> <?php _e( 'records of processing activities', 'wp_gdpr' ); ?></h2>
     <div id="nav_menu">
@@ -24,29 +29,17 @@
                 If you still are not sure what this is, check out our <a href="<?php echo admin_url( 'admin.php?page=help' ) ?>"><b>Help page</b></a> or our <a href="https://wp-gdpr.eu/tutorials/" target="_blank"><b>online tutorials</b></a>.</p>
         </div>
     </div>
-    <div id="tab_box">
-        <table id="dataregister_table">
-            <thead>
-            <tr>
-                <th>test</th>
-                <th>test</th>
-                <th>test</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>seba</td>
-                <td>teba</td>
-                <td>test</td>
-            </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td id="dataregi_dwnl_btn" colspan="3"><button class="button button-primary">Download logfile</button></td>
-                </tr>
-            </tfoot>
-        </table>
+
+    <div class="postbox">
+        <form method="get">
+            <p><label for="email"><b><?php _e('Search data register by email address', 'wp-gdpr'); ?></b></label></p>
+            <input type="hidden" name="page" value="datareg">
+            <input type="text" class="regular-text" name="email" id="email" placeholder="name@email.com" required value="<?php echo isset( $_GET['email'] ) ? $_GET['email'] : ''; ?>">
+            <input type="submit" class="button button-primary" value="<?php _e('Search in data register', 'wp-gdpr'); ?>">
+        </form>
     </div>
+
+    <?php (new Controller_Data_Register())->display(); ?>
 </div>
 <?php $plugin_data = get_plugin_data(GDPR_DIR .'wp-gdpr-core.php' );$plugin_version = $plugin_data['Version']; ?>
 <p class="appsaloon_footer">WP-GDPR <?php echo $plugin_version; ?> developed by <a href="https://appsaloon.be/" target="_blank"><b>Appsaloon</b></a></p>

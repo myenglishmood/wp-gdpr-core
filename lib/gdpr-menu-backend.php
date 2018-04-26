@@ -34,7 +34,7 @@ class Gdpr_Menu_Backend {
 			'set_wp_gdpr_listOfDataRequests'
 		) );
 
-//	    Not for v1.5!!!    add_submenu_page(static::PAGE_SLUG, __('Dataregister', 'wp_gdpr'), __('Dataregister', 'wp_gdpr'), 'manage_options', 'datareg', array($this, 'set_wp_dataregister'));
+		add_submenu_page(static::PAGE_SLUG, __('Dataregister', 'wp_gdpr'), __('Dataregister', 'wp_gdpr'), 'manage_options', 'datareg', array($this, 'set_wp_dataregister'));
 
 		add_submenu_page( static::PAGE_SLUG, __( 'Add-ons', 'wp_gdpr' ), __( 'Add-ons', 'wp_gdpr' ), 'manage_options', 'addon', array(
 			$this,
@@ -83,7 +83,7 @@ class Gdpr_Menu_Backend {
 		require_once GDPR_DIR . 'view/admin/menu/help_page.php';
 	}
 
-//	   Not for v1.5!!!      public function set_wp_dataregister() {
-//		require_once GDPR_DIR . 'view/admin/menu/dataregister.php';
-//	}
+	public function set_wp_dataregister() {
+		require_once GDPR_DIR . 'view/admin/menu/dataregister.php';
+	}
 }

@@ -33,6 +33,9 @@ require_once GDPR_DIR . 'lib/gdpr-autoloader.php';
 //include to register custom table on plugin activation
 include_once GDPR_DIR . 'lib/gdpr-customtables.php';
 
+//include functions to use outside of this plugin
+include_once GDPR_DIR . 'lib/gdpr-functions.php';
+
 include_once GDPR_DIR . 'lib/wpcli-custom-commands.php';
 
 
@@ -42,6 +45,7 @@ use wp_gdpr\lib\Gdpr_Container;
 use wp_gdpr\lib\Gdpr_Customtables;
 use wp_gdpr\lib\Session_Handler;
 use wp_gdpr\lib\Gdpr_Log;
+use wp_gdpr\model\Data_Register_Model;
 
 class Wp_Gdpr_Core {
 

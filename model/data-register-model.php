@@ -26,12 +26,36 @@ class Data_Register_Model extends Gdpr_Log_Interface {
 	private static $instance = null;
 
 	/**
+	 * @var \wpdb
+	 */
+	private $wpdb;
+
+	/**
+	 * Database full table name
+	 *
+	 * @var
+	 */
+	private $table_name;
+
+	/**
+	 * The data returned from database query
+	 *
+	 * @var
+	 */
+	public $data;
+
+	/**
 	 * Use Log interface to use the Gdpr Log class
 	 *
 	 * @since 1.5.4
 	 */
 	public function __construct() {
 		parent::__construct();
+
+		global $wpdb;
+
+		$this->wpdb       = $wpdb;
+		$this->table_name = $this->wpdb->prefix . self::TABLE_NAME;
 	}
 
 	/**
@@ -62,9 +86,11 @@ class Data_Register_Model extends Gdpr_Log_Interface {
 
 		$query = 'CREATE TABLE ' . $table_name . ' (
 				  id INT(11) NOT NULL AUTO_INCREMENT,
-				  email VARCHAR(20) DEFAULT NULL,
-				  hashed_email varchar(100) NOT NULL,
+				  email VARCHAR(100) DEFAULT NULL,
+				  hashed_email varchar(64) NOT NULL,
 				  message VARCHAR(255) DEFAULT NULL,
+				  ref varchar(30) DEFAULT NULL,
+				  ref_id INT(11) DEFAULT NULL,
 				  timestamp DATETIME DEFAULT NULL,
 				  PRIMARY KEY (id)
 				)';
@@ -83,9 +109,9 @@ class Data_Register_Model extends Gdpr_Log_Interface {
 	 *
 	 * @since 1.5.4
 	 */
-	public function add_message( $email, $message ) {
+	public function add_message( $email, $message, $ref, $ref_id ) {
 		$hashed_email = $this->hash_email( $email );
-		$this->insert_row( $email, $hashed_email, $message );
+		$this->insert_row( $email, $hashed_email, $message, $ref, $ref_id );
 	}
 
 	/**
@@ -98,8 +124,9 @@ class Data_Register_Model extends Gdpr_Log_Interface {
 	 * @since 1.5.4
 	 */
 	private function hash_email( $email ) {
-		return password_hash( $email, PASSWORD_DEFAULT );
+		return hash( 'sha256', $email );
 	}
+
 	/**
 	 * Insert row to data_register table
 	 *
@@ -109,17 +136,103 @@ class Data_Register_Model extends Gdpr_Log_Interface {
 	 *
 	 * @since 1.5.4
 	 */
-	private function insert_row( $email, $hashed_email, $message ) {
-		/**
-		 * @var $wpdb\wpdb
-		 */
-		global $wpdb;
+	private function insert_row( $email, $hashed_email, $message, $ref, $ref_id ) {
+		$query = "INSERT INTO " . $this->table_name . " (email, hashed_email, message, ref, ref_id, timestamp) VALUES ";
+		$query .= "('" . $email . "', '" . $hashed_email . "', '" . $message . "', '" . $ref . "', " . $ref_id . ", '" . current_time( 'mysql' ) . "')";
 
-		$table_name = $wpdb->prefix . self::TABLE_NAME;
+		$this->wpdb->query( $query );
+	}
 
-		$query = "INSERT INTO " . $table_name . " (email, hashed_email, message, timestamp) VALUES ";
-		$query .= "('" . $email . "', '" . $hashed_email . "', '" . $message . "', " . current_time( 'mysql' ) . ")";
+	/**
+	 * Returns data by email address
+	 *
+	 * @param $email
+	 * @param $start
+	 * @param $amount
+	 *
+	 * @return $this
+	 *
+	 * @since 1.5.4
+	 */
+	public function search_by_email( $email, $start = false, $per_page = false ) {
+		$query = "SELECT * FROM " . $this->table_name . " WHERE hashed_email='" . $this->hash_email( $email ) . "'";
 
-		$wpdb->query( $query );
+		$query .= " ORDER BY id DESC";
+
+		if( $start !== false && $per_page !== false ) {
+			$query .= " LIMIT ".$start.",".$per_page;
+		}
+
+		$this->data = $this->wpdb->get_results( $query );
+
+		return $this;
+	}
+
+	/**
+	 * Returns all data in data register table
+	 *
+	 * @param $start   integer|boolean  Limit start number
+	 * @param $per_page integer|boolean Limit amount of rows to return
+	 *
+	 * @return $this
+	 *
+	 * @since 1.5.4
+	 */
+	public function get_all($start = false, $per_page = false, $order = false) {
+		$query = "SELECT * FROM " . $this->table_name;
+
+		$query .= " ORDER BY id DESC";
+
+		if( $start !== false && $per_page !== false ) {
+			$query .= " LIMIT ".$start.",".$per_page;
+		}
+
+		$this->data = $this->wpdb->get_results( $query );
+
+		return $this;
+	}
+
+	/**
+	 * Returns number of rows in the data register table
+	 *
+	 * @return integer  Number of rows in the database
+	 */
+	public function get_max_all_data() {
+		$query = "SELECT count(*) FROM ".$this->table_name;
+
+		$max = $this->wpdb->get_var( $query );
+
+		return $max;
+	}
+
+	/**
+	 * Check if the query result is valid
+	 *
+	 * @return bool
+	 *
+	 * @since 1.5.4
+	 */
+	public function data_is_valid() {
+		return ( is_array( $this->data ) && count( $this->data ) !== 0 );
+	}
+
+	/**
+	 * Number of items in data variable
+	 *
+	 * @return int
+	 *
+	 * @since 1.5.4
+	 */
+	public function max_data() {
+		return count( $this->data );
+	}
+
+	/**
+	 * Returns array data from the database or empty array
+	 *
+	 * @return array
+	 */
+	public function get_data() {
+		return ( $this->data_is_valid() ) ? $this->data : array();
 	}
 }
