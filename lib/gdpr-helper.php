@@ -82,6 +82,8 @@ Class Gdpr_Helper {
 	 * @param  string $plugin = myplugin/myplugin.php
 	 *
 	 * @return string         The plugin activation url
+	 *
+	 * @since 1.5
 	 */
 	public static function generatePluginActivationLinkUrl($plugin) {
 

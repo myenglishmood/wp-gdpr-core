@@ -1,1 +1,0 @@
-<div class="notice notice-error"><?php _e('No data found in data register.', 'wp_gdpr'); ?></div>

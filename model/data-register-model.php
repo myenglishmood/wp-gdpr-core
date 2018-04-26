@@ -10,11 +10,15 @@ use wp_gdpr\lib\Gdpr_Log_Interface;
  * Data requests and deletion will be saved in that table.
  *
  * @package wp_gdpr\model
+ *
+ * @since 1.6.0
  */
 class Data_Register_Model extends Gdpr_Log_Interface {
 
 	/**
 	 * Database table name after prefix
+	 *
+	 * @since 1.6.0
 	 */
 	CONST TABLE_NAME = 'gdpr_data_register';
 
@@ -22,11 +26,15 @@ class Data_Register_Model extends Gdpr_Log_Interface {
 	 * Instance where the log object gets saved
 	 *
 	 * @var null|Data_Register_Model
+	 *
+	 * @since 1.6.0
 	 */
 	private static $instance = null;
 
 	/**
 	 * @var \wpdb
+	 *
+	 * @since 1.6.0
 	 */
 	private $wpdb;
 
@@ -34,6 +42,8 @@ class Data_Register_Model extends Gdpr_Log_Interface {
 	 * Database full table name
 	 *
 	 * @var
+	 *
+	 * @since 1.6.0
 	 */
 	private $table_name;
 
@@ -41,13 +51,15 @@ class Data_Register_Model extends Gdpr_Log_Interface {
 	 * The data returned from database query
 	 *
 	 * @var
+	 *
+	 * @since 1.6.0
 	 */
 	public $data;
 
 	/**
 	 * Use Log interface to use the Gdpr Log class
 	 *
-	 * @since 1.5.4
+	 * @since 1.6.0
 	 */
 	public function __construct() {
 		parent::__construct();
@@ -63,7 +75,7 @@ class Data_Register_Model extends Gdpr_Log_Interface {
 	 *
 	 * @return null|Data_Register_Model
 	 *
-	 * @since 1.5.4
+	 * @since 1.6.0
 	 */
 	public static function instance() {
 		// Check if instance is already exists
@@ -77,7 +89,7 @@ class Data_Register_Model extends Gdpr_Log_Interface {
 	/**
 	 * Creates Data Register Table
 	 *
-	 * @since 1.5.4
+	 * @since 1.6.0
 	 */
 	public function create_table() {
 		global $wpdb;
@@ -107,7 +119,7 @@ class Data_Register_Model extends Gdpr_Log_Interface {
 	 * @param $email    string  E-mailaddress that took the action
 	 * @param $message   string  Description of the action
 	 *
-	 * @since 1.5.4
+	 * @since 1.6.0
 	 */
 	public function add_message( $email, $message, $ref, $ref_id ) {
 		$hashed_email = $this->hash_email( $email );
@@ -121,7 +133,7 @@ class Data_Register_Model extends Gdpr_Log_Interface {
 	 *
 	 * @return bool|string
 	 *
-	 * @since 1.5.4
+	 * @since 1.6.0
 	 */
 	private function hash_email( $email ) {
 		return hash( 'sha256', $email );
@@ -134,7 +146,7 @@ class Data_Register_Model extends Gdpr_Log_Interface {
 	 * @param $hashed_email
 	 * @param $message
 	 *
-	 * @since 1.5.4
+	 * @since 1.6.0
 	 */
 	private function insert_row( $email, $hashed_email, $message, $ref, $ref_id ) {
 		$query = "INSERT INTO " . $this->table_name . " (email, hashed_email, message, ref, ref_id, timestamp) VALUES ";
@@ -148,11 +160,11 @@ class Data_Register_Model extends Gdpr_Log_Interface {
 	 *
 	 * @param $email
 	 * @param $start
-	 * @param $amount
+	 * @param $per_page
 	 *
 	 * @return $this
 	 *
-	 * @since 1.5.4
+	 * @since 1.6.0
 	 */
 	public function search_by_email( $email, $start = false, $per_page = false ) {
 		$query = "SELECT * FROM " . $this->table_name . " WHERE hashed_email='" . $this->hash_email( $email ) . "'";
@@ -176,7 +188,7 @@ class Data_Register_Model extends Gdpr_Log_Interface {
 	 *
 	 * @return $this
 	 *
-	 * @since 1.5.4
+	 * @since 1.6.0
 	 */
 	public function get_all($start = false, $per_page = false, $order = false) {
 		$query = "SELECT * FROM " . $this->table_name;
@@ -196,6 +208,8 @@ class Data_Register_Model extends Gdpr_Log_Interface {
 	 * Returns number of rows in the data register table
 	 *
 	 * @return integer  Number of rows in the database
+	 *
+	 * @since 1.6.0
 	 */
 	public function get_max_all_data() {
 		$query = "SELECT count(*) FROM ".$this->table_name;
@@ -210,7 +224,7 @@ class Data_Register_Model extends Gdpr_Log_Interface {
 	 *
 	 * @return bool
 	 *
-	 * @since 1.5.4
+	 * @since 1.6.0
 	 */
 	public function data_is_valid() {
 		return ( is_array( $this->data ) && count( $this->data ) !== 0 );
@@ -221,7 +235,7 @@ class Data_Register_Model extends Gdpr_Log_Interface {
 	 *
 	 * @return int
 	 *
-	 * @since 1.5.4
+	 * @since 1.6.0
 	 */
 	public function max_data() {
 		return count( $this->data );
@@ -231,6 +245,8 @@ class Data_Register_Model extends Gdpr_Log_Interface {
 	 * Returns array data from the database or empty array
 	 *
 	 * @return array
+	 *
+	 * @since 1.6.0
 	 */
 	public function get_data() {
 		return ( $this->data_is_valid() ) ? $this->data : array();
