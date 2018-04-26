@@ -521,7 +521,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 				$data['r_type'] = __( 'woocommerce', 'wp-gdpr' );
 				break;
 			case 4:
-				$data['r_type'] = __( 'flammingo', 'wp-gdpr' );
+				$data['r_type'] = __( 'flamingo', 'wp-gdpr' );
 				break;
 			case 5:
 				$data['r_type'] = __( 'mailchimp', 'wp-gdpr' );
