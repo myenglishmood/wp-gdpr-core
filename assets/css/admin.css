@@ -1,6 +1,6 @@
 form.postbox, div.postbox {
     padding: 30px;
-"
+
 }
 
 form.postbox label {
@@ -309,6 +309,18 @@ span.dashicons-info {
 a#a_settings.active_tab{
     margin-left: 5px;
     margin-right: auto;
+}
+.dashicons.valid_license_v{
+    color: #43B44B;
+    font-size: 50px;
+    margin-top: -12px;
+    margin-left:  25px;
+}
+.dashicons.invalid_license_v{
+    color: #F91628;
+    font-size: 50px;
+    margin-top: -12px;
+    margin-left:  25px;
 }
 
 
