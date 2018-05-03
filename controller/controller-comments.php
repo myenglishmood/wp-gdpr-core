@@ -4,6 +4,7 @@ namespace wp_gdpr\controller;
 
 use wp_gdpr\lib\Gdpr_Customtables;
 use wp_gdpr\lib\Gdpr_Container;
+use wp_gdpr\lib\Gdpr_Email;
 use wp_gdpr\lib\Gdpr_Log_Interface;
 use wp_gdpr\lib\Gdpr_Options_Helper;
 use wp_gdpr\lib\Gdpr_Table_Builder;
@@ -498,38 +499,12 @@ class Controller_Comments extends Gdpr_Log_Interface {
 				);
 				$this->message = '<h3>' . __( "The site administrator received your request. Thank You.", "wp_gdpr" ) . '</h3>';
 
-				$this->send_email_to_admin( $email );
+				Gdpr_Email::send_new_delete_request_email_to_admin( $email );
 			}
 		}
 	}
 
-	public function send_email_to_admin( $requested_email ) {
-		$this->log->info( 'Email send to admin');
-		$site_name = get_bloginfo( 'name', true );
-		$subject   = '[' . $site_name . '] ' . __( 'New delete request', 'wp_gdpr' );
-		$to        = Gdpr_Options_Helper::get_dpo_email();
-		$content   = $this->get_email_content( $requested_email );
-		$headers   = array( 'Content-Type: text/html; charset=UTF-8' );
 
-		wp_mail( $to, $subject, $content, $headers );
-	}
-
-	public function get_email_content( $requested_email ) {
-		ob_start();
-
-		include GDPR_DIR . 'view/email/admin-new-delete-request.php';
-
-		$email_template = ob_get_clean();
-
-		/**
-		 * Gives an option to developers to create their own mail template for new delete request (admin).
-		 *
-		 * Parameters:
-		 * string   Email template
-		 * string   Requesters email
-		 */
-		return apply_filters('wp_gdpr_admin_new_delete_request', $email_template, $requested_email);
-	}
 
 	/**
 	 * @param $comment
