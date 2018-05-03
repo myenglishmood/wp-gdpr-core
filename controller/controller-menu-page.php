@@ -4,6 +4,7 @@
 namespace wp_gdpr\controller;
 
 use wp_gdpr\lib\Gdpr_Customtables;
+use wp_gdpr\lib\Gdpr_Email;
 use wp_gdpr\lib\Gdpr_Language;
 use wp_gdpr\lib\Gdpr_Options_Helper;
 use wp_gdpr\lib\Gdpr_Table_Builder;
@@ -43,6 +44,13 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_script' ) );
 	}
 
+	/**
+	 * Loads javascript file according to current hook
+	 *
+	 * @param $hook
+	 *
+	 * @since 1.5.0
+	 */
 	public function admin_script( $hook ) {
 		$this->log->info( 'Admin help.js loaded' );
 		switch ( $hook ) {
@@ -72,7 +80,9 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 	}
 
 	/**
-	 * update privacxy policy url when form is submited
+	 * Update privacy policy after form submit
+	 *
+	 * @since 1.5.0
 	 */
 	public function update_privacy_policy_settings() {
 		$lang = new Gdpr_Language();
@@ -154,8 +164,8 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 					$processed_data = array();
 				}
 
-				$this->send_confirmation_email_to_requester( $data_to_process, $processed_data );
-				$this->send_confirmation_email_to_dpo( $data_to_process, $processed_data );
+				Gdpr_Email::send_confirmation_email_to_requester( $data_to_process, $processed_data );
+				Gdpr_Email::send_confirmation_email_to_dpo( $data_to_process, $processed_data );
 			}
 		}
 	}
@@ -185,9 +195,13 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 	}
 
 	/**
+	 * unserialize comments
+	 *
 	 * @param $serialized_comments
 	 *
 	 * @return mixed
+	 *
+	 * @since 1.5.0
 	 */
 	public function unserialize( $serialized_comments ) {
 		$comments_to_delete = unserialize( $serialized_comments );
@@ -195,12 +209,25 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 		return $comments_to_delete;
 	}
 
+	/**
+	 * Returns type of request
+	 *
+	 * @param $request_data
+	 *
+	 * @return mixed
+	 *
+	 * @since 1.5.0
+	 */
 	public function get_type_of_request( $request_data ) {
 		return $request_data['r_type'];
 	}
 
 	/**
+	 * Returns all comments
+	 *
 	 * @return array
+	 *
+	 * @since 1.5.0
 	 */
 	public function get_original_comments( $comments ) {
 		return get_comments( array( 'comment__in' => $comments ) );
@@ -255,47 +282,6 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 
 			wp_update_comment( $args );
 		}
-	}
-
-	/**
-	 * @param $data_to_process
-	 * @param $processed_data
-	 */
-	public function send_confirmation_email_to_requester( $data_to_process, $processed_data ) {
-		$to      = $data_to_process['email'];
-		$subject = __( 'We confirm Your data deletion request', 'wp_gdpr' );
-		$content = $this->get_confirmation_email_content( $data_to_process, $processed_data );
-		$headers = array( 'Content-Type: text/html; charset=UTF-8' );
-		wp_mail( $to, $subject, $content, $headers );
-	}
-
-	public function get_confirmation_email_content_for_dpo( $comment_to_delete, $processed_data ) {
-		$this->log->info( 'Get email confirmation content for dpo' );
-		ob_start();
-		$date_of_request = $comment_to_delete['timestamp'];
-		include_once GDPR_DIR . 'view/email/delete-confirmation-email-dpo.php';
-
-		return ob_get_clean();
-	}
-	public function get_confirmation_email_content( $comment_to_delete, $processed_data ) {
-		$this->log->info( 'Get email confermation content' );
-		ob_start();
-		$date_of_request = $comment_to_delete['timestamp'];
-		include_once GDPR_DIR . 'view/email/delete-confirmation-email.php';
-
-		return ob_get_clean();
-	}
-
-	/**
-	 * @param $data_to_process
-	 * @param $processed_data
-	 */
-	public function send_confirmation_email_to_dpo( $data_to_process, $processed_data ) {
-		$to      = Gdpr_Options_Helper::get_dpo_email();
-		$subject = __( 'Confirmation data deletion', 'wp_gdpr' );
-		$content = $this->get_confirmation_email_content_for_dpo( $data_to_process, $processed_data );
-		$headers = array( 'Content-Type: text/html; charset=UTF-8' );
-		wp_mail( $to, $subject, $content, $headers );
 	}
 
 	public function map_comments_for_email( $data ) {
@@ -396,7 +382,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 				'type'  => 'email',
 				'value' => '',
 			),
-			'gdpr_mc_api_key'          => array(
+			'gdpr_mc_api_key'    => array(
 				'label' => __( 'Mailchimp API Key', 'wp-gdpr' ),
 				'type'  => 'text',
 				'value' => '',
@@ -620,7 +606,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 					return;
 				}
 
-				$content = $this->get_email_content( $request[0]['email'], $request[0]['timestamp'] );
+				$content = Gdpr_Email::get_request_email_content( $request[0]['email'], $request[0]['timestamp'] );
 
 				$this->set_notice( __( 'Email sent', 'wp_gdpr' ) );
 
@@ -657,60 +643,12 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 		return $wpdb->get_results( $query, ARRAY_A );
 	}
 
-	/**
-	 * Gets request email content
-	 *
-	 * @param $email
-	 * @param $timestamp
-	 *
-	 * @return string content of email for requester
-	 *
-	 */
-	public function get_email_content( $email, $timestamp, $language = 'en' ) {
-		$this->log->info( 'Get request email' );
-		ob_start();
-		$url = $this->create_unique_url( $email, $timestamp );
-		include GDPR_DIR . 'view/email/request-email.php';
-
-		return ob_get_clean();
-	}
-
-	/**
-	 * @param $email
-	 * @param $timestamp
-	 *
-	 * @return string
-	 * create url
-	 * encode gdpr#example@email.com into base64
-	 */
-	public function create_unique_url( $email, $timestamp ) {
-		$this->log->info( 'Unique url created for get personal data with email and timestamp' );
-
-		return Request_Form::get_personal_data_page_url( '?req=' . base64_encode( 'gdpr#' . $email . '#' . base64_encode( $timestamp ) ) );
-	}
-
 	public function update_gdpr_request_status( $email ) {
 		global $wpdb;
 
 		$table_name = $wpdb->prefix . 'gdpr_requests';
 
 		$wpdb->update( $table_name, array( 'status' => 1 ), array( 'email' => $email ) );
-	}
-
-	/**
-	 * @param $email
-	 * @param $timestamp
-	 * @param string $language
-	 *
-	 * @return string content of request email for dpo
-	 */
-	public function get_dpo_request_content( $email, $timestamp, $language = 'en' ) {
-		$this->log->info( 'Get dpo request email' );
-		ob_start();
-		$url = admin_url() . '?page=wp_gdpr&page_type=datarequest';
-		include GDPR_DIR . 'view/email/request-email-dpo.php';
-
-		return ob_get_clean();
 	}
 
 	/**
@@ -916,6 +854,11 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 		}
 	}
 
+	/**
+	 * Dynamic save functions for settings
+	 *
+	 * @since 1.5.0
+	 */
 	public function save_settings() {
 		if ( 'POST' == $_SERVER['REQUEST_METHOD'] && isset( $_REQUEST['gdpr_save_global_settings'] ) ) {
 			$this->log->info( 'Saved DPO settings' );
