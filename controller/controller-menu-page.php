@@ -269,21 +269,62 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 		wp_mail( $to, $subject, $content, $headers );
 	}
 
+	/**
+	 * Sends email to dpo to confirm data delete
+	 *
+	 * @param $comment_to_delete    array
+	 * @param $processed_data       array
+	 *
+	 * @return string
+	 *
+	 * @since 1.5.3
+	 */
 	public function get_confirmation_email_content_for_dpo( $comment_to_delete, $processed_data ) {
 		$this->log->info( 'Get email confirmation content for dpo' );
 		ob_start();
 		$date_of_request = $comment_to_delete['timestamp'];
 		include_once GDPR_DIR . 'view/email/delete-confirmation-email-dpo.php';
 
-		return ob_get_clean();
+		$email_template = ob_get_clean();
+
+		/**
+		 *  Gives an option to developers to create their own mail template for delete confirmation.
+		 *
+		 *  Parameters:
+		 *  string  Email template
+		 *  string  Timestamp
+		 *  array   Processed data
+		 */
+		return apply_filters('wp_gdpr_delete_confirmation_dpo', $email_template, $date_of_request, $processed_data);
 	}
+
+	/**
+	 * Sends email to requester to confirm data delete
+	 *
+	 * @param $comment_to_delete    array
+	 * @param $processed_data       array
+	 *
+	 * @return string
+	 *
+	 * @since 1.5.3
+	 */
 	public function get_confirmation_email_content( $comment_to_delete, $processed_data ) {
 		$this->log->info( 'Get email confermation content' );
 		ob_start();
 		$date_of_request = $comment_to_delete['timestamp'];
 		include_once GDPR_DIR . 'view/email/delete-confirmation-email.php';
 
-		return ob_get_clean();
+		$email_template = ob_get_clean();
+
+		/**
+		 *  Gives an option to developers to create their own mail template for delete confirmation.
+		 *
+		 *  Parameters:
+		 *  string  Email template
+		 *  string  Timestamp
+		 *  array   Processed data
+		 */
+		return apply_filters( 'wp_gdpr_delete_confirmation', $email_template, $date_of_request, $processed_data );
 	}
 
 	/**
@@ -396,7 +437,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 				'type'  => 'email',
 				'value' => '',
 			),
-			'gdpr_mc_api_key'          => array(
+			'gdpr_mc_api_key'    => array(
 				'label' => __( 'Mailchimp API Key', 'wp-gdpr' ),
 				'type'  => 'text',
 				'value' => '',
@@ -658,13 +699,14 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 	}
 
 	/**
-	 * Gets request email content
+	 * Returns request email template
 	 *
-	 * @param $email
-	 * @param $timestamp
+	 * @param $email        string
+	 * @param $timestamp    string|integer
 	 *
 	 * @return string content of email for requester
 	 *
+	 * @since 1.5.0
 	 */
 	public function get_email_content( $email, $timestamp, $language = 'en' ) {
 		$this->log->info( 'Get request email' );
@@ -672,7 +714,17 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 		$url = $this->create_unique_url( $email, $timestamp );
 		include GDPR_DIR . 'view/email/request-email.php';
 
-		return ob_get_clean();
+		$email_template = ob_get_clean();
+
+		/**
+		 *  Gives an option to developers to create their own mail template for data request.
+		 *
+		 *  Parameters:
+		 *  string  Email template
+		 *  string  Email address
+		 *  string  Url link to view the data
+		 */
+		return apply_filters( 'wp_gdpr_request_email', $email_template, $email, $url );
 	}
 
 	/**
@@ -710,7 +762,17 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 		$url = admin_url() . '?page=wp_gdpr&page_type=datarequest';
 		include GDPR_DIR . 'view/email/request-email-dpo.php';
 
-		return ob_get_clean();
+		$email_template = ob_get_clean();
+
+		/**
+		 *  Gives an option to developers to create their own mail template for data request.
+		 *
+		 *  Parameters:
+		 *  string  Email template for dpo
+		 *  string  Email address
+		 *  string   Url link to view the data
+		 */
+		return apply_filters( 'wp_gdpr_request_email_dpo', $email_template, $email, $url );
 	}
 
 	/**

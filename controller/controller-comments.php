@@ -519,7 +519,16 @@ class Controller_Comments extends Gdpr_Log_Interface {
 
 		include GDPR_DIR . 'view/email/admin-new-delete-request.php';
 
-		return ob_get_clean();
+		$email_template = ob_get_clean();
+
+		/**
+		 * Gives an option to developers to create their own mail template for new delete request (admin).
+		 *
+		 * Parameters:
+		 * string   Email template
+		 * string   Requesters email
+		 */
+		return apply_filters('wp_gdpr_admin_new_delete_request', $email_template, $requested_email);
 	}
 
 	/**
