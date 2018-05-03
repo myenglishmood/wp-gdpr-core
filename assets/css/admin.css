@@ -298,7 +298,7 @@ a.wp-gdpr_get_add_on {
 
 /*Settings page*/
 
-.notice{
+div.notice{
     padding: 10px;
 }
 span.dashicons-info {
