@@ -298,6 +298,9 @@ a.wp-gdpr_get_add_on {
 
 /*Settings page*/
 
+div.notice{
+    padding: 10px;
+}
 span.dashicons-info {
     color: #999;
     font-size: 25px;
