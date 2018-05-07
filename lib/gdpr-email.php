@@ -35,7 +35,12 @@ class Gdpr_Email {
 	public static function get_delete_confirmation_email_content( $comment_to_delete, $processed_data ) {
 		ob_start();
 		$date_of_request = $comment_to_delete['timestamp'];
-		include_once GDPR_DIR . 'view/email/delete-confirmation-email.php';
+
+		if ( static::is_email_template_overriden_in_theme( 'delete-confirmation-email.php' ) ) {
+			static::load_email_template_from_theme( 'delete-confirmation-email.php' );
+		} else {
+			include GDPR_DIR . 'view/email/delete-confirmation-email.php';
+		}
 
 		$email_template = ob_get_clean();
 
@@ -79,7 +84,12 @@ class Gdpr_Email {
 	public static function get_delete_confirmation_email_content_for_dpo( $comment_to_delete, $processed_data ) {
 		ob_start();
 		$date_of_request = $comment_to_delete['timestamp'];
-		include_once GDPR_DIR . 'view/email/delete-confirmation-email-dpo.php';
+
+		if ( static::is_email_template_overriden_in_theme( 'delete-confirmation-email-dpo.php' ) ) {
+			static::load_email_template_from_theme( 'delete-confirmation-email-dpo.php' );
+		} else {
+			include GDPR_DIR . 'view/email/delete-confirmation-email-dpo.php';
+		}
 
 		$email_template = ob_get_clean();
 
@@ -91,14 +101,14 @@ class Gdpr_Email {
 		 *  string  Timestamp
 		 *  array   Processed data
 		 */
-		return apply_filters('wp_gdpr_delete_confirmation_dpo', $email_template, $date_of_request, $processed_data);
+		return apply_filters( 'wp_gdpr_delete_confirmation_dpo', $email_template, $date_of_request, $processed_data );
 	}
 
 	/**
 	 * Sends new delete request email to admin
-	 * 
+	 *
 	 * @param $requested_email
-	 * 
+	 *
 	 * @since 1.6.0
 	 */
 	public static function send_new_delete_request_email_to_admin( $requested_email ) {
@@ -115,17 +125,21 @@ class Gdpr_Email {
 	 * Returns new delete request email content
 	 *
 	 * Admin gets an email when the requester ask for data delete
-	 * 
+	 *
 	 * @param $requested_email
 	 *
 	 * @return string
-	 * 
+	 *
 	 * @since 1.6.0
 	 */
 	public static function get_admin_new_delete_request_content( $requested_email ) {
 		ob_start();
 
-		include GDPR_DIR . 'view/email/admin-new-delete-request.php';
+		if ( static::is_email_template_overriden_in_theme( 'admin-new-delete-request.php' ) ) {
+			static::load_email_template_from_theme( 'admin-new-delete-request.php' );
+		} else {
+			include GDPR_DIR . 'view/email/admin-new-delete-request.php';
+		}
 
 		$email_template = ob_get_clean();
 
@@ -136,7 +150,7 @@ class Gdpr_Email {
 		 * string   Email template
 		 * string   Requesters email
 		 */
-		return apply_filters('wp_gdpr_admin_new_delete_request', $email_template, $requested_email);
+		return apply_filters( 'wp_gdpr_admin_new_delete_request', $email_template, $requested_email );
 	}
 
 	/**
@@ -148,11 +162,11 @@ class Gdpr_Email {
 	 * @since 1.6.0
 	 */
 	public static function send_request_email_to_requester( $single_address, $time_of_insertion, $language ) {
-		$to         = $single_address;
-		$site_name  = get_bloginfo( 'name', true );
-		$subject    = '[' . $site_name . '] ' . __( 'Your data request', 'wp_gdpr' );
-		$content    = static::get_request_email_content( $single_address, $time_of_insertion, $language );
-		$headers    = array( 'Content-Type: text/html; charset=UTF-8' );
+		$to        = $single_address;
+		$site_name = get_bloginfo( 'name', true );
+		$subject   = '[' . $site_name . '] ' . __( 'Your data request', 'wp_gdpr' );
+		$content   = static::get_request_email_content( $single_address, $time_of_insertion, $language );
+		$headers   = array( 'Content-Type: text/html; charset=UTF-8' );
 
 		wp_mail( $to, $subject, $content, $headers );
 	}
@@ -172,7 +186,12 @@ class Gdpr_Email {
 	public static function get_request_email_content( $email, $timestamp, $language = 'en' ) {
 		ob_start();
 		$url = static::create_unique_url( $email, $timestamp );
-		include GDPR_DIR . 'view/email/request-email.php';
+
+		if ( static::is_email_template_overriden_in_theme( 'request-email.php' ) ) {
+			static::load_email_template_from_theme( 'request-email.php' );
+		} else {
+			include GDPR_DIR . 'view/email/request-email.php';
+		}
 
 		$email_template = ob_get_clean();
 
@@ -196,11 +215,11 @@ class Gdpr_Email {
 	 * @since 1.6.0
 	 */
 	public static function send_request_email_to_dpo( $single_address, $time_of_insertion, $language ) {
-		$to         = $single_address;
-		$site_name  = get_bloginfo( 'name', true );
-		$subject    = '[' . $site_name . '] ' . __( 'New data request', 'wp_gdpr' );
-		$content    = static::get_request_email_dpo_content( $single_address, $time_of_insertion, $language );
-		$headers    = array( 'Content-Type: text/html; charset=UTF-8' );
+		$to        = $single_address;
+		$site_name = get_bloginfo( 'name', true );
+		$subject   = '[' . $site_name . '] ' . __( 'New data request', 'wp_gdpr' );
+		$content   = static::get_request_email_dpo_content( $single_address, $time_of_insertion, $language );
+		$headers   = array( 'Content-Type: text/html; charset=UTF-8' );
 
 		wp_mail( $to, $subject, $content, $headers );
 	}
@@ -221,7 +240,12 @@ class Gdpr_Email {
 	public static function get_request_email_dpo_content( $email, $timestamp, $language = 'en' ) {
 		ob_start();
 		$url = admin_url() . '?page=wp_gdpr&page_type=datarequest';
-		include GDPR_DIR . 'view/email/request-email-dpo.php';
+
+		if ( static::is_email_template_overriden_in_theme( 'request-email-dpo.php' ) ) {
+			static::load_email_template_from_theme( 'request-email-dpo.php' );
+		} else {
+			include GDPR_DIR . 'view/email/request-email-dpo.php';
+		}
 
 		$email_template = ob_get_clean();
 
@@ -237,13 +261,41 @@ class Gdpr_Email {
 	}
 
 	/**
+	 * Returns true if the email template exists in the theme
+	 *
+	 * @param $path
+	 *
+	 * @return bool
+	 *
+	 * @since 1.6.0
+	 */
+	private static function is_email_template_overriden_in_theme( $path ) {
+		if ( is_file( get_template_directory() . DIRECTORY_SEPARATOR . GDPR_BASE_NAME . DIRECTORY_SEPARATOR . 'email' . DIRECTORY_SEPARATOR . $path ) ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Load email template from the theme
+	 *
+	 * @param $path
+	 *
+	 * @since 1.6.0
+	 */
+	private static function load_email_template_from_theme( $path ) {
+		include get_template_directory() . DIRECTORY_SEPARATOR . GDPR_BASE_NAME . DIRECTORY_SEPARATOR . 'email' . DIRECTORY_SEPARATOR . $path;
+	}
+
+	/**
 	 * @param $email
 	 * @param $timestamp
 	 *
 	 * @return string
 	 * create url
 	 * encode gdpr#example@email.com into base64
-	 * 
+	 *
 	 * @since 1.6.0
 	 */
 	public static function create_unique_url( $email, $timestamp ) {
