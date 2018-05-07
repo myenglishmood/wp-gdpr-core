@@ -5,6 +5,7 @@ namespace wp_gdpr\model;
 use SessionHandler;
 use wp_gdpr\lib\Gdpr_Customtables;
 use wp_gdpr\lib\Gdpr_Container;
+use wp_gdpr\lib\Gdpr_Email;
 use wp_gdpr\lib\Gdpr_Options_Helper;
 use wp_gdpr\lib\Session_Handler;
 
@@ -99,8 +100,8 @@ class Request_Form extends Form_Validation_Model {
 		);
 
 		$dpo_email = Gdpr_Options_Helper::get_dpo_email();
-		$this->send_email_to_dpo( $dpo_email, $time_of_insertion, $language );
-		$this->send_email_to_requester( $single_address, $time_of_insertion, $language );
+		Gdpr_Email::send_request_email_to_dpo( $dpo_email, $time_of_insertion, $language );
+		Gdpr_Email::send_request_email_to_requester( $single_address, $time_of_insertion, $language );
 
 		$this->redirect_to_page_gdpr_personal_data();
 	}
@@ -120,50 +121,11 @@ class Request_Form extends Form_Validation_Model {
 		Session_Handler::save_in_session( $key, $value );
 	}
 
-	/**
-	 * Sends email to DPO
-	 *
-	 * @param $single_address
-	 * @param $time_of_insertion
-	 *
-	 * @since 1.5.3
-	 */
-	public function send_email_to_dpo( $single_address, $time_of_insertion, $language ) {
-		$to         = $single_address;
-		$site_name  = get_bloginfo( 'name', true );
-		$subject    = '[' . $site_name . '] ' . __( 'New data request', 'wp_gdpr' );
-		$controller = Gdpr_Container::make( 'wp_gdpr\controller\Controller_Menu_Page' );
-		$content    = $controller->get_dpo_request_content( $single_address, $time_of_insertion, $language );
-		$headers    = array( 'Content-Type: text/html; charset=UTF-8' );
-
-		wp_mail( $to, $subject, $content, $headers );
-	}
-
-	/**
-	 * Sends email to requester
-	 *
-	 * @param $single_address
-	 * @param $time_of_insertion
-	 *
-	 * @since 1.5.3
-	 */
-	public function send_email_to_requester( $single_address, $time_of_insertion, $language ) {
-		$to         = $single_address;
-		$site_name  = get_bloginfo( 'name', true );
-		$subject    = '[' . $site_name . '] ' . __( 'Your data request', 'wp_gdpr' );
-		$controller = Gdpr_Container::make( 'wp_gdpr\controller\Controller_Menu_Page' );
-		$content    = $controller->get_email_content( $single_address, $time_of_insertion, $language );
-		$headers    = array( 'Content-Type: text/html; charset=UTF-8' );
-
-		wp_mail( $to, $subject, $content, $headers );
-	}
-
 	public function redirect_to_page_gdpr_personal_data() {
 		$url = self::get_personal_data_page_url( '?thank_you' );
 
 		wp_redirect( $url );
 		exit;
-
 	}
 
 	/**

@@ -35,7 +35,7 @@ use wp_gdpr\model\Request_Form;
     </div>
     <div class="postbox-group postbox-group">
         <label for="gdpr_priv_pov_checkbox"><?php _e( 'Privacy policy checkbox', 'wp_gdpr' ); ?>:</label>
-        <textarea name="gdpr_priv_pov_checkbox"><?php echo $privacy_policy_strings[2]; ?></textarea>
+        <textarea name="gdpr_priv_pov_checkbox"><?php echo stripslashes( $privacy_policy_strings[2] ); ?></textarea>
     </div>
     <div class="postbox-spacing"></div>
 <div class="tooltip">

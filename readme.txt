@@ -33,6 +33,21 @@ All emails will be sent automatically.
 
 We made our code available on [Github](https://github.com/WP-GDPR/wp-gdpr-core/) and are welcoming Pull Request!
 
+= E-mail filters =
+
+We have 5 e-mail templates and they are all editable through [filters](https://codex.wordpress.org/Plugin_API/Filter_Reference).
+
+The requester and the dpo will be emailed when the requester asks for the data.
+- 'wp_gdpr_request_email': $email_template, $email, $url (email to requester)
+- 'wp_gdpr_request_email_dpo': $email_template, $email, $url (email to dpo)
+
+The admin will be emailed when there is a new delete request by the requester.
+- 'wp_gdpr_admin_new_delete_request': $email_template, $requested_email (email to admin)
+
+The requester and the dpo will be emailed when the admin deletes the requester data from the website.
+- 'wp_gdpr_delete_confirmation': $email_template, $date_of_request, $processed_data (email to requester)
+- 'wp_gdpr_delete_confirmation_dpo': $email_template, $date_of_request, $processed_data (email to dpo)
+
 == Installation ==
 1. Upload the plugin files to the /wp-content/plugins, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the ‘Plugins’ screen in WordPress
