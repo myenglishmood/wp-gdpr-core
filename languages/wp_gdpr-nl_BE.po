@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP GDPR\n"
-"POT-Creation-Date: 2018-05-07 11:46+0200\n"
-"PO-Revision-Date: 2018-05-07 11:53+0200\n"
+"POT-Creation-Date: 2018-05-07 12:02+0200\n"
+"PO-Revision-Date: 2018-05-07 12:02+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_BE\n"
@@ -84,7 +84,7 @@ msgstr "e-mailadres"
 
 #: controller/controller-comments.php:398
 msgid "author name"
-msgstr "naam"
+msgstr "auteur naam"
 
 #: controller/controller-comments.php:399
 msgid "comment content"
@@ -147,8 +147,8 @@ msgid "Don't show comments"
 msgstr "Geen reacties weergeven"
 
 #: controller/controller-menu-page.php:381
-msgid "Set Your DPO e-mail address"
-msgstr "Stel uw PDO e-mailadres in"
+msgid "Set your DPO e-mail address"
+msgstr "Stel uw DPO e-mailadres in"
 
 #: controller/controller-menu-page.php:386
 msgid "Mailchimp API Key"
@@ -523,7 +523,7 @@ msgstr ""
 
 #: view/email/request-email.php:121
 msgid "Check your personal data"
-msgstr "Check jou persoonlijke data"
+msgstr "Check je persoonlijke data"
 
 #: view/front/form.php:18
 msgid "Submit"
