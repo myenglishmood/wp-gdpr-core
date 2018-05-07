@@ -378,7 +378,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 				'value' => 'checked',
 			),
 			'dpo_email'          => array(
-				'label' => __( 'Set Your DPO e-mail address', 'wp-gdpr' ),
+				'label' => __( 'Set your DPO e-mail address', 'wp-gdpr' ),
 				'type'  => 'email',
 				'value' => '',
 			),
