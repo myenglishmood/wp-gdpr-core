@@ -50,7 +50,9 @@ class Gdpr_Table_Builder {
 	 * table open tab
 	 */
 	public function open_table() {
-		?><table class="<?php echo $this->custom_classes; ?>"><?php
+		?>
+        <table id="datatable-buttons" class="table table-bordered table-bordered dt-responsive nowrap <?php echo $this->custom_classes; ?>" cellspacing="0" width="100%">
+        <?php
 	}
 
 	/**
@@ -98,6 +100,7 @@ class Gdpr_Table_Builder {
 		?>
         <tfoot>
         <tr>
+            <div class="col-md-12">
             <?php
             $total_th = count($this->head);
             $colspan = '';
@@ -105,8 +108,9 @@ class Gdpr_Table_Builder {
                 $colspan = ' colspan="'.$total_th.'"';
             } ?>
 			<?php foreach ( $this->footer as $footer ) : ?>
-                <td<?php echo $colspan; ?>><?php echo $footer; ?></td>
+                <td colspan="6"><?php echo $footer; ?></td>
 			<?php endforeach; ?>
+            </div>
         </tr>
         </tfoot>
 		<?php
