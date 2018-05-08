@@ -72,6 +72,7 @@ class Wp_Gdpr_Core {
 		Gdpr_Container::make( 'wp_gdpr\controller\Controller_Comments' );
 		Gdpr_Container::make( 'wp_gdpr\controller\Controller_Form_Submit', $this->request_form_inputs );
 		Gdpr_Container::make( 'wp_gdpr\controller\Controller_Menu_Page' );
+        Gdpr_Container::make( 'wp_gdpr\controller\Controller_Frontend' );
 	}
 }
 

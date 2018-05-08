@@ -1,17 +1,10 @@
-<!doctype html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" type="text/css" href="<?php echo GDPR_URL . 'assets/css/frontend-styling.css' ?>">
+<?php
 
-    /////////////////////////// css here
+if(! defined('ABSPATH')){ return; }
+get_header();
 
-    <title><?php _e( 'WP-GDPR YOUR PRIVACY CENTER', 'wp_gdpr' ); ?></title>
-	<?php wp_head(); ?>
-</head>
-<body>
-
+?>
+	<?php use wp_gdpr\lib\Gdpr_Options_Helper; ?>
 <div class="wrapper">
     <div class="container-fluid">
 
@@ -51,7 +44,7 @@
                                         </li>
                                         <?php endif; ?>
 
-                            ///////////////// foreach plugin
+                            <!--  ///////////////// foreach plugin -->
 
 
                                         <li class="nav-item">
@@ -60,7 +53,7 @@
                                             </a>
                                         </li>
 
-                             /////////////// end foreach plugin
+                            <!--  /////////////// end foreach plugin -->
 
                                     </ul>
                                     <div class="tab-content">
@@ -114,248 +107,7 @@
                                                                 </td>
                                                                 <td style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Dit is voorbeeldcontent die hier geplaatst is voor een weergave te hebben.</td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>324</td>
-                                                                <td>
-                                                                    <input id="checkbox0" type="checkbox">
-                                                                    <label for="checkbox0">
-                                                                    </label>
-                                                                </td>
-                                                                <td>2018-06-02 <small>18:31:25</small></td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="kevin@appsaloon.be">
-                                                                    </div>
-                                                                    <div style="display:none;">kevin@appsaloon.be</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="Kevin Ume">
-                                                                    </div>
-                                                                    <div style="display:none;">Kevin Ume</div>
-                                                                </td>
-                                                                <td style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Dit is voorbeeldcontent die hier geplaatst is voor een weergave te hebben.</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>324</td>
-                                                                <td>
-                                                                    <input id="checkbox0" type="checkbox">
-                                                                    <label for="checkbox0">
-                                                                    </label>
-                                                                </td>
-                                                                <td>2018-06-02 <small>18:31:25</small></td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="kevin@appsaloon.be">
-                                                                    </div>
-                                                                    <div style="display:none;">kevin@appsaloon.be</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="Kevin Ume">
-                                                                    </div>
-                                                                    <div style="display:none;">Kevin Ume</div>
-                                                                </td>
-                                                                <td style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Dit is voorbeeldcontent die hier geplaatst is voor een weergave te hebben.</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>324</td>
-                                                                <td>
-                                                                    <input id="checkbox0" type="checkbox">
-                                                                    <label for="checkbox0">
-                                                                    </label>
-                                                                </td>
-                                                                <td>2018-06-02 <small>18:31:25</small></td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="kevin@appsaloon.be">
-                                                                    </div>
-                                                                    <div style="display:none;">kevin@appsaloon.be</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="Kevin Ume">
-                                                                    </div>
-                                                                    <div style="display:none;">Kevin Ume</div>
-                                                                </td>
-                                                                <td style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Dit is voorbeeldcontent die hier geplaatst is voor een weergave te hebben.</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>324</td>
-                                                                <td>
-                                                                    <input id="checkbox0" type="checkbox">
-                                                                    <label for="checkbox0">
-                                                                    </label>
-                                                                </td>
-                                                                <td>2018-06-02 <small>18:31:25</small></td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="kevin@appsaloon.be">
-                                                                    </div>
-                                                                    <div style="display:none;">kevin@appsaloon.be</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="Kevin Ume">
-                                                                    </div>
-                                                                    <div style="display:none;">Kevin Ume</div>
-                                                                </td>
-                                                                <td style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Dit is voorbeeldcontent die hier geplaatst is voor een weergave te hebben.</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>324</td>
-                                                                <td>
-                                                                    <input id="checkbox0" type="checkbox">
-                                                                    <label for="checkbox0">
-                                                                    </label>
-                                                                </td>
-                                                                <td>2018-06-02 <small>18:31:25</small></td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="kevin@appsaloon.be">
-                                                                    </div>
-                                                                    <div style="display:none;">kevin@appsaloon.be</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="Kevin Ume">
-                                                                    </div>
-                                                                    <div style="display:none;">Kevin Ume</div>
-                                                                </td>
-                                                                <td style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Dit is voorbeeldcontent die hier geplaatst is voor een weergave te hebben.</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>324</td>
-                                                                <td>
-                                                                    <input id="checkbox0" type="checkbox">
-                                                                    <label for="checkbox0">
-                                                                    </label>
-                                                                </td>
-                                                                <td>2018-06-02 <small>18:31:25</small></td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="kevin@appsaloon.be">
-                                                                    </div>
-                                                                    <div style="display:none;">kevin@appsaloon.be</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="Kevin Ume">
-                                                                    </div>
-                                                                    <div style="display:none;">Kevin Ume</div>
-                                                                </td>
-                                                                <td style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Dit is voorbeeldcontent die hier geplaatst is voor een weergave te hebben.</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>324</td>
-                                                                <td>
-                                                                    <input id="checkbox0" type="checkbox">
-                                                                    <label for="checkbox0">
-                                                                    </label>
-                                                                </td>
-                                                                <td>2018-06-02 <small>18:31:25</small></td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="kevin@appsaloon.be">
-                                                                    </div>
-                                                                    <div style="display:none;">kevin@appsaloon.be</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="Kevin Ume">
-                                                                    </div>
-                                                                    <div style="display:none;">Kevin Ume</div>
-                                                                </td>
-                                                                <td style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Dit is voorbeeldcontent die hier geplaatst is voor een weergave te hebben.</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>324</td>
-                                                                <td>
-                                                                    <input id="checkbox0" type="checkbox">
-                                                                    <label for="checkbox0">
-                                                                    </label>
-                                                                </td>
-                                                                <td>2018-06-02 <small>18:31:25</small></td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="kevin@appsaloon.be">
-                                                                    </div>
-                                                                    <div style="display:none;">kevin@appsaloon.be</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="Kevin Ume">
-                                                                    </div>
-                                                                    <div style="display:none;">Kevin Ume</div>
-                                                                </td>
-                                                                <td style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Dit is voorbeeldcontent die hier geplaatst is voor een weergave te hebben.</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>324</td>
-                                                                <td>
-                                                                    <input id="checkbox0" type="checkbox">
-                                                                    <label for="checkbox0">
-                                                                    </label>
-                                                                </td>
-                                                                <td>2018-06-02 <small>18:31:25</small></td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="kevin@appsaloon.be">
-                                                                    </div>
-                                                                    <div style="display:none;">kevin@appsaloon.be</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="Kevin Ume">
-                                                                    </div>
-                                                                    <div style="display:none;">Kevin Ume</div>
-                                                                </td>
-                                                                <td style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Dit is voorbeeldcontent die hier geplaatst is voor een weergave te hebben.</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>324</td>
-                                                                <td>
-                                                                    <input id="checkbox0" type="checkbox">
-                                                                    <label for="checkbox0">
-                                                                    </label>
-                                                                </td>
-                                                                <td>2018-06-02 <small>18:31:25</small></td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="kevin@appsaloon.be">
-                                                                    </div>
-                                                                    <div style="display:none;">kevin@appsaloon.be</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="Kevin Ume">
-                                                                    </div>
-                                                                    <div style="display:none;">Kevin Ume</div>
-                                                                </td>
-                                                                <td style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Dit is voorbeeldcontent die hier geplaatst is voor een weergave te hebben.</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>4050</td>
-                                                                <td>
-                                                                    <input id="checkbox1" type="checkbox">
-                                                                    <label for="checkbox1">
-                                                                    </label>
-                                                                </td>
-                                                                <td>2018-04-05 <small>18:31:25</small></td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="kevin@appsaloon.be">
-                                                                    </div>
-                                                                    <div style="display:none;">kevin@appsaloon.be</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="Kevin Ume">
-                                                                    </div>
-                                                                    <div style="display:none;">Kevin Ume</div>
-                                                                </td>
-                                                                <td style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Dit kan wel lang worden omdat sommige mensen gewoon veel onzin schrijven op een commentaar in WordPress. Dit blijkt uit ervaring.</td>
-                                                            </tr>
+                                                           
                                                             </tbody>
 
                                                         </table>
@@ -420,52 +172,7 @@
                                                                 <td>Kempische Steenweg 101, 3500 Hasselt</td>
                                                                 <td style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Thanks for support.</td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>4050</td>
-                                                                <td>
-                                                                    <input id="checkbox1" type="checkbox">
-                                                                    <label for="checkbox1">
-                                                                    </label>
-                                                                </td>
-                                                                <td>2018-04-05 <small>18:31:25</small></td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="kevin@appsaloon.be">
-                                                                    </div>
-                                                                    <div style="display:none;">kevin@appsaloon.be</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="Kevin Ume">
-                                                                    </div>
-                                                                    <div style="display:none;">Kevin Ume</div>
-                                                                </td>
-                                                                <td>Kempische Steenweg 101, 3500 Hasselt</td>
-                                                                <td style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Here is my info.</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>2430</td>
-                                                                <td>
-                                                                    <input id="checkbox1" type="checkbox">
-                                                                    <label for="checkbox1">
-                                                                    </label>
-                                                                </td>
-                                                                <td>2018-04-08 <small>19:31:55</small></td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="kevin@appsaloon.be">
-                                                                    </div>
-                                                                    <div style="display:none;">kevin@appsaloon.be</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="Kevin Ume">
-                                                                    </div>
-                                                                    <div style="display:none;">Kevin Ume</div>
-                                                                </td>
-                                                                <td>Kempische Steenweg 101, 3500 Hasselt</td>
-                                                                 <td style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Again some info.</td>
-                                                            </tr>
+                                                           
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -539,7 +246,7 @@
 
 <div class="gdpr-container">
 	<?php echo $controller->message; ?>
-	<?php use wp_gdpr\lib\Gdpr_Options_Helper; ?>
+
     <div id="gdpr-message-updated-entry" class="js-update-message"></div>
 	<?php if ( Gdpr_Options_Helper::is_option_off( 'switch_on_comments' ) ): ?>
         <h2><?php _e( 'All comments added by email address', 'wp_gdpr' ); ?>
@@ -557,7 +264,7 @@
 	?>
 </div>
 </body>
-<?php wp_footer(); ?>
+<?php get_footer(); ?>
 </html>
 
 
