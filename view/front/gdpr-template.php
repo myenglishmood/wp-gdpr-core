@@ -5,7 +5,7 @@ get_header();
 
 ?>
 	<?php use wp_gdpr\lib\Gdpr_Options_Helper; ?>
-<div class="wrapper">
+
     <div class="container-fluid">
 
         <div class="row">
@@ -236,49 +236,11 @@ get_header();
         </p>
     </div>
     <!-- end container -->
-</div>
+
 <!-- end wrapper -->
 
-<script>var translatedText = {text1:"<?php echo var;?>",text2:"lkjoekljmldtext2"}</script>   
-    <script type="text/javascript">
-        $(document).ready(function() {
+<script>var translatedText = {text1:"test",text2:"lkjoekljmldtext2"}</script>   
 
-
-            var table = $('#datatable-buttons').DataTable({
-                lengthChange: false,
-                buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
-            });
-
-
-
-            $('#datatable-buttons').DataTable();
-
-
-
-            table.buttons().container()
-                .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
-        });
-    </script>
-    
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-
-
-            var table = $('#datatable-buttons2').DataTable({
-                lengthChange: false,
-                buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
-            });
-
-
-
-            $('#datatable-buttons2').DataTable();
-
-
-            table.buttons().container()
-                .appendTo('#datatable-buttons2_wrapper .col-md-6:eq(0)');
-        });
-    </script>
 
 
 
@@ -304,9 +266,9 @@ get_header();
 	do_action( 'gdpr_show_entries', $controller->email_request );
 	?>
 </div>
-</body>
+
 <?php get_footer(); ?>
-</html>
+
 
 
 
