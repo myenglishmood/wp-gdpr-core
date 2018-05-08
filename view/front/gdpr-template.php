@@ -63,55 +63,12 @@ get_header();
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="card-box table-responsive" style="border:0;">
-                                                        <table id="datatable-buttons" class="table table-bordered table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-                                                            <thead>
-                                                            <tr>
-                                                                <th>ID</th>
-                                                                <th></th>
-                                                                <th>Date</th>
-                                                                <th>Email</th>
-                                                                <th>Name</th>
-                                                                <th>Comment</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tfoot>
-                                                            <tr>
-                                                                <td colspan="6">
-                                                                    <div class="col-md-12">
-                                                                        <button class="btn btn-default waves-effect m-b-5" id="sa-warning">
-                                                                            <i class="fa fa-trash m-r-5"></i><span>Send delete request</span> </button>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            </tfoot>
-                                                            <tbody>
-                                                            <tr>
-                                                                <td>324</td>
-                                                                <td>
-                                                                    <input id="checkbox0" type="checkbox">
-                                                                    <label for="checkbox0">
-                                                                    </label>
-                                                                </td>
-                                                                <td>2018-06-02 <small>18:31:25</small></td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="kevin@appsaloon.be">
-                                                                    </div>
-                                                                    <div style="display:none;">kevin@appsaloon.be</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="col-12" style="min-width: 200px;">
-                                                                        <input type="text" id="example-input-small" name="example-input-small" class="form-control form-control-sm" value="Kevin Ume">
-                                                                    </div>
-                                                                    <div style="display:none;">Kevin Ume</div>
-                                                                </td>
-                                                                <td style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Dit is voorbeeldcontent die hier geplaatst is voor een weergave te hebben.</td>
-                                                            </tr>
-                                                           
-                                                            </tbody>
-
-                                                        </table>
-
+                                                        <?php
+		/**
+		 * create table with comments
+		 */
+		$controller->create_table_with_comments();
+	 ?>
                                                     </div>
 
                                                 </div>
