@@ -1,3 +1,7 @@
+== Version 1.5.4
+* Added API settings
+* Enhanced email template, can be overriden by filter or theme
+
 == Version 1.5.3 
 * Add bulgarion translation
 * Css admin fixes

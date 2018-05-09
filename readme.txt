@@ -68,6 +68,10 @@ The requester and the dpo will be emailed when the admin deletes the requester d
 
 == Changelog ==
 
+Version 1.5.4 (2018-05-08)
+    - Added API settings
+    - Enhanced email template, can be overriden by filter or theme
+
 Version 1.5.3 (2018-04-19)
     - Add Bulgarian translation
     - Css admin fixes
