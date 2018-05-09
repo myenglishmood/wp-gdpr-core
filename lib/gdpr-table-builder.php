@@ -51,7 +51,7 @@ class Gdpr_Table_Builder {
 	 */
 	public function open_table() {
 		?>
-        <table id="datatable-buttons" class="table table-bordered table-bordered dt-responsive nowrap <?php echo $this->custom_classes; ?>" cellspacing="0" width="100%">
+        <table id="datatable-buttons" class="table table-bordered table-bordered dt-responsive nowrap <?php //echo $this->custom_classes; ?>" cellspacing="0" width="100%">
         <?php
 	}
 
@@ -59,6 +59,7 @@ class Gdpr_Table_Builder {
 	 * build head
 	 */
 	public function build_head() {
+        //var_dump($this);die;
 		if ( empty( $this->head ) ) {
 			return;
 		}

@@ -386,19 +386,20 @@ class Controller_Comments extends Gdpr_Log_Interface {
 	 * selected by email address
 	 */
 	public function create_table_with_comments() {
-		$this->log->info( 'Comments table build selecetd by email address');
+		$this->log->info( 'Comments table build selected by email address');
 		$comments = $this->get_all_comments_by_author( $this->email_request );
 		$comments = $this->map_comments( $comments );
-		$comments = array_map( array( $this, 'add_checkbox' ), $comments );
+        $comments = array_map( array( $this, 'add_checkbox' ), $comments );
+        //var_dump($comments);die;
 
 		$table = new Gdpr_Table_Builder(
 			array(
+                __( 'post ID', 'wp_gdpr' ),
+                __( '', 'wp_gdpr' ),
 				__( 'comment date', 'wp_gdpr' ),
 				__( 'author email', 'wp_gdpr' ),
 				__( 'author name', 'wp_gdpr' ),
-				__( 'comment content', 'wp_gdpr' ),
-				__( 'post ID', 'wp_gdpr' ),
-				__( 'delete', 'wp_gdpr' )
+				__( 'comment content', 'wp_gdpr' )
 			),
 			$comments
 			, array( $this->get_form_content() ), 'gdpr_comments_table' );
@@ -414,14 +415,16 @@ class Controller_Comments extends Gdpr_Log_Interface {
 	public function map_comments( $comments ) {
 		$this->log->info( 'Get info comments');
 		$this_object = $this;
-		$comments    = array_map( function ( $data ) use ( $this_object ) {
+		$comments    = array_map( function ( $data ) use ( $this_object ) { 
 			return array(
+                'comment_post_ID' => $data->comment_post_ID,
+                'checkbox' => $data->checkbox,
 				'comment_date'    => $data->comment_date,
 				'email'           => $this_object->change_into_input( $data->comment_author_email, 'comment_author_email', $data->comment_ID ),
 				'name'            => $this_object->change_into_input( $data->comment_author, 'comment_author', $data->comment_ID ),
 				'comment_content' => $data->comment_content,
-				'comment_post_ID' => $data->comment_post_ID,
-				'comment_ID'      => $data->comment_ID
+                'comment_ID'      => $data->comment_ID
+                
 			);
 		}, $comments );
 

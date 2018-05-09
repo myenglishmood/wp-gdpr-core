@@ -196,7 +196,9 @@ get_header();
 
 <!-- end wrapper -->
 
-<script>var translatedText = {text1:"test",text2:"lkjoekljmldtext2"}</script>   
+<script>
+    var translatedText = {text1:"test",text2:"lkjoekljmldtext2"}
+</script>   
 
 
 
