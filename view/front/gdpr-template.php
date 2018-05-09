@@ -213,6 +213,7 @@ get_header();
 
 
 
+
 <div class="gdpr-container">
 	<?php echo $controller->message; ?>
 
@@ -237,6 +238,10 @@ get_header();
 
 
 
+<script>
 
+    $( "table" ).addClass( "table table-bordered table-bordered dt-responsive nowrap dataTable dtr-inline" );
+    $('table').attr('id', 'datatable-buttons');
+</script>
 
 

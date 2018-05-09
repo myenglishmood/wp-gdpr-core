@@ -14,7 +14,8 @@ class Gdpr_Table_Builder {
 	/**
 	 * @var null|string
 	 */
-	public $custom_classes;
+	public $table_class;
+    public $table_id;
 	/**
 	 * @var array
 	 */
@@ -25,14 +26,15 @@ class Gdpr_Table_Builder {
 	/**
 	 * Appsaloon_Table_Builder constructor.
 	 */
-	public function __construct( array $head, array $data, array $footer, $custom_classes = null ) {
+	public function __construct( array $head, array $data, array $footer, $table_class = null, $table_id = null ) {
 		if ( $custom_classes == null ) {
 			$custom_classes = 'wp-list-table widefat fixed striped';
 		}
-		$this->custom_classes = $custom_classes;
+		$this->table_class = $table_class;
 		$this->head           = $head;
 		$this->data           = $data;
 		$this->footer         = $footer;
+        $this->table_id       = $table_id;
 	}
 
 	/**
@@ -50,7 +52,7 @@ class Gdpr_Table_Builder {
 	 * table open tab
 	 */
 	public function open_table() {
-		?><table class="<?php echo $this->custom_classes; ?>"><?php
+		?><table id="<?php echo $this->table_id; ?>" class="<?php echo $this->table_class; ?>"><?php
 	}
 
 	/**
