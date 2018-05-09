@@ -35,7 +35,11 @@ We made our code available on [Github](https://github.com/WP-GDPR/wp-gdpr-core/)
 
 = E-mail filters =
 
-We have 5 e-mail templates and they are all editable through [filters](https://codex.wordpress.org/Plugin_API/Filter_Reference).
+We have 5 e-mail templates and they are all editable through [filters](https://codex.wordpress.org/Plugin_API/Filter_Reference) or can be replaced in the theme.
+
+In order to replace the email template, you can copy the template from our plugin and move it to the theme. Place it in under theme-name/wp-gdpr-core/email/samefilename.php
+
+Email templates:
 
 The requester and the dpo will be emailed when the requester asks for the data.
 - 'wp_gdpr_request_email': $email_template, $email, $url (email to requester)
