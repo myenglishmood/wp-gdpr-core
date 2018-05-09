@@ -1,6 +1,6 @@
 === WP GDPR ===
 Contributors: Mieke Nijs, Sebastian Kurzynowski, AppSaloon
-Tags: Personal data, GDPR, compliance, regulations, protection, data protection, consent, European, regulation, privacy, RGDP, AVG, EU, Woocommerce, wc, Contact Form 7, cf7, cfdb7, gravity forms, gf, flamingo
+Tags: Personal data, GDPR, compliance, regulations, protection, data protection, consent, European, regulation, privacy, RGPD, AVG, EU, Woocommerce, wc, Contact Form 7, cf7, cfdb7, gravity forms, gf, flamingo
 Requires at least: 4.6.10
 Tested up to: 4.9.5
 Stable tag: 1.5.3
@@ -71,6 +71,10 @@ The requester and the dpo will be emailed when the admin deletes the requester d
 == Frequently Asked Questions ==
 
 == Changelog ==
+
+Version 1.5.4 (2018-05-08)
+    - Added API settings
+    - Enhanced email template, can be overriden by filter or theme
 
 Version 1.5.3 (2018-04-19)
     - Add Bulgarian translation
