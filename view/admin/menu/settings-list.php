@@ -28,7 +28,7 @@
             <tfoot>
             <tr>
                 <td rowspan="2">
-                    <p"><small><a class="dpo_info href="https://edps.europa.eu/data-protection/data-protection/reference-library/data-protection-officer-dpo_en" target="_blank"><b>More info</b></a> about DPO ( Data Protection Officer )</small></p>
+                    <p"><small><a class="dpo_info" href="https://edps.europa.eu/data-protection/data-protection/reference-library/data-protection-officer-dpo_en" target="_blank"><b>More info</b></a> about DPO ( Data Protection Officer )</small></p>
                     <input type="submit" class="button button-primary" name="gdpr_save_global_settings"
                            value="<?php _e( 'Update settings', 'wp_gdpr' ); ?>">
                 </td>
