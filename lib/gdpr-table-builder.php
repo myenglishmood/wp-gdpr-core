@@ -50,16 +50,13 @@ class Gdpr_Table_Builder {
 	 * table open tab
 	 */
 	public function open_table() {
-		?>
-        <table id="datatable-buttons" class="table table-bordered table-bordered dt-responsive nowrap <?php //echo $this->custom_classes; ?>" cellspacing="0" width="100%">
-        <?php
+		?><table class="<?php echo $this->custom_classes; ?>"><?php
 	}
 
 	/**
 	 * build head
 	 */
 	public function build_head() {
-        //var_dump($this);die;
 		if ( empty( $this->head ) ) {
 			return;
 		}
@@ -101,17 +98,15 @@ class Gdpr_Table_Builder {
 		?>
         <tfoot>
         <tr>
-            <div class="col-md-12">
-            <?php
-            $total_th = count($this->head);
-            $colspan = '';
-            if(count($this->footer) === 1){
-                $colspan = ' colspan="'.$total_th.'"';
-            } ?>
+			<?php
+			$total_th = count($this->head);
+			$colspan = '';
+			if(count($this->footer) === 1){
+				$colspan = ' colspan="'.$total_th.'"';
+			} ?>
 			<?php foreach ( $this->footer as $footer ) : ?>
-                <td colspan="6"><?php echo $footer; ?></td>
+                <td<?php echo $colspan; ?>><?php echo $footer; ?></td>
 			<?php endforeach; ?>
-            </div>
         </tr>
         </tfoot>
 		<?php
