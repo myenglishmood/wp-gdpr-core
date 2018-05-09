@@ -53,6 +53,13 @@ get_header();
                                             </a>
                                         </li>
 
+                                        <?php
+                                        /**
+                                         * do action for addon
+                                         */
+                                        do_action( 'gdpr_show_entries', $controller->email_request );
+                                        ?>
+
                             <!--  /////////////// end foreach plugin -->
 
                                     </ul>
@@ -63,12 +70,12 @@ get_header();
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="card-box table-responsive" style="border:0;">
-                                                        <?php
-		/**
-		 * create table with comments
-		 */
-		$controller->create_table_with_comments();
-	 ?>
+	                                                    <?php
+	                                                    /**
+	                                                     * create table with comments
+	                                                     */
+	                                                    $controller->create_table_with_comments();
+	                                                    ?>
                                                     </div>
 
                                                 </div>
