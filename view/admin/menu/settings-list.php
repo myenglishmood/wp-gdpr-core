@@ -1,5 +1,5 @@
 <div>
-    <p><?php _e('Miscellaneous settings for your WP-GDPR configuration', 'wp_gdpr'); ?></p>
+    <p><?php _e('Miscellaneous settings for your WP-GDPR configuration.', 'wp_gdpr'); ?></p>
     <form method="post" class="postbox">
 		<?php
 		foreach ( $options as $options_name => $option ) {
