@@ -15,7 +15,8 @@ class Gdpr_Table_Builder {
 	 * @var null|string
 	 */
 	public $table_class;
-    public $table_id;
+	public $table_id;
+
 	/**
 	 * @var array
 	 */
@@ -27,14 +28,14 @@ class Gdpr_Table_Builder {
 	 * Appsaloon_Table_Builder constructor.
 	 */
 	public function __construct( array $head, array $data, array $footer, $table_class = null, $table_id = null ) {
-		if ( $custom_classes == null ) {
-			$custom_classes = 'wp-list-table widefat fixed striped';
+		if ( $table_class == null ) {
+			$table_class = 'wp-list-table widefat fixed striped';
 		}
 		$this->table_class = $table_class;
-		$this->head           = $head;
-		$this->data           = $data;
-		$this->footer         = $footer;
-        $this->table_id       = $table_id;
+		$this->head        = $head;
+		$this->data        = $data;
+		$this->footer      = $footer;
+		$this->table_id    = $table_id;
 	}
 
 	/**
@@ -101,10 +102,10 @@ class Gdpr_Table_Builder {
         <tfoot>
         <tr>
 			<?php
-			$total_th = count($this->head);
-			$colspan = '';
-			if(count($this->footer) === 1){
-				$colspan = ' colspan="'.$total_th.'"';
+			$total_th = count( $this->head );
+			$colspan  = '';
+			if ( count( $this->footer ) === 1 ) {
+				$colspan = ' colspan="' . $total_th . '"';
 			} ?>
 			<?php foreach ( $this->footer as $footer ) : ?>
                 <td<?php echo $colspan; ?>><?php echo $footer; ?></td>
