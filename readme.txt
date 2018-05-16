@@ -37,7 +37,7 @@ We made our code available on [Github](https://github.com/WP-GDPR/wp-gdpr-core/)
 
 We have 5 e-mail templates and they are all editable through [filters](https://codex.wordpress.org/Plugin_API/Filter_Reference) or can be replaced in the theme.
 
-In order to replace the email template, you can copy the template from our plugin ( wp-gdpr-core/view/email ) and move it to your theme. Place it in under theme-name/wp-gdpr-core/samefilename.php
+In order to replace the email template, you can copy the template from our plugin ( wp-gdpr-core/view/email ) and move it to your theme. Place it in under theme-name/wp-gdpr-core/email/samefilename.php
 
 From now on you can style your new placed templates as you like.
 
