@@ -1,8 +1,6 @@
 <?php
 
 if ( ! class_exists( 'WP_CLI' ) ) {
-	error_log( 'WPCLI doesnt exist' );
-
 	return;
 }
 

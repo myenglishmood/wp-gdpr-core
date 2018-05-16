@@ -2,6 +2,7 @@
 /**
  *  FORM to send request for access to data about user
  */
+
 ?>
 <?php if ( 'GET' == $_SERVER['REQUEST_METHOD'] && ! isset( $_REQUEST['thank_you'] ) ) : ?>
     <form action="" method="post">
@@ -15,11 +16,13 @@
         <br><br>
         <input type="hidden" name="gdpr_translation" value="<?php echo $pieces; ?>">
         <input type="hidden" name="mail_action" value="gdpr">
-        <input type="submit" name="gdpr_req" value="<?php _e( 'Submit', 'wp_gdpr' ); ?>">
+        <input type="submit" name="gdpr_req" value="<?php echo $submit_custom_text; ?>">
     </form>
 <?php else: ?>
-    <h3><?php _e( 'Thank You! We will send you an email with a link to access your personal data.', 'wp_gdpr' ); ?></h3>
+    <h3><?php add_filter( 'the_content', 'custom_text_field' ); ?></h3>
     <p>
-        <b><?php _e( 'Warning:', 'wp_gdpr' ); ?></b> <?php _e( 'This link will become deprecated after 48 hours.', 'wp_gdpr' ); ?>
+        <b><?php echo $warning_custom_text; ?></b> <?php echo $link_custom_text; ?>
     </p>
 <?php endif; ?>
+
+
