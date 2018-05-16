@@ -3,7 +3,7 @@ Contributors: Mieke Nijs, Sebastian Kurzynowski, AppSaloon
 Tags: Personal data, GDPR, compliance, regulations, protection, data protection, consent, European, regulation, privacy, RGPD, AVG, EU, Woocommerce, wc, Contact Form 7, cf7, cfdb7, gravity forms, gf, flamingo
 Requires at least: 4.6.10
 Tested up to: 4.9.5
-Stable tag: 1.5.3
+Stable tag: 1.5.5
 Requires PHP: 5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -33,40 +33,43 @@ All emails will be sent automatically.
 
 We made our code available on [Github](https://github.com/WP-GDPR/wp-gdpr-core/) and are welcoming Pull Request!
 
+== Customization ==
+
 = E-mails =
 
 We have 5 e-mail templates and they are all editable through [filters](https://codex.wordpress.org/Plugin_API/Filter_Reference) or can be replaced in the theme.
 
-Option one =>
+= 1. Option one =
 
-            In order to replace the email template, you can copy the template from our plugin ( wp-gdpr-core/view/email ) and move it to your theme. Place it in under theme-name/wp-gdpr-core/email/samefilename.php
+In order to replace the email template, you can copy the template from our plugin ( wp-gdpr-core/view/email ) and move it to your theme. Place it in under theme-name/wp-gdpr-core/email/samefilename.php
 
-            From now on you can style your new placed templates as you like.
+From now on you can style your new placed templates as you like.
 
-Option two => ( Email filters )
-
-
-            Here are the filters for the email that is send to requestor and the dpo.
-
-                - 'wp_gdpr_request_email': $email_template, $email, $url (email to requester)
-                - 'wp_gdpr_request_email_dpo': $email_template, $email, $url (email to dpo)
+= 2. Option two ( Email filters ) =
 
 
-            Here are the filters for the email that is send to the admin for a delete request.
+Here are the filters for the email that is send to requestor and the dpo.
 
-                - 'wp_gdpr_admin_new_delete_request': $email_template, $requested_email (email to admin)
+* 'wp_gdpr_request_email': $email_template, $email, $url (email to requester)
+* 'wp_gdpr_request_email_dpo': $email_template, $email, $url (email to dpo)
 
-            Here are the filters for the email that is send to the requester and the dpo for a delete confirmation.
 
-                - 'wp_gdpr_delete_confirmation': $email_template, $date_of_request, $processed_data (email to requester)
-                - 'wp_gdpr_delete_confirmation_dpo': $email_template, $date_of_request, $processed_data (email to dpo)
+Here are the filters for the email that is send to the admin for a delete request.
+
+* 'wp_gdpr_admin_new_delete_request': $email_template, $requested_email (email to admin)
+
+Here are the filters for the email that is send to the requester and the dpo for a delete confirmation.
+
+* 'wp_gdpr_delete_confirmation': $email_template, $date_of_request, $processed_data (email to requester)
+* 'wp_gdpr_delete_confirmation_dpo': $email_template, $date_of_request, $processed_data (email to dpo)
 
 = Request page filters =
 
-    We have added 3 filters to change the text on the request page.
-    - "Submit" => "wp-gdpr-submit-text"
-    - "Warning" => "wp-gdpr-warning-text"
-    - "This link will become deprecated after 48 hours." => "wp-gdpr-link-text"
+We have added 3 filters to change the text on the request page.
+
+1. 'Submit' => 'wp-gdpr-submit-text'
+2. 'Warning' => 'wp-gdpr-warning-text'
+3. 'This link will become deprecated after 48 hours.' => 'wp-gdpr-link-text'
 
 == Installation ==
 1. Upload the plugin files to the /wp-content/plugins, or install the plugin through the WordPress plugins screen directly.
