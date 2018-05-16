@@ -33,12 +33,12 @@ class Gdpr_Menu_Backend {
 			'set_wp_gdpr_listOfDataRequests'
 		) );
 
-		$hook = add_submenu_page( static::PAGE_SLUG, __( 'Dataregister', 'wp_gdpr' ), __( 'Dataregister', 'wp_gdpr' ), 'manage_options', 'datareg', array(
-			$this,
-			'set_wp_dataregister'
-		) );
-
-		add_action( 'load-' . $hook, array( $this, 'load_dataregister_css' ) );
+//		$hook = add_submenu_page( static::PAGE_SLUG, __( 'Dataregister', 'wp_gdpr' ), __( 'Dataregister', 'wp_gdpr' ), 'manage_options', 'datareg', array(
+//			$this,
+//			'set_wp_dataregister'
+//		) );
+//
+//		add_action( 'load-' . $hook, array( $this, 'load_dataregister_css' ) );
 
 		add_submenu_page( static::PAGE_SLUG, __( 'Add-ons', 'wp_gdpr' ), __( 'Add-ons', 'wp_gdpr' ), 'manage_options', 'addon', array(
 			$this,

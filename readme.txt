@@ -39,16 +39,20 @@ We have 5 e-mail templates and they are all editable through [filters](https://c
 
 In order to replace the email template, you can copy the template from our plugin ( wp-gdpr-core/view/email ) and move it to your theme. Place it in under theme-name/wp-gdpr-core/samefilename.php
 
-Email templates:
+Email filters:
 
-The requester and the dpo will be emailed when the requester asks for the data.
+Here are the filters for the email that is send to requestor and the dpo.
+
 - 'wp_gdpr_request_email': $email_template, $email, $url (email to requester)
 - 'wp_gdpr_request_email_dpo': $email_template, $email, $url (email to dpo)
 
-The admin will be emailed when there is a new delete request by the requester.
+
+Here are the filters for the email that is send to the admin for a delete request.
+
 - 'wp_gdpr_admin_new_delete_request': $email_template, $requested_email (email to admin)
 
-The requester and the dpo will be emailed when the admin deletes the requester data from the website.
+Here are the filters for the email that is send to the requester and the dpo for a delete confirmation.
+
 - 'wp_gdpr_delete_confirmation': $email_template, $date_of_request, $processed_data (email to requester)
 - 'wp_gdpr_delete_confirmation_dpo': $email_template, $date_of_request, $processed_data (email to dpo)
 

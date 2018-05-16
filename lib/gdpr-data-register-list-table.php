@@ -105,6 +105,7 @@ class Gdpr_Data_Register_List_Table extends \WP_List_Table {
 	 * @global int $post_id
 	 *
 	 * @return array
+     * TODO when no data, use column headers as column col of no data.
 	 */
 	public function get_columns() {
 		$columns = array();

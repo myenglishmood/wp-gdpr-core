@@ -25,5 +25,6 @@ function add_data_register_message( $email, $message, $ref, $ref_id ) {
  * @since 1.6.0
  */
 function export_data_to_csv( $headers, $body, $filename ) {
-	( new \wp_gdpr\lib\Gdpr_Csv_Export( $headers, $body, $filename ) )->export();
+	$csv_export = new \wp_gdpr\lib\Gdpr_Csv_Export( $headers, $body, $filename );
+	$csv_export->export();
 }
