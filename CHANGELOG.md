@@ -1,8 +1,14 @@
-== Version 1.5.4
+# CHANGELOG
+
+# Version 1.5.5
+* Removed error_log 'WPCLI'
+* 3 filters added at the request page, can be overriden by a filter
+
+# Version 1.5.4
 * Added API settings
 * Enhanced email template, can be overriden by filter or theme
 
-== Version 1.5.3 
+# Version 1.5.3 
 * Add bulgarion translation
 * Css admin fixes
 * Log debug function
@@ -11,13 +17,13 @@
 * Dpo / admin now get different mails for requests
 * Minor text adjustments
 
-== Version 1.5.2
+# Version 1.5.2
 * Hotfix svn conflicts
 
-== Version 1.5.1
+# Version 1.5.1
 * Minor bug fix
 
-== Version 1.5.0
+# Version 1.5.0
 * Improve interface in wp-admin
 * Improve labels and texts
 * Add data to plugin.json
@@ -25,24 +31,24 @@
 * Add Norwegian translation
 * Add Italian translation
 
-== Version 1.4.4
+# Version 1.4.4
 * Fix compatible Jetpack
 * Added translation SV
 * Minor bug fix
 
-== Version 1.4.3
+# Version 1.4.3
 * Fix minor bugs
     
-== Version 1.4.2
+# Version 1.4.2
 * Fix deprecated warning
 * Fix when request form is embedded on a non-standard page. Until now, you got a 404-error when redirecting to the    	        "Thank you"-page
 * Fix confirmation of processing the delete request shows a short reference to what happened to the data
 * Enhancement add table header "request language"
 
-== Version 1.4.1
+# Version 1.4.1
 * Make checkbox compatible with jetpack
 
-== Version 1.4.0
+# Version 1.4.0
 * Add DPO email address
 * Add pdo setting
 * Option to not show the comments section
@@ -51,23 +57,23 @@
 * Add filter to implement checkbox in other commentforms
 * Update DE language
 
-== Version 1.2.4
+# Version 1.2.4
 * Update readme with github repository
 * Change pot-file and po/mo-files
 * Update styling
 * Add hooks
     
-== Version 1.2.3
+# Version 1.2.3
 * Check if is_plugin_active() exists
 
-== Version 1.2.2
+# Version 1.2.2
 * Update de and po language
 
-== Version 1.2.1
+# Version 1.2.1
 * Update .pot file
 * Quickfix dublicated GDPR checkbox
     
-== Version 1.2
+# Version 1.2
 * Fix compatibility with WP Discuz
 * Add functionality to upadate default privacy url
 * Add grumphp configuration
@@ -76,31 +82,31 @@
 * Add git repo on Github: https://github.com/AppSaloon/WP-GDPR
 * Add email notification when sommeone askes for a "delete requests"
     
-== Version 1.1.6
+# Version 1.1.6
 * Add .pot file
 * Add german translation
 
-== Version 1.1.5
+# Version 1.1.5
 * Delete develop code
 
-== Version 1.1.4
+# Version 1.1.4
 * Update typing errors
 
-== Version 1.1.3
+# Version 1.1.3
 * Add admin css
 * Add gdpr-translation.php file
 
-== Version 1.1.2
+# Version 1.1.2
 *  Update page template comments overview page
 * Add checkbox when data is requested
 * Update front-end translation
 * Add translation PL
 
-== Version 1.1.1
+# Version 1.1.1
 * Add update_comments.js
 
-== Version 1.1.0
+# Version 1.1.0
 * Add name and email field to comments list
 * Let users update their name and email
 * Add download button to comments list
-* Make it possible for the admin to choose between delete comment or make comment anonymous
+- Make it possible for the admin to choose between delete comment or make comment anonymous

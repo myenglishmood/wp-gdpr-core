@@ -33,11 +33,11 @@ All emails will be sent automatically.
 
 We made our code available on [Github](https://github.com/WP-GDPR/wp-gdpr-core/) and are welcoming Pull Request!
 
-= E-mail filters =
+= E-mail =
 
 We have 5 e-mail templates and they are all editable through [filters](https://codex.wordpress.org/Plugin_API/Filter_Reference) or can be replaced in the theme.
 
-In order to replace the email template, you can copy the template from our plugin and move it to the theme. Place it in under theme-name/wp-gdpr-core/email/samefilename.php
+In order to replace the email template, you can copy the template from our plugin ( wp-gdpr-core/view/email ) and move it to your theme. Place it in under theme-name/wp-gdpr-core/samefilename.php
 
 Email templates:
 
@@ -51,6 +51,13 @@ The admin will be emailed when there is a new delete request by the requester.
 The requester and the dpo will be emailed when the admin deletes the requester data from the website.
 - 'wp_gdpr_delete_confirmation': $email_template, $date_of_request, $processed_data (email to requester)
 - 'wp_gdpr_delete_confirmation_dpo': $email_template, $date_of_request, $processed_data (email to dpo)
+
+= Request page filters =
+
+- We have added 3 filters to change the text on the request page.
+    - "Submit" => "wp-gdpr-submit-text"
+    - "Warning" => "wp-gdpr-warning-text"
+    - "This link will become deprecated after 48 hours." => "wp-gdpr-link-text"
 
 == Installation ==
 1. Upload the plugin files to the /wp-content/plugins, or install the plugin through the WordPress plugins screen directly.
@@ -71,6 +78,9 @@ The requester and the dpo will be emailed when the admin deletes the requester d
 == Frequently Asked Questions ==
 
 == Changelog ==
+Version 1.5.5 (2018-05-16)
+    - Removed error_log
+    - 3 filters added at the request page, can be overriden by a filter
 
 Version 1.5.4 (2018-05-08)
     - Added API settings
