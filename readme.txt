@@ -83,7 +83,7 @@ Here are the filters for the email that is send to the requester and the dpo for
 
 == Changelog ==
 Version 1.5.5 (2018-05-16)
-    - Removed error_log
+    - Removed error_log "WPCLI"
     - 3 filters added at the request page, can be overriden by a filter
 
 Version 1.5.4 (2018-05-08)
