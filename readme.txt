@@ -39,6 +39,9 @@ We have 5 e-mail templates and they are all editable through [filters](https://c
 
 In order to replace the email template, you can copy the template from our plugin ( wp-gdpr-core/view/email ) and move it to your theme. Place it in under theme-name/wp-gdpr-core/samefilename.php
 
+From now on you can style your new placed templates as you like.
+
+
 Email filters:
 
 Here are the filters for the email that is send to requestor and the dpo.
