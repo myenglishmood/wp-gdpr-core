@@ -33,35 +33,37 @@ All emails will be sent automatically.
 
 We made our code available on [Github](https://github.com/WP-GDPR/wp-gdpr-core/) and are welcoming Pull Request!
 
-= E-mail =
+= E-mails =
 
 We have 5 e-mail templates and they are all editable through [filters](https://codex.wordpress.org/Plugin_API/Filter_Reference) or can be replaced in the theme.
 
-In order to replace the email template, you can copy the template from our plugin ( wp-gdpr-core/view/email ) and move it to your theme. Place it in under theme-name/wp-gdpr-core/email/samefilename.php
+Option one =>
 
-From now on you can style your new placed templates as you like.
+            In order to replace the email template, you can copy the template from our plugin ( wp-gdpr-core/view/email ) and move it to your theme. Place it in under theme-name/wp-gdpr-core/email/samefilename.php
 
+            From now on you can style your new placed templates as you like.
 
-Email filters:
-
-Here are the filters for the email that is send to requestor and the dpo.
-
-- 'wp_gdpr_request_email': $email_template, $email, $url (email to requester)
-- 'wp_gdpr_request_email_dpo': $email_template, $email, $url (email to dpo)
+Option two => ( Email filters )
 
 
-Here are the filters for the email that is send to the admin for a delete request.
+            Here are the filters for the email that is send to requestor and the dpo.
 
-- 'wp_gdpr_admin_new_delete_request': $email_template, $requested_email (email to admin)
+                - 'wp_gdpr_request_email': $email_template, $email, $url (email to requester)
+                - 'wp_gdpr_request_email_dpo': $email_template, $email, $url (email to dpo)
 
-Here are the filters for the email that is send to the requester and the dpo for a delete confirmation.
 
-- 'wp_gdpr_delete_confirmation': $email_template, $date_of_request, $processed_data (email to requester)
-- 'wp_gdpr_delete_confirmation_dpo': $email_template, $date_of_request, $processed_data (email to dpo)
+            Here are the filters for the email that is send to the admin for a delete request.
+
+                - 'wp_gdpr_admin_new_delete_request': $email_template, $requested_email (email to admin)
+
+            Here are the filters for the email that is send to the requester and the dpo for a delete confirmation.
+
+                - 'wp_gdpr_delete_confirmation': $email_template, $date_of_request, $processed_data (email to requester)
+                - 'wp_gdpr_delete_confirmation_dpo': $email_template, $date_of_request, $processed_data (email to dpo)
 
 = Request page filters =
 
-- We have added 3 filters to change the text on the request page.
+    We have added 3 filters to change the text on the request page.
     - "Submit" => "wp-gdpr-submit-text"
     - "Warning" => "wp-gdpr-warning-text"
     - "This link will become deprecated after 48 hours." => "wp-gdpr-link-text"

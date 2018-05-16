@@ -37,7 +37,7 @@ class Gdpr_Email {
 		$date_of_request = $comment_to_delete['timestamp'];
 
 		if ( static::is_email_template_overriden_in_theme( 'delete-confirmation-email.php' ) ) {
-			static::load_email_template_from_theme( 'delete-confirmation-email.php' );
+			include static::load_email_template_from_theme( 'delete-confirmation-email.php' );
 		} else {
 			include GDPR_DIR . 'view/email/delete-confirmation-email.php';
 		}
@@ -86,7 +86,7 @@ class Gdpr_Email {
 		$date_of_request = $comment_to_delete['timestamp'];
 
 		if ( static::is_email_template_overriden_in_theme( 'delete-confirmation-email-dpo.php' ) ) {
-			static::load_email_template_from_theme( 'delete-confirmation-email-dpo.php' );
+			include static::load_email_template_from_theme( 'delete-confirmation-email-dpo.php' );
 		} else {
 			include GDPR_DIR . 'view/email/delete-confirmation-email-dpo.php';
 		}
@@ -136,7 +136,7 @@ class Gdpr_Email {
 		ob_start();
 
 		if ( static::is_email_template_overriden_in_theme( 'admin-new-delete-request.php' ) ) {
-			static::load_email_template_from_theme( 'admin-new-delete-request.php' );
+			include static::load_email_template_from_theme( 'admin-new-delete-request.php' );
 		} else {
 			include GDPR_DIR . 'view/email/admin-new-delete-request.php';
 		}
@@ -188,7 +188,7 @@ class Gdpr_Email {
 		$url = static::create_unique_url( $email, $timestamp );
 
 		if ( static::is_email_template_overriden_in_theme( 'request-email.php' ) ) {
-			static::load_email_template_from_theme( 'request-email.php' );
+			include static::load_email_template_from_theme( 'request-email.php' );
 		} else {
 			include GDPR_DIR . 'view/email/request-email.php';
 		}
@@ -242,7 +242,7 @@ class Gdpr_Email {
 		$url = admin_url() . '?page=wp_gdpr&page_type=datarequest';
 
 		if ( static::is_email_template_overriden_in_theme( 'request-email-dpo.php' ) ) {
-			static::load_email_template_from_theme( 'request-email-dpo.php' );
+			include static::load_email_template_from_theme( 'request-email-dpo.php' );
 		} else {
 			include GDPR_DIR . 'view/email/request-email-dpo.php';
 		}
@@ -285,7 +285,7 @@ class Gdpr_Email {
 	 * @since 1.6.0
 	 */
 	private static function load_email_template_from_theme( $path ) {
-		include get_template_directory() . DIRECTORY_SEPARATOR . GDPR_BASE_NAME . DIRECTORY_SEPARATOR . 'email' . DIRECTORY_SEPARATOR . $path;
+		return get_template_directory() . DIRECTORY_SEPARATOR . GDPR_BASE_NAME . DIRECTORY_SEPARATOR . 'email' . DIRECTORY_SEPARATOR . $path;
 	}
 
 	/**
