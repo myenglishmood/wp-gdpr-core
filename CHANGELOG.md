@@ -1,5 +1,8 @@
 # CHANGELOG
 
+#version 1.5.6
+* Added the "thank you" text after mail is send
+
 # Version 1.5.5
 * Removed error_log 'WPCLI'
 * 3 filters added at the request page, can be overriden by a filter
