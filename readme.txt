@@ -92,7 +92,7 @@ We have added 3 filters to change the text on the request page.
 == Changelog ==
 Version 1.5.6 (2018-05-17)
     - Added the "thank you" text after mail is send
-    
+
 Version 1.5.5 (2018-05-16)
     - Removed error_log "WPCLI"
     - 3 filters added at the request page, can be overriden by a filter

@@ -28,6 +28,7 @@ define( 'GDPR_BASE_NAME', dirname( plugin_basename( __FILE__ ) ) );
 define( 'GDPR_VERSION', '1.5.6' );
 
 
+
 require_once GDPR_DIR . 'lib/gdpr-autoloader.php';
 
 //include to register custom table on plugin activation
