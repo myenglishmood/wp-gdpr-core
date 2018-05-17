@@ -1,6 +1,6 @@
 # CHANGELOG
 
-#version 1.5.6
+# Version 1.5.6
 * Added the "thank you" text after mail is send
 
 # Version 1.5.5
