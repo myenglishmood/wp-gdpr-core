@@ -25,7 +25,7 @@ namespace wp_gdpr;
 define( 'GDPR_DIR', plugin_dir_path( __FILE__ ) );
 define( 'GDPR_URL', plugin_dir_url( __FILE__ ) );
 define( 'GDPR_BASE_NAME', dirname( plugin_basename( __FILE__ ) ) );
-define( 'GDPR_VERSION', '1.5.4' );
+define( 'GDPR_VERSION', '1.5.5' );
 
 
 require_once GDPR_DIR . 'lib/gdpr-autoloader.php';
