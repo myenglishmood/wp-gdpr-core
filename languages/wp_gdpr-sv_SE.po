@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP GDPR\n"
 "POT-Creation-Date: 2018-03-29 15:09+0200\n"
-"PO-Revision-Date: 2018-03-29 16:06+0200\n"
+"PO-Revision-Date: 2018-05-18 11:01+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: wp-gdpr-core.php\n"
@@ -137,8 +137,6 @@ msgid "Checkbox GDPR is required"
 msgstr "Vänligen kryssa i ruta för att godkänna"
 
 #: controller/controller-menu-page.php:273
-#, fuzzy
-#| msgid "Agree"
 msgid "I agree"
 msgstr "Jag godkänner"
 
@@ -156,8 +154,6 @@ msgstr ""
 "var, hur och varför vi lagrar information om dig."
 
 #: controller/controller-menu-page.php:306
-#, fuzzy
-#| msgid "Download comments"
 msgid "Don't show comments"
 msgstr "Ladda ner kommentarer"
 
@@ -312,20 +308,14 @@ msgid "Help"
 msgstr ""
 
 #: model/request-form.php:103
-#, fuzzy
-#| msgid "Data request"
 msgid "Your data request"
 msgstr "Data begärd"
 
 #: view/admin/delete-comments-form.php:8
-#, fuzzy
-#| msgid "GDPR - Request personal data"
 msgid "Delete personal data"
 msgstr "GDPR - begäran av personlig data"
 
 #: view/admin/delete-comments-form.php:9
-#, fuzzy
-#| msgid "Make comments anonymous"
 msgid "Make personal data anonymous"
 msgstr "Gör kommentar anonym"
 
@@ -348,10 +338,8 @@ msgid "Website:"
 msgstr "Webbplats:"
 
 #: view/admin/email-confirmation-content.php:130
-#, fuzzy
-#| msgid "Data request"
 msgid "Date of request:"
-msgstr "Data begärd"
+msgstr "Data begärd:"
 
 #: view/admin/email-confirmation-content.php:131
 msgid "Your requests is approved and data was successfully deleted today."
@@ -391,30 +379,22 @@ msgid "List of plugins that store data of users"
 msgstr "Lista på tillägg som lagrar användardata"
 
 #: view/admin/menu/settings-list.php:32
-#, fuzzy
-#| msgid "Settings"
 msgid "Update settings"
 msgstr "Inställningar"
 
 #: view/admin/menu/settings-page.php:13
-#, fuzzy
-#| msgid "Privacy policy link"
 msgid "Privacy policy setting"
 msgstr "Länk till integritetspolicy"
 
 #: view/admin/menu/settings-page.php:16
-#, fuzzy
-#| msgid "Settings"
 msgid "Settings:"
-msgstr "Inställningar"
+msgstr "Inställningar:"
 
 #: view/admin/privacy-policy-form.php:7
 msgid "Settings for comment forms"
 msgstr ""
 
 #: view/admin/privacy-policy-form.php:9
-#, fuzzy
-#| msgid "Privacy policy link"
 msgid "Privacy policy label"
 msgstr "Länk till integritetspolicy"
 
