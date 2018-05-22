@@ -18,7 +18,7 @@ class Session_Handler {
 	 * This function is used on start of plugin in wp-gdpr-core.php.
 	 */
 	public static function start_session() {
-		if ( ! session_id() ) {
+		if ( session_id() == "" ) {
 			session_start();
 		}
 	}
