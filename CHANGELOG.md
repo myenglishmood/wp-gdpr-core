@@ -1,5 +1,8 @@
 # CHANGELOG
 
+# Version 1.5.7
+* Change session_id check
+
 # Version 1.5.6
 * Added the "thank you" text after mail is send
 
