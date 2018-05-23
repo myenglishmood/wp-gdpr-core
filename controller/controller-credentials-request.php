@@ -36,7 +36,7 @@ class Controller_Credentials_Request {
         $pieces = new Gdpr_Language();
         $pieces = $pieces->get_language();
         $submit_custom_text = apply_filters( 'wp-gdpr-submit-text', __("Submit", 'wp_gdpr') );
-        $warning_custom_text = apply_filters( 'wp-gdpr-warning-text', __("Warning", 'wp_gdpr') );
+        $warning_custom_text = apply_filters( 'wp-gdpr-warning-text', __("Warning:", 'wp_gdpr') );
         $link_custom_text = apply_filters( 'wp-gdpr-link-text', __("This link will become deprecated after 48 hours.", 'wp_gdpr') );
 
 		ob_start();
