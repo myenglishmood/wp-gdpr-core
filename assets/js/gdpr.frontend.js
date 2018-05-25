@@ -1,4 +1,7 @@
+
 $(document).ready(function () {
+    
+    
     var tables = localized_object.tables;
     $.each(tables, function (key, data) {
         var table = $(data).DataTable({
@@ -12,5 +15,5 @@ $(document).ready(function () {
             .appendTo(tables_wrapers );
     });
 
-    $("table").addClass("table table-bordered table-bordered dt-responsive nowrap dataTable dtr-inline");
+
 });

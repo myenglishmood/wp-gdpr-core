@@ -42,8 +42,6 @@ class Controller_Frontend extends Gdpr_Log_Interface {
 
 			wp_enqueue_script( 'jquery_scrollTo_min_js', GDPR_URL . 'assets/js/jquery.scrollTo.min.js', array(), null, true );
 
-			wp_enqueue_script( 'jquery_core_js', GDPR_URL . 'assets/js/jquery.core.js', array(), null, true );
-
 			wp_enqueue_script( 'dataTables_min_js', GDPR_URL . 'vendor/datatables/jquery.dataTables.min.js', array(), null, true );
 
 
@@ -53,7 +51,7 @@ class Controller_Frontend extends Gdpr_Log_Interface {
 			wp_enqueue_script( 'dataTables_responsive_min_js', GDPR_URL . 'vendor/datatables/dataTables.responsive.min.js', array(), null, true );
 
 
-			wp_enqueue_script( 'responsive_bootstrap_min_js', GDPR_URL . 'vendor/datatables/responsive.bootstrap4.min.js', array(), null, true );
+			wp_enqueue_script( 'responsive_bootstrap4_min_js', GDPR_URL . 'vendor/datatables/responsive.bootstrap4.min.js', array(), null, true );
 
 			wp_enqueue_script( 'jquery_core_js', GDPR_URL . 'assets/js/jquery.core.js', array(), null, true );
 

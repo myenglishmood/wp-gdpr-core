@@ -480,7 +480,7 @@ class Controller_Comments extends Gdpr_Log_Interface {
 			$active = 'active show';
 		}
 		?>
-        <div class="tab-pane fade <?php echo $active; ?>" id="<?php echo $this->navigation_id; ?>">
+        <div width="100%" class="tab-pane fade <?php echo $active; ?>" id="<?php echo $this->navigation_id; ?>">
             <!-- start row -->
             <div class="row">
                 <div class="col-12">
@@ -499,7 +499,7 @@ class Controller_Comments extends Gdpr_Log_Interface {
 								__( 'comment content', 'wp_gdpr' ),
 							),
 							$comments
-							, array( $this->get_form_content() ), 'gdpr_comments_table', 'comments_table' );
+							, array( $this->get_form_content() ), 'gdpr_comments_table table table-bordered dt-responsive nowrap', 'comments_table' );
 
 						$table->print_table();
 						?>

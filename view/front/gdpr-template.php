@@ -7,7 +7,7 @@ get_header();
 
 ?>
 <?php use wp_gdpr\lib\Gdpr_Options_Helper; ?>
-
+<div class="wrapper">
 <div class="container-fluid">
 
     <div class="row">
@@ -36,7 +36,7 @@ get_header();
                     <div class="card-header" role="tab" id="headingOne">
 
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
-                           aria-controls="collapseOne" class="waves-effect waves-light"><h5 class="card-title  text-dark m-0 p-t-10">
+                           aria-controls="collapseOne" class="waves-effect waves-light"><h5 class="card-title m-0 p-t-10">
                             <i class="fa  fa-address-card-o m-r-10 text-primary"></i><?php _e( 'Personal Data Entries', 'wp-gdpr' ); ?></h5>
                         </a> <span class="text-muted m-l-10 p-t-10"
                                    style="float:right;"><?php _e( 'All personal data collected through WordPress comments & other plugins', 'wp-gdpr' ); ?>
@@ -173,4 +173,5 @@ get_header();
 			//	do_action( 'gdpr_show_entries', $controller->email_request );
 			//	?>
         </div>
+    </div>
 		<?php get_footer(); ?>
