@@ -492,7 +492,7 @@ class Controller_Comments extends Gdpr_Log_Interface {
 						$table = new Gdpr_Table_Builder(
 							array(
 								__( 'post ID', 'wp_gdpr' ),
-								__( 'checkbox', 'wp_gdpr' ),
+								__( '', 'wp_gdpr' ),
 								__( 'comment date', 'wp_gdpr' ),
 								__( 'author email', 'wp_gdpr' ),
 								__( 'author name', 'wp_gdpr' ),
