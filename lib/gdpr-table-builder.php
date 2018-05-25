@@ -109,7 +109,7 @@ class Gdpr_Table_Builder {
 	public function close_table() {
 		?></table>
 					<?php foreach ( $this->footer as $footer ) : ?>
-                <td<?php echo $colspan; ?>><?php echo $footer; ?></td>
+               <?php echo $footer; ?>
 			<?php endforeach; ?>
 		
 		<?php
