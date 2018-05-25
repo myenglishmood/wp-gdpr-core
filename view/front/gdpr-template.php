@@ -36,8 +36,8 @@ get_header();
                     <div class="card-header" role="tab" id="headingOne">
 
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
-                           aria-controls="collapseOne" class="waves-effect waves-light"><h4 class="card-title text-primary">
-                            <i class="fa fa-address-card-o m-r-10"></i><?php _e( 'Personal Data', 'wp-gdpr' ); ?></h4>
+                           aria-controls="collapseOne" class="waves-effect waves-light"><h5 class="card-title  text-dark m-0 p-t-10">
+                            <i class="fa  fa-address-card-o m-r-10 text-primary"></i><?php _e( 'Personal Data Entries', 'wp-gdpr' ); ?></h5>
                         </a> <span class="text-muted m-l-10 p-t-10"
                                    style="float:right;"><?php _e( 'All personal data collected through WordPress comments & other plugins', 'wp-gdpr' ); ?>
                             .</span>
