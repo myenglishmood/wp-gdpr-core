@@ -99,19 +99,7 @@ class Gdpr_Table_Builder {
 			return;
 		}
 		?>
-        <tfoot>
-        <tr>
-			<?php
-			$total_th = count( $this->head );
-			$colspan  = '';
-			if ( count( $this->footer ) === 1 ) {
-				$colspan = ' colspan="' . $total_th . '"';
-			} ?>
-			<?php foreach ( $this->footer as $footer ) : ?>
-                <td<?php echo $colspan; ?>><?php echo $footer; ?></td>
-			<?php endforeach; ?>
-        </tr>
-        </tfoot>
+
 		<?php
 	}
 
@@ -119,6 +107,11 @@ class Gdpr_Table_Builder {
 	 * close tag of table
 	 */
 	public function close_table() {
-		?></table><?php
+		?></table>
+					<?php foreach ( $this->footer as $footer ) : ?>
+                <td<?php echo $colspan; ?>><?php echo $footer; ?></td>
+			<?php endforeach; ?>
+		
+		<?php
 	}
 }
