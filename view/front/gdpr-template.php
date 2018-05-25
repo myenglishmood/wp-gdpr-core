@@ -55,7 +55,7 @@ get_header();
 										if ( ! Gdpr_Options_Helper::is_option_off( 'switch_on_comments' ) && is_a( $model, 'wp_gdpr\controller\Controller_Comments' ) ) {
 											continue;
 										} else {
-											echo $model->get_frontend_header($active_pill);
+											echo $model->get_frontend_header( $active_pill );
 											$active_pill = false;
 										}
 									}

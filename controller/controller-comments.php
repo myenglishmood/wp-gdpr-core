@@ -75,7 +75,7 @@ class Controller_Comments extends Gdpr_Log_Interface {
 		add_filter( 'gdpr_tables_names', function ( $table_names ) {
 			$table_names[] = '#comments_table';
 
-			return  $table_names;
+			return $table_names;
 		} );
 	}
 
@@ -480,29 +480,30 @@ class Controller_Comments extends Gdpr_Log_Interface {
 			$active = 'active show';
 		}
 		?>
-    <div class="tab-pane fade <?php echo $active; ?>" id="<?php echo $this->navigation_id; ?>">
-        <!-- start row -->
-        <div class="row">
-            <div class="col-12">
-                <div class="card-box table-responsive" style="border:0;"><?php
-					$comments = $this->get_all_comments_by_author( $this->email_request );
-					$comments = $this->map_comments( $comments );
-					$comments = array_map( [ $this, 'add_checkbox' ], $comments );
+        <div class="tab-pane fade <?php echo $active; ?>" id="<?php echo $this->navigation_id; ?>">
+            <!-- start row -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card-box table-responsive" style="border:0;"><?php
+						$comments = $this->get_all_comments_by_author( $this->email_request );
+						$comments = $this->map_comments( $comments );
+						$comments = array_map( [ $this, 'add_checkbox' ], $comments );
 
-					$table = new Gdpr_Table_Builder(
-						array(
-							__( 'post ID', 'wp_gdpr' ),
-							__( 'checkbox', 'wp_gdpr' ),
-							__( 'comment date', 'wp_gdpr' ),
-							__( 'author email', 'wp_gdpr' ),
-							__( 'author name', 'wp_gdpr' ),
-							__( 'comment content', 'wp_gdpr' ),
-						),
-						$comments
-						, array( $this->get_form_content() ), 'gdpr_comments_table', 'comments_table' );
+						$table = new Gdpr_Table_Builder(
+							array(
+								__( 'post ID', 'wp_gdpr' ),
+								__( 'checkbox', 'wp_gdpr' ),
+								__( 'comment date', 'wp_gdpr' ),
+								__( 'author email', 'wp_gdpr' ),
+								__( 'author name', 'wp_gdpr' ),
+								__( 'comment content', 'wp_gdpr' ),
+							),
+							$comments
+							, array( $this->get_form_content() ), 'gdpr_comments_table', 'comments_table' );
 
-					$table->print_table();
-					?>
+						$table->print_table();
+						?>
+                    </div>
                 </div>
             </div>
         </div>
