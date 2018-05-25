@@ -14,6 +14,6 @@ $(document).ready(function () {
         table.buttons().container()
             .appendTo(tables_wrapers );
     });
-
-
 });
+
+
