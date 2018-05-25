@@ -484,7 +484,9 @@ class Controller_Comments extends Gdpr_Log_Interface {
             <!-- start row -->
             <div class="row">
                 <div class="col-12">
-                    <div class="card-box table-responsive" style="border:0;"><?php
+                    <div class="card-box table-responsive" style="border:0;">
+                    <h5>Source : WordPress Comments</h5>
+                    <?php
 						$comments = $this->get_all_comments_by_author( $this->email_request );
 						$comments = $this->map_comments( $comments );
 						$comments = array_map( [ $this, 'add_checkbox' ], $comments );
@@ -492,7 +494,7 @@ class Controller_Comments extends Gdpr_Log_Interface {
 						$table = new Gdpr_Table_Builder(
 							array(
 								__( 'post ID', 'wp_gdpr' ),
-								__( '', 'wp_gdpr' ),
+								__( 'checkbox', 'wp_gdpr' ),
 								__( 'comment date', 'wp_gdpr' ),
 								__( 'author email', 'wp_gdpr' ),
 								__( 'author name', 'wp_gdpr' ),
