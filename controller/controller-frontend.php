@@ -87,7 +87,7 @@ class Controller_Frontend extends Gdpr_Log_Interface {
 
 			$table_names = apply_filters( 'gdpr_tables_names', array() );
 
-			wp_localize_script( 'gdpr_frontend', 'localized_object', array(
+			wp_localize_script( 'gdpr_frontend', 'localized_object_frontend', array(
 				'tables'         => $table_names,
 			) );
 		}

@@ -2,7 +2,7 @@
 $(document).ready(function () {
     
     
-    var tables = localized_object.tables;
+    var tables = localized_object_frontend.tables;
     $.each(tables, function (key, data) {
         var table = $(data).DataTable({
             lengthChange: false,
