@@ -20,7 +20,7 @@ class Controller_Comments extends Gdpr_Log_Interface {
 	 */
 	public $email_request;
 	public $message;
-	public $navigation_id = 'comments';
+	public $navigation_id = 'gdpr_comments';
 
 
 	/**
