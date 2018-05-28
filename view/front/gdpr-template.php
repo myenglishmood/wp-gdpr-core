@@ -5,6 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 get_header();
 
+
 ?>
 <?php use wp_gdpr\lib\Gdpr_Options_Helper; ?>
 <div class="wrapper">
