@@ -94,7 +94,7 @@ class Controller_Comments extends Gdpr_Log_Interface {
         <a href="<?php echo '#' . $this->navigation_id; ?>" data-toggle="tab" aria-expanded="true"
            class="nav-link <?php echo $active; ?>">
 			<?php _e( 'WordPress Comments', 'wp-gdpr' ); ?><span
-                    class="badge badge-pill badge-primary m-l-10"><?php ?></span>
+                    class="badge badge-pill badge-primary m-l-10"><?php //placeholder?></span>
         </a>
         </li><?php
 	}
