@@ -3,28 +3,23 @@
  * small form to use in table
  * to use in gdpr-template.php
  */
+$gdpra= __('Are you sure?', 'wp_gdpr');
+$gdprb= __('This will send a delete request for your selected data', 'wp_gdpr');
+$gdprc= __('Yes, send delete request!', 'wp_gdpr');
+$gdprd= __('Request sent !', 'wp_gdpr');
+$gdpre= __('Your delete request has been sent', 'wp_gdpr');
 ?>
-<script>
-$(".swa-confirm").on("click", function(e) {
-    e.preventDefault();
-    swal({
-        title: $(this).data("swa-title"),
-        text: $(this).data("swa-text"),
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#cc3f44",
-        confirmButtonText: $(this).data("swa-btn-txt"),
-        closeOnConfirm: true,
-        html: false
-    }, function( confirmed ) {
-        if( confirmed )
-            $(this).closest('form').submit();
-    });
-});
+
+<script type="text/javascript">
+var gdpra=<?php echo json_encode($gdpra); ?>;
+var gdprb=<?php echo json_encode($gdprb); ?>;
+var gdprc=<?php echo json_encode($gdprc); ?>;
+var gdprd=<?php echo json_encode($gdprd); ?>;
+var gdpre=<?php echo json_encode($gdpre); ?>;
 </script>
 <form method="post" id="wgdpr_delete_comments_form">
     <input type="hidden"  name="gdpr_email" value="<?php echo $email; ?>">
-    <button id="sa-warning" class="swa-confirm btn btn-primary waves-effect waves-light" name="send_gdp_del_request" value="<?php _e('Send delete request', 'wp_gdpr'); ?>"><i class="fa fa-trash m-r-5"></i>
+    <button type="submut" id="btn-submit" class="swa-confirm btn btn-primary waves-effect waves-light" name="send_gdp_del_request" value="<?php _e('Send delete request', 'wp_gdpr'); ?>"><i class="fa fa-trash m-r-5"></i>
     <?php _e('Send delete request', 'wp_gdpr'); ?>
     </button>
     <input type="hidden" name="mail_action" value="gdpr">
