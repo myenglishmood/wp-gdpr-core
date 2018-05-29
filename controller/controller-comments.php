@@ -460,7 +460,7 @@ class Controller_Comments extends Gdpr_Log_Interface {
 	}
 
 	public function change_into_input( $val, $name, $id ) {
-		return '<input type="text" data-id="' . $id . '" data-name="' . $name . '" class="js-comment-edit" value="' . $val . '">';
+		return '<input type="text" data-id="' . $id . '" data-name="' . $name . '" class="js-comment-edit" value="' . $val . '"><span style="display:none;">'.$val.'</span>';
 	}
 
 	/**
