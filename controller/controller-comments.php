@@ -418,7 +418,7 @@ class Controller_Comments extends Gdpr_Log_Interface {
 		$this->log->info( 'Comments table build selected by email address' );
 		$comments = $this->get_all_comments_by_author( $this->email_request );
 		$comments = $this->map_comments( $comments );
-		$comments = array_map( [ $this, 'add_checkbox' ], $comments );
+		$comments = array_map( array( $this, 'add_checkbox' ), $comments );
 
 		$table = new Gdpr_Table_Builder(
 			array(
@@ -489,7 +489,7 @@ class Controller_Comments extends Gdpr_Log_Interface {
                     <?php
 						$comments = $this->get_all_comments_by_author( $this->email_request );
 						$comments = $this->map_comments( $comments );
-						$comments = array_map( [ $this, 'add_checkbox' ], $comments );
+						$comments = array_map( array( $this, 'add_checkbox' ), $comments );
 
 						$table = new Gdpr_Table_Builder(
 							array(
