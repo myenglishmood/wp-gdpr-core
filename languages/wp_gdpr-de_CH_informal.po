@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: WP GDPR\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-07 16:43+0000\n"
-"PO-Revision-Date: 2018-02-07 16:46+0000\n"
+"PO-Revision-Date: 2018-06-01 09:17+0200\n"
 "Last-Translator: Ritchie Pettauer <ritchie@pettauer.net>\n"
 "Language-Team: German (Switzerland, Informal)\n"
-"Language: de-CH-informal\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco - https://localise.biz/"
+"X-Generator: Poedit 2.0.7\n"
 
 #: controller/controller-comments.php:108
 msgid ""
@@ -131,8 +131,7 @@ msgstr "Der Seiten-Administrator hat deine Anfrage erhalten. Vielen Dank."
 
 #: controller/controller-menu-page.php:50
 msgid "Comments deleted"
-msgstr ""
-"Kommentare gelöscht.\n"
+msgstr "Kommentare gelöscht.\n"
 
 #: controller/controller-menu-page.php:59
 msgid "Comments are anonymous"
@@ -317,8 +316,8 @@ msgid ""
 msgstr ""
 "Ich bin damit einverstanden, dass %s meine E-Mail speichert, damit ich die "
 "angeforderten Informationen erhalten kann. Für mehr Informationen wirf bitte "
-"einen Blick in unsere Datenschutz-Erklärung, in der wir detailliert darlegen,"
-" wo, wie und warum wir deine Daten speichern."
+"einen Blick in unsere Datenschutz-Erklärung, in der wir detailliert "
+"darlegen, wo, wie und warum wir deine Daten speichern."
 
 #: view/front/form.php:21
 msgid "Submit"

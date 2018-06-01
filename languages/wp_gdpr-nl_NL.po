@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP GDPR CORE\n"
-"POT-Creation-Date: 2018-05-04 13:01+0200\n"
-"PO-Revision-Date: 2018-05-04 15:18+0200\n"
+"POT-Creation-Date: 2018-06-01 09:28+0200\n"
+"PO-Revision-Date: 2018-06-01 09:28+0200\n"
 "Last-Translator: Eelco Anneveldt <eelco.anneveldt@gmail.com>\n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -25,7 +25,11 @@ msgstr ""
 msgid "GDPR - Request personal data"
 msgstr "GDPR - Verzoek om inzage in persoonlijke data"
 
-#: controller/controller-comments.php:129
+#: controller/controller-comments.php:96
+msgid "WordPress Comments"
+msgstr "Wordpress Reacties"
+
+#: controller/controller-comments.php:157
 #: controller/controller-menu-page.php:330
 msgid ""
 "This form collects your name, email and content so that we can keep track of "
@@ -37,67 +41,76 @@ msgstr ""
 "privacybeleid, met daarin meer info over hoe en waarom we uw gegevens "
 "bewaren."
 
-#: controller/controller-comments.php:216
-#: controller/controller-comments.php:221
+#: controller/controller-comments.php:244
+#: controller/controller-comments.php:249
 msgid ""
 "<strong>ERROR</strong>: please fill the required fields (GDPR checkbox)."
 msgstr "<strong>FOUT</strong>: vul de vereiste velden in (GDPR checkbox)."
 
-#: controller/controller-comments.php:241
+#: controller/controller-comments.php:269
 msgid "Something went wrong."
 msgstr "Er is iets fout gegaan."
 
-#: controller/controller-comments.php:249
+#: controller/controller-comments.php:277
 msgid "Email is not valid"
 msgstr "Dit is geen geldig e-mail adres"
 
-#: controller/controller-comments.php:266
+#: controller/controller-comments.php:294
 msgid "Comment is changed"
 msgstr "Reactie is aangepast"
 
-#: controller/controller-comments.php:350
+#: controller/controller-comments.php:378
 msgid "name"
 msgstr "naam"
 
-#: controller/controller-comments.php:351
+#: controller/controller-comments.php:379
 #: controller/controller-menu-page.php:437
 #: controller/controller-menu-page.php:674
 msgid "email"
 msgstr "e-mail"
 
-#: controller/controller-comments.php:352
+#: controller/controller-comments.php:380
 msgid "comment"
 msgstr "reactie"
 
-#: controller/controller-comments.php:353
+#: controller/controller-comments.php:381
 msgid "website"
 msgstr "website"
 
-#: controller/controller-comments.php:396
-msgid "comment date"
-msgstr "reactie datum"
-
-#: controller/controller-comments.php:397
-msgid "author email"
-msgstr "e-mailadres"
-
-#: controller/controller-comments.php:398
-msgid "author name"
-msgstr "naam"
-
-#: controller/controller-comments.php:399
-msgid "comment content"
-msgstr "reactie inhoud"
-
-#: controller/controller-comments.php:400
+#: controller/controller-comments.php:425
+#: controller/controller-comments.php:496
 msgid "post ID"
 msgstr "post ID"
 
-#: controller/controller-comments.php:401
-msgid "delete"
-msgstr "verwijderen"
+#: controller/controller-comments.php:426
+msgid "checkbox"
+msgstr ""
 
+#: controller/controller-comments.php:427
+#: controller/controller-comments.php:498
+msgid "comment date"
+msgstr "reactie datum"
+
+#: controller/controller-comments.php:428
+#: controller/controller-comments.php:499
+msgid "author email"
+msgstr "e-mailadres"
+
+#: controller/controller-comments.php:429
 #: controller/controller-comments.php:500
+msgid "author name"
+msgstr "naam"
+
+#: controller/controller-comments.php:430
+#: controller/controller-comments.php:501
+msgid "comment content"
+msgstr "reactie inhoud"
+
+#: controller/controller-comments.php:488
+msgid "Data origin : WordPress Comments"
+msgstr "Data herkomst : Wordpress Reacties"
+
+#: controller/controller-comments.php:569
 msgid "The site administrator received your request. Thank You."
 msgstr "De sitebeheerder heeft uw aanvraag goed ontvangen."
 
@@ -146,7 +159,9 @@ msgid "Don't show comments"
 msgstr "Reacties niet laten zien"
 
 #: controller/controller-menu-page.php:381
-msgid "Set Your DPO e-mail address"
+#, fuzzy
+#| msgid "Set Your DPO e-mail address"
+msgid "Set your DPO e-mail address"
 msgstr "Stel uw DPO e-mail adres in"
 
 #: controller/controller-menu-page.php:386
@@ -422,13 +437,37 @@ msgstr "Pagina voor inzage in persoonlijke data"
 msgid "Update privacy policy settings"
 msgstr "Update instellingen van privacybeleid"
 
-#: view/admin/small-form-delete-request.php:9
-msgid "Send delete request"
+#: view/admin/small-form-delete-request.php:6
+msgid "Are you sure?"
+msgstr ""
+
+#: view/admin/small-form-delete-request.php:7
+msgid "This will send a delete request for your selected data"
+msgstr ""
+
+#: view/admin/small-form-delete-request.php:8
+#, fuzzy
+#| msgid "Send delete request"
+msgid "Yes, send delete request!"
 msgstr "Lijst met verzoek tot verwijdering"
 
+#: view/admin/small-form-delete-request.php:9
+#, fuzzy
+#| msgid "Request send"
+msgid "Request sent !"
+msgstr "Verzoek verzonden"
+
 #: view/admin/small-form-delete-request.php:10
-msgid "Download comments"
-msgstr "Download reacties"
+#, fuzzy
+#| msgid "List of delete requests"
+msgid "Your delete request has been sent"
+msgstr "Lijst met verwijderverzoeken"
+
+#: view/admin/small-form-delete-request.php:23
+#: view/admin/small-form-delete-request.php:24
+#: view/admin/small-form-delete-request.php:27
+msgid "Send delete request"
+msgstr "Lijst met verzoek tot verwijdering"
 
 #: view/admin/small-form.php:9
 msgid "Resend emails"
@@ -547,13 +586,31 @@ msgstr "Waarschuwing:"
 msgid "This link will become deprecated after 48 hours."
 msgstr "Waarschuwing: deze link verloopt na 48 uur."
 
-#: view/front/gdpr-template.php:7
-msgid "View Comments"
-msgstr "Bekijk reacties"
+#: view/front/gdpr-template.php:17
+msgid "YOUR"
+msgstr ""
 
-#: view/front/gdpr-template.php:16
-msgid "All comments added by email address"
-msgstr "Bekijk reacties"
+#: view/front/gdpr-template.php:17
+msgid "PRIVACY CENTER"
+msgstr ""
+
+#: view/front/gdpr-template.php:22
+msgid "ALL PERSONAL DATA LINKED TO "
+msgstr ""
+
+#: view/front/gdpr-template.php:26
+msgid "This is your personal data page. Only you are able to access this."
+msgstr ""
+
+#: view/front/gdpr-template.php:41
+#, fuzzy
+#| msgid "Personal data"
+msgid "Personal Data Entries"
+msgstr "Persoonlijke data"
+
+#: view/front/gdpr-template.php:43
+msgid "All personal data collected through WordPress comments & other plugins"
+msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
@@ -570,6 +627,18 @@ msgstr "AppSaloon"
 #. Author URI of the plugin/theme
 msgid "https://www.appsaloon.be"
 msgstr "https://www.appsaloon.be"
+
+#~ msgid "delete"
+#~ msgstr "verwijderen"
+
+#~ msgid "Download comments"
+#~ msgstr "Download reacties"
+
+#~ msgid "View Comments"
+#~ msgstr "Bekijk reacties"
+
+#~ msgid "All comments added by email address"
+#~ msgstr "Bekijk reacties"
 
 #~ msgid ""
 #~ "This form collects your name, email and content so that we can keep track "

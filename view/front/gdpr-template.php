@@ -21,7 +21,7 @@ get_header();
             <center><span
                         style="letter-spacing: 2px; font-size:16px;"><?php _e( 'ALL PERSONAL DATA LINKED TO ', 'wp-gdpr' ); ?>
                     <STRONG><?php echo $controller->email_request; ?><i class="fa fa-lock m-l-10 text-success"
-                                                                        data-toggle="tooltip" data-placement="top"
+                                                                        data-toggle="tooltip" data-placement="right"
                                                                         title=""
                                                                         data-original-title="<?php _e( 'This is your personal data page. Only you are able to access this.', 'wp-gdpr' ); ?>"></i></STRONG></span>
             </center>

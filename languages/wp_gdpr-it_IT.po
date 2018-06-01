@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP GDPR\n"
-"POT-Creation-Date: 2018-05-15 11:27+0200\n"
-"PO-Revision-Date: 2018-05-15 11:27+0200\n"
+"POT-Creation-Date: 2018-06-01 09:19+0200\n"
+"PO-Revision-Date: 2018-06-01 09:19+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: it_IT\n"
@@ -25,7 +25,13 @@ msgstr ""
 msgid "GDPR - Request personal data"
 msgstr "GDPR -Richiedi dati personali"
 
-#: controller/controller-comments.php:129
+#: controller/controller-comments.php:96
+#, fuzzy
+#| msgid "View Comments"
+msgid "WordPress Comments"
+msgstr "Visualizza Commenti"
+
+#: controller/controller-comments.php:157
 #: controller/controller-menu-page.php:330
 #, fuzzy
 msgid ""
@@ -36,66 +42,81 @@ msgstr ""
 "Questo modulo raccoglie il tuo nome, email e contenuto in modo che possiamo "
 "tenere traccia dei commenti inseriti sul sito web."
 
-#: controller/controller-comments.php:216
-#: controller/controller-comments.php:221
+#: controller/controller-comments.php:244
+#: controller/controller-comments.php:249
 msgid ""
 "<strong>ERROR</strong>: please fill the required fields (GDPR checkbox)."
 msgstr ""
 "<strong>Errore</strong>: si prega di compilare i campi obbligatori (GDPR "
 "checkbox)."
 
-#: controller/controller-comments.php:241
+#: controller/controller-comments.php:269
 msgid "Something went wrong."
 msgstr "Qualcosa è andato storto."
 
-#: controller/controller-comments.php:249
+#: controller/controller-comments.php:277
 msgid "Email is not valid"
 msgstr "Email non valida"
 
-#: controller/controller-comments.php:266
+#: controller/controller-comments.php:294
 msgid "Comment is changed"
 msgstr "Il commento è cambiato"
 
-#: controller/controller-comments.php:350
+#: controller/controller-comments.php:378
 msgid "name"
 msgstr "nome"
 
-#: controller/controller-comments.php:351
+#: controller/controller-comments.php:379
 #: controller/controller-menu-page.php:437
 #: controller/controller-menu-page.php:674
 msgid "email"
 msgstr "email"
 
-#: controller/controller-comments.php:352
+#: controller/controller-comments.php:380
 msgid "comment"
 msgstr "commento"
 
-#: controller/controller-comments.php:353
+#: controller/controller-comments.php:381
 msgid "website"
 msgstr "website"
 
-#: controller/controller-comments.php:397
+#: controller/controller-comments.php:425
+#: controller/controller-comments.php:496
 msgid "post ID"
 msgstr "post ID"
 
-#: controller/controller-comments.php:399
+#: controller/controller-comments.php:426
+msgid "checkbox"
+msgstr ""
+
+#: controller/controller-comments.php:427
+#: controller/controller-comments.php:498
 msgid "comment date"
 msgstr "data del commento"
 
-#: controller/controller-comments.php:400
+#: controller/controller-comments.php:428
+#: controller/controller-comments.php:499
 msgid "author email"
 msgstr "autore e-mail"
 
-#: controller/controller-comments.php:401
+#: controller/controller-comments.php:429
+#: controller/controller-comments.php:500
 msgid "author name"
 msgstr "nome autore"
 
-#: controller/controller-comments.php:402
+#: controller/controller-comments.php:430
+#: controller/controller-comments.php:501
 #, fuzzy
 msgid "comment content"
 msgstr "Contenuto del Commento"
 
-#: controller/controller-comments.php:503
+#: controller/controller-comments.php:488
+#, fuzzy
+#| msgid "View Comments"
+msgid "Data origin : WordPress Comments"
+msgstr "Visualizza Commenti"
+
+#: controller/controller-comments.php:569
 msgid "The site administrator received your request. Thank You."
 msgstr ""
 
@@ -440,13 +461,37 @@ msgstr ""
 msgid "Update privacy policy settings"
 msgstr ""
 
-#: view/admin/small-form-delete-request.php:9
-msgid "Send delete request"
+#: view/admin/small-form-delete-request.php:6
+msgid "Are you sure?"
+msgstr ""
+
+#: view/admin/small-form-delete-request.php:7
+msgid "This will send a delete request for your selected data"
+msgstr ""
+
+#: view/admin/small-form-delete-request.php:8
+#, fuzzy
+#| msgid "Send delete request"
+msgid "Yes, send delete request!"
 msgstr "Invia richiesta di cancellazione"
 
+#: view/admin/small-form-delete-request.php:9
+#, fuzzy
+#| msgid "Request send"
+msgid "Request sent !"
+msgstr "Richiesta inviata"
+
 #: view/admin/small-form-delete-request.php:10
-msgid "Download comments"
-msgstr ""
+#, fuzzy
+#| msgid "List of delete requests"
+msgid "Your delete request has been sent"
+msgstr "Elenco delle richieste di cancellazione"
+
+#: view/admin/small-form-delete-request.php:23
+#: view/admin/small-form-delete-request.php:24
+#: view/admin/small-form-delete-request.php:27
+msgid "Send delete request"
+msgstr "Invia richiesta di cancellazione"
 
 #: view/admin/small-form.php:9
 msgid "Resend emails"
@@ -574,65 +619,29 @@ msgstr ""
 msgid "This link will become deprecated after 48 hours."
 msgstr "Questo link diventerà obsoleto dopo 48 ore."
 
-#: view/front/gdpr-template.php:14
+#: view/front/gdpr-template.php:17
 msgid "YOUR"
 msgstr ""
 
-#: view/front/gdpr-template.php:14
+#: view/front/gdpr-template.php:17
 msgid "PRIVACY CENTER"
 msgstr ""
 
-#: view/front/gdpr-template.php:16
+#: view/front/gdpr-template.php:22
 msgid "ALL PERSONAL DATA LINKED TO "
 msgstr ""
 
-#: view/front/gdpr-template.php:16
+#: view/front/gdpr-template.php:26
 msgid "This is your personal data page. Only you are able to access this."
 msgstr ""
 
-#: view/front/gdpr-template.php:29
+#: view/front/gdpr-template.php:41
 #, fuzzy
-msgid "Personal Data"
+msgid "Personal Data Entries"
 msgstr "Elimina dati personali"
 
-#: view/front/gdpr-template.php:30
-msgid "All personal data collected through WordPress comments & Gravity Forms"
-msgstr ""
-
-#: view/front/gdpr-template.php:42
-#, fuzzy
-#| msgid "View Comments"
-msgid "WordPress Comments"
-msgstr "Visualizza Commenti"
-
-#: view/front/gdpr-template.php:158
-msgid "A log of all your consents recorded on this website."
-msgstr ""
-
-#: view/front/gdpr-template.php:170
-msgid "A list of all cookies on this website which you accepted."
-msgstr ""
-
-#: view/front/gdpr-template.php:183
-#, fuzzy
-msgid "Privacy Policy Changes"
-msgstr "Informativa Privacy"
-
-#: view/front/gdpr-template.php:184
-msgid ""
-"View a list of all changes made to our privacy policy which you agreed on."
-msgstr ""
-
-#: view/front/gdpr-template.php:199
-msgid "Last Data Request :"
-msgstr "Richiesta di dati:"
-
-#: view/front/gdpr-template.php:199
-msgid "GDPR Privacy Center powered by"
-msgstr ""
-
-#: view/front/gdpr-template.php:222
-msgid "All comments added by email address"
+#: view/front/gdpr-template.php:43
+msgid "All personal data collected through WordPress comments & other plugins"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -648,6 +657,13 @@ msgstr "Appsaloon"
 #. Author URI of the plugin/theme
 msgid "https://www.appsaloon.be"
 msgstr "https://www.appsaloon.be"
+
+#, fuzzy
+#~ msgid "Privacy Policy Changes"
+#~ msgstr "Informativa Privacy"
+
+#~ msgid "Last Data Request :"
+#~ msgstr "Richiesta di dati:"
 
 #~ msgid "delete"
 #~ msgstr "cancella"
