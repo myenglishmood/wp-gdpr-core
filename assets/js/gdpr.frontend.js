@@ -46,6 +46,9 @@ $(document).ready(function () {
     
     $('a[data-toggle="tab"]').on( 'shown.bs.tab', function (e) {
     $.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
+        $($.fn.dataTable.tables( true ) ).css('width', '100%');
+        $($.fn.dataTable.tables( true ) ).DataTable().columns.adjust().draw();
     } );
+
 
 });
