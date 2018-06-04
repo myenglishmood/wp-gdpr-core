@@ -20,6 +20,7 @@ class Controller_Comments extends Gdpr_Log_Interface {
 	 */
 	public $email_request;
 	public $message;
+	public $navigation_id = 'gdpr_comments';
 
 
 	/**
@@ -52,11 +53,11 @@ class Controller_Comments extends Gdpr_Log_Interface {
 			require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
 		}
 		if ( is_plugin_active( 'jetpack/jetpack.php' ) ) {
-			$this->log->info('Jetpack plugin is active');
+			$this->log->info( 'Jetpack plugin is active' );
 			add_action( 'comment_form', array( $this, 'echo_comment_form_default_fields_callback' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'load_jetpack_comment_scripts' ) );
 		} elseif ( is_plugin_active( 'wpdiscuz/class.WpdiscuzCore.php' ) ) {
-			$this->log->info('Wpdiscuz plugin is active');
+			$this->log->info( 'Wpdiscuz plugin is active' );
 			add_action( 'comment_form_after', array( $this, 'echo_checkox_gdpr' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'load_comment_scripts' ) );
 		} else {
@@ -69,6 +70,33 @@ class Controller_Comments extends Gdpr_Log_Interface {
 			'comment_form_default_fields_callback'
 		), 1 );
 
+		add_filter( 'gdpr_global_models', array( $this, 'register_addon_model' ) );
+
+		add_filter( 'gdpr_tables_names', function ( $table_names ) {
+			$table_names[] = '#comments_table';
+
+			return $table_names;
+		} );
+	}
+
+	public function register_addon_model( $objects ) {
+		$objects[] = $this;
+
+		return $objects;
+	}
+
+	public function get_frontend_header( $active ) {
+		if ( $active ) {
+			$active = 'active';
+		}
+		?>
+        <li class="nav-item">
+        <a href="<?php echo '#' . $this->navigation_id; ?>" data-toggle="tab" aria-expanded="true"
+           class="nav-link <?php echo $active; ?>">
+			<?php _e( 'WordPress Comments', 'wp-gdpr' ); ?><span
+                    class="badge badge-pill badge-primary m-l-10"><?php //placeholder?></span>
+        </a>
+        </li><?php
 	}
 
 	/**
@@ -78,9 +106,9 @@ class Controller_Comments extends Gdpr_Log_Interface {
 	 */
 	public function load_jetpack_comment_scripts() {
 		wp_enqueue_style( 'gdpr-comment-css', GDPR_URL . 'assets/css/new_comment.css' );
-		$this->log->info('Jetpack comments scripts are loaded | new_comment.css');
+		$this->log->info( 'Jetpack comments scripts are loaded | new_comment.css' );
 		wp_enqueue_script( 'gdpr-comment-js', GDPR_URL . 'assets/js/jetpack_comments.js', array( 'jquery' ), '', false );
-		$this->log->info('Jetpack comments scripts are loaded | jetpack_comments.js');
+		$this->log->info( 'Jetpack comments scripts are loaded | jetpack_comments.js' );
 		wp_localize_script( 'gdpr-comment-js', 'localized_object', array(
 			'url'    => admin_url( 'admin-ajax.php' ),
 			'action' => 'wp_gdpr'
@@ -89,9 +117,9 @@ class Controller_Comments extends Gdpr_Log_Interface {
 
 	public function load_comment_scripts() {
 		wp_enqueue_style( 'gdpr-comment-css', GDPR_URL . 'assets/css/new_comment.css' );
-		$this->log->info( 'Comments scripts are loaded | new_comments.css');
+		$this->log->info( 'Comments scripts are loaded | new_comments.css' );
 		wp_enqueue_script( 'gdpr-comment-js', GDPR_URL . 'assets/js/validate_comments.js', array( 'jquery' ), '', false );
-		$this->log->info( 'Comments scripts are loaded | validate_comments.js');
+		$this->log->info( 'Comments scripts are loaded | validate_comments.js' );
 		wp_localize_script( 'gdpr-comment-js', 'localized_object', array(
 			'url'    => admin_url( 'admin-ajax.php' ),
 			'action' => 'wp_gdpr'
@@ -103,8 +131,8 @@ class Controller_Comments extends Gdpr_Log_Interface {
 	}
 
 	public function get_gdpr_checkbox_for_new_comments() {
-		$menu_page_object = new Controller_Menu_Page();
-		$privacy_policy_array = $menu_page_object->get_privacy_policy_strings();
+		$menu_page_object      = new Controller_Menu_Page();
+		$privacy_policy_array  = $menu_page_object->get_privacy_policy_strings();
 		$privacy_policy_string = '';
 
 		if ( ! empty( $privacy_policy_array[0] ) ) {
@@ -123,7 +151,7 @@ class Controller_Comments extends Gdpr_Log_Interface {
 	}
 
 	public function add_metabox_in_editor( $content ) {
-		$this->log->info( 'Metabox added in editor');
+		$this->log->info( 'Metabox added in editor' );
 
 		if ( false !== strpos( $content, 'replycontent' ) ) {
 			$content = str_replace( '</textarea></div>', '</textarea><p class="comment-form-gdpr">' . __( 'This form collects your name, email and content so that we can keep track of the comments placed on the website. For more info check our privacy policy where you\'ll get more info on where, how and why we store your data.', 'wp_gdpr' ) . ' </p></div>', $content );
@@ -237,13 +265,13 @@ class Controller_Comments extends Gdpr_Log_Interface {
 
 				//when id is not a number
 				if ( ! is_numeric( $comment_id ) ) {
-					$this->log->info( 'Id is not a number');
+					$this->log->info( 'Id is not a number' );
 					wp_send_json( __( 'Something went wrong.', 'wp_gdpr' ) );
 				}
 
 				//when email update
 				if ( 'comment_author_email' === $field ) {
-					$this->log->info( 'Email is updated');
+					$this->log->info( 'Email is updated' );
 					$new_value = sanitize_email( $new_value );
 					if ( empty ( $new_value ) ) {
 						wp_send_json( '<h3>' . __( 'Email is not valid', 'wp_gdpr' ) . '</h3>' );
@@ -262,7 +290,7 @@ class Controller_Comments extends Gdpr_Log_Interface {
 				);
 
 				//send feedback
-				$this->log->info( 'Comment is changed');
+				$this->log->info( 'Comment is changed' );
 				wp_send_json( '<h3>' . __( 'Comment is changed', 'wp_gdpr' ) . '</h3>' );
 				break;
 
@@ -331,7 +359,7 @@ class Controller_Comments extends Gdpr_Log_Interface {
 		if ( 'POST' == $_SERVER['REQUEST_METHOD'] && isset( $_REQUEST['gdpr_email'] ) ) {
 			if ( isset( $_REQUEST['gdpr_download_csv'] ) ) {
 				//save in database
-				$this->log->info( 'Csv save in database');
+				$this->log->info( 'Csv save in database' );
 				$user_email = sanitize_email( $_REQUEST['gdpr_email'] );
 
 				global $wpdb;
@@ -344,7 +372,7 @@ class Controller_Comments extends Gdpr_Log_Interface {
 				if ( ! empty( $all_comments ) ) {
 					$file_name = self::CSV_NAME;
 					//create csv object and download comments
-					$this->log->info( 'Created csv object and download comments');
+					$this->log->info( 'Created csv object and download comments' );
 					$csv     = Gdpr_Container::make( 'wp_gdpr\model\Csv_Downloader' );
 					$headers = array(
 						__( 'name', 'wp_gdpr' ),
@@ -377,7 +405,8 @@ class Controller_Comments extends Gdpr_Log_Interface {
 	 * get all comments from default comments table
 	 */
 	public function get_all_comments_by_author( $author_email ) {
-		$this->log->info( 'Get all comments by author');
+		$this->log->info( 'Get all comments by author' );
+
 		return get_comments( array( 'author_email' => $author_email ) );
 	}
 
@@ -386,19 +415,19 @@ class Controller_Comments extends Gdpr_Log_Interface {
 	 * selected by email address
 	 */
 	public function create_table_with_comments() {
-		$this->log->info( 'Comments table build selecetd by email address');
+		$this->log->info( 'Comments table build selected by email address' );
 		$comments = $this->get_all_comments_by_author( $this->email_request );
 		$comments = $this->map_comments( $comments );
 		$comments = array_map( array( $this, 'add_checkbox' ), $comments );
 
 		$table = new Gdpr_Table_Builder(
 			array(
+				__( 'post ID', 'wp_gdpr' ),
+				__( 'checkbox', 'wp_gdpr' ),
 				__( 'comment date', 'wp_gdpr' ),
 				__( 'author email', 'wp_gdpr' ),
 				__( 'author name', 'wp_gdpr' ),
 				__( 'comment content', 'wp_gdpr' ),
-				__( 'post ID', 'wp_gdpr' ),
-				__( 'delete', 'wp_gdpr' )
 			),
 			$comments
 			, array( $this->get_form_content() ), 'gdpr_comments_table' );
@@ -412,16 +441,18 @@ class Controller_Comments extends Gdpr_Log_Interface {
 	 * @return array
 	 */
 	public function map_comments( $comments ) {
-		$this->log->info( 'Get info comments');
+		$this->log->info( 'Get info comments' );
 		$this_object = $this;
 		$comments    = array_map( function ( $data ) use ( $this_object ) {
 			return array(
+				'comment_post_ID' => $data->comment_post_ID,
+				'checkbox'        => $data->checkbox,
 				'comment_date'    => $data->comment_date,
 				'email'           => $this_object->change_into_input( $data->comment_author_email, 'comment_author_email', $data->comment_ID ),
 				'name'            => $this_object->change_into_input( $data->comment_author, 'comment_author', $data->comment_ID ),
 				'comment_content' => $data->comment_content,
-				'comment_post_ID' => $data->comment_post_ID,
 				'comment_ID'      => $data->comment_ID
+
 			);
 		}, $comments );
 
@@ -429,7 +460,7 @@ class Controller_Comments extends Gdpr_Log_Interface {
 	}
 
 	public function change_into_input( $val, $name, $id ) {
-		return '<input type="text" data-id="' . $id . '" data-name="' . $name . '" class="js-comment-edit" value="' . $val . '">';
+		return '<input type="text" data-id="' . $id . '" data-name="' . $name . '" class="js-comment-edit" value="' . $val . '"><span style="display:none;">'.$val.'</span>';
 	}
 
 	/**
@@ -442,6 +473,44 @@ class Controller_Comments extends Gdpr_Log_Interface {
 		include_once GDPR_DIR . 'view/admin/small-form-delete-request.php';
 
 		return ob_get_clean();
+	}
+
+	public function show_entries( $email, $active, $id ) {
+		if ( $active ) {
+			$active = 'active show';
+		}
+		?>
+        <div width="100%" class="tab-pane fade <?php echo $active; ?>" id="<?php echo $this->navigation_id; ?>">
+            <!-- start row -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card-box table-responsive" style="border:0;">
+                    <h5><?php _e('Data origin : WordPress Comments', 'wp-gdpr' ); ?></h5>
+                    <?php
+						$comments = $this->get_all_comments_by_author( $this->email_request );
+						$comments = $this->map_comments( $comments );
+						$comments = array_map( array( $this, 'add_checkbox' ), $comments );
+
+						$table = new Gdpr_Table_Builder(
+							array(
+								__( 'post ID', 'wp_gdpr' ),
+								__( '', 'wp_gdpr' ),
+								__( 'comment date', 'wp_gdpr' ),
+								__( 'author email', 'wp_gdpr' ),
+								__( 'author name', 'wp_gdpr' ),
+								__( 'comment content', 'wp_gdpr' ),
+							),
+							$comments
+							, array( $this->get_form_content() ), 'gdpr_comments_table table table-bordered dt-responsive nowrap', 'comments_table' );
+
+						$table->print_table();
+						?>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<?php
+
 	}
 
 	public function change_into_textarea( $val, $name, $id ) {
@@ -467,7 +536,7 @@ class Controller_Comments extends Gdpr_Log_Interface {
 		$post_name = $post->post_name;
 
 		if ( isset( $wp->query_vars['pagename'] ) && $wp->query_vars['pagename'] === $post_name ) {
-			$this->log->info( 'Style assets/css/main.css is loaded for mail??');
+			$this->log->info( 'Style assets/css/main.css is loaded for mail??' );
 			wp_enqueue_style( 'gdpr-main-css', GDPR_URL . 'assets/css/main.css' );
 		}
 	}
@@ -479,7 +548,7 @@ class Controller_Comments extends Gdpr_Log_Interface {
 			do_action( 'gdpr_save_del_req' );
 			if ( isset( $_REQUEST["send_gdp_del_request"] ) && isset( $_REQUEST['gdpr_delete_comments'] ) && is_array( $_REQUEST['gdpr_delete_comments'] ) ) {
 				//save in database
-				$this->log->info( 'Save in database, delete request');
+				$this->log->info( 'Save in database, delete request' );
 				global $wpdb;
 				$comments_ids = array_filter( $_REQUEST['gdpr_delete_comments'], array(
 					$this,
@@ -503,7 +572,6 @@ class Controller_Comments extends Gdpr_Log_Interface {
 			}
 		}
 	}
-
 
 
 	/**
