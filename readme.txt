@@ -90,6 +90,10 @@ We have added 3 filters to change the text on the request page.
 == Frequently Asked Questions ==
 
 == Changelog ==
+Version 2.0.0 (2018-06-04)
+    - New frontend Privacy Center UI for personal data management
+    - Upgraded translations for NL BE FR SE
+
 Version 1.5.7 (2018-05-22)
     - Change session_id check
 

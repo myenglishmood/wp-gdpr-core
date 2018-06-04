@@ -1,5 +1,9 @@
 # CHANGELOG
 
+# Version 2.0.0 
+* New frontend Privacy Center UI for personal data management
+* Upgraded translations for NL BE FR SE
+
 # Version 1.5.7
 * Change session_id check
 
