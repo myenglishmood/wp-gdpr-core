@@ -299,7 +299,7 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 
 			wp_mail( $to, $subject, $content, $headers );
 
-			$this->set_notice( __( 'Request send', 'wp_gdpr' ) );
+			$this->set_notice( __( 'Request sent', 'wp_gdpr' ) );
 		}
 	}
 
