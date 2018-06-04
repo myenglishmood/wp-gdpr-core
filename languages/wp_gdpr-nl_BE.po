@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP GDPR\n"
 "POT-Creation-Date: 2018-06-01 09:28+0200\n"
-"PO-Revision-Date: 2018-06-01 09:28+0200\n"
+"PO-Revision-Date: 2018-06-01 15:37+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_BE\n"
@@ -27,7 +27,7 @@ msgstr "GDPR - Verzoek voor inzage in persoonlijke data"
 
 #: controller/controller-comments.php:96
 msgid "WordPress Comments"
-msgstr "WordPress Comments"
+msgstr "WordPress Reacties"
 
 #: controller/controller-comments.php:157
 #: controller/controller-menu-page.php:330
@@ -95,7 +95,7 @@ msgstr "reactie datum"
 #: controller/controller-comments.php:428
 #: controller/controller-comments.php:499
 msgid "author email"
-msgstr "e-mailadres"
+msgstr "e-mailadres auteur"
 
 #: controller/controller-comments.php:429
 #: controller/controller-comments.php:500
@@ -109,11 +109,11 @@ msgstr "reactie inhoud"
 
 #: controller/controller-comments.php:488
 msgid "Data origin : WordPress Comments"
-msgstr "Data herkomst : WordPress Comments"
+msgstr "Data herkomst : WordPress Reacties"
 
 #: controller/controller-comments.php:569
 msgid "The site administrator received your request. Thank You."
-msgstr "De sitebeheerder heeft je aanvraag goed ontvangen."
+msgstr "De sitebeheerder heeft je aanvraag goed ontvangen. Bedankt."
 
 #: controller/controller-menu-page.php:128
 msgid "Comments deleted"
@@ -125,7 +125,7 @@ msgstr "Reacties zijn anoniem"
 
 #: controller/controller-menu-page.php:289
 msgid "Comment author"
-msgstr "Reactie"
+msgstr "Reactie auteur"
 
 #: controller/controller-menu-page.php:289
 msgid "content"
@@ -153,7 +153,8 @@ msgid ""
 msgstr ""
 "Ik stem ermee in dat %s mijn e-mailadres bewaart zodat zij mijn vraag voor "
 "info kunnen behandelen\n"
-"             Voor meer info kan u ons privacybeleid nalezen."
+"             Voor meer info check onze privacy policy, waarin je meer info "
+"krijgt over waar, hoe en waarom we uw gegevens bewaren."
 
 #: controller/controller-menu-page.php:376
 msgid "Don't show comments"
@@ -175,7 +176,7 @@ msgstr "id"
 #: controller/controller-menu-page.php:438
 #: controller/controller-menu-page.php:678
 msgid "requested at"
-msgstr "verzoek gevraagd op"
+msgstr "verzoek aangevraagd op"
 
 #: controller/controller-menu-page.php:439
 #: controller/controller-menu-page.php:676
@@ -417,10 +418,8 @@ msgid "WordPress comments"
 msgstr "WordPress comments"
 
 #: view/admin/privacy-policy-form.php:16
-#, fuzzy
-#| msgid "Privacy policy link"
 msgid "Privacy policy label"
-msgstr "Privacyverklaring link"
+msgstr "Privacyverklaring label"
 
 #: view/admin/privacy-policy-form.php:20 view/admin/privacy-policy-form.php:50
 msgid "Privacy policy text"
@@ -440,27 +439,24 @@ msgstr "Werk de instellingen van het privacybeleid bij"
 
 #: view/admin/small-form-delete-request.php:6
 msgid "Are you sure?"
-msgstr ""
+msgstr "Weet je het zeker?"
 
 #: view/admin/small-form-delete-request.php:7
 msgid "This will send a delete request for your selected data"
 msgstr ""
+"Hiermee verstuur je een verzoek om je geselecteerde data te verwijderen"
 
 #: view/admin/small-form-delete-request.php:8
-#, fuzzy
-#| msgid "Send delete request"
 msgid "Yes, send delete request!"
-msgstr "Stuur verwijder aanvraag"
+msgstr "Ja, stuur een verzoek om te verwijderen!"
 
 #: view/admin/small-form-delete-request.php:9
 msgid "Request sent !"
-msgstr "Verzoek verzonden !"
+msgstr "Verzoek verzonden!"
 
 #: view/admin/small-form-delete-request.php:10
-#, fuzzy
-#| msgid "List of delete requests"
 msgid "Your delete request has been sent"
-msgstr "Lijst met verwijderverzoeken"
+msgstr "Jouw verzoek om te verwijderen werd verzonden"
 
 #: view/admin/small-form-delete-request.php:23
 #: view/admin/small-form-delete-request.php:24
@@ -481,7 +477,7 @@ msgstr "GDPR - Verzoek om persoonlijke data te verwijderen"
 #: view/email/delete-confirmation-email.php:126
 #: view/email/request-email-dpo.php:112 view/email/request-email.php:112
 msgid "Dear Sir / Madam"
-msgstr "Beste"
+msgstr "Geachte heer / mevrouw"
 
 #: view/email/admin-new-delete-request.php:128
 msgid "asked to delete his/her personal data."
@@ -489,7 +485,7 @@ msgstr "heeft gevraagd om zijn/haar persoonlijke gegevens te verwijderen."
 
 #: view/email/admin-new-delete-request.php:132
 msgid "Check all requests"
-msgstr "Check alle aanvragen"
+msgstr "Bekijk alle verzoeken"
 
 #: view/email/delete-confirmation-email-dpo.php:114
 #: view/email/delete-confirmation-email.php:114
@@ -499,7 +495,9 @@ msgstr "GDPR - Verzoek voor inzage in persoonlijke data"
 
 #: view/email/delete-confirmation-email-dpo.php:128
 msgid "User asked to delete personal data at "
-msgstr "U hebt gevraagd om uw persoonlijke gegevens te verwijderen op "
+msgstr ""
+"Gebruiker heeft gevraagd om zijn/haar persoonlijke gegevens te verwijderen "
+"op "
 
 #: view/email/delete-confirmation-email-dpo.php:129
 #: view/email/delete-confirmation-email.php:129
@@ -514,7 +512,7 @@ msgstr "Datum van de aanvraag:"
 #: view/email/delete-confirmation-email-dpo.php:131
 msgid "Requests is approved and data was successfully deleted today."
 msgstr ""
-"Verzoeken zijn goedgekeurd en gegevens zijn vandaag met succes verwijderd."
+"Verzoek werd goedgekeurd en gegevens zijn vandaag met succes verwijderd."
 
 #: view/email/delete-confirmation-email-dpo.php:145
 #: view/email/delete-confirmation-email.php:146
@@ -537,15 +535,17 @@ msgstr "Bedankt om ons te contacteren."
 
 #: view/email/request-email-dpo.php:103
 msgid "New request to view personal data"
-msgstr "Nieuw verzoek om persoonlijke gegevens te bekijken"
+msgstr "Nieuw verzoek voor inzage in persoonlijke data"
 
 #: view/email/request-email-dpo.php:113
 msgid "User asked to access personal data."
-msgstr "Gebruiker heeft gevraagd voor toegang tot mijn persoonlijke gegevens."
+msgstr ""
+"Gebruiker heeft toegang gevraagd om zijn/haar persoonlijke gegevens te "
+"bekijken."
 
 #: view/email/request-email-dpo.php:121
 msgid "Check list of requests"
-msgstr "Check lijst van aanvragen"
+msgstr "Bekijk alle verzoeken"
 
 #: view/email/request-email.php:113
 msgid ""
@@ -553,12 +553,12 @@ msgid ""
 "view or delete your comments created on the website:"
 msgstr ""
 "U vroeg om toegang tot uw persoonlijke gegevens. Door op de knop te klikken, "
-"kun je uw reacties die jij op de website hebt achtergelaten bekijken of "
+"kunt u uw reacties die u op de website hebt achtergelaten bekijken of "
 "verwijderen:"
 
 #: view/email/request-email.php:121
 msgid "Check your personal data"
-msgstr "Check je persoonlijke data"
+msgstr "Bekijk uw persoonlijke data"
 
 #: view/front/form.php:18
 msgid "Submit"
@@ -569,7 +569,7 @@ msgid ""
 "Thank You! We will send you an email with a link to access your personal "
 "data."
 msgstr ""
-"Bedankt! We sturen je een e-mail met een link naar jouw persoonlijke data."
+"Bedankt! We sturen je een e-mail met een link naar uw persoonlijke data."
 
 #: view/front/form.php:23
 msgid "Warning:"
@@ -577,33 +577,34 @@ msgstr "Waarschuwing:"
 
 #: view/front/form.php:23
 msgid "This link will become deprecated after 48 hours."
-msgstr "Deze link is niet meer geldig na 48uur."
+msgstr "Waarschuwing: deze link verloopt na 48 uur."
 
 #: view/front/gdpr-template.php:17
 msgid "YOUR"
-msgstr ""
+msgstr "JOUW"
 
 #: view/front/gdpr-template.php:17
 msgid "PRIVACY CENTER"
-msgstr ""
+msgstr "PRIVACY CENTER"
 
 #: view/front/gdpr-template.php:22
 msgid "ALL PERSONAL DATA LINKED TO "
-msgstr ""
+msgstr "ALLE PERSOONLIJKE GEGEVENS GELINKT AAN "
 
 #: view/front/gdpr-template.php:26
 msgid "This is your personal data page. Only you are able to access this."
 msgstr ""
+"Dit is uw pagina met persoonlijke gegevens. Enkel u heeft hier toegang toe."
 
 #: view/front/gdpr-template.php:41
-#, fuzzy
-#| msgid "Personal data"
 msgid "Personal Data Entries"
-msgstr "Persoonlijke data"
+msgstr "Ingevoerde Persoonlijke Gegevens"
 
 #: view/front/gdpr-template.php:43
 msgid "All personal data collected through WordPress comments & other plugins"
 msgstr ""
+"Alle persoonlijke gegevens verzameld doorheen WordPress reacties en andere "
+"plugins"
 
 #. Description of the plugin/theme
 msgid ""

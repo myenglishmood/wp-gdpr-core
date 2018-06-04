@@ -6,7 +6,7 @@
 $gdpra= __('Are you sure?', 'wp_gdpr');
 $gdprb= __('This will send a delete request for your selected data', 'wp_gdpr');
 $gdprc= __('Yes, send delete request!', 'wp_gdpr');
-$gdprd= __('Request sent !', 'wp_gdpr');
+$gdprd= __('Request sent!', 'wp_gdpr');
 $gdpre= __('Your delete request has been sent', 'wp_gdpr');
 ?>
 

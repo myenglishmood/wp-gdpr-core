@@ -16,7 +16,7 @@ class Gdpr_Email {
 	 */
 	public static function send_confirmation_email_to_requester( $data_to_process, $processed_data ) {
 		$to      = $data_to_process['email'];
-		$subject = __( 'We confirm Your data deletion request', 'wp_gdpr' );
+		$subject = __( 'We confirm your data deletion request', 'wp_gdpr' );
 		$content = static::get_delete_confirmation_email_content( $data_to_process, $processed_data );
 		$headers = array( 'Content-Type: text/html; charset=UTF-8' );
 		wp_mail( $to, $subject, $content, $headers );

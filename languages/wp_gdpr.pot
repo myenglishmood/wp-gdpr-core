@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: WP GDPR\n"
-"POT-Creation-Date: 2018-06-01 09:32+0200\n"
+"POT-Creation-Date: 2018-06-04 09:21+0200\n"
 "PO-Revision-Date: 2018-02-07 13:14+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -127,7 +127,7 @@ msgid "content"
 msgstr ""
 
 #: controller/controller-menu-page.php:302
-msgid "Request send"
+msgid "Request sent"
 msgstr ""
 
 #: controller/controller-menu-page.php:326
@@ -275,7 +275,7 @@ msgid "Settings saved"
 msgstr ""
 
 #: lib/gdpr-email.php:19
-msgid "We confirm Your data deletion request"
+msgid "We confirm your data deletion request"
 msgstr ""
 
 #: lib/gdpr-email.php:63
@@ -439,7 +439,7 @@ msgid "Yes, send delete request!"
 msgstr ""
 
 #: view/admin/small-form-delete-request.php:9
-msgid "Request sent !"
+msgid "Request sent!"
 msgstr ""
 
 #: view/admin/small-form-delete-request.php:10

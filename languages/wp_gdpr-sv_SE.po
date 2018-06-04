@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP GDPR\n"
-"POT-Creation-Date: 2018-06-01 09:22+0200\n"
-"PO-Revision-Date: 2018-06-01 12:41+0200\n"
+"POT-Creation-Date: 2018-06-01 16:35+0200\n"
+"PO-Revision-Date: 2018-06-03 12:33+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -87,12 +87,12 @@ msgstr "inslagets ID"
 
 #: controller/controller-comments.php:426
 msgid "checkbox"
-msgstr ""
+msgstr "kryssruta"
 
 #: controller/controller-comments.php:427
 #: controller/controller-comments.php:498
 msgid "comment date"
-msgstr "kommentar datum"
+msgstr "kommentar den"
 
 #: controller/controller-comments.php:428
 #: controller/controller-comments.php:499
@@ -102,7 +102,7 @@ msgstr "epost"
 #: controller/controller-comments.php:429
 #: controller/controller-comments.php:500
 msgid "author name"
-msgstr "Namn"
+msgstr "namn"
 
 #: controller/controller-comments.php:430
 #: controller/controller-comments.php:501
@@ -111,11 +111,11 @@ msgstr "kommentar innehåll"
 
 #: controller/controller-comments.php:488
 msgid "Data origin : WordPress Comments"
-msgstr ""
+msgstr "Data ursprung: Kommentar i WordPress"
 
 #: controller/controller-comments.php:569
 msgid "The site administrator received your request. Thank You."
-msgstr "Sidans administratör har fått din begäran. Tack."
+msgstr "Hemsidans administratör har fått din begäran. Tack."
 
 #: controller/controller-menu-page.php:128
 msgid "Comments deleted"
@@ -131,15 +131,15 @@ msgstr "Kommentar av"
 
 #: controller/controller-menu-page.php:289
 msgid "content"
-msgstr "Innehåll"
+msgstr "innehåll"
 
 #: controller/controller-menu-page.php:302
-msgid "Request send"
+msgid "Request sent"
 msgstr "Begäran skickad"
 
 #: controller/controller-menu-page.php:326
 msgid "Checkbox GDPR is required"
-msgstr "Vänligen kryssa i ruta för att godkänna"
+msgstr "Vänligen kryssa i rutan för att godkänna"
 
 #: controller/controller-menu-page.php:334
 msgid "I agree"
@@ -160,11 +160,11 @@ msgstr ""
 
 #: controller/controller-menu-page.php:376
 msgid "Don't show comments"
-msgstr "Ladda ner kommentarer"
+msgstr "Visa inte kommentarer"
 
 #: controller/controller-menu-page.php:381
 msgid "Set your DPO e-mail address"
-msgstr ""
+msgstr "Ange din DPO’s epostadress"
 
 #: controller/controller-menu-page.php:386
 msgid "Mailchimp API Key"
@@ -199,23 +199,23 @@ msgstr "kommentarer"
 
 #: controller/controller-menu-page.php:501
 msgid "gravity form entries"
-msgstr "gravity form inlägg"
+msgstr "gravity form poster"
 
 #: controller/controller-menu-page.php:504
 msgid "cfdb7 db entries"
-msgstr ""
+msgstr "cfdb7 db poster"
 
 #: controller/controller-menu-page.php:507
 msgid "woocommerce"
-msgstr ""
+msgstr "woocommerce"
 
 #: controller/controller-menu-page.php:510
 msgid "flamingo"
-msgstr ""
+msgstr "flamingo"
 
 #: controller/controller-menu-page.php:513
 msgid "mailchimp"
-msgstr ""
+msgstr "mailchimp"
 
 #: controller/controller-menu-page.php:553
 msgid "waiting for email"
@@ -266,16 +266,12 @@ msgid "processed"
 msgstr "bearbetad"
 
 #: controller/controller-menu-page.php:756
-#, fuzzy
-#| msgid "plugin name"
 msgid "Plugin name"
-msgstr "tilläggets namn"
+msgstr "Plugin titel"
 
 #: controller/controller-menu-page.php:757
-#, fuzzy
-#| msgid "status"
 msgid "Plugin status"
-msgstr "status"
+msgstr "Plugin status"
 
 #: controller/controller-menu-page.php:758
 msgid "Personal data"
@@ -283,21 +279,19 @@ msgstr "Personlig informaton"
 
 #: controller/controller-menu-page.php:759
 msgid "WP-GDPR add-on status"
-msgstr ""
+msgstr "WD-GDPR tillägg status"
 
 #: controller/controller-menu-page.php:880
 msgid "Settings saved"
 msgstr "Inställningar sparade"
 
 #: lib/gdpr-email.php:19
-msgid "We confirm Your data deletion request"
+msgid "We confirm your data deletion request"
 msgstr "Vi bekräftar din begäran om borttagning"
 
 #: lib/gdpr-email.php:63
-#, fuzzy
-#| msgid "We confirm Your data deletion request"
 msgid "Confirmation data deletion"
-msgstr "Vi bekräftar din begäran om borttagning"
+msgstr "Bekräftelse om data borttagning"
 
 #: lib/gdpr-email.php:106
 msgid "New delete request"
@@ -305,17 +299,15 @@ msgstr "Ny begäran om bortagning"
 
 #: lib/gdpr-email.php:153
 msgid "Your data request"
-msgstr "Data begärd"
+msgstr "Din data begärd"
 
 #: lib/gdpr-email.php:201
-#, fuzzy
-#| msgid "New delete request"
 msgid "New data request"
-msgstr "Ny begäran om bortagning"
+msgstr "Ny begäran om visning"
 
 #: lib/gdpr-form-builder.php:33
 msgid "Request add-on for your plugin"
-msgstr "Begär add-on för ditt tillägg "
+msgstr "Begär add-on för ditt tillägg"
 
 #: lib/gdpr-form-builder.php:35 view/front/form.php:8
 msgid "Email"
@@ -327,8 +319,8 @@ msgid ""
 "This form collects your email so that we can keep you updated about your "
 "request. Check out our %s for more information."
 msgstr ""
-"Detta formulär registrerar din epost så att vi kan hålla dig uppdaterad om "
-"din begäran. Se våra %s för mera information."
+"Detta formulär registrerar din epost så att vi kan uppdatera dig om din "
+"begäran. Se våra%s för mera information."
 
 #: lib/gdpr-form-builder.php:39
 msgid "privacy policy"
@@ -336,7 +328,7 @@ msgstr "integritetspolicy"
 
 #: lib/gdpr-form-builder.php:43
 msgid "I consent to having WP-GDPR collect my email when provided."
-msgstr "I samtycker till att WP-GDPR får tillgång till min epost."
+msgstr "Jag accepterar att WP-GDPR får tillgång till min epost."
 
 #: lib/gdpr-form-builder.php:44
 msgid "submit"
@@ -368,7 +360,7 @@ msgstr "Gör kommentar anonym"
 
 #: view/admin/menu/addon_page.php:10
 msgid "for your favourite plugins"
-msgstr ""
+msgstr "för dina favorit plugins"
 
 #: view/admin/menu/data-page.php:8
 msgid "List of data requests"
@@ -376,17 +368,15 @@ msgstr "Lista på dataförfrågningar"
 
 #: view/admin/menu/data-page.php:8 view/admin/menu/delete-page.php:8
 msgid "from website users"
-msgstr ""
+msgstr "från webbplatsens användare"
 
 #: view/admin/menu/dataregister.php:2
-#, fuzzy
-#| msgid "Data request"
 msgid "Dataregister"
-msgstr "Data begärd"
+msgstr "Data register"
 
 #: view/admin/menu/dataregister.php:2
 msgid "records of processing activities"
-msgstr ""
+msgstr "register över bearbetningsaktiviteter"
 
 #: view/admin/menu/delete-page.php:8
 msgid "List of delete requests"
@@ -398,7 +388,7 @@ msgstr "Hjälp"
 
 #: view/admin/menu/help_page.php:8
 msgid "Center"
-msgstr "Centrera"
+msgstr "Center"
 
 #: view/admin/menu/plugin-page.php:8
 msgid "List of plugins that store data of users"
@@ -406,7 +396,7 @@ msgstr "Lista på tillägg som lagrar användardata"
 
 #: view/admin/menu/settings-list.php:33
 msgid "Update settings"
-msgstr "Inställningar"
+msgstr "Uppdatera Inställningar"
 
 #. Plugin Name of the plugin/theme
 #: view/admin/menu/settings-page.php:10
@@ -419,43 +409,35 @@ msgstr "﻿Övrigt:"
 
 #: view/admin/menu/settings-page.php:46
 msgid "Add-on Licensing:"
-msgstr ""
+msgstr "Licens för tillägg:"
 
 #: view/admin/privacy-policy-form.php:11 view/admin/privacy-policy-form.php:42
 msgid "Settings for"
 msgstr "Inställningar för"
 
 #: view/admin/privacy-policy-form.php:11
-#, fuzzy
-#| msgid "Download comments"
 msgid "WordPress comments"
-msgstr "Ladda ner kommentarer"
+msgstr "WordPress kommentarer"
 
 #: view/admin/privacy-policy-form.php:16
 msgid "Privacy policy label"
 msgstr "Länk till integritetspolicy"
 
 #: view/admin/privacy-policy-form.php:20 view/admin/privacy-policy-form.php:50
-#, fuzzy
-#| msgid "Privacy policy link"
 msgid "Privacy policy text"
-msgstr "Länk till integritetspolicy"
+msgstr "Text i integritetspolicy"
 
 #: view/admin/privacy-policy-form.php:37
-#, fuzzy
-#| msgid "Privacy policy link"
 msgid "Privacy policy checkbox"
-msgstr "Länk till integritetspolicy"
+msgstr "Integritetspolicy kryssruta"
 
 #: view/admin/privacy-policy-form.php:42
 msgid "Personal Data Request Page"
-msgstr ""
+msgstr "Sida för begäran av personlig data"
 
 #: view/admin/privacy-policy-form.php:70
-#, fuzzy
-#| msgid "Privacy policy link"
 msgid "Update privacy policy settings"
-msgstr "Länk till integritetspolicy"
+msgstr "Uppdatera inställningar för integritetspolicy"
 
 #: view/admin/small-form-delete-request.php:6
 msgid "Are you sure?"
@@ -463,25 +445,19 @@ msgstr "Är du säker?"
 
 #: view/admin/small-form-delete-request.php:7
 msgid "This will send a delete request for your selected data"
-msgstr ""
+msgstr "Detta skickar dig en begäran om radering av dina data"
 
 #: view/admin/small-form-delete-request.php:8
-#, fuzzy
-#| msgid "Send delete request"
 msgid "Yes, send delete request!"
-msgstr "Skicka raderingsförfrågan"
+msgstr "Ja, skicka raderingsförfrågan!"
 
 #: view/admin/small-form-delete-request.php:9
-#, fuzzy
-#| msgid "Request send"
 msgid "Request sent !"
-msgstr "Begäran skickad"
+msgstr "Begäran skickad !"
 
 #: view/admin/small-form-delete-request.php:10
-#, fuzzy
-#| msgid "List of delete requests"
 msgid "Your delete request has been sent"
-msgstr "Lista på raderingsförfrågningar"
+msgstr "Din begäran om radering har sänts"
 
 #: view/admin/small-form-delete-request.php:23
 #: view/admin/small-form-delete-request.php:24
@@ -519,10 +495,8 @@ msgid "Request to view your personal data"
 msgstr "Begäran om att ta del av personliga data"
 
 #: view/email/delete-confirmation-email-dpo.php:128
-#, fuzzy
-#| msgid "You asked to delete your personal data at "
 msgid "User asked to delete personal data at "
-msgstr "Du har begärt att radera dina personuppgifter på "
+msgstr "Användare har begärt att radera sina personuppgifter på "
 
 #: view/email/delete-confirmation-email-dpo.php:129
 #: view/email/delete-confirmation-email.php:129
@@ -535,15 +509,13 @@ msgid "Date of request:"
 msgstr "Data begärd:"
 
 #: view/email/delete-confirmation-email-dpo.php:131
-#, fuzzy
-#| msgid "Your requests is approved and data was successfully deleted today."
 msgid "Requests is approved and data was successfully deleted today."
 msgstr "Din begäran har godkänts och informationen blev borttagen idag."
 
 #: view/email/delete-confirmation-email-dpo.php:145
 #: view/email/delete-confirmation-email.php:146
 msgid "List of processed data"
-msgstr "Lista över behandlade data"
+msgstr "Lista över behandlad data"
 
 #: view/email/delete-confirmation-email.php:128
 msgid "You asked to delete your personal data at "
@@ -559,20 +531,14 @@ msgid "Thanks for contacting us."
 msgstr "Tack för att du kontaktade oss."
 
 #: view/email/request-email-dpo.php:103
-#, fuzzy
-#| msgid "Request to view your personal data"
 msgid "New request to view personal data"
-msgstr "Begär att visa dina personuppgifter"
+msgstr "Ny begäran att visa personliga data"
 
 #: view/email/request-email-dpo.php:113
-#, fuzzy
-#| msgid "asked to delete his/her personal data."
 msgid "User asked to access personal data."
-msgstr "begärde att ta bort dennes personliga data."
+msgstr "Användare begärde sin personliga data."
 
 #: view/email/request-email-dpo.php:121
-#, fuzzy
-#| msgid "Check all requests"
 msgid "Check list of requests"
 msgstr "Kontrollera alla förfrågningar"
 
@@ -581,26 +547,24 @@ msgid ""
 "You asked to access your personal data. By clicking on the button you can "
 "view or delete your comments created on the website:"
 msgstr ""
-"Du bad om att få tillgång till dina personuppgifter. Genom att klicka på "
-"knappen kan du se eller ta bort dina kommentarer som skapats på webbplatsen:"
+"Du ville ha tillgång till din personliga information. Genom att klicka på "
+"knappen kan du se eller ta bort dina kommentarer på webbplatsen:"
 
 #: view/email/request-email.php:121
-#, fuzzy
-#| msgid "Request to view your personal data"
 msgid "Check your personal data"
-msgstr "Begär att visa dina personuppgifter"
+msgstr "Visa dina personliga data"
 
 #: view/front/form.php:18
 msgid "Submit"
 msgstr "Skicka"
 
 #: view/front/form.php:21
-#, fuzzy
-#| msgid "Thank You! We will send you email in 48h."
 msgid ""
 "Thank You! We will send you an email with a link to access your personal "
 "data."
-msgstr "Tack. Vi återkommer via email inom 48 timmar."
+msgstr ""
+"Tack. Vi epostar en länk via email där du får tillgång till din personliga "
+"data."
 
 #: view/front/form.php:23
 msgid "Warning:"
@@ -608,37 +572,40 @@ msgstr "Varning:"
 
 #: view/front/form.php:23
 msgid "This link will become deprecated after 48 hours."
-msgstr ""
+msgstr "Denna länken blir ogiltig efter 48 timmar."
 
 #: view/front/gdpr-template.php:17
 msgid "YOUR"
-msgstr ""
+msgstr "DIN"
 
 #: view/front/gdpr-template.php:17
 msgid "PRIVACY CENTER"
-msgstr ""
+msgstr "INTEGRITETS CENTER"
 
 #: view/front/gdpr-template.php:22
 msgid "ALL PERSONAL DATA LINKED TO "
-msgstr ""
+msgstr "ALLA PERSONLIG DATA TILLHÖRANDE "
 
 #: view/front/gdpr-template.php:26
 msgid "This is your personal data page. Only you are able to access this."
-msgstr ""
+msgstr "Detta är dina personliga uppgifter. Endast du har tillgång till detta."
 
 #: view/front/gdpr-template.php:41
 msgid "Personal Data Entries"
-msgstr ""
+msgstr "Personliga uppgifter"
 
 #: view/front/gdpr-template.php:43
 msgid "All personal data collected through WordPress comments & other plugins"
 msgstr ""
+"All personlig data sparat genom WordPress kommentarer och andra plugins"
 
 #. Description of the plugin/theme
 msgid ""
 "Make your website GDPR compliant and automate the process of handling "
 "personal data while integrating with plugins."
 msgstr ""
+"Gör din webbplats GDPR-kompatibel och automatiserar hanteringen av personlig "
+"data och är integrerat med plugins."
 
 #. Author of the plugin/theme
 msgid "AppSaloon"
@@ -647,6 +614,9 @@ msgstr "AppSaloon"
 #. Author URI of the plugin/theme
 msgid "https://www.appsaloon.be"
 msgstr "https://www.appsaloon.be"
+
+#~ msgid "Request send"
+#~ msgstr "Begäran skickad"
 
 #~ msgid "delete"
 #~ msgstr "ta bort"
