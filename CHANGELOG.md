@@ -2,6 +2,10 @@
 
 # Version 2.0.0 
 * New frontend Privacy Center UI for personal data management
+* New options for users to export their personal data : PDF / COPY / EXCEL / CSV / PRINT
+* Users can filter their personal data through search
+* Users can sort their Personal data in the Privacy Center
+* Privacy Center uses theme header + footer
 * Upgraded translations for NL BE FR SE
 
 # Version 1.5.7
