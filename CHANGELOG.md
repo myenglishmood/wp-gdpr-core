@@ -1,5 +1,8 @@
 # CHANGELOG
 
+# Version 2.0.1
+* Translation domain fix
+
 # Version 2.0.0 
 * New frontend Privacy Center UI for personal data management
 * New options for users to export their personal data : PDF / COPY / EXCEL / CSV / PRINT
