@@ -14,16 +14,16 @@ get_header();
     <div class="row">
         <div class="col-md-12 m-b-0">
             <h1 class="display-4">
-                <center><?php _e( 'YOUR', 'wp-gdpr' ); ?> <strong><?php _e( 'PRIVACY CENTER', 'wp-gdpr' ); ?></strong>
+                <center><?php _e( 'YOUR', 'wp_gdpr' ); ?> <strong><?php _e( 'PRIVACY CENTER', 'wp_gdpr' ); ?></strong>
                 </center>
             </h1>
             <p class="lead m-t-0">
             <center><span
-                        style="letter-spacing: 2px; font-size:16px;"><?php _e( 'ALL PERSONAL DATA LINKED TO ', 'wp-gdpr' ); ?>
+                        style="letter-spacing: 2px; font-size:16px;"><?php _e( 'ALL PERSONAL DATA LINKED TO ', 'wp_gdpr' ); ?>
                     <STRONG><?php echo $controller->email_request; ?><i class="fa fa-lock m-l-10 text-success"
                                                                         data-toggle="tooltip" data-placement="right"
                                                                         title=""
-                                                                        data-original-title="<?php _e( 'This is your personal data page. Only you are able to access this.', 'wp-gdpr' ); ?>"></i></STRONG></span>
+                                                                        data-original-title="<?php _e( 'This is your personal data page. Only you are able to access this.', 'wp_gdpr' ); ?>"></i></STRONG></span>
             </center>
             </p>
         </div>
@@ -38,9 +38,9 @@ get_header();
 
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
                            aria-controls="collapseOne" class="waves-effect waves-light"><h5 class="card-title m-0 p-t-10">
-                            <i class="fa  fa-address-card-o m-r-10 text-primary"></i><?php _e( 'Personal Data Entries', 'wp-gdpr' ); ?></h5>
+                            <i class="fa  fa-address-card-o m-r-10 text-primary"></i><?php _e( 'Personal Data Entries', 'wp_gdpr' ); ?></h5>
                         </a> <span class="text-muted m-l-10 p-t-10"
-                                   style="float:right;"><?php _e( 'All personal data collected through WordPress comments & other plugins', 'wp-gdpr' ); ?>
+                                   style="float:right;"><?php _e( 'All personal data collected through WordPress comments & other plugins', 'wp_gdpr' ); ?>
                             .</span>
                     </div>
 
@@ -90,7 +90,7 @@ get_header();
             <!--                            <i class="fa fa-check-square-o m-r-10"></i>Consent History-->
             <!--                        </a><span class="text-muted m-l-10 p-t-10"-->
             <!--                                  style="float:right;">-->
-			<?php //_e( 'A log of all your consents recorded on this website.', 'wp-gdpr' ); ?><!--</span>-->
+			<?php //_e( 'A log of all your consents recorded on this website.', 'wp_gdpr' ); ?><!--</span>-->
             <!--                    </div>-->
             <!--                    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">-->
             <!--                        <div class="card-body">-->
@@ -106,7 +106,7 @@ get_header();
             <!--                            <i class="fa fa-save m-r-10"></i>Cookies-->
             <!--                        </a><span class="text-muted m-l-10 p-t-10"-->
             <!--                                  style="float:right;">-->
-			<?php //_e( 'A list of all cookies on this website which you accepted.', 'wp-gdpr' ); ?><!--</span>-->
+			<?php //_e( 'A list of all cookies on this website which you accepted.', 'wp_gdpr' ); ?><!--</span>-->
             <!---->
             <!--                    </div>-->
             <!--                    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">-->
@@ -121,10 +121,10 @@ get_header();
             <!--                        <a class="collapsed btn btn-primary waves-effect waves-light" data-toggle="collapse"-->
             <!--                           data-parent="#accordion" href="#collapseFour" aria-expanded="false"-->
             <!--                           aria-controls="collapseFour">-->
-            <!--                            <i class="fa fa-edit m-r-10"></i>--><?php //_e( 'Privacy Policy Changes', 'wp-gdpr' ); ?>
+            <!--                            <i class="fa fa-edit m-r-10"></i>--><?php //_e( 'Privacy Policy Changes', 'wp_gdpr' ); ?>
             <!--                        </a><span class="text-muted m-l-10 p-t-10"-->
             <!--                                  style="float:right;">-->
-			<?php //_e( 'View a list of all changes made to our privacy policy which you agreed on.', 'wp-gdpr' ); ?><!--</span>-->
+			<?php //_e( 'View a list of all changes made to our privacy policy which you agreed on.', 'wp_gdpr' ); ?><!--</span>-->
             <!---->
             <!--                    </div>-->
             <!--                    <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">-->
@@ -139,9 +139,9 @@ get_header();
             <!---->
             <!--    </div>-->
             <!--    <p class="card-text">-->
-            <!--        <small class="text-muted m-r-10" style="float:right;"><i>--><?php //_e( 'Last Data Request :', 'wp-gdpr' ); ?>
+            <!--        <small class="text-muted m-r-10" style="float:right;"><i>--><?php //_e( 'Last Data Request :', 'wp_gdpr' ); ?>
             <!--                <strong>14-05-2018 16:30:11</strong> - -->
-			<?php //_e( 'GDPR Privacy Center powered by', 'wp-gdpr' ); ?><!-- <a-->
+			<?php //_e( 'GDPR Privacy Center powered by', 'wp_gdpr' ); ?><!-- <a-->
             <!--                        href="https://wp-gdpr.eu">WP-GDPR</a></i></small>-->
             <!--    </p>-->
             <!--</div>-->

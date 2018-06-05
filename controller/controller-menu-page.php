@@ -373,17 +373,17 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 		$this->log->info( 'Get settings for admin menu' );
 		$settings = array(
 			'switch_on_comments' => array(
-				'label' => __( 'Don\'t show comments', 'wp-gdpr' ),
+				'label' => __( 'Don\'t show comments', 'wp_gdpr' ),
 				'type'  => 'checkbox',
 				'value' => 'checked',
 			),
 			'dpo_email'          => array(
-				'label' => __( 'Set your DPO e-mail address', 'wp-gdpr' ),
+				'label' => __( 'Set your DPO e-mail address', 'wp_gdpr' ),
 				'type'  => 'email',
 				'value' => '',
 			),
 			'gdpr_mc_api_key'    => array(
-				'label' => __( 'Mailchimp API Key', 'wp-gdpr' ),
+				'label' => __( 'Mailchimp API Key', 'wp_gdpr' ),
 				'type'  => 'text',
 				'value' => '',
 			),
@@ -495,22 +495,22 @@ class Controller_Menu_Page extends Gdpr_Log_Interface {
 
 		switch ( $data['r_type'] ) {
 			case 0:
-				$data['r_type'] = __( 'comments', 'wp-gdpr' );
+				$data['r_type'] = __( 'comments', 'wp_gdpr' );
 				break;
 			case 1:
-				$data['r_type'] = __( 'gravity form entries', 'wp-gdpr' );
+				$data['r_type'] = __( 'gravity form entries', 'wp_gdpr' );
 				break;
 			case 2:
-				$data['r_type'] = __( 'cfdb7 db entries', 'wp-gdpr' );
+				$data['r_type'] = __( 'cfdb7 db entries', 'wp_gdpr' );
 				break;
 			case 3:
-				$data['r_type'] = __( 'woocommerce', 'wp-gdpr' );
+				$data['r_type'] = __( 'woocommerce', 'wp_gdpr' );
 				break;
 			case 4:
-				$data['r_type'] = __( 'flamingo', 'wp-gdpr' );
+				$data['r_type'] = __( 'flamingo', 'wp_gdpr' );
 				break;
 			case 5:
-				$data['r_type'] = __( 'mailchimp', 'wp-gdpr' );
+				$data['r_type'] = __( 'mailchimp', 'wp_gdpr' );
 				break;
 
 		}

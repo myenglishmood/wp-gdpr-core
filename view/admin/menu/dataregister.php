@@ -32,10 +32,10 @@ use wp_gdpr\controller\Controller_Data_Register;
 
     <div class="postbox">
         <form method="get">
-            <p><label for="email"><b><?php _e('Search data register by email address', 'wp-gdpr'); ?></b></label></p>
+            <p><label for="email"><b><?php _e('Search data register by email address', 'wp_gdpr'); ?></b></label></p>
             <input type="hidden" name="page" value="datareg">
             <input type="text" class="regular-text" name="email" id="email" placeholder="name@email.com" required value="<?php echo isset( $_GET['email'] ) ? $_GET['email'] : ''; ?>">
-            <input type="submit" class="button button-primary" value="<?php _e('Search in data register', 'wp-gdpr'); ?>">
+            <input type="submit" class="button button-primary" value="<?php _e('Search in data register', 'wp_gdpr'); ?>">
         </form>
     </div>
 
