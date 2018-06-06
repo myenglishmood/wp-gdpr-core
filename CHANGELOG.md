@@ -1,5 +1,8 @@
 # CHANGELOG
 
+# Version 2.0.2
+* Fix jQuery conflict
+
 # Version 2.0.1
 * Translation domain fix
 
