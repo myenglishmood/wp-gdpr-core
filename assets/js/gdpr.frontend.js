@@ -1,5 +1,5 @@
 
-$(document).ready(function () {
+jQuery(document).ready(function ($) {
      
     var tables = localized_object_frontend.tables;
     $.each(tables, function (key, data) {
