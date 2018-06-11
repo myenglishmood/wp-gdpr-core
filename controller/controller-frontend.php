@@ -107,6 +107,9 @@ class Controller_Frontend extends Gdpr_Log_Interface {
 	public function frontend_style() {
 		$pageid = Request_Form::get_page_id();
 		if ( $pageid != false && is_page( $pageid ) ) {
+			if ( ! isset( $_REQUEST['req'] ) ) {
+				return;
+			}
 			wp_enqueue_style( 'sweet_alert_min', GDPR_URL . 'vendor/sweet-alert/sweetalert2.min.css' );
 			wp_enqueue_style( 'bootstrap_min', GDPR_URL . 'assets/css/bootstrap.min.css' );
 			wp_enqueue_style( 'icons', GDPR_URL . 'assets/css/icons.css' );
