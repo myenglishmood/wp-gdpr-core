@@ -2,6 +2,7 @@
 
 # Version 2.0.3
 - Fix German translation issue
+- Css conflict fix
 
 # Version 2.0.2
 * Fix jQuery conflict
