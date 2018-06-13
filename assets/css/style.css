@@ -1,9 +1,16 @@
 /*Stylesheet WP-GDPR-CORE plugin*/
 
-
-#wp-gdpr .fa-address-card-o {
+#wp-gdpr .address-card, #wp-gdpr .lock {
+    width: auto;
+    margin-bottom: 5px;
     padding-right: 10px;
-    color: #0e1015 !important;
+}
+#wp-gdpr .address-card {
+    height: 30px;
+}
+#wp-gdpr .lock {
+    padding-left: 10px;
+    height: 16px;
 }
 #wp-gdpr  a.nav-link.active {
     border: none;

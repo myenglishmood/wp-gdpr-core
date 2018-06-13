@@ -20,10 +20,10 @@ get_header();
             <p class="lead m-t-0">
             <center><span
                         style="letter-spacing: 2px; font-size:16px;"><?php _e( 'ALL PERSONAL DATA LINKED TO ', 'wp_gdpr' ); ?>
-                    <STRONG><?php echo $controller->email_request; ?><i class="fa fa-lock m-l-10 text-success"
+                    <STRONG><?php echo $controller->email_request; ?><img class="lock" src="<?php echo GDPR_URL . 'assets/images/lock.svg'; ?>"
                                                                         data-toggle="tooltip" data-placement="right"
                                                                         title=""
-                                                                        data-original-title="<?php _e( 'This is your personal data page. Only you are able to access this.', 'wp_gdpr' ); ?>"></i></STRONG></span>
+                                                                        data-original-title="<?php _e( 'This is your personal data page. Only you are able to access this.', 'wp_gdpr' ); ?>"></STRONG></span>
             </center>
             </p>
         </div>
@@ -38,7 +38,7 @@ get_header();
 
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
                            aria-controls="collapseOne" class="waves-effect waves-light"><h5 class="card-title m-0 p-t-10">
-                            <i class="fa  fa-address-card-o m-r-10 text-primary"></i><?php _e( 'Personal Data Entries', 'wp_gdpr' ); ?></h5>
+                                <img class="address-card" src="<?php echo GDPR_URL . 'assets/images/address-card.svg'; ?>"><?php _e( 'Personal Data Entries', 'wp_gdpr' ); ?></h5>
                         </a> <span class="text-muted m-l-10 p-t-10"
                                    style="float:right;"><?php _e( 'All personal data collected through WordPress comments & other plugins', 'wp_gdpr' ); ?>
                             .</span>
