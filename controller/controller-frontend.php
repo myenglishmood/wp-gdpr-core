@@ -75,7 +75,7 @@ class Controller_Frontend extends Gdpr_Log_Interface {
 				return;
 			}
 			wp_enqueue_style( 'sweet_alert_min', GDPR_URL . 'vendor/sweet-alert/sweetalert2.min.css' );
-			wp_enqueue_style( 'bootstrap_min', GDPR_URL . 'assets/css/bootstrap.min.css' );
+			wp_enqueue_style( 'bootstrap_min', GDPR_URL . 'assets/css/wp-gdpr_bootstrap.css' );
 			wp_enqueue_style( 'gdpr_style', GDPR_URL . 'assets/css/style.css' );
 			wp_enqueue_style( 'datatables_bootstrap', GDPR_URL . 'vendor/datatables/dataTables.bootstrap4.min.css' );
 			wp_enqueue_style( 'responsive_bootstrap', GDPR_URL . 'vendor/datatables/responsive.bootstrap4.min.css' );
