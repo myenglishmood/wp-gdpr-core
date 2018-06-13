@@ -62,7 +62,7 @@ class Controller_Frontend extends Gdpr_Log_Interface {
 	}
 
 	/**
-	 * Loads javascript file according to current hook
+	 * Loads css file according to current hook
 	 *
 	 * @param $hook
 	 *
