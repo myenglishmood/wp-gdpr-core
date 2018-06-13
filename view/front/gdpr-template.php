@@ -8,7 +8,7 @@ get_header();
 
 ?>
 <?php use wp_gdpr\lib\Gdpr_Options_Helper; ?>
-<div class="wrapper">
+<div class="wrapper" id="wp-gdpr">
 <div class="container-fluid">
 
     <div class="row">
