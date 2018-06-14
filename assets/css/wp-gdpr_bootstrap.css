@@ -124,7 +124,7 @@
 #wp-gdpr ol,
 #wp-gdpr ul {
     margin-top: 0;
-    margin-bottom: 1rem
+    /*margin-bottom: 1rem*/
 }
 
 #wp-gdpr ol ol,
