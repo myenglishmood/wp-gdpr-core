@@ -93,6 +93,7 @@ We have added 3 filters to change the text on the request page.
 Version 2.0.3 (2018-06-12)
     - Fix German translation issue
     - Css conflixt fix
+    - Remove font-awesome css
 
 Version 2.0.2 (2018-06-05)
     - Fix jQuery conflict

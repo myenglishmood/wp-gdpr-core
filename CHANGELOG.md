@@ -1,8 +1,9 @@
 # CHANGELOG
 
 # Version 2.0.3
-- Fix German translation issue
-- Css conflict fix
+* Fix German translation issue
+* Css conflict fix
+* Remove font-awesome css
 
 # Version 2.0.2
 * Fix jQuery conflict
