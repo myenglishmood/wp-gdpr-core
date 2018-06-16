@@ -611,9 +611,8 @@ msgstr ""
 
 #: view/front/form.php:23
 msgid "Warning:"
-msgstr ""
-"Imposta un avviso personalizzato per ogni profilo utente (es: Questo account "
-"è solo un test di funzionamento, eccetera)"
+msgstr "Importante"
+""
 
 #: view/front/form.php:23
 msgid "This link will become deprecated after 48 hours."
